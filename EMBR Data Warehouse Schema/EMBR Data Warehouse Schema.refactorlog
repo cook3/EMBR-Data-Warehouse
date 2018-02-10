@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="283ffc61-bbd7-47b7-aea1-1bfed7ea46c3" ChangeDateTime="01/26/2018 02:45:12">
+    <Property Name="ElementName" Value="[lead].[dim_customer].[city]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[lead].[dim_customer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="geography_key" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="126feaa3-1096-4db5-b20b-e574a53247df" ChangeDateTime="01/26/2018 03:07:09">
+    <Property Name="ElementName" Value="[lead].[fact_leads].[affliate_id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[lead].[fact_leads]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="affiliate_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5f7580df-38a2-4731-8b5c-e40cc81ff045" ChangeDateTime="01/26/2018 03:19:08">
+    <Property Name="ElementName" Value="[lead].[fact_leads].[affiliate_id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[lead].[fact_leads]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="affiliate_key" />
+  </Operation>
+</Operations>

@@ -1,0 +1,268 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/26/2018 6:17:10 PM"
+  DTS:CreationName=""
+  DTS:CreatorComputerName="COOKE-PC"
+  DTS:CreatorName="Cooke-PC\Cooke"
+  DTS:DTSID="{05DE0E37-D9AC-463B-94F1-698B93ACC271}"
+  DTS:ExecutableType=""
+  DTS:LastModifiedProductVersion="14.0.3002.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="load_dimensions"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{C8E8BABC-9E45-4272-9D75-1A0A57DBFB46}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Smaller tables"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{F539DD5E-DA4C-4545-826D-91C8DF8A8129}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Smaller tables">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Smaller tables\SQL - load dim_affiliate"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{c9684750-150b-433e-a7af-04954f6c5c8e}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - load dim_affiliate"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+              SQLTask:SqlStatementSource="EXEC lead.load_dim_affiliate" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Smaller tables\SQL - load dim_device"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{5c9d1e68-a11d-48aa-896c-35f8e8a37db3}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - load dim_device"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+              SQLTask:SqlStatementSource="EXEC lead.load_dim_device" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Smaller tables\SQL - load dim_source"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{9af729c0-7bd4-4a00-85ff-1d2ca4a66c74}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - load dim_source"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+              SQLTask:SqlStatementSource="EXEC lead.load_dim_source" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Smaller tables\SQL - load dim_status"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{23CCEE59-9FAD-4C30-BB0B-851CA92D976E}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - load dim_status"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+              SQLTask:SqlStatementSource="EXEC lead.load_dim_status" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - load dim_customer"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C7060D4D-C5A3-46AB-A30F-8F03955B7BE1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - load dim_customer"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+          SQLTask:SqlStatementSource="EXEC [lead].[load_dim_customer]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - load lead_dim_geography"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{b404f27f-b115-4c67-b9a6-e9ca41e09827}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - load lead_dim_geography"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+          SQLTask:SqlStatementSource="EXEC [lead].[load_dim_geography];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{C97F2EBF-FEAC-48E7-9C96-1B2AF39EA692}"
+      DTS:From="Package\SQL - load dim_customer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Smaller tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{5CC72D5C-E2D2-441C-8A2F-F3C10EBCC927}"
+      DTS:From="Package\SQL - load lead_dim_geography"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL - load dim_customer" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="198,42"
+          Id="Package\SQL - load dim_customer"
+          TopLeft="300,193.428571428571" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\SQL - load lead_dim_geography"
+          TopLeft="22.5714285714286,168.714285714286" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\Smaller tables\SQL - load dim_affiliate"
+          TopLeft="12,83" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\Smaller tables\SQL - load dim_device"
+          TopLeft="238,84" />
+        <NodeLayout
+          Size="185,42"
+          Id="Package\Smaller tables\SQL - load dim_source"
+          TopLeft="224,18" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Smaller tables\SQL - load dim_status"
+          TopLeft="14,21" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="428,181"
+          Size="428,224"
+          Id="Package\Smaller tables"
+          TopLeft="578,195.428571428571" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="498,214.428571428571">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="80.0000000000002,93"
+              Start="0,0"
+              End="72.5000000000002,93">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.0000000000001,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.0000000000001,0"
+                    Point2="40.0000000000001,0"
+                    Point3="40.0000000000001,4" />
+                  <mssgle:LineSegment
+                    End="40.0000000000001,89" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.0000000000001,89"
+                    Point2="40.0000000000001,93"
+                    Point3="44.0000000000001,93" />
+                  <mssgle:LineSegment
+                    End="72.5000000000002,93" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="252.571428571429,189.714285714286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.4285714285715,24.7142857142857"
+              Start="0,0"
+              End="39.9285714285715,24.7142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="19.7142857142857,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.7142857142857,0"
+                    Point2="23.7142857142857,0"
+                    Point3="23.7142857142857,4" />
+                  <mssgle:LineSegment
+                    End="23.7142857142857,20.7142857142857" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.7142857142857,20.7142857142857"
+                    Point2="23.7142857142857,24.7142857142857"
+                    Point3="27.7142857142857,24.7142857142857" />
+                  <mssgle:LineSegment
+                    End="39.9285714285715,24.7142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

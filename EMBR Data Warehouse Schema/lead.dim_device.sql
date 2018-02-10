@@ -1,0 +1,11 @@
+﻿CREATE TABLE [lead].[dim_device]
+(
+	[device_key] [int] IDENTITY(1,1) NOT NULL,
+    [device_type] VARCHAR(250) NULL, 
+    [device_brand] VARCHAR(250) NULL,
+ CONSTRAINT [PK_device] PRIMARY KEY CLUSTERED 
+(
+	[device_key] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
