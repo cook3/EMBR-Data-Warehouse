@@ -1,4 +1,4 @@
-﻿CREATE TABLE [cleansed].[customer]
+﻿CREATE TABLE [mdm].[customer]
 (
 	[customer_key] [int] IDENTITY(1,1) NOT NULL,
 	[customer_id] [int] NULL,

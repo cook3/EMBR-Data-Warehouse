@@ -66,7 +66,7 @@
     <Build Include="lead.dim_status.sql" />
     <Build Include="lead.sql" />
     <Build Include="lead.dim_source.sql" />
-    <Build Include="cleansed.customer.sql" />
+    <Build Include="mdm.customer.sql" />
     <Build Include="lead.fact_leads_old.sql" />
     <Build Include="lead.dim_affiliate.sql" />
     <Build Include="lead.load_dim_status.sql" />
@@ -81,11 +81,11 @@
     <Build Include="lead.load_dim_device.sql" />
     <Build Include="dbo.dim_geography.sql" />
     <Build Include="dbo.customer.sql" />
-    <Build Include="cleansed.load_customer.sql" />
+    <Build Include="mdm.load_customer.sql" />
     <Build Include="lead.dim_geography.sql" />
     <Build Include="lead.load_dim_geography.sql" />
     <Build Include="lead.fact_leads.sql" />
-    <Build Include="cleansed.sql" />
+    <Build Include="mdm.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EMBR Data Warehouse Schema.refactorlog" />
@@ -107,5 +107,10 @@
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dbo_dim_geography_fill.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

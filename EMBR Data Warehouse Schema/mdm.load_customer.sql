@@ -1,5 +1,5 @@
 ﻿
-CREATE PROCEDURE  [cleansed].[load_customer]
+CREATE PROCEDURE  [mdm].[load_customer]
 
 AS 
 
@@ -15,7 +15,7 @@ SET NOCOUNT ON;
 
 DECLARE @incremental_flag INT  
 
-SET @incremental_flag = ( SELECT TOP 1 1 FROM [cleansed].[customer] ) --count to check if this is the first full load. if so do straight insert/else merge changes
+SET @incremental_flag = ( SELECT TOP 1 1 FROM [mdm].[customer] ) --count to check if this is the first full load. if so do straight insert/else merge changes
 
 IF @incremental_flag = 1 --handle incremental loads
 
@@ -44,7 +44,7 @@ IF @incremental_flag = 1 --handle incremental loads
 
 									)
 
-				MERGE [cleansed].[customer] AS target
+				MERGE [mdm].[customer] AS target
 				USING (
 
 

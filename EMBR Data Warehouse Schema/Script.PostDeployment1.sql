@@ -10,5 +10,6 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 :r .\time_fill.sql
+:r .\dbo_dim_geography_fill.sql
 
 EXECUTE dbo.load_dim_date '2010-01-01', '2050-12-31'

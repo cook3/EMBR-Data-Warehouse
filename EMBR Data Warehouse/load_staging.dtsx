@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{E57A0DEE-FB65-4476-AFEA-F50C27802491}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{3D09A394-665A-4A09-803F-6FBF7D5B0EAB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -88,6 +88,30 @@
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
                           name="FriendlyExpression">(DT_STR,250,1252)email</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load staging_leads\DC - cleanse columns.Outputs[Derived Column Output].Columns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT - load staging_leads\DC - cleanse columns.Outputs[Derived Column Output].Columns[data_source]"
+                      name="data_source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,255,1252)"databowl"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,255,1252)"databowl"</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -187,6 +211,479 @@
                   </externalMetadataColumns>
                 </input>
               </inputs>
+            </component>
+            <component
+              refId="Package\DFT - load staging_leads\OLE_DST - staging_error"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - staging_error"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[staging].[error]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Connections[OleDbConnection]"
+                  connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="email"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[email]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[firstname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="firstname"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[firstname]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[firstname]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[lastname]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="lastname"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lastname]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lastname]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[address1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="address1"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[address1]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[address1]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[state]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[postcode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="postcode"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[postcode]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[mobile]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="mobile"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[mobile]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[dob]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="dob"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[dob]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[Gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="Gender"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Gender]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[Age]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="Age"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Age]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[Prize]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="Prize"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Prize]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[ipaddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="ipaddress"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[ipaddress]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="SubmissionDate"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[affiliateid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="affiliateid"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[affiliateid]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[affiliateid]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[clickid]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="clickid"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[clickid]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[clickid]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[device_brand]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="device_brand"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[device_brand]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_brand]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[user_agent]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="user_agent"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[user_agent]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[user_agent]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[device_type]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="device_type"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[device_type]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_type]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[lead_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="lead_id"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_id]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[lead_status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="lead_status"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_status]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[lead_message]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="lead_message"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_message]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_message]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[email_cleansed]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="email_cleansed"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[email_cleansed]"
+                      lineageId="Package\DFT - load staging_leads\DC - cleanse columns.Outputs[Derived Column Output].Columns[email_cleansed]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      lineageId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      lineageId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[firstname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="firstname" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lastname]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="lastname" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[address1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="address1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="postcode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="mobile" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="dob" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="Age" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="Prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="ipaddress" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="SubmissionDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[affiliateid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="affiliateid" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[clickid]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="clickid" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[device_brand]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="device_brand" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[user_agent]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="user_agent" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[device_type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="device_type" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="lead_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="lead_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_message]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="lead_message" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[email_cleansed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="email_cleansed" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorCode]"
+                      dataType="i4"
+                      name="ErrorCode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
+                      dataType="i4"
+                      name="ErrorColumn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load staging_leads\OLE_DST - staging_error.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load staging_leads\OLE_DST - staging_error.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
             </component>
             <component
               refId="Package\DFT - load staging_leads\OLE_DST - staging_leads"
@@ -453,6 +950,14 @@
                       cachedName="lead_message"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_message]"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_message]" />
+                    <inputColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[data_source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="data_source"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[data_source]"
+                      lineageId="Package\DFT - load staging_leads\DC - cleanse columns.Outputs[Derived Column Output].Columns[data_source]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -600,6 +1105,12 @@
                       dataType="str"
                       length="4000"
                       name="lead_message" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="data_source" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1382,6 +1893,11 @@
               endId="Package\DFT - load staging_leads\DC - cleanse columns.Inputs[Derived Column Input]"
               name="Flat File Source Output"
               startId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
+              endId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input]"
+              name="OLE DB Destination Error Output"
+              startId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Outputs[OLE DB Destination Error Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1475,113 +1991,153 @@
     design-time-name="Package\DFT - load staging_leads">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="198,42"
-          Id="Package\DFT - load staging_leads\OLE_DST - staging_leads"
-          TopLeft="218.5,209.5" />
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="172,42"
           Id="Package\DFT - load staging_leads\Flat File Destination"
-          TopLeft="292,66" />
+          TopLeft="308,74" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\DFT - load staging_leads\OLE_DST - staging_leads"
+          TopLeft="144.5,212.5" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\DFT - load staging_leads\DC - cleanse columns"
+          TopLeft="40,129" />
         <NodeLayout
           Size="234,42"
           Id="Package\DFT - load staging_leads\Source - lead-exports-20404_csv"
-          TopLeft="5.50000000000001,44.5" />
+          TopLeft="19.5,55.5" />
         <EdgeLayout
-          Id="Package\DFT - load staging_leads.Paths[Flat File Source Error Output]"
-          TopLeft="239.5,65.5">
+          Id="Package\DFT - load staging_leads.Paths[Flat File Source Output]"
+          TopLeft="133.25,97.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="52.5,21.5"
+              EndConnector="0,31.5"
               Start="0,0"
-              End="45,21.5">
+              End="0,24">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="22.25,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="22.25,0"
-                    Point2="26.25,0"
-                    Point3="26.25,4" />
+                    End="0,24" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load staging_leads.Paths[Flat File Source Error Output]"
+          TopLeft="253.5,76.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.5,18.5"
+              Start="0,0"
+              End="47,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="26.25,17.5" />
+                    End="23.25,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="26.25,17.5"
-                    Point2="26.25,21.5"
-                    Point3="30.25,21.5" />
+                    Point1="23.25,0"
+                    Point2="27.25,0"
+                    Point3="27.25,4" />
                   <mssgle:LineSegment
-                    End="45,21.5" />
+                    End="27.25,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.25,14.5"
+                    Point2="27.25,18.5"
+                    Point3="31.25,18.5" />
+                  <mssgle:LineSegment
+                    End="47,18.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-37.37638671875,-17.609375,127.2527734375,11.609375"
+              BoundingBox="-36.37638671875,-17.609375,127.2527734375,11.609375"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\DFT - load staging_leads\DC - cleanse columns"
-          TopLeft="26,132" />
-        <EdgeLayout
-          Id="Package\DFT - load staging_leads.Paths[Flat File Source Output]"
-          TopLeft="119.25,86.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.5"
-              Start="0,0"
-              End="0,38">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load staging_leads.Paths[Derived Column Output]"
-          TopLeft="116,174">
+          TopLeft="130,171">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="201.5,35.5"
+              EndConnector="113.5,41.5"
               Start="0,0"
-              End="201.5,28">
+              End="113.5,34">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,13.75" />
+                    End="0,16.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,13.75"
-                    Point2="0,17.75"
-                    Point3="4,17.75" />
+                    Point1="0,16.75"
+                    Point2="0,20.75"
+                    Point3="4,20.75" />
                   <mssgle:LineSegment
-                    End="197.5,17.75" />
+                    End="109.5,20.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="197.5,17.75"
-                    Point2="201.5,17.75"
-                    Point3="201.5,21.75" />
+                    Point1="109.5,20.75"
+                    Point2="113.5,20.75"
+                    Point3="113.5,24.75" />
                   <mssgle:LineSegment
-                    End="201.5,28" />
+                    End="113.5,34" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="196,42"
+          Id="Package\DFT - load staging_leads\OLE_DST - staging_error"
+          TopLeft="374,298" />
+        <EdgeLayout
+          Id="Package\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
+          TopLeft="243.5,254.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="228.5,43.5"
+              Start="0,0"
+              End="228.5,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.75"
+                    Point2="0,21.75"
+                    Point3="4,21.75" />
+                  <mssgle:LineSegment
+                    End="224.5,21.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="224.5,21.75"
+                    Point2="228.5,21.75"
+                    Point3="228.5,25.75" />
+                  <mssgle:LineSegment
+                    End="228.5,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="41.04109375,26.75,146.4178125,11.43359375"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1589,6 +2145,19 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\DFT - load staging_leads\OLE_DST - staging_leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load staging_leads\OLE_DST - staging_error">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

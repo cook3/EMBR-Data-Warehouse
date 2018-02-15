@@ -1,4 +1,4 @@
-﻿CREATE TABLE [staging].[leads](
+﻿CREATE TABLE [staging].[error](
 	[email] [varchar](250) NULL,
 	[title] [varchar](4000) NULL,
 	[firstname] [varchar](4000) NULL,
@@ -20,8 +20,11 @@
 	[device_brand] [varchar](4000) NULL,
 	[user_agent] [varchar](4000) NULL,
 	[device_type] [varchar](4000) NULL,
-	[lead_id] [varchar](4000) NULL,
-	[lead_status] [varchar](4000) NULL,
+	[lead_id] [varchar](100) NULL,
+	[lead_status] [varchar](100) NULL,
 	[lead_message] [varchar](4000) NULL,
-	[data_source] [varchar] (255)
+	[email_cleansed] [varchar](250) NULL,
+	[ErrorCode] [int] NULL,
+	[ErrorColumn] [int] NULL
 ) ON [PRIMARY]
+

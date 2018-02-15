@@ -65,5 +65,6 @@
     <Build Include="staging.leads.sql" />
     <Build Include="staging.sql" />
     <Build Include="dbo.fn_remove_non_numeric.sql" />
+    <Build Include="staging.error.sql" />
   </ItemGroup>
 </Project>
