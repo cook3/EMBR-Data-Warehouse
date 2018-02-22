@@ -5,14 +5,14 @@
   DTS:CreationName=""
   DTS:CreatorComputerName="COOKE-PC"
   DTS:CreatorName="Cooke-PC\Cooke"
-  DTS:DTSID="{B87723FE-3940-4874-9CF8-B23E49956CF7}"
+  DTS:DTSID="{424643FD-EBA3-4965-9731-3BD1FA1B06EC}"
   DTS:ExecutableType=""
   DTS:LastModifiedProductVersion="14.0.3002.68"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package1"
+  DTS:ObjectName="fuzzy_grouping"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{5D3730B0-4368-48A7-90C9-EE43BD582AEC}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{054DD797-AEE9-49F7-8D27-361D96BE1D52}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

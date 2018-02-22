@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">COOKE-PC</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsReUAwigKEa26oOlz7aa7AAAAAACAAAAAAAQZgAAAAEAACAAAAD1ckRcbV9De0TZ394NuDzkx23kT4xwNFRXOXmWBQpPEAAAAAAOgAAAAAIAACAAAAAFHvM3uU7aluTr6hz7yyXCMADIHm7LTM+2TM64Pew/Y5AAAABcqW4XwXelVuxSyUqQ6zjCNUu+jQmiJiOUutiQ31GmiUMChEuNLYFfm8GVKjqzOKB/xoHDIZcVxsifvyD6qTLuQCDPBYZOaTkZObVk8pdfjQfP8PGbVjnhazsUd0fYlXKHWNgoaw3UvKsW2xucm+DUTFJF2/K2wL+fDmDHsqF1tScmgluD3BKAwYqrbxr2nMhAAAAAvVv9MssTWIuhFeCGlIgzGz/ZfuKMQigmvZQC4X4RL8ERzLIAfL/GW9lqilSQiposOpFk/yE1YiLkAQds+OITrg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAsReUAwigKEa26oOlz7aa7AAAAAACAAAAAAAQZgAAAAEAACAAAABF9K8yqQYNsbOnqvyf/ZJLGVfd9wYAubEHxTDqRWhKvAAAAAAOgAAAAAIAACAAAAD7S13sDwo3wIscJTVsr6ZrpNDsLejy2t3huWtu/n5BFpAAAAD/3xnEzuamau6DuTIZgq5ij9mcndsyWrKgojkM2CuJsJsS/p9xXHfRAUiXs6A7ua4u+4y0bANVPImuskfZWv8Rus5kTt2rGbWKhD+2RxLvbjaduOi1BhCRLBlpvhSsuCm/aTloUqnmYWvdk44Kmq8Th/hsEYa5w+M+jNByEmvZZPzQr7JKHMaHtc5Mh4hAdZlAAAAAO1C4K8y22A8cuWXJ1Sb/Y6x/SPTyyVG07KV+6e5dO5SzLjZbZUPv7tsAc7bTMpl+DYjA/tlUHjDzfB4x32GG7w==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -34,7 +34,7 @@
           <SSIS:Package SSIS:Name="load_dimensions.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="load_facts.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="load_customer.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Package1.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="fuzzy_grouping.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="staging.conmgr" />
@@ -592,10 +592,10 @@
                 <SSIS:Property SSIS:Name="Name">load_staging</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">16</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">21</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{E369DE76-A34A-46C0-B8F7-36644B5257B8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{3D09A394-665A-4A09-803F-6FBF7D5B0EAB}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">SSIS Package Description</SSIS:Property>
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
@@ -642,10 +642,10 @@
                 <SSIS:Property SSIS:Name="Name">load_customer</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">9</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1C559864-E956-45EF-943A-ACC749950DB4}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{14147D59-C6FA-4B42-8BD6-5EE292AA7C3F}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -653,16 +653,16 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Package1.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="fuzzy_grouping.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{B87723FE-3940-4874-9CF8-B23E49956CF7}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{424643FD-EBA3-4965-9731-3BD1FA1B06EC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">fuzzy_grouping</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{54C3944B-813D-41B9-94B3-C6B39008ED72}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{054DD797-AEE9-49F7-8D27-361D96BE1D52}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

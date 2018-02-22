@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{14147D59-C6FA-4B42-8BD6-5EE292AA7C3F}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{DB14E5F7-C763-48D8-9283-FABCB488819C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -397,7 +397,7 @@
 										ELSE [state]
 										END AS [state]
 								, [dbo].[fn_remove_non_numeric] ( postcode ) AS postcode
-								, mobile
+								, [dbo].[fn_remove_non_numeric] ( mobile ) as mobile
 								, TRY_CAST(dob AS DATE) as dob
 								, CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END as gender
 								, age
@@ -656,7 +656,7 @@
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
                       codePage="1252"
                       dataType="str"
-                      length="4000"
+                      length="1000"
                       name="mobile" />
                     <externalMetadataColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[dob]"
@@ -757,7 +757,7 @@
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[mobile]"
                       codePage="1252"
                       dataType="str"
-                      length="4000"
+                      length="1000"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[mobile]"
                       name="mobile" />
                     <outputColumn
@@ -826,7 +826,34 @@
         </pipeline>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - update 3 digit NT postcodes"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B11A1F20-24C2-4704-84D9-C2578C657DC2}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - update 3 digit NT postcodes"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+          SQLTask:SqlStatementSource="UPDATE dbo.customer&#xA;SET postcode = '0' + postcode&#xA;WHERE LEN(postcode) = 3&#xA;&#x9;AND [state] = 'NT';" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{17D23B02-23E0-4F39-B52F-27FC14E816E2}"
+      DTS:From="Package\DFT - load customer table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL - update 3 digit NT postcodes" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -838,11 +865,49 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="201,42"
           Id="Package\DFT - load customer table"
           TopLeft="68,60" />
+        <NodeLayout
+          Size="241,42"
+          Id="Package\SQL - update 3 digit NT postcodes"
+          TopLeft="186,163" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="168.5,102">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="138,61"
+              Start="0,0"
+              End="138,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="134,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="134,30.5"
+                    Point2="138,30.5"
+                    Point3="138,34.5" />
+                  <mssgle:LineSegment
+                    End="138,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -854,37 +919,37 @@
         <NodeLayout
           Size="200,42"
           Id="Package\DFT - load customer table\OLE_DST - dbo_customer"
-          TopLeft="318,132" />
+          TopLeft="323,213" />
         <NodeLayout
           Size="181,42"
           Id="Package\DFT - load customer table\OLE_SRC - customers"
-          TopLeft="48,44" />
+          TopLeft="103,98" />
         <EdgeLayout
           Id="Package\DFT - load customer table.Paths[OLE DB Source Output]"
-          TopLeft="138.5,86">
+          TopLeft="193.5,140">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="279.5,46"
+              EndConnector="229.5,73"
               Start="0,0"
-              End="279.5,38.5">
+              End="229.5,65.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,19" />
+                    End="0,32.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,19"
-                    Point2="0,23"
-                    Point3="4,23" />
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="4,36.5" />
                   <mssgle:LineSegment
-                    End="275.5,23" />
+                    End="225.5,36.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="275.5,23"
-                    Point2="279.5,23"
-                    Point3="279.5,27" />
+                    Point1="225.5,36.5"
+                    Point2="229.5,36.5"
+                    Point3="229.5,40.5" />
                   <mssgle:LineSegment
-                    End="279.5,38.5" />
+                    End="229.5,65.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
