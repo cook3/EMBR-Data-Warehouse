@@ -60,11 +60,17 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="staging\" />
+    <Folder Include="staging\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="staging.leads.sql" />
     <Build Include="staging.sql" />
     <Build Include="dbo.fn_remove_non_numeric.sql" />
-    <Build Include="staging.error.sql" />
+    <Build Include="staging\Tables\staging.old_lead.sql" />
+    <Build Include="dbo\Tables\dbo.values_custom_fields.sql" />
+    <Build Include="staging\Tables\staging.error.sql" />
+    <Build Include="staging\Tables\staging.leads.sql" />
   </ItemGroup>
 </Project>
