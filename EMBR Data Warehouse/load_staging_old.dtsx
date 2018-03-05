@@ -1,0 +1,2102 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/5/2018 8:00:45 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="embrdev"
+  DTS:CreatorName="embrdev\azureadmin"
+  DTS:DTSID="{19F3ADC1-B841-4D89-9F22-B5FFAD919200}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.92"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="load_staging_old"
+  DTS:PackageType="5"
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{FF03AD71-DD69-4608-B3C0-3845EBEF7EC4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[embr_mysql]"
+      DTS:CreationName="ODBC"
+      DTS:DTSID="{A418D508-A553-49B6-BE3D-AF57BA8E83D5}"
+      DTS:ObjectName="embr_mysql">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">"server=srv01.bodcorp.com.au;uid=rewt;Dsn=embr_mysql;database=" + @[User::str_dbname] + ";port=3306;"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="server=srv01.bodcorp.com.au;uid=rewt;Dsn=embr_mysql;database=oldleads02;port=3306;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A06C1621-8108-4778-B017-A1249D940A83}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="obj_dblist">
+      <DTS:VariableValue
+        DTS:DataSubType="ManagedSerializable"
+        DTS:DataType="13">
+        <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+          <SOAP-ENV:Body>
+            <xsd:anyType
+              id="ref-1"></xsd:anyType>
+          </SOAP-ENV:Body>
+        </SOAP-ENV:Envelope>
+      </DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CF99438F-58AA-4640-8FB5-B03660E38844}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_dbname">
+      <DTS:VariableValue
+        DTS:DataType="8">oldleads02</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\FEL - loop through db and tables"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{4D409761-6DCD-4803-945A-A7D93AECB919}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FEL - loop through db and tables">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachADOEnumerator"
+        DTS:DTSID="{79730A66-DED3-46D0-AAD4-FDEE04D7F49B}"
+        DTS:ObjectName="{79730A66-DED3-46D0-AAD4-FDEE04D7F49B}">
+        <DTS:ObjectData>
+          <FEEADO
+            EnumType="EnumerateRowsInFirstTable"
+            VarName="User::obj_dblist" />
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\FEL - loop through db and tables\DFT - get category"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:DelayValidation="True"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{13E66151-C0EB-44E4-8643-85C2C9ADF204}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT - get category"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category"
+                  componentClassID="Attunity.SSISODBCSrc"
+                  contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+                  description="ODBC Source"
+                  name="ODBC_SRC - category"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">`category`</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">1000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                      expressionType="Notify"
+                      name="ExposeCharColumnsAsUnicode">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for fetching data."
+                      expressionType="Notify"
+                      name="FetchMethod"
+                      typeConverter="FetchMethod">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs"
+                      typeConverter="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs"
+                      typeConverter="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Connections[ODBCConnection]"
+                      connectionManagerID="Package.ConnectionManagers[embr_mysql]"
+                      connectionManagerRefId="Package.ConnectionManagers[embr_mysql]"
+                      description="The ODBC runtime connection"
+                      name="ODBCConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output]"
+                      errorRowDisposition="FailComponent"
+                      name="ODBC Source Output"
+                      truncationRowDisposition="FailComponent">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].Columns[id_category]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].ExternalColumns[id_category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].Columns[id_category]"
+                          name="id_category" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].Columns[name_category]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].ExternalColumns[name_category]"
+                          length="100"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].Columns[name_category]"
+                          name="name_category" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].ExternalColumns[id_category]"
+                          dataType="i4"
+                          name="id_category" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].ExternalColumns[name_category]"
+                          dataType="wstr"
+                          length="100"
+                          name="name_category" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output]"
+                      isErrorOut="true"
+                      name="ODBC Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output].Columns[id_category]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].ExternalColumns[id_category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output].Columns[id_category]"
+                          name="id_category" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output].Columns[name_category]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].ExternalColumns[name_category]"
+                          length="100"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output].Columns[name_category]"
+                          name="name_category" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE_DST - staging_category"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[staging].[category]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Connections[OleDbConnection]"
+                      connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input].Columns[id_category]"
+                          cachedDataType="i4"
+                          cachedName="id_category"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].Columns[id_category]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input].Columns[name_category]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="name_category"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].Columns[name_category]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input].ExternalColumns[category]"
+                          dataType="wstr"
+                          length="100"
+                          name="category" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\FEL - loop through db and tables\DFT - get category.Paths[ODBC Source Output]"
+                  endId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input]"
+                  name="ODBC Source Output"
+                  startId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FEL - loop through db and tables\DFT - get leads"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{23C110A7-09E6-4CA9-9DA7-966BA959CB5B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT - get leads"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads"
+                  componentClassID="Attunity.SSISODBCSrc"
+                  contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+                  description="ODBC Source"
+                  name="ODBC_SRC - leads"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">`lead`</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">10000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                      expressionType="Notify"
+                      name="ExposeCharColumnsAsUnicode">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for fetching data."
+                      expressionType="Notify"
+                      name="FetchMethod"
+                      typeConverter="FetchMethod">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs"
+                      typeConverter="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs"
+                      typeConverter="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Connections[ODBCConnection]"
+                      connectionManagerID="Package.ConnectionManagers[embr_mysql]"
+                      connectionManagerRefId="Package.ConnectionManagers[embr_mysql]"
+                      description="The ODBC runtime connection"
+                      name="ODBCConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output]"
+                      errorRowDisposition="FailComponent"
+                      name="ODBC Source Output"
+                      truncationRowDisposition="FailComponent">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[id]"
+                          dataType="i8"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[id]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[cid]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[cid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[cid]"
+                          name="cid" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ipaddr]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ipaddr]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ipaddr]"
+                          name="ipaddr" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ttl]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ttl]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ttl]"
+                          name="ttl" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ts]"
+                          dataType="dbTimeStamp"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ts]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ts]"
+                          name="ts" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[refer]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[refer]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[refer]"
+                          name="refer" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[camp_id]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[camp_id]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[camp_id]"
+                          name="camp_id" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[valid]"
+                          dataType="i1"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[valid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[valid]"
+                          name="valid" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[email]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[email]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[email]"
+                          name="email" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_name1]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_name1]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_name1]"
+                          name="inf_name1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_name2]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_name2]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_name2]"
+                          name="inf_name2" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_addr]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_addr]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_addr]"
+                          name="inf_addr" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_city]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_city]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_city]"
+                          name="inf_city" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_zip]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_zip]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_zip]"
+                          name="inf_zip" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_state]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_state]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_state]"
+                          name="inf_state" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_country]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_country]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_country]"
+                          name="inf_country" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_phone]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_phone]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_phone]"
+                          name="inf_phone" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_fax]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_fax]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_fax]"
+                          name="inf_fax" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[answers]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[answers]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[answers]"
+                          name="answers" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ref_category]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ref_category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ref_category]"
+                          name="ref_category" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[sold]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[sold]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[sold]"
+                          name="sold" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[status]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[status]"
+                          length="1"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[status]"
+                          name="status" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[lcode]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[lcode]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[lcode]"
+                          name="lcode" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[id]"
+                          dataType="i8"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[cid]"
+                          dataType="i4"
+                          name="cid" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ipaddr]"
+                          dataType="wstr"
+                          length="85"
+                          name="ipaddr" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ttl]"
+                          dataType="i4"
+                          name="ttl" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ts]"
+                          dataType="dbTimeStamp"
+                          name="ts" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[refer]"
+                          dataType="wstr"
+                          length="85"
+                          name="refer" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[camp_id]"
+                          dataType="i4"
+                          name="camp_id" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[valid]"
+                          dataType="i1"
+                          name="valid" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="85"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_name1]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_name1" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_name2]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_name2" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_addr]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_addr" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_city]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_city" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_zip]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_zip" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_state]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_state" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_country]"
+                          dataType="i4"
+                          name="inf_country" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_phone]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_phone" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_fax]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_fax" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[answers]"
+                          dataType="nText"
+                          name="answers" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ref_category]"
+                          dataType="i4"
+                          name="ref_category" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[sold]"
+                          dataType="i4"
+                          name="sold" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[status]"
+                          dataType="wstr"
+                          length="1"
+                          name="status" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[lcode]"
+                          dataType="nText"
+                          name="lcode" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output]"
+                      isErrorOut="true"
+                      name="ODBC Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[id]"
+                          dataType="i8"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[id]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[cid]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[cid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[cid]"
+                          name="cid" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ipaddr]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ipaddr]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ipaddr]"
+                          name="ipaddr" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ttl]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ttl]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ttl]"
+                          name="ttl" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ts]"
+                          dataType="dbTimeStamp"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ts]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ts]"
+                          name="ts" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[refer]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[refer]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[refer]"
+                          name="refer" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[camp_id]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[camp_id]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[camp_id]"
+                          name="camp_id" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[valid]"
+                          dataType="i1"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[valid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[valid]"
+                          name="valid" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[email]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[email]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[email]"
+                          name="email" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_name1]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_name1]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_name1]"
+                          name="inf_name1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_name2]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_name2]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_name2]"
+                          name="inf_name2" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_addr]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_addr]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_addr]"
+                          name="inf_addr" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_city]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_city]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_city]"
+                          name="inf_city" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_zip]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_zip]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_zip]"
+                          name="inf_zip" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_state]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_state]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_state]"
+                          name="inf_state" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_country]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_country]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_country]"
+                          name="inf_country" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_phone]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_phone]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_phone]"
+                          name="inf_phone" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_fax]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[inf_fax]"
+                          length="85"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[inf_fax]"
+                          name="inf_fax" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[answers]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[answers]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[answers]"
+                          name="answers" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ref_category]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[ref_category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ref_category]"
+                          name="ref_category" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[sold]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[sold]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[sold]"
+                          name="sold" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[status]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[status]"
+                          length="1"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[status]"
+                          name="status" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[lcode]"
+                          dataType="nText"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].ExternalColumns[lcode]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[lcode]"
+                          name="lcode" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE_DST - old_leads"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[staging].[old_lead]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Connections[OleDbConnection]"
+                      connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i8"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[cid]"
+                          cachedDataType="i4"
+                          cachedName="cid"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[cid]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[ipaddr]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="ipaddr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ipaddr]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ipaddr]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[ttl]"
+                          cachedDataType="i4"
+                          cachedName="ttl"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ttl]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ttl]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[ts]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ts"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ts]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ts]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[refer]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="refer"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[refer]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[refer]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[camp_id]"
+                          cachedDataType="i4"
+                          cachedName="camp_id"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[camp_id]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[camp_id]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[valid]"
+                          cachedDataType="i1"
+                          cachedName="valid"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[valid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[valid]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[email]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="email"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[email]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_name1]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="inf_name1"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name1]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_name1]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_name2]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="inf_name2"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name2]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_name2]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_addr]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="inf_addr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_addr]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_addr]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_city]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="inf_city"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_city]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_city]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_zip]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="inf_zip"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_zip]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_zip]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_state]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="inf_state"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_state]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_state]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_country]"
+                          cachedDataType="i4"
+                          cachedName="inf_country"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_country]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_country]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_phone]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="inf_phone"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_phone]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_phone]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_fax]"
+                          cachedDataType="wstr"
+                          cachedLength="85"
+                          cachedName="inf_fax"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_fax]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_fax]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[answers]"
+                          cachedDataType="nText"
+                          cachedName="answers"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[answers]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[answers]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[ref_category]"
+                          cachedDataType="i4"
+                          cachedName="ref_category"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ref_category]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[sold]"
+                          cachedDataType="i4"
+                          cachedName="sold"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[sold]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[sold]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[status]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="status"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[status]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[lcode]"
+                          cachedDataType="nText"
+                          cachedName="lcode"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[lcode]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[lcode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i8"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                          dataType="i4"
+                          name="cid" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ipaddr]"
+                          dataType="wstr"
+                          length="85"
+                          name="ipaddr" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ttl]"
+                          dataType="i4"
+                          name="ttl" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ts]"
+                          dataType="dbTimeStamp"
+                          name="ts" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[refer]"
+                          dataType="wstr"
+                          length="85"
+                          name="refer" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[camp_id]"
+                          dataType="i4"
+                          name="camp_id" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[valid]"
+                          dataType="ui1"
+                          name="valid" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          dataType="wstr"
+                          length="85"
+                          name="email" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name1]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_name1" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name2]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_name2" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_addr]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_addr" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_city]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_city" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_zip]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_zip" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_state]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_state" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_country]"
+                          dataType="i4"
+                          name="inf_country" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_phone]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_phone" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_fax]"
+                          dataType="wstr"
+                          length="85"
+                          name="inf_fax" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[answers]"
+                          dataType="nText"
+                          name="answers" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
+                          dataType="i4"
+                          name="ref_category" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[sold]"
+                          dataType="i4"
+                          name="sold" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                          dataType="wstr"
+                          length="1"
+                          name="status" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[lcode]"
+                          dataType="nText"
+                          name="lcode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\FEL - loop through db and tables\DFT - get leads.Paths[ODBC Source Output]"
+                  endId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input]"
+                  name="ODBC Source Output"
+                  startId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\FEL - loop through db and tables\DFT - get variable columns"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A300592A-CA0B-4CA0-BECC-27D181E32554}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT - get variable columns"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns"
+                  componentClassID="Attunity.SSISODBCSrc"
+                  contactInfo="ODBC Source;Connector for Open Database Connectivity (ODBC) by Attunity; Attunity Ltd.; All Rights Reserved; http://www.attunity.com;7"
+                  description="ODBC Source"
+                  name="ODBC_SRC - get variable columns"
+                  usesDispositions="true"
+                  validateExternalMetadata="False"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="The name of the table to be fetched."
+                      expressionType="Notify"
+                      name="TableName">`values_custom_fields`</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specify the number of rows fetched per batch."
+                      expressionType="Notify"
+                      name="BatchSize">10000</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines the chunk size allocation for LOB columns"
+                      expressionType="Notify"
+                      name="LobChunkSize">32768</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines how the component exposes CHAR columns. If False, CHAR columns are exposed as (multi-)byte strings (DT_STR), if True, CHAR columns are exposed as wide strings (DT_WSTR)"
+                      expressionType="Notify"
+                      name="ExposeCharColumnsAsUnicode">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds to wait for an SQL statement to execute before returning to the application."
+                      expressionType="Notify"
+                      name="StatementTimeout">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The code page to use when code page information is unavailable from the data source."
+                      expressionType="Notify"
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The method used for fetching data."
+                      expressionType="Notify"
+                      name="FetchMethod"
+                      typeConverter="FetchMethod">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="The ODBC C data type for binding numeric data."
+                      expressionType="Notify"
+                      name="BindNumericAs"
+                      typeConverter="BindNumericAs">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Determines how the component would bind columns of (multi)-byte string types (i.e., SQL_CHAR, SQL_VARCHAR, SQL_LONGVARCHAR). The options are: Unicode (SQL_C_WCHAR) and ANSI (SQL_C_CHAR)."
+                      expressionType="Notify"
+                      name="BindCharColumnsAs"
+                      typeConverter="BindCharColumnsAs">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Connections[ODBCConnection]"
+                      connectionManagerID="Package.ConnectionManagers[embr_mysql]"
+                      connectionManagerRefId="Package.ConnectionManagers[embr_mysql]"
+                      description="The ODBC runtime connection"
+                      name="ODBCConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output]"
+                      errorRowDisposition="FailComponent"
+                      name="ODBC Source Output"
+                      truncationRowDisposition="FailComponent">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[id_values_custom_fields]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[id_values_custom_fields]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[id_values_custom_fields]"
+                          name="id_values_custom_fields" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[ref_custom_fields]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[ref_custom_fields]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[ref_custom_fields]"
+                          name="ref_custom_fields" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[value_fields]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[value_fields]"
+                          length="300"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[value_fields]"
+                          name="value_fields" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[cid]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[cid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[cid]"
+                          name="cid" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[ref_category]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[ref_category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[ref_category]"
+                          name="ref_category" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[camp_ans_fields]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[camp_ans_fields]"
+                          length="400"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[camp_ans_fields]"
+                          name="camp_ans_fields" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[id_values_custom_fields]"
+                          dataType="i4"
+                          name="id_values_custom_fields" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[ref_custom_fields]"
+                          dataType="i4"
+                          name="ref_custom_fields" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[value_fields]"
+                          dataType="wstr"
+                          length="300"
+                          name="value_fields" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[cid]"
+                          dataType="i4"
+                          name="cid" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[ref_category]"
+                          dataType="i4"
+                          name="ref_category" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[camp_ans_fields]"
+                          dataType="wstr"
+                          length="400"
+                          name="camp_ans_fields" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output]"
+                      isErrorOut="true"
+                      name="ODBC Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[id_values_custom_fields]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[id_values_custom_fields]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[id_values_custom_fields]"
+                          name="id_values_custom_fields" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[ref_custom_fields]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[ref_custom_fields]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[ref_custom_fields]"
+                          name="ref_custom_fields" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[value_fields]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[value_fields]"
+                          length="300"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[value_fields]"
+                          name="value_fields" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[cid]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[cid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[cid]"
+                          name="cid" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[ref_category]"
+                          dataType="i4"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[ref_category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[ref_category]"
+                          name="ref_category" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[camp_ans_fields]"
+                          dataType="wstr"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].ExternalColumns[camp_ans_fields]"
+                          length="400"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[camp_ans_fields]"
+                          name="camp_ans_fields" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[staging].[values_custom_fields]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_values_custom_fields]"
+                          cachedDataType="i4"
+                          cachedName="id_values_custom_fields"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_values_custom_fields]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[id_values_custom_fields]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ref_custom_fields]"
+                          cachedDataType="i4"
+                          cachedName="ref_custom_fields"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ref_custom_fields]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[ref_custom_fields]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[value_fields]"
+                          cachedDataType="wstr"
+                          cachedLength="300"
+                          cachedName="value_fields"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[value_fields]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[value_fields]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cid]"
+                          cachedDataType="i4"
+                          cachedName="cid"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[cid]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ref_category]"
+                          cachedDataType="i4"
+                          cachedName="ref_category"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[ref_category]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[camp_ans_fields]"
+                          cachedDataType="wstr"
+                          cachedLength="400"
+                          cachedName="camp_ans_fields"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[camp_ans_fields]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[camp_ans_fields]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_values_custom_fields]"
+                          dataType="i4"
+                          name="id_values_custom_fields" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ref_custom_fields]"
+                          dataType="i4"
+                          name="ref_custom_fields" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[value_fields]"
+                          dataType="wstr"
+                          length="300"
+                          name="value_fields" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                          dataType="i4"
+                          name="cid" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
+                          dataType="i4"
+                          name="ref_category" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[camp_ans_fields]"
+                          dataType="wstr"
+                          length="300"
+                          name="camp_ans_fields" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\FEL - loop through db and tables\DFT - get variable columns.Paths[ODBC Source Output]"
+                  endId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="ODBC Source Output"
+                  startId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FEL - loop through db and tables.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{BCB8B704-DDA5-4C21-B3C6-5F4837C6CC36}"
+          DTS:From="Package\FEL - loop through db and tables\DFT - get category"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\FEL - loop through db and tables\DFT - get leads" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\FEL - loop through db and tables.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{C85A8D39-4BD4-46F0-B564-A08EB24938BB}"
+          DTS:From="Package\FEL - loop through db and tables\DFT - get leads"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\FEL - loop through db and tables\DFT - get variable columns" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{14F8265C-EFB0-45A6-B510-7666B9A9BF13}"
+          DTS:ObjectName="{14F8265C-EFB0-45A6-B510-7666B9A9BF13}"
+          DTS:ValueIndex="1"
+          DTS:VariableName="User::str_dbname" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - get db list"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3A4FA007-7FF7-44FB-AB1F-6BBE631521BE}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - get db list"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
+          SQLTask:SqlStatementSource="SELECT 1 AS id, 'oldleads01' AS db&#xA;UNION &#xA;SELECT 2 as id, 'oldleads02' AS db&#xA;UNION &#xA;SELECT 3 as id, 'oldleads03' AS db&#xA;UNION &#xA;SELECT 4 as id, 'oldleads04' AS db&#xA;UNION &#xA;SELECT 5 as id, 'oldleads05' AS db&#xA;UNION &#xA;SELECT 6 as id, 'oldleads06' AS db&#xA;UNION &#xA;SELECT 7 as id, 'oldleads07' AS db&#xA;UNION &#xA;SELECT 8 as id, 'oldleads08' AS db&#xA;UNION &#xA;SELECT 9 as id, 'oldleads09' AS db&#xA;UNION &#xA;SELECT 10 as id, 'oldleads10' AS db&#xA;UNION &#xA;SELECT 11 as id, 'oldleads11' AS db"
+          SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::obj_dblist" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{94738084-959D-4ED9-89EA-1816589F3D22}"
+      DTS:From="Package\SQL - get db list"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\FEL - loop through db and tables" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\FEL - loop through db and tables\DFT - get category"
+          TopLeft="141,55" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\FEL - loop through db and tables\DFT - get leads"
+          TopLeft="212,138" />
+        <NodeLayout
+          Size="211,42"
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns"
+          TopLeft="258,220" />
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables.PrecedenceConstraints[Constraint 1]"
+          TopLeft="289,180">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.5,40"
+              Start="0,0"
+              End="74.5,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="4,20" />
+                  <mssgle:LineSegment
+                    End="70.5,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.5,20"
+                    Point2="74.5,20"
+                    Point3="74.5,24" />
+                  <mssgle:LineSegment
+                    End="74.5,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables.PrecedenceConstraints[Constraint]"
+          TopLeft="226,97">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63,41"
+              Start="0,0"
+              End="63,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="59,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59,20.5"
+                    Point2="63,20.5"
+                    Point3="63,24.5" />
+                  <mssgle:LineSegment
+                    End="63,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="529,335"
+          Size="529,378"
+          Id="Package\FEL - loop through db and tables"
+          TopLeft="89,159" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\SQL - get db list"
+          TopLeft="60,78" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="162,120">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="191.5,39"
+              Start="0,0"
+              End="191.5,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="4,19.5" />
+                  <mssgle:LineSegment
+                    End="187.5,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="187.5,19.5"
+                    Point2="191.5,19.5"
+                    Point3="191.5,23.5" />
+                  <mssgle:LineSegment
+                    End="191.5,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\FEL - loop through db and tables\DFT - get category">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="222,42"
+          Id="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category"
+          TopLeft="288,208" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category"
+          TopLeft="151,87" />
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get category.Paths[ODBC Source Output]"
+          TopLeft="247,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="152,79"
+              Start="0,0"
+              End="152,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.5"
+                    Point2="0,39.5"
+                    Point3="4,39.5" />
+                  <mssgle:LineSegment
+                    End="148,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="148,39.5"
+                    Point2="152,39.5"
+                    Point3="152,43.5" />
+                  <mssgle:LineSegment
+                    End="152,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\FEL - loop through db and tables\DFT - get leads">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="186,42"
+          Id="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads"
+          TopLeft="202,235" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads"
+          TopLeft="149,111" />
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get leads.Paths[ODBC Source Output]"
+          TopLeft="237,153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58,82"
+              Start="0,0"
+              End="58,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37"
+                    Point2="0,41"
+                    Point3="4,41" />
+                  <mssgle:LineSegment
+                    End="54,41" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54,41"
+                    Point2="58,41"
+                    Point3="58,45" />
+                  <mssgle:LineSegment
+                    End="58,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination"
+          TopLeft="410,235" />
+        <NodeLayout
+          Size="250,42"
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns"
+          TopLeft="191,123" />
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns.Paths[ODBC Source Output]"
+          TopLeft="316,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182.5,70"
+              Start="0,0"
+              End="182.5,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
+                  <mssgle:LineSegment
+                    End="178.5,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="178.5,35"
+                    Point2="182.5,35"
+                    Point3="182.5,39" />
+                  <mssgle:LineSegment
+                    End="182.5,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

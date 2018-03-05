@@ -15278,4 +15278,4 @@ INSERT INTO au_towns VALUES
 (15262,'Zuccoli',NULL,'NT','Northern Territory','0832','Rural locality',-12.49868,131.01318,43,1129,5.17700,'Palmerston (City)','Australia/Darwin'),
 (15263,'Zumsteins',NULL,'VIC','Victoria','3401','Rural locality',-37.09236,142.43193,447,0,256.55800,'Northern Grampians (Shire)','Australia/Melbourne'),
 (15264,'Zuytdorp',NULL,'WA','Western Australia','6536','Rural locality',-27.36519,114.22393,207,0,1706.20700,'Northampton (Shire)','Australia/Perth');
-ALTER TABLE [dbo].[dim_geography] ( ADD PRIMARY KEY (geography_key);
+ALTER TABLE [dbo].[dim_geography]  ADD PRIMARY KEY (geography_key);

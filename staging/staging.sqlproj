@@ -62,15 +62,13 @@
     <Folder Include="Properties" />
     <Folder Include="staging\" />
     <Folder Include="staging\Tables\" />
-    <Folder Include="dbo\" />
-    <Folder Include="dbo\Tables\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="staging.sql" />
     <Build Include="dbo.fn_remove_non_numeric.sql" />
     <Build Include="staging\Tables\staging.old_lead.sql" />
-    <Build Include="dbo\Tables\dbo.values_custom_fields.sql" />
     <Build Include="staging\Tables\staging.error.sql" />
     <Build Include="staging\Tables\staging.leads.sql" />
+    <Build Include="staging\staging.values_custom_fields.sql" />
   </ItemGroup>
 </Project>

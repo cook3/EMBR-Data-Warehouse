@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "EMBR Data Warehouse ETL", "EMBR Data Warehouse\EMBR Data Warehouse ETL.dtproj", "{12360322-5D54-4442-B7E3-1D942ABA89E5}"
 EndProject
