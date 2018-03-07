@@ -8,12 +8,12 @@
   DTS:Description="SSIS Package Description"
   DTS:DTSID="{1FAAD1D3-0CA0-4872-B001-7B8F0272BED0}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.68"
+  DTS:LastModifiedProductVersion="14.0.3002.92"
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{3D09A394-665A-4A09-803F-6FBF7D5B0EAB}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{F1E83493-FA06-45AC-B527-3D835A164714}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2001,16 +2001,56 @@
           Id="Package\DFT - load staging_leads\OLE_DST - staging_leads"
           TopLeft="144.5,212.5" />
         <NodeLayout
-          Size="180,42"
-          Id="Package\DFT - load staging_leads\DC - cleanse columns"
-          TopLeft="40,129" />
-        <NodeLayout
           Size="234,42"
           Id="Package\DFT - load staging_leads\Source - lead-exports-20404_csv"
           TopLeft="19.5,55.5" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\DFT - load staging_leads\OLE_DST - staging_error"
+          TopLeft="374,298" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT - load staging_leads\DC - cleanse columns"
+          TopLeft="40,129" />
+        <EdgeLayout
+          Id="Package\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
+          TopLeft="243.5,254.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="228.5,43.5"
+              Start="0,0"
+              End="228.5,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.75"
+                    Point2="0,21.75"
+                    Point3="4,21.75" />
+                  <mssgle:LineSegment
+                    End="224.5,21.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="224.5,21.75"
+                    Point2="228.5,21.75"
+                    Point3="228.5,25.75" />
+                  <mssgle:LineSegment
+                    End="228.5,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="41.04109375,26.75,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load staging_leads.Paths[Flat File Source Output]"
-          TopLeft="133.25,97.5">
+          TopLeft="134.75,97.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2068,13 +2108,13 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load staging_leads.Paths[Derived Column Output]"
-          TopLeft="130,171">
+          TopLeft="133,171">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="113.5,41.5"
+              EndConnector="110.5,41.5"
               Start="0,0"
-              End="113.5,34">
+              End="110.5,34">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2085,59 +2125,19 @@
                     Point2="0,20.75"
                     Point3="4,20.75" />
                   <mssgle:LineSegment
-                    End="109.5,20.75" />
+                    End="106.5,20.75" />
                   <mssgle:CubicBezierSegment
-                    Point1="109.5,20.75"
-                    Point2="113.5,20.75"
-                    Point3="113.5,24.75" />
+                    Point1="106.5,20.75"
+                    Point2="110.5,20.75"
+                    Point3="110.5,24.75" />
                   <mssgle:LineSegment
-                    End="113.5,34" />
+                    End="110.5,34" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="196,42"
-          Id="Package\DFT - load staging_leads\OLE_DST - staging_error"
-          TopLeft="374,298" />
-        <EdgeLayout
-          Id="Package\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
-          TopLeft="243.5,254.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="228.5,43.5"
-              Start="0,0"
-              End="228.5,36">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.75"
-                    Point2="0,21.75"
-                    Point3="4,21.75" />
-                  <mssgle:LineSegment
-                    End="224.5,21.75" />
-                  <mssgle:CubicBezierSegment
-                    Point1="224.5,21.75"
-                    Point2="228.5,21.75"
-                    Point3="228.5,25.75" />
-                  <mssgle:LineSegment
-                    End="228.5,36" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="41.04109375,26.75,146.4178125,11.43359375"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

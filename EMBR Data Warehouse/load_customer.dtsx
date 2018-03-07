@@ -7,12 +7,12 @@
   DTS:CreatorName="Cooke-PC\Cooke"
   DTS:DTSID="{3D37E718-B8FA-400E-9AFC-1D30532CDE13}"
   DTS:ExecutableType=""
-  DTS:LastModifiedProductVersion="14.0.3002.68"
+  DTS:LastModifiedProductVersion="14.0.3002.92"
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{DB14E5F7-C763-48D8-9283-FABCB488819C}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{2F5C13CB-68A4-455A-98E5-8BCCF07E70EC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -873,16 +873,16 @@
         <NodeLayout
           Size="241,42"
           Id="Package\SQL - update 3 digit NT postcodes"
-          TopLeft="186,163" />
+          TopLeft="234,163" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="168.5,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="138,61"
+              EndConnector="186,61"
               Start="0,0"
-              End="138,53.5">
+              End="186,53.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -893,13 +893,13 @@
                     Point2="0,30.5"
                     Point3="4,30.5" />
                   <mssgle:LineSegment
-                    End="134,30.5" />
+                    End="182,30.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="134,30.5"
-                    Point2="138,30.5"
-                    Point3="138,34.5" />
+                    Point1="182,30.5"
+                    Point2="186,30.5"
+                    Point3="186,34.5" />
                   <mssgle:LineSegment
-                    End="138,53.5" />
+                    End="186,53.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
