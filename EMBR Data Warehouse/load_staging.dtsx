@@ -12,11 +12,23 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{F1E83493-FA06-45AC-B527-3D835A164714}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{1AB8523C-95F4-4A1A-AD4E-4C759F5B1A1C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F03DC32A-C5F3-43FE-ADED-BBE71AC1B853}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::csv_folder] +   @[$Project::file_name]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_csv_connection_string">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\azureadmin\Downloads\lead-exports-21165.csv</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DFT - load staging_leads"
@@ -143,12 +155,12 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT - load staging_leads\Flat File Destination"
+              refId="Package\DFT - load staging_leads\Error file"
               componentClassID="Microsoft.FlatFileDestination"
               contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Flat File Destination"
               localeId="1033"
-              name="Flat File Destination">
+              name="Error file">
               <properties>
                 <property
                   dataType="System.Boolean"
@@ -162,49 +174,49 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - load staging_leads\Flat File Destination.Connections[FlatFileConnection]"
+                  refId="Package\DFT - load staging_leads\Error file.Connections[FlatFileConnection]"
                   connectionManagerID="{BF13FB33-1A32-44FF-8D27-951242D44C94}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Error File Path]"
                   name="FlatFileConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input]"
+                  refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input]"
                   hasSideEffects="true"
                   name="Flat File Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorCode]"
+                      refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].Columns[ErrorCode]"
                       cachedDataType="i4"
                       cachedName="ErrorCode"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]" />
                     <inputColumn
-                      refId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].Columns[ErrorColumn]"
+                      refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].Columns[ErrorColumn]"
                       cachedDataType="i4"
                       cachedName="ErrorColumn"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]" />
                     <inputColumn
-                      refId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].Columns[Flat File Source Error Output Column]"
+                      refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].Columns[Flat File Source Error Output Column]"
                       cachedCodepage="1252"
                       cachedDataType="text"
                       cachedName="Flat File Source Error Output Column"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Flat File Source Error Output Column]"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[Flat File Source Error Output Column]"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
+                      refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
                       dataType="i4"
                       name="ErrorCode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
+                      refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
                       dataType="i4"
                       name="ErrorColumn" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[Flat File Source Error Output Column]"
+                      refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       name="Flat File Source Error Output Column" />
@@ -1147,6 +1159,7 @@
               localeId="1033"
               name="Source - lead-exports-20404_csv"
               usesDispositions="true"
+              validateExternalMetadata="False"
               version="1">
               <properties>
                 <property
@@ -1175,12 +1188,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[email]"
                       length="250"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[email]"
                       name="email"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1197,12 +1210,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[title]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[title]"
                       name="title"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1219,12 +1232,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[firstname]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[firstname]"
                       name="firstname"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1241,12 +1254,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lastname]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lastname]"
                       name="lastname"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1263,12 +1276,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[address1]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[address1]"
                       name="address1"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1285,12 +1298,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[city]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[city]"
                       name="city"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1307,12 +1320,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[state]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[state]"
                       name="state"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1329,12 +1342,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[postcode]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[postcode]"
                       name="postcode"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1351,12 +1364,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[mobile]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[mobile]"
                       name="mobile"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1373,12 +1386,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[dob]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[dob]"
                       name="dob"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1395,12 +1408,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Gender]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Gender]"
                       name="Gender"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1417,12 +1430,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Age]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Age]"
                       name="Age"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1439,12 +1452,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Source]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Source]"
                       name="Source"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1461,12 +1474,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Prize]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Prize]"
                       name="Prize"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1483,12 +1496,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[ipaddress]"
                       name="ipaddress"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1505,12 +1518,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[SubmissionDate]"
                       name="SubmissionDate"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1527,12 +1540,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[affiliateid]"
                       name="affiliateid"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1549,12 +1562,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[clickid]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[clickid]"
                       name="clickid"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1571,12 +1584,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[device_brand]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_brand]"
                       name="device_brand"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1593,12 +1606,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[user_agent]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[user_agent]"
                       name="user_agent"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1615,12 +1628,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[device_type]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_type]"
                       name="device_type"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1637,12 +1650,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
                       length="100"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_id]"
                       name="lead_id"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1659,12 +1672,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
                       length="100"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_status]"
                       name="lead_status"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1681,12 +1694,12 @@
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
                       length="4000"
                       lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_message]"
                       name="lead_message"
-                      truncationRowDisposition="RedirectRow">
+                      truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1885,7 +1898,7 @@
               startId="Package\DFT - load staging_leads\DC - cleanse columns.Outputs[Derived Column Output]" />
             <path
               refId="Package\DFT - load staging_leads.Paths[Flat File Source Error Output]"
-              endId="Package\DFT - load staging_leads\Flat File Destination.Inputs[Flat File Destination Input]"
+              endId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input]"
               name="Flat File Source Error Output"
               startId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output]" />
             <path
@@ -1993,9 +2006,9 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="172,42"
-          Id="Package\DFT - load staging_leads\Flat File Destination"
-          TopLeft="308,74" />
+          Size="121,42"
+          Id="Package\DFT - load staging_leads\Error file"
+          TopLeft="375,75" />
         <NodeLayout
           Size="198,42"
           Id="Package\DFT - load staging_leads\OLE_DST - staging_leads"
@@ -2011,7 +2024,7 @@
         <NodeLayout
           Size="186,42"
           Id="Package\DFT - load staging_leads\DC - cleanse columns"
-          TopLeft="40,129" />
+          TopLeft="35,140" />
         <EdgeLayout
           Id="Package\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
           TopLeft="243.5,254.5">
@@ -2050,18 +2063,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load staging_leads.Paths[Flat File Source Output]"
-          TopLeft="134.75,97.5">
+          TopLeft="136.5,97.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,31.5"
+              EndConnector="-8.5,42.5"
               Start="0,0"
-              End="0,24">
+              End="-8.5,35">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24" />
+                    End="0,17.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.25"
+                    Point2="0,21.25"
+                    Point3="-4,21.25" />
+                  <mssgle:LineSegment
+                    End="-4.5,21.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4.5,21.25"
+                    Point2="-8.5,21.25"
+                    Point3="-8.5,25.25" />
+                  <mssgle:LineSegment
+                    End="-8.5,35" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2076,62 +2101,62 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="54.5,18.5"
+              EndConnector="121.5,19.5"
               Start="0,0"
-              End="47,18.5">
+              End="114,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="23.25,0" />
+                    End="56.75,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="23.25,0"
-                    Point2="27.25,0"
-                    Point3="27.25,4" />
+                    Point1="56.75,0"
+                    Point2="60.75,0"
+                    Point3="60.75,4" />
                   <mssgle:LineSegment
-                    End="27.25,14.5" />
+                    End="60.75,15.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="27.25,14.5"
-                    Point2="27.25,18.5"
-                    Point3="31.25,18.5" />
+                    Point1="60.75,15.5"
+                    Point2="60.75,19.5"
+                    Point3="64.75,19.5" />
                   <mssgle:LineSegment
-                    End="47,18.5" />
+                    End="114,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-36.37638671875,-17.609375,127.2527734375,11.609375"
+              BoundingBox="-2.87638671874999,-17.609375,127.2527734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load staging_leads.Paths[Derived Column Output]"
-          TopLeft="133,171">
+          TopLeft="128,182">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="110.5,41.5"
+              EndConnector="115.5,30.5"
               Start="0,0"
-              End="110.5,34">
+              End="115.5,23">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.75" />
+                    End="0,11.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.75"
-                    Point2="0,20.75"
-                    Point3="4,20.75" />
+                    Point1="0,11.25"
+                    Point2="0,15.25"
+                    Point3="4,15.25" />
                   <mssgle:LineSegment
-                    End="106.5,20.75" />
+                    End="111.5,15.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="106.5,20.75"
-                    Point2="110.5,20.75"
-                    Point3="110.5,24.75" />
+                    Point1="111.5,15.25"
+                    Point2="115.5,15.25"
+                    Point3="115.5,19.25" />
                   <mssgle:LineSegment
-                    End="110.5,34" />
+                    End="115.5,23" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

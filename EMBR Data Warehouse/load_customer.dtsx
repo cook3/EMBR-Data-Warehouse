@@ -11,11 +11,21 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{2F5C13CB-68A4-455A-98E5-8BCCF07E70EC}">
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{76DFB86A-85A9-443A-8B55-DF7608A19049}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A694ACE6-3106-4A33-841D-BFB5E2D5888A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="int_is_empty">
+      <DTS:VariableValue
+        DTS:DataType="11">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\DFT - load customer table"
@@ -219,6 +229,22 @@
                       cachedName="SubmissionDate"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[SubmissionDate]" />
+                    <inputColumn
+                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[data_source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="data_source"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[data_source]" />
+                    <inputColumn
+                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="source"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[source]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -306,6 +332,18 @@
                       refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                       dataType="dbTimeStamp"
                       name="submission_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="data_source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="lead_source" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -359,7 +397,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT lead_id AS customer_id
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  lead_id AS customer_id
 								, CASE WHEN title = 'F' THEN 'Ms'
 										WHEN title = 'M' THEN 'Mr'
 										WHEN title = 'Miss' THEN 'Ms'
@@ -398,12 +436,14 @@
 										END AS [state]
 								, [dbo].[fn_remove_non_numeric] ( postcode ) AS postcode
 								, [dbo].[fn_remove_non_numeric] ( mobile ) as mobile
-								, TRY_CAST(dob AS DATE) as dob
+								, PARSE(dob AS DATE USING 'en-au') as dob
 								, CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END as gender
 								, age
 								, email 
 								, TRY_CAST(SubmissionDate AS datetime) as SubmissionDate
 								, lead_status
+, [source]
+								, [data_source]
 						FROM staging.staging.leads l</property>
                 <property
                   dataType="System.String"
@@ -601,6 +641,28 @@
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[lead_status]"
                       name="lead_status"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
+                      length="255"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[data_source]"
+                      name="data_source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[source]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[source]"
+                      length="4000"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[source]"
+                      name="source"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -690,6 +752,18 @@
                       dataType="str"
                       length="4000"
                       name="lead_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="data_source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="source" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -799,6 +873,20 @@
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[lead_status]"
                       name="lead_status" />
                     <outputColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[source]"
+                      name="source" />
+                    <outputColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[data_source]"
+                      name="data_source" />
+                    <outputColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -827,6 +915,849 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\DFT - load old customer data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4BBE693C-00F7-4DF5-8D59-1571AD7087C1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - load old customer data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - load old customer data\OLE_DST - dbo_customer"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - dbo_customer"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Connections[OleDbConnection]"
+                  connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[customer_id]"
+                      cachedDataType="i8"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="300"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="state"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[postcode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1000"
+                      cachedName="postcode"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[postcode]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[mobile]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1000"
+                      cachedName="mobile"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[mobile]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[dob]"
+                      cachedDataType="wstr"
+                      cachedLength="300"
+                      cachedName="dob"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[dob]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\DFT - load old customer data\90:invalid" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[age]"
+                      cachedDataType="i4"
+                      cachedName="age"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[age]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[email]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="email"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[email]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[lead_status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="lead_status"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
+                      lineageId="Package\DFT - load old customer data\93:invalid" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[firstname]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="firstname"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[firstname]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[lastname]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="lastname"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[lastname]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[address1]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="address1"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[address1]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SubmissionDate"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[SubmissionDate]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[data_source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="data_source"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[data_source]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="source"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
+                      lineageId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[state]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      dataType="i4"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4"
+                      name="postcode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="mobile" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
+                      dataType="dbDate"
+                      name="dob" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="age" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="lead_status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
+                      dataType="dbTimeStamp"
+                      name="submission_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="data_source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="lead_source" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC - load_old_leads"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  lead_id AS customer_id
+								, CASE WHEN title = 'F' THEN 'Ms'
+										WHEN title = 'M' THEN 'Mr'
+										WHEN title = 'Miss' THEN 'Ms'
+										WHEN title = 'Title' AND ( CASE WHEN sex = 'Male' or sex = 'Mr' THEN 'M' ELSE sex END ) = 'M' THEN 'Mr'
+										WHEN title = 'Title' AND ( CASE WHEN sex = 'Male' or sex = 'Mr' THEN 'M' ELSE sex END ) = 'F' THEN 'Ms'
+										WHEN title = 'Title' AND ( CASE WHEN sex = 'Male' or sex = 'Mr' THEN 'M' ELSE sex END ) NOT IN ('M', 'F')  THEN NULL
+										WHEN title IS NULL AND ( CASE WHEN sex = 'Male' or sex = 'Mr' THEN 'M' ELSE sex END ) = 'M' THEN 'Mr'
+										WHEN title IS NULL AND ( CASE WHEN sex = 'Male' or sex = 'Mr' THEN 'M' ELSE sex END ) = 'F' THEN 'Ms' 
+										ELSE title END AS title
+								, firstname
+								, lastname
+								, address1
+								, city
+								, CASE WHEN [state] IN ('Ade', 'ADELAIDE', 'adelide', 'AD', 's a', 'S.A', 'SA - SOUTH AUSTRALIA', 'South Australia', 'South Austrila', 'South of Australia' ) 
+														THEN 'SA'
+										WHEN [state] IN ('Alice Springs','Darwin', 'Darwin NT','N T', 'N.T', 'Northern Territory','NorthernTerritory')  
+														THEN 'NT'
+										WHEN [state] IN ('Australia Capital Territory')  
+														THEN 'ACT'
+										WHEN [state] IN ('Australia new south wales', 'Gosford', 'New South Wales', 'MSW', 'N s w', 'N.S.W', 'N.SW', 'New South Walse', 'New South Whales', 'New southwales', 'Newsouthwhales',
+															'NSW Australia', 'NSW New South Wales', 'NSW Sydney', 'NswNsw', 'Nsww', 'Sdney', 'Sydney', 'Syd', 'Sydbey', 'Sydney n.s.w', 'waNew South Wales' )
+														THEN 'NSW'
+										WHEN [state] IN ('.VIC','Geelong', 'melborne', 'Melborune', 'Melbourn', 'Melbourne', 'Melbourne Victoria', 'Thomastown Victoria' , 'Victora'
+														, 'Victoria', 'Victoria Australia', 'Victoria, Australia' , 'victorya'  ) 
+														THEN 'VIC'
+										WHEN [state] IN ('EAST PERTH', 'Australia Wa', 'Perth', 'Preth', 'W A', 'W.A', 'W.A.', 'wa 6053', 'WAa', 'West Australia', 'Western Asutalia', 'Western Australia'
+														, 'wWA', 'Wwst australia'  )
+														THEN 'WA'
+										WHEN [state] IN ('AustralianState_QLD', 'Brisbane', 'BRS', 'Camira QLD', 'FAR NORTH  QUEENSLAND', 'Gold Coast', 'Gold coast Queensland'
+															, 'Gold oast', 'goldcoast', 'Mudgeeraba', 'Qeensland', 'QDL', 'Qland', 'QldQLD', 'qlds', 'Que'
+															, 'Queen land', 'queenland', 'Queensland', 'Queensland, Australia', 'Queensland, helensvale', 'Queensland4', 'quensland'  )
+														THEN 'QLD'
+										WHEN [state] IN ('STAVERTON TAS', 'Tasmaina', 'Tasmania', 'Tasmanian' , 'Wynyard Tasmainia' )
+														THEN 'TAS'
+										ELSE [state]
+										END AS [state]
+								, [dbo].[fn_remove_non_numeric] ( postcode ) AS postcode
+								, [dbo].[fn_remove_non_numeric] ( phone ) as mobile
+								, dob
+								, CASE WHEN sex = 'Male' or sex = 'Mr' THEN 'M' ELSE sex END as sex
+								, DATEDIFF(YY, PARSE(dob AS DATE USING 'en-au'), GETDATE() ) 
+									- CASE WHEN  DATEDIFF(YY, PARSE(dob AS DATE USING 'en-au'), GETDATE() )
+									&gt; GETDATE() THEN 1
+									ELSE 0
+									END AS age
+								, email 
+								, TRY_CAST(ts AS datetime) as SubmissionDate
+								, [status]
+								, [data_source]
+						FROM staging.staging.leads_old l
+WHERE l.lead_id =7686</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Connections[OleDbConnection]"
+                  connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      length="300"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[firstname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[firstname]"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[firstname]"
+                      name="firstname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[lastname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[lastname]"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[lastname]"
+                      name="lastname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[address1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[address1]"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[address1]"
+                      name="address1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[state]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[state]"
+                      name="state"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[postcode]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
+                      length="1000"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[postcode]"
+                      name="postcode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      length="1000"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[mobile]"
+                      name="mobile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[dob]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
+                      length="300"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[dob]"
+                      name="dob"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[sex]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[sex]"
+                      length="300"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[sex]"
+                      name="sex"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[age]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[age]"
+                      name="age"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[email]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[email]"
+                      name="email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[SubmissionDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[SubmissionDate]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[SubmissionDate]"
+                      name="SubmissionDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      length="1"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[status]"
+                      name="status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
+                      length="255"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[data_source]"
+                      name="data_source"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="i8"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="300"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[firstname]"
+                      dataType="wstr"
+                      length="85"
+                      name="firstname" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[lastname]"
+                      dataType="wstr"
+                      length="85"
+                      name="lastname" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[address1]"
+                      dataType="wstr"
+                      length="85"
+                      name="address1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="85"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      dataType="wstr"
+                      length="85"
+                      name="state" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="postcode" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      name="mobile" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
+                      dataType="wstr"
+                      length="300"
+                      name="dob" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[sex]"
+                      dataType="wstr"
+                      length="300"
+                      name="sex" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
+                      dataType="i4"
+                      name="age" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      dataType="wstr"
+                      length="85"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[SubmissionDate]"
+                      dataType="dbTimeStamp"
+                      name="SubmissionDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="1"
+                      name="status" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="data_source" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="i8"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[title]"
+                      dataType="wstr"
+                      length="300"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[firstname]"
+                      dataType="wstr"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[firstname]"
+                      name="firstname" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[lastname]"
+                      dataType="wstr"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[lastname]"
+                      name="lastname" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[address1]"
+                      dataType="wstr"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[address1]"
+                      name="address1" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[city]"
+                      dataType="wstr"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[state]"
+                      dataType="wstr"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[state]"
+                      name="state" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[postcode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[postcode]"
+                      name="postcode" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1000"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      name="mobile" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[dob]"
+                      dataType="wstr"
+                      length="300"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[dob]"
+                      name="dob" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[sex]"
+                      dataType="wstr"
+                      length="300"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[sex]"
+                      name="sex" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[age]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[age]"
+                      name="age" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[email]"
+                      dataType="wstr"
+                      length="85"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[email]"
+                      name="email" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[SubmissionDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[SubmissionDate]"
+                      name="SubmissionDate" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[status]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[status]"
+                      name="status" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
+                      name="data_source" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - load old customer data.Paths[OLE DB Source Output]"
+              endId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - check if old leads loaded"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D41BC25A-C113-425A-8187-1180C4C0B960}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - check if old leads loaded"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+          SQLTask:SqlStatementSource="SELECT&#xA;    (&#xA;       CASE WHEN NOT EXISTS(SELECT NULL FROM [dbo].[customer] WHERE [data_source] = 'oldleads')&#xA;       THEN 1&#xA;       ELSE 0&#xA;       END&#xA;    ) AS is_empty"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::int_is_empty" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\SQL - update 3 digit NT postcodes"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
@@ -835,7 +1766,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - update 3 digit NT postcodes"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -850,9 +1781,25 @@
       DTS:CreationName=""
       DTS:DTSID="{17D23B02-23E0-4F39-B52F-27FC14E816E2}"
       DTS:From="Package\DFT - load customer table"
-      DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\SQL - update 3 digit NT postcodes" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{8B8E678F-9ED4-4449-84F4-38E8F51FDD6B}"
+      DTS:From="Package\DFT - load old customer data"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL - update 3 digit NT postcodes" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{C5BEC00A-C64E-4DC9-992C-5CC113EB6704}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::int_is_empty]"
+      DTS:From="Package\SQL - check if old leads loaded"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\DFT - load old customer data" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -865,47 +1812,113 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="201,42"
           Id="Package\DFT - load customer table"
-          TopLeft="68,60" />
+          TopLeft="133,214" />
+        <NodeLayout
+          Size="221,42"
+          Id="Package\DFT - load old customer data"
+          TopLeft="485,218" />
+        <NodeLayout
+          Size="231,42"
+          Id="Package\SQL - check if old leads loaded"
+          TopLeft="476,100" />
         <NodeLayout
           Size="241,42"
           Id="Package\SQL - update 3 digit NT postcodes"
-          TopLeft="234,163" />
+          TopLeft="291,360" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="168.5,102">
+          TopLeft="233.5,256">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="186,61"
+              EndConnector="139.166666666667,104"
               Start="0,0"
-              End="186,53.5">
+              End="139.166666666667,96.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.5" />
+                    End="0,57.9884583676834" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.5"
-                    Point2="0,30.5"
-                    Point3="4,30.5" />
+                    Point1="0,57.9884583676834"
+                    Point2="0,61.9884583676834"
+                    Point3="4,61.9884583676834" />
                   <mssgle:LineSegment
-                    End="182,30.5" />
+                    End="135.166666666667,61.9884583676834" />
                   <mssgle:CubicBezierSegment
-                    Point1="182,30.5"
-                    Point2="186,30.5"
-                    Point3="186,34.5" />
+                    Point1="135.166666666667,61.9884583676834"
+                    Point2="139.166666666667,61.9884583676834"
+                    Point3="139.166666666667,65.9884583676834" />
                   <mssgle:LineSegment
-                    End="186,53.5" />
+                    End="139.166666666667,96.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="595.5,260">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-145.166666666667,100"
+              Start="0,0"
+              End="-145.166666666667,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.6042868920033" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.6042868920033"
+                    Point2="0,59.6042868920033"
+                    Point3="-4,59.6042868920033" />
+                  <mssgle:LineSegment
+                    End="-141.166666666667,59.6042868920033" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-141.166666666667,59.6042868920033"
+                    Point2="-145.166666666667,59.6042868920033"
+                    Point3="-145.166666666667,63.6042868920033" />
+                  <mssgle:LineSegment
+                    End="-145.166666666667,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="593.5,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,26.25,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -917,13 +1930,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="200,42"
-          Id="Package\DFT - load customer table\OLE_DST - dbo_customer"
-          TopLeft="323,213" />
-        <NodeLayout
           Size="181,42"
           Id="Package\DFT - load customer table\OLE_SRC - customers"
           TopLeft="103,98" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\DFT - load customer table\OLE_DST - dbo_customer"
+          TopLeft="323,213" />
         <EdgeLayout
           Id="Package\DFT - load customer table.Paths[OLE DB Source Output]"
           TopLeft="193.5,140">
@@ -979,6 +1992,79 @@
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - load old customer data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\DFT - load old customer data\OLE_SRC - load_old_leads"
+          TopLeft="198,88" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\DFT - load old customer data\OLE_DST - dbo_customer"
+          TopLeft="320,228" />
+        <EdgeLayout
+          Id="Package\DFT - load old customer data.Paths[OLE DB Source Output]"
+          TopLeft="305,130">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115,98"
+              Start="0,0"
+              End="115,90.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45"
+                    Point2="0,49"
+                    Point3="4,49" />
+                  <mssgle:LineSegment
+                    End="111,49" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111,49"
+                    Point2="115,49"
+                    Point3="115,53" />
+                  <mssgle:LineSegment
+                    End="115,90.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="49.5,54,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load old customer data\OLE_SRC - load_old_leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load old customer data\OLE_DST - dbo_customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

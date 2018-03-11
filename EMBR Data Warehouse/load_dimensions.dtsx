@@ -7,12 +7,12 @@
   DTS:CreatorName="Cooke-PC\Cooke"
   DTS:DTSID="{05DE0E37-D9AC-463B-94F1-698B93ACC271}"
   DTS:ExecutableType=""
-  DTS:LastModifiedProductVersion="14.0.3002.68"
+  DTS:LastModifiedProductVersion="14.0.3002.92"
   DTS:LocaleID="1033"
   DTS:ObjectName="load_dimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{E292E585-F84F-4FBF-9795-6E6B6475A87C}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{57400F00-B23E-4093-8C1E-D406EF078053}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -53,7 +53,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_device"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -70,7 +70,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_source"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -87,7 +87,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_status"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -184,41 +184,41 @@
           PanelSize="428,181"
           Size="428,224"
           Id="Package\Smaller tables"
-          TopLeft="578,195.428571428571" />
-        <NodeLayout
-          Size="204,42"
-          Id="Package\SQL - load mdm_customer"
-          TopLeft="300,193.428571428571" />
+          TopLeft="589,184.428571428571" />
         <NodeLayout
           Size="230,42"
           Id="Package\SQL - load lead_dim_geography"
-          TopLeft="22.5714285714286,168.714285714286" />
+          TopLeft="61.5714285714286,120.714285714286" />
+        <NodeLayout
+          Size="204,42"
+          Id="Package\SQL - load mdm_customer"
+          TopLeft="302,207.428571428571" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="504,214.428571428571">
+          TopLeft="506,228.428571428571">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="74,93"
+              EndConnector="83,68"
               Start="0,0"
-              End="66.5,93">
+              End="75.5,68">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="33,0" />
+                    End="37.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="33,0"
-                    Point2="37,0"
-                    Point3="37,4" />
+                    Point1="37.5,0"
+                    Point2="41.5,0"
+                    Point3="41.5,4" />
                   <mssgle:LineSegment
-                    End="37,89" />
+                    End="41.5,64" />
                   <mssgle:CubicBezierSegment
-                    Point1="37,89"
-                    Point2="37,93"
-                    Point3="41,93" />
+                    Point1="41.5,64"
+                    Point2="41.5,68"
+                    Point3="45.5,68" />
                   <mssgle:LineSegment
-                    End="66.5,93" />
+                    End="75.5,68" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -229,30 +229,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="252.571428571429,189.714285714286">
+          TopLeft="176.571428571429,162.714285714286">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="47.4285714285714,24.714285714285"
+              EndConnector="227.428571428571,44.714285714285"
               Start="0,0"
-              End="39.9285714285714,24.714285714285">
+              End="227.428571428571,37.214285714285">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="19.7142857142857,0" />
+                    End="0,18.3571428571425" />
                   <mssgle:CubicBezierSegment
-                    Point1="19.7142857142857,0"
-                    Point2="23.7142857142857,0"
-                    Point3="23.7142857142857,4" />
+                    Point1="0,18.3571428571425"
+                    Point2="0,22.3571428571425"
+                    Point3="4,22.3571428571425" />
                   <mssgle:LineSegment
-                    End="23.7142857142857,20.714285714285" />
+                    End="223.428571428571,22.3571428571425" />
                   <mssgle:CubicBezierSegment
-                    Point1="23.7142857142857,20.714285714285"
-                    Point2="23.7142857142857,24.714285714285"
-                    Point3="27.7142857142857,24.714285714285" />
+                    Point1="223.428571428571,22.3571428571425"
+                    Point2="227.428571428571,22.3571428571425"
+                    Point3="227.428571428571,26.3571428571425" />
                   <mssgle:LineSegment
-                    End="39.9285714285714,24.714285714285" />
+                    End="227.428571428571,37.214285714285" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

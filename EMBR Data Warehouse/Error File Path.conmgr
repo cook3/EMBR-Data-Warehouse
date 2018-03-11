@@ -1,8 +1,11 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:DelayValidation="True"
   DTS:ObjectName="Error File Path"
   DTS:DTSID="{BF13FB33-1A32-44FF-8D27-951242D44C94}"
   DTS:CreationName="FLATFILE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::error_file]</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:Format="Delimited"
@@ -11,7 +14,7 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x003C_none_x003E_"
       DTS:CodePage="1252"
-      DTS:ConnectionString="C:\Users\Cooke\Documents\Scott's folder\EMBR\errors.txt">
+      DTS:ConnectionString="C:\Users\azureadmin\Documents\error.txt">
       <DTS:FlatFileColumns>
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -19,7 +22,7 @@
           DTS:DataType="302"
           DTS:TextQualified="True"
           DTS:ObjectName="Flat File Source Error Output Column"
-          DTS:DTSID="{96F640F7-6BBF-44B1-8B2E-D488C4506778}"
+          DTS:DTSID="{2E81F022-68C1-484D-9D0A-E2DFF95F7E13}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -27,7 +30,7 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="ErrorCode"
-          DTS:DTSID="{602AC7AE-F803-483F-9375-F7444C03F363}"
+          DTS:DTSID="{AFD7B36D-6299-4184-961C-F6605AD5FFD1}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -35,7 +38,7 @@
           DTS:DataType="3"
           DTS:TextQualified="True"
           DTS:ObjectName="ErrorColumn"
-          DTS:DTSID="{B185C188-E116-4A04-91C1-05FFF6555A8A}"
+          DTS:DTSID="{6FCF0B7D-01CE-4807-A7BE-7DEFCFE2C4F3}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

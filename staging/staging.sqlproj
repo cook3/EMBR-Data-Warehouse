@@ -69,9 +69,9 @@
     <Build Include="staging\Tables\staging.old_lead.sql" />
     <Build Include="staging\Tables\staging.error.sql" />
     <Build Include="staging\Tables\staging.leads.sql" />
-    <Build Include="staging\staging.values_custom_fields.sql" />
     <Build Include="staging\Tables\staging.leads_old.sql" />
     <Build Include="staging\Tables\staging.custom_fields.sql" />
     <Build Include="staging\Tables\staging.category.sql" />
+    <Build Include="staging\Tables\staging.values_custom_fields.sql" />
   </ItemGroup>
 </Project>

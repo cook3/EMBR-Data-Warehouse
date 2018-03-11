@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_staging_old"
   DTS:PackageType="5"
-  DTS:VersionBuild="20"
-  DTS:VersionGUID="{32CC3A9E-5065-4E63-8E6D-D4122080F7B0}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{B8BD58CC-2D87-4F2D-BD79-73A49965F030}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -30,6 +30,15 @@
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7173F62B-1703-4A41-A576-AE1731515970}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="int_dbid">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
       DTS:DTSID="{A06C1621-8108-4778-B017-A1249D940A83}"
@@ -416,6 +425,13 @@
                       cachedName="data_source"
                       externalMetadataColumnId="Package\DFT - bring all info together\OLE_DST - leads_old.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
                       lineageId="Package\DFT - bring all info together\DC - add data source.Outputs[Derived Column Output].Columns[data_source]" />
+                    <inputColumn
+                      refId="Package\DFT - bring all info together\OLE_DST - leads_old.Inputs[OLE DB Destination Input].Columns[status]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="status"
+                      externalMetadataColumnId="Package\DFT - bring all info together\OLE_DST - leads_old.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      lineageId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Output].Columns[status]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -557,6 +573,11 @@
                       dataType="str"
                       length="255"
                       name="data_source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - bring all info together\OLE_DST - leads_old.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="1"
+                      name="status" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -632,12 +653,14 @@ SELECT l.id AS lead_id
 		, l.inf_phone
 		, l.answers
 		, l.sold
+                                     ,l.status
 		, c.[name]
 		, cf.value_fields
-  FROM [staging].[staging].[old_lead] l
+  FROM [staging].[staging].[join_leads] l
 	INNER JOIN [staging].[values_custom_fields] cf ON l.id = cf.cid
+		AND l.[dbid] = cf.[dbid]
 	INNER JOIN [staging].[custom_fields] c ON cf.[ref_custom_fields] = c.id
- --  where l.id = 1814085
+  -- where l.id = 7686
 ) AS SourceTable PIVOT(MAX(value_fields) FOR name IN( ipaddress,
                                                          sex,
                                                          created,
@@ -954,6 +977,16 @@ SELECT l.id AS lead_id
                       lineageId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Output].Columns[id]"
                       name="id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Output].Columns[status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      length="1"
+                      lineageId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Output].Columns[status]"
+                      name="status"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1089,6 +1122,11 @@ SELECT l.id AS lead_id
                       dataType="wstr"
                       length="300"
                       name="id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      dataType="wstr"
+                      length="1"
+                      name="status" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1202,6 +1240,12 @@ SELECT l.id AS lead_id
                       dataType="i4"
                       lineageId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Error Output].Columns[sold]"
                       name="sold" />
+                    <outputColumn
+                      refId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Error Output].Columns[status]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Error Output].Columns[status]"
+                      name="status" />
                     <outputColumn
                       refId="Package\DFT - bring all info together\OLE_SRC - get all info.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
                       dataType="wstr"
@@ -1324,6 +1368,147 @@ SELECT l.id AS lead_id
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="LKP - check if cat already exists"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [staging].[category]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [staging].[category]) [refTable]
+where [refTable].[id] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="category" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].Columns[id_category]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Connections[OleDbConnection]"
+                      connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[staging]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Inputs[Lookup Input].Columns[id_category]"
+                          cachedDataType="i4"
+                          cachedName="id_category"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output].Columns[id_category]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">id</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category"
                   componentClassID="Attunity.SSISODBCSrc"
@@ -1598,8 +1783,13 @@ SELECT l.id AS lead_id
               </components>
               <paths>
                 <path
-                  refId="Package\FEL - loop through db and tables\DFT - get category.Paths[ODBC Source Output]"
+                  refId="Package\FEL - loop through db and tables\DFT - get category.Paths[Lookup No Match Output]"
                   endId="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\FEL - loop through db and tables\DFT - get category.Paths[ODBC Source Output]"
+                  endId="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists.Inputs[Lookup Input]"
                   name="ODBC Source Output"
                   startId="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category.Outputs[ODBC Source Output]" />
               </paths>
@@ -1620,6 +1810,79 @@ SELECT l.id AS lead_id
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DRC - get old db id"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Output].Columns[dbid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Output].Columns[dbid]"
+                          name="dbid"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::int_dbid]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::int_dbid]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads"
                   componentClassID="Attunity.SSISODBCSrc"
@@ -2136,11 +2399,11 @@ SELECT l.id AS lead_id
                   </outputs>
                 </component>
                 <component
-                  refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads"
+                  refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="OLE_DST - old_leads"
+                  name="OLE_DST - staging_old_leads"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -2151,7 +2414,7 @@ SELECT l.id AS lead_id
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[staging].[old_lead]</property>
+                      name="OpenRowset">[staging].[join_leads]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2193,7 +2456,7 @@ SELECT l.id AS lead_id
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Connections[OleDbConnection]"
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Connections[OleDbConnection]"
                       connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
                       connectionManagerRefId="Project.ConnectionManagers[staging]"
                       description="The OLE DB runtime connection used to access the database."
@@ -2201,290 +2464,300 @@ SELECT l.id AS lead_id
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input]"
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[id]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[id]"
                           cachedDataType="i8"
                           cachedName="id"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[id]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[id]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[cid]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[cid]"
                           cachedDataType="i4"
                           cachedName="cid"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[cid]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[ipaddr]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[ipaddr]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="ipaddr"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ipaddr]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ipaddr]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ipaddr]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[ttl]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[ttl]"
                           cachedDataType="i4"
                           cachedName="ttl"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ttl]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ttl]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ttl]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[ts]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[ts]"
                           cachedDataType="dbTimeStamp"
                           cachedName="ts"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ts]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ts]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ts]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[refer]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[refer]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="refer"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[refer]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[refer]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[refer]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[camp_id]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[camp_id]"
                           cachedDataType="i4"
                           cachedName="camp_id"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[camp_id]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[camp_id]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[camp_id]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[valid]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[valid]"
                           cachedDataType="i1"
                           cachedName="valid"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[valid]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[valid]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[valid]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[email]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[email]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="email"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[email]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[email]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_name1]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_name1]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="inf_name1"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name1]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name1]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_name1]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_name2]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_name2]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="inf_name2"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name2]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name2]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_name2]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_addr]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_addr]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="inf_addr"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_addr]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_addr]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_addr]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_city]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_city]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="inf_city"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_city]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_city]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_city]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_zip]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_zip]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="inf_zip"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_zip]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_zip]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_zip]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_state]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_state]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="inf_state"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_state]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_state]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_state]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_country]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_country]"
                           cachedDataType="i4"
                           cachedName="inf_country"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_country]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_country]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_country]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_phone]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_phone]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="inf_phone"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_phone]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_phone]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_phone]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[inf_fax]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[inf_fax]"
                           cachedDataType="wstr"
                           cachedLength="85"
                           cachedName="inf_fax"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_fax]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_fax]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[inf_fax]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[answers]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[answers]"
                           cachedDataType="nText"
                           cachedName="answers"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[answers]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[answers]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[answers]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[ref_category]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[ref_category]"
                           cachedDataType="i4"
                           cachedName="ref_category"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[ref_category]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[sold]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[sold]"
                           cachedDataType="i4"
                           cachedName="sold"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[sold]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[sold]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[sold]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[status]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[status]"
                           cachedDataType="wstr"
                           cachedLength="1"
                           cachedName="status"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[status]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[status]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].Columns[lcode]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[lcode]"
                           cachedDataType="nText"
                           cachedName="lcode"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[lcode]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[lcode]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output].Columns[lcode]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].Columns[dbid]"
+                          cachedDataType="i4"
+                          cachedName="dbid"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[dbid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Output].Columns[dbid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[id]"
                           dataType="i8"
                           name="id" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
                           dataType="i4"
                           name="cid" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ipaddr]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ipaddr]"
                           dataType="wstr"
                           length="85"
                           name="ipaddr" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ttl]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ttl]"
                           dataType="i4"
                           name="ttl" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ts]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ts]"
                           dataType="dbTimeStamp"
                           name="ts" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[refer]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[refer]"
                           dataType="wstr"
                           length="85"
                           name="refer" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[camp_id]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[camp_id]"
                           dataType="i4"
                           name="camp_id" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[valid]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[valid]"
                           dataType="ui1"
                           name="valid" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[email]"
                           dataType="wstr"
                           length="85"
                           name="email" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name1]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name1]"
                           dataType="wstr"
                           length="85"
                           name="inf_name1" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name2]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_name2]"
                           dataType="wstr"
                           length="85"
                           name="inf_name2" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_addr]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_addr]"
                           dataType="wstr"
                           length="85"
                           name="inf_addr" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_city]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_city]"
                           dataType="wstr"
                           length="85"
                           name="inf_city" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_zip]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_zip]"
                           dataType="wstr"
                           length="85"
                           name="inf_zip" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_state]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_state]"
                           dataType="wstr"
                           length="85"
                           name="inf_state" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_country]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_country]"
                           dataType="i4"
                           name="inf_country" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_phone]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_phone]"
                           dataType="wstr"
                           length="85"
                           name="inf_phone" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_fax]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[inf_fax]"
                           dataType="wstr"
                           length="85"
                           name="inf_fax" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[answers]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[answers]"
                           dataType="nText"
                           name="answers" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
                           dataType="i4"
                           name="ref_category" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[sold]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[sold]"
                           dataType="i4"
                           name="sold" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[status]"
                           dataType="wstr"
                           length="1"
                           name="status" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input].ExternalColumns[lcode]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[lcode]"
                           dataType="nText"
                           name="lcode" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input].ExternalColumns[dbid]"
+                          dataType="i4"
+                          name="dbid" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -2495,8 +2768,13 @@ SELECT l.id AS lead_id
               </components>
               <paths>
                 <path
+                  refId="Package\FEL - loop through db and tables\DFT - get leads.Paths[Derived Column Output]"
+                  endId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Outputs[Derived Column Output]" />
+                <path
                   refId="Package\FEL - loop through db and tables\DFT - get leads.Paths[ODBC Source Output]"
-                  endId="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads.Inputs[OLE DB Destination Input]"
+                  endId="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id.Inputs[Derived Column Input]"
                   name="ODBC Source Output"
                   startId="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads.Outputs[ODBC Source Output]" />
               </paths>
@@ -2517,6 +2795,79 @@ SELECT l.id AS lead_id
             <pipeline
               version="1">
               <components>
+                <component
+                  refId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="DRC - get old db id"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Output].Columns[dbid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Output].Columns[dbid]"
+                          name="dbid"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">@[User::int_dbid]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">@[User::int_dbid]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
                 <component
                   refId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns"
                   componentClassID="Attunity.SSISODBCSrc"
@@ -2731,11 +3082,11 @@ SELECT l.id AS lead_id
                   </outputs>
                 </component>
                 <component
-                  refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination"
+                  refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields"
                   componentClassID="Microsoft.OLEDBDestination"
                   contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
                   description="OLE DB Destination"
-                  name="OLE DB Destination"
+                  name="OLE_DST - staging_values_custom_fields"
                   usesDispositions="true"
                   version="4">
                   <properties>
@@ -2788,7 +3139,7 @@ SELECT l.id AS lead_id
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Connections[OleDbConnection]"
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Connections[OleDbConnection]"
                       connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
                       connectionManagerRefId="Project.ConnectionManagers[staging]"
                       description="The OLE DB runtime connection used to access the database."
@@ -2796,100 +3147,110 @@ SELECT l.id AS lead_id
                   </connections>
                   <inputs>
                     <input
-                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
                       errorRowDisposition="FailComponent"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id_values_custom_fields]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].Columns[id_values_custom_fields]"
                           cachedDataType="i4"
                           cachedName="id_values_custom_fields"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_values_custom_fields]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[id_values_custom_fields]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[id_values_custom_fields]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ref_custom_fields]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].Columns[ref_custom_fields]"
                           cachedDataType="i4"
                           cachedName="ref_custom_fields"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ref_custom_fields]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[ref_custom_fields]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[ref_custom_fields]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[value_fields]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].Columns[value_fields]"
                           cachedDataType="wstr"
                           cachedLength="300"
                           cachedName="value_fields"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[value_fields]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[value_fields]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[value_fields]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cid]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].Columns[cid]"
                           cachedDataType="i4"
                           cachedName="cid"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[cid]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ref_category]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].Columns[ref_category]"
                           cachedDataType="i4"
                           cachedName="ref_category"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[ref_category]" />
                         <inputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[camp_ans_fields]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].Columns[camp_ans_fields]"
                           cachedDataType="wstr"
                           cachedLength="400"
                           cachedName="camp_ans_fields"
-                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[camp_ans_fields]"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[camp_ans_fields]"
                           lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output].Columns[camp_ans_fields]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].Columns[dbid]"
+                          cachedDataType="i4"
+                          cachedName="dbid"
+                          externalMetadataColumnId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[dbid]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Output].Columns[dbid]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id_values_custom_fields]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[id_values_custom_fields]"
                           dataType="i4"
                           name="id_values_custom_fields" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ref_custom_fields]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[ref_custom_fields]"
                           dataType="i4"
                           name="ref_custom_fields" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[value_fields]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[value_fields]"
                           dataType="wstr"
                           length="300"
                           name="value_fields" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[cid]"
                           dataType="i4"
                           name="cid" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[ref_category]"
                           dataType="i4"
                           name="ref_category" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[camp_ans_fields]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[camp_ans_fields]"
                           dataType="wstr"
                           length="300"
                           name="camp_ans_fields" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input].ExternalColumns[dbid]"
+                          dataType="i4"
+                          name="dbid" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
                   <outputs>
                     <output
-                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Outputs[OLE DB Destination Error Output]"
                       exclusionGroup="1"
                       isErrorOut="true"
                       name="OLE DB Destination Error Output"
-                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      synchronousInputId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input]">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          refId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -2900,8 +3261,13 @@ SELECT l.id AS lead_id
               </components>
               <paths>
                 <path
+                  refId="Package\FEL - loop through db and tables\DFT - get variable columns.Paths[Derived Column Output]"
+                  endId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Outputs[Derived Column Output]" />
+                <path
                   refId="Package\FEL - loop through db and tables\DFT - get variable columns.Paths[ODBC Source Output]"
-                  endId="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  endId="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id.Inputs[Derived Column Input]"
                   name="ODBC Source Output"
                   startId="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns.Outputs[ODBC Source Output]" />
               </paths>
@@ -2930,8 +3296,14 @@ SELECT l.id AS lead_id
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{14F8265C-EFB0-45A6-B510-7666B9A9BF13}"
-          DTS:ObjectName="{14F8265C-EFB0-45A6-B510-7666B9A9BF13}"
+          DTS:DTSID="{D249B8AE-CD42-489B-8DDC-4C10B1315F6D}"
+          DTS:ObjectName="{D249B8AE-CD42-489B-8DDC-4C10B1315F6D}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::int_dbid" />
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{927E28D0-014A-4B0A-AFAA-097C67DA1197}"
+          DTS:ObjectName="{927E28D0-014A-4B0A-AFAA-097C67DA1197}"
           DTS:ValueIndex="1"
           DTS:VariableName="User::str_dbname" />
       </DTS:ForEachVariableMappings>
@@ -2989,6 +3361,10 @@ SELECT l.id AS lead_id
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="212,42"
+          Id="Package\DFT - bring all info together"
+          TopLeft="796,406" />
         <NodeLayout
           Size="170,42"
           Id="Package\FEL - loop through db and tables\DFT - get category"
@@ -3114,10 +3490,6 @@ SELECT l.id AS lead_id
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="212,42"
-          Id="Package\DFT - bring all info together"
-          TopLeft="796,406" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="618,348">
@@ -3156,233 +3528,10 @@ SELECT l.id AS lead_id
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\FEL - loop through db and tables\DFT - get category">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="222,42"
-          Id="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category"
-          TopLeft="288,208" />
-        <NodeLayout
-          Size="192,42"
-          Id="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category"
-          TopLeft="151,87" />
-        <EdgeLayout
-          Id="Package\FEL - loop through db and tables\DFT - get category.Paths[ODBC Source Output]"
-          TopLeft="247,129">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="152,79"
-              Start="0,0"
-              End="152,71.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35.5"
-                    Point2="0,39.5"
-                    Point3="4,39.5" />
-                  <mssgle:LineSegment
-                    End="148,39.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="148,39.5"
-                    Point2="152,39.5"
-                    Point3="152,43.5" />
-                  <mssgle:LineSegment
-                    End="152,71.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category">
-    <Properties>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\FEL - loop through db and tables\DFT - get leads">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="186,42"
-          Id="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads"
-          TopLeft="202,235" />
-        <NodeLayout
-          Size="176,42"
-          Id="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads"
-          TopLeft="149,111" />
-        <EdgeLayout
-          Id="Package\FEL - loop through db and tables\DFT - get leads.Paths[ODBC Source Output]"
-          TopLeft="237,153">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="58,82"
-              Start="0,0"
-              End="58,74.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,37" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,37"
-                    Point2="0,41"
-                    Point3="4,41" />
-                  <mssgle:LineSegment
-                    End="54,41" />
-                  <mssgle:CubicBezierSegment
-                    Point1="54,41"
-                    Point2="58,41"
-                    Point3="58,45" />
-                  <mssgle:LineSegment
-                    End="58,74.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads">
-    <Properties>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - old_leads">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="177,42"
-          Id="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination"
-          TopLeft="410,235" />
-        <NodeLayout
-          Size="250,42"
-          Id="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns"
-          TopLeft="191,123" />
-        <EdgeLayout
-          Id="Package\FEL - loop through db and tables\DFT - get variable columns.Paths[ODBC Source Output]"
-          TopLeft="316,165">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="182.5,70"
-              Start="0,0"
-              End="182.5,62.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,31"
-                    Point2="0,35"
-                    Point3="4,35" />
-                  <mssgle:LineSegment
-                    End="178.5,35" />
-                  <mssgle:CubicBezierSegment
-                    Point1="178.5,35"
-                    Point2="182.5,35"
-                    Point3="182.5,39" />
-                  <mssgle:LineSegment
-                    End="182.5,62.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns">
-    <Properties>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\DFT - bring all info together">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="190,42"
-          Id="Package\DFT - bring all info together\OLE_SRC - get all info"
-          TopLeft="91,74" />
         <NodeLayout
           Size="186,42"
           Id="Package\DFT - bring all info together\OLE_DST - leads_old"
@@ -3391,6 +3540,10 @@ SELECT l.id AS lead_id
           Size="183,42"
           Id="Package\DFT - bring all info together\DC - add data source"
           TopLeft="173,153" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\DFT - bring all info together\OLE_SRC - get all info"
+          TopLeft="91,74" />
         <EdgeLayout
           Id="Package\DFT - bring all info together.Paths[OLE DB Source Output]"
           TopLeft="186,116">
@@ -3463,6 +3616,19 @@ SELECT l.id AS lead_id
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT - bring all info together\OLE_DST - leads_old">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT - bring all info together\OLE_SRC - get all info">
     <Properties>
       <Property>
@@ -3470,8 +3636,353 @@ SELECT l.id AS lead_id
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\FEL - loop through db and tables\DFT - get category">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="222,42"
+          Id="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category"
+          TopLeft="423,276" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category"
+          TopLeft="115,87" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists"
+          TopLeft="266,176" />
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get category.Paths[ODBC Source Output]"
+          TopLeft="211,129">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="172,47"
+              Start="0,0"
+              End="172,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.5"
+                    Point2="0,23.5"
+                    Point3="4,23.5" />
+                  <mssgle:LineSegment
+                    End="168,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="168,23.5"
+                    Point2="172,23.5"
+                    Point3="172,27.5" />
+                  <mssgle:LineSegment
+                    End="172,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get category.Paths[Lookup No Match Output]"
+          TopLeft="383,218">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="151,58"
+              Start="0,0"
+              End="151,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="147,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="147,29"
+                    Point2="151,29"
+                    Point3="151,33" />
+                  <mssgle:LineSegment
+                    End="151,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="19.69361328125,34,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - bring all info together\OLE_DST - leads_old">
+    design-time-name="Package\FEL - loop through db and tables\DFT - get category\OLE_DST - staging_category">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get category\ODBC_SRC - category">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get category\LKP - check if cat already exists">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[staging].[category]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\FEL - loop through db and tables\DFT - get leads">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="227,42"
+          Id="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads"
+          TopLeft="302,284" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads"
+          TopLeft="111,109" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\FEL - loop through db and tables\DFT - get leads\DRC - get old db id"
+          TopLeft="129,199" />
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get leads.Paths[ODBC Source Output]"
+          TopLeft="199,151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16,48"
+              Start="0,0"
+              End="16,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="4,24" />
+                  <mssgle:LineSegment
+                    End="12,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12,24"
+                    Point2="16,24"
+                    Point3="16,28" />
+                  <mssgle:LineSegment
+                    End="16,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get leads.Paths[Derived Column Output]"
+          TopLeft="215,241">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="200.5,43"
+              Start="0,0"
+              End="200.5,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="196.5,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="196.5,21.5"
+                    Point2="200.5,21.5"
+                    Point3="200.5,25.5" />
+                  <mssgle:LineSegment
+                    End="200.5,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get leads\OLE_DST - staging_old_leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get leads\ODBC_SRC - leads">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="285,42"
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields"
+          TopLeft="349,289" />
+        <NodeLayout
+          Size="250,42"
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns"
+          TopLeft="100,91" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns\DRC - get old db id"
+          TopLeft="235,184" />
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns.Paths[ODBC Source Output]"
+          TopLeft="225,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="96,51"
+              Start="0,0"
+              End="96,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
+                  <mssgle:LineSegment
+                    End="92,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="92,25.5"
+                    Point2="96,25.5"
+                    Point3="96,29.5" />
+                  <mssgle:LineSegment
+                    End="96,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FEL - loop through db and tables\DFT - get variable columns.Paths[Derived Column Output]"
+          TopLeft="321,226">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="170.5,63"
+              Start="0,0"
+              End="170.5,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="4,31.5" />
+                  <mssgle:LineSegment
+                    End="166.5,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="166.5,31.5"
+                    Point2="170.5,31.5"
+                    Point3="170.5,35.5" />
+                  <mssgle:LineSegment
+                    End="170.5,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns\ODBC_SRC - get variable columns">
+    <Properties>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through db and tables\DFT - get variable columns\OLE_DST - staging_values_custom_fields">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
