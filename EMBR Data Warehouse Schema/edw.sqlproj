@@ -60,6 +60,8 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="lead\" />
+    <Folder Include="lead\Tables\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="lead.dim_device.sql" />
@@ -86,6 +88,7 @@
     <Build Include="lead.load_dim_geography.sql" />
     <Build Include="lead.fact_leads.sql" />
     <Build Include="mdm.sql" />
+    <Build Include="lead\Tables\lead.dim_data_source.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EMBR Data Warehouse Schema.refactorlog" />

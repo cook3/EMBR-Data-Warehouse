@@ -73,5 +73,6 @@
     <Build Include="staging\Tables\staging.custom_fields.sql" />
     <Build Include="staging\Tables\staging.category.sql" />
     <Build Include="staging\Tables\staging.values_custom_fields.sql" />
+    <Build Include="staging\Tables\staging.join_leads.sql" />
   </ItemGroup>
 </Project>

@@ -38,9 +38,12 @@ IF @incremental_flag = 1 --handle incremental loads
 								, email
 								, submission_date
 								, lead_status
+								, [data_source]
+								, [lead_source]
 								, ROW_NUMBER() OVER (PARTITION BY first_name, mobile, email  ORDER BY submission_date asc ) AS duplicate_number
 						FROM [dbo].[customer]
 						WHERE LEN(mobile) > 0
+							AND [data_source] = 'databowl'
 
 									)
 
@@ -63,9 +66,13 @@ IF @incremental_flag = 1 --handle incremental loads
 								, c.email
 								, c.submission_date
 								, ISNULL( d.geography_key, -1) AS geography_key
+								, s.source_key
+								, ds.data_source_key
 							FROM base_cte c 
 								LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
 									AND d.[state_code] = c.[state] 
+								INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
+								INNER JOIN lead.dim_source s ON c.lead_source = s.source
 							WHERE duplicate_number = 1						
 					  
 						) AS source 
@@ -82,6 +89,8 @@ IF @incremental_flag = 1 --handle incremental loads
 							  ,[address]
 							  ,[city]
 							  ,[geography_key]
+							  ,[data_source_key]
+							  ,[source_key]
 							  ,[mobile]
 							  ,[dob]
 							  ,[gender]
@@ -101,6 +110,8 @@ IF @incremental_flag = 1 --handle incremental loads
 							, source.[address]
 							, source.[city]
 							, source.[geography_key]
+							, source.[data_source_key]
+							, source.[source_key]
 							, source.[mobile]
 							, source.[dob]
 							, source.[gender]
@@ -146,12 +157,15 @@ IF @incremental_flag = 1 --handle incremental loads
 								, email
 								, submission_date
 								, lead_status
+								, [data_source]
+								, [lead_source]
 								, ROW_NUMBER() OVER (PARTITION BY first_name, mobile, email  ORDER BY submission_date asc ) AS duplicate_number
 						FROM [dbo].[customer]
 						WHERE LEN(mobile) > 0
+							AND [data_source] = 'databowl'
 									)
 
-				INSERT INTO [lead].[dim_customer]
+				INSERT INTO [mdm].[customer]
 
 						(
 							  [customer_id]
@@ -161,6 +175,8 @@ IF @incremental_flag = 1 --handle incremental loads
 							  ,[address]
 							  ,[city]
 							  ,[geography_key]
+							  ,[data_source_key]
+							  ,[source_key]
 							  ,[mobile]
 							  ,[dob]
 							  ,[gender]
@@ -179,6 +195,8 @@ IF @incremental_flag = 1 --handle incremental loads
 					, c.[address]
 					, c.[city]
 					, ISNULL( d.geography_key, -1) AS geography_key
+					, ds.data_source_key
+					, s.source_key
 					, c.mobile
 					, c.dob
 					, c.gender
@@ -190,6 +208,8 @@ IF @incremental_flag = 1 --handle incremental loads
 				FROM base_cte c 
 					LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
 						AND d.[state_code] = c.[state] 
+					INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
+					INNER JOIN lead.dim_source s ON c.lead_source = s.source
 				WHERE duplicate_number = 1	
 
 

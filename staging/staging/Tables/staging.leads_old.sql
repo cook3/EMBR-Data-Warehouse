@@ -27,6 +27,9 @@
     [affliateid]  NVARCHAR (300) NULL,
     [title]       NVARCHAR (300) NULL,
     [id]          NVARCHAR (300) NULL,
+    [status]      NVARCHAR (1)   NULL,
     [data_source] VARCHAR (255)  NULL
 );
+
+
 
