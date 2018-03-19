@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{76DFB86A-85A9-443A-8B55-DF7608A19049}">
+  DTS:VersionBuild="32"
+  DTS:VersionGUID="{CC5684D7-6809-46FD-BAD0-0E33EC87F017}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -147,9 +147,7 @@
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[state]" />
                     <inputColumn
                       refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[postcode]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4000"
+                      cachedDataType="i4"
                       cachedName="postcode"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[postcode]" />
@@ -157,7 +155,7 @@
                       refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[mobile]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="4000"
+                      cachedLength="100"
                       cachedName="mobile"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[mobile]" />
@@ -290,9 +288,7 @@
                       name="state" />
                     <externalMetadataColumn
                       refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
+                      dataType="i4"
                       name="postcode" />
                     <externalMetadataColumn
                       refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
@@ -434,15 +430,17 @@
 														THEN 'TAS'
 										ELSE [state]
 										END AS [state]
-								, [dbo].[fn_remove_non_numeric] ( postcode ) AS postcode
-								, [dbo].[fn_remove_non_numeric] ( mobile ) as mobile
-								, PARSE(dob AS DATE USING 'en-au') as dob
+								, CAST( ( [dbo].[fn_remove_non_numeric] ( postcode ) ) AS INT) AS postcode
+								, [dbo].[fn_remove_non_numeric] (  mobile ) AS mobile
+								--, CAST( ( CASE WHEN mobile LIKE '61%' THEN  [dbo].[fn_remove_non_numeric] ( SUBSTRING( mobile, 3, 1000  )  ) 
+								--			ELSE [dbo].[fn_remove_non_numeric] (  mobile )  END ) AS BIGINT ) as mobile
+								, TRY_PARSE(dob AS DATE USING 'en-au') as dob
 								, CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END as gender
 								, age
 								, email 
 								, TRY_CAST(SubmissionDate AS datetime) as SubmissionDate
 								, lead_status
-, [source]
+								, [source]
 								, [data_source]
 						FROM staging.staging.leads l</property>
                 <property
@@ -559,12 +557,10 @@
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[postcode]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
-                      length="4000"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[postcode]"
                       name="postcode"
                       truncationRowDisposition="FailComponent" />
@@ -575,7 +571,7 @@
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
-                      length="4000"
+                      length="100"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[mobile]"
                       name="mobile"
                       truncationRowDisposition="FailComponent" />
@@ -710,9 +706,7 @@
                       name="state" />
                     <externalMetadataColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1000"
+                      dataType="i4"
                       name="postcode" />
                     <externalMetadataColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
@@ -822,9 +816,7 @@
                       name="state" />
                     <outputColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[postcode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1000"
+                      dataType="i4"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[postcode]"
                       name="postcode" />
                     <outputColumn
@@ -917,6 +909,7 @@
     <DTS:Executable
       DTS:refId="Package\DFT - load old customer data"
       DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{4BBE693C-00F7-4DF5-8D59-1571AD7087C1}"
       DTS:ExecutableType="Microsoft.Pipeline"
@@ -928,6 +921,420 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\DFT - load old customer data\DRC - nvarchar to varchar"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="DRC - nvarchar to varchar"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="300"
+                      cachedName="title"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[firstname]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="firstname"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[firstname]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[lastname]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="lastname"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[lastname]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[address1]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="address1"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[address1]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="city"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[state]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="state"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[state]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="sex"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[sex]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[age]"
+                      cachedDataType="i4"
+                      cachedName="age"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[age]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[email]"
+                      cachedDataType="wstr"
+                      cachedLength="85"
+                      cachedName="email"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[email]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[status]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="status"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[status]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[data_source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="data_source"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[data_source]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[source]"
+                      cachedDataType="wstr"
+                      cachedLength="300"
+                      cachedName="source"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[source]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[title_con]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[title_con]"
+                      name="title_con"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,10,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[title]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,10,1252)title</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[firstname_con]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[firstname_con]"
+                      name="firstname_con"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,100,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[firstname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,100,1252)firstname</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lastname_con]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lastname_con]"
+                      name="lastname_con"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,100,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[lastname]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,100,1252)lastname</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[address1_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="250"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[address1_conv]"
+                      name="address1_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,250,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[address1]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,250,1252)address1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[city_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="250"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[city_conv]"
+                      name="city_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,250,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[city]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,250,1252)city</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[state_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="250"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[state_conv]"
+                      name="state_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,250,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[state]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,250,1252)state</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[email_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[email_conv]"
+                      name="email_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,100,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[email]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,100,1252)email</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[sex_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="1"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[sex_conv]"
+                      name="sex_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,1,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[sex]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,1,1252)sex</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[age_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="5"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[age_conv]"
+                      name="age_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,5,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[age]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,5,1252)age</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lead_status_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lead_status_conv]"
+                      name="lead_status_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,10,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[status]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,10,1252)status</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[data_source_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[data_source_conv]"
+                      name="data_source_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,255,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[data_source]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,255,1252)data_source</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lead_source_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lead_source_conv]"
+                      name="lead_source_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,255,1252)#{Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[source]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,255,1252)source</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\DFT - load old customer data\OLE_DST - dbo_customer"
               componentClassID="Microsoft.OLEDBDestination"
@@ -1007,31 +1414,8 @@
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[customer_id]" />
                     <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[title]"
-                      cachedDataType="wstr"
-                      cachedLength="300"
-                      cachedName="title"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[title]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[title]" />
-                    <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[city]"
-                      cachedDataType="wstr"
-                      cachedLength="85"
-                      cachedName="city"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[city]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[city]" />
-                    <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[state]"
-                      cachedDataType="wstr"
-                      cachedLength="85"
-                      cachedName="state"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[state]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[state]" />
-                    <inputColumn
                       refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[postcode]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="1000"
+                      cachedDataType="i4"
                       cachedName="postcode"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[postcode]" />
@@ -1039,7 +1423,7 @@
                       refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[mobile]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="1000"
+                      cachedLength="100"
                       cachedName="mobile"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[mobile]" />
@@ -1051,77 +1435,107 @@
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[dob]" />
                     <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[gender]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4000"
-                      cachedName="gender"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
-                      lineageId="Package\DFT - load old customer data\90:invalid" />
-                    <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[age]"
-                      cachedDataType="i4"
-                      cachedName="age"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[age]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[age]" />
-                    <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[email]"
-                      cachedDataType="wstr"
-                      cachedLength="85"
-                      cachedName="email"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[email]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[email]" />
-                    <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[lead_status]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4000"
-                      cachedName="lead_status"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
-                      lineageId="Package\DFT - load old customer data\93:invalid" />
-                    <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[firstname]"
-                      cachedDataType="wstr"
-                      cachedLength="85"
-                      cachedName="firstname"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[firstname]" />
-                    <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[lastname]"
-                      cachedDataType="wstr"
-                      cachedLength="85"
-                      cachedName="lastname"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[lastname]" />
-                    <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[address1]"
-                      cachedDataType="wstr"
-                      cachedLength="85"
-                      cachedName="address1"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[address]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[address1]" />
-                    <inputColumn
                       refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="SubmissionDate"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[SubmissionDate]" />
                     <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[data_source]"
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[title_con]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="title_con"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[title_con]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[firstname_con]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="firstname_con"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[firstname_con]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[lastname_con]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="lastname_con"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lastname_con]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[address1_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="address1_conv"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[address1_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[city_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="city_conv"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[city_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[state_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="state_conv"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[state_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[email_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="email_conv"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[email_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[sex_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="sex_conv"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[sex_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[age_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="age_conv"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[age_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[lead_status_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="lead_status_conv"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lead_status_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[data_source_conv]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="255"
-                      cachedName="data_source"
+                      cachedName="data_source_conv"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[data_source]" />
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[data_source_conv]" />
                     <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[source]"
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[lead_source_conv]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="4000"
-                      cachedName="source"
+                      cachedLength="255"
+                      cachedName="lead_source_conv"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
-                      lineageId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[state]" />
+                      lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lead_source_conv]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1167,15 +1581,11 @@
                       name="state" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4"
+                      dataType="i4"
                       name="postcode" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
-                      codePage="1252"
-                      dataType="str"
-                      length="100"
+                      dataType="i4"
                       name="mobile" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[email]"
@@ -1288,35 +1698,40 @@
 								, lastname
 								, address1
 								, city
-								, CASE WHEN [state] IN ('Ade', 'ADELAIDE', 'adelide', 'AD', 's a', 'S.A', 'SA - SOUTH AUSTRALIA', 'South Australia', 'South Austrila', 'South of Australia' ) 
+								, CASE WHEN [state] IN ('Ade', 'adh', 'Adi', 'ADL', 'ADELAIDE', 'adelide', 'ads', 's a', 'S.A', 'SA - SOUTH AUSTRALIA', 'S.A.', 'SA,','SA.'
+														, 'South Australia', 'South Austrila', 'South of Australia', 'SouthAustralia' ) 
 														THEN 'SA'
-										WHEN [state] IN ('Alice Springs','Darwin', 'Darwin NT','N T', 'N.T', 'Northern Territory','NorthernTerritory')  
+										WHEN [state] IN ('Alice Springs','Darwin', 'Darwin NT','N T', 'N.T', 'Northern Territory', 'Nothern Territory', 'NorthernTerritory', 'NT.')  
 														THEN 'NT'
-										WHEN [state] IN ('Australia Capital Territory')  
+										WHEN [state] IN ('Australian Capital Territory', 'ACTCT', 'Australian Captial Territory', 'Canberra')  
 														THEN 'ACT'
-										WHEN [state] IN ('Australia new south wales', 'Gosford', 'New South Wales', 'MSW', 'N s w', 'N.S.W', 'N.SW', 'New South Walse', 'New South Whales', 'New southwales', 'Newsouthwhales',
-															'NSW Australia', 'NSW New South Wales', 'NSW Sydney', 'NswNsw', 'Nsww', 'Sdney', 'Sydney', 'Syd', 'Sydbey', 'Sydney n.s.w', 'waNew South Wales' )
+										WHEN [state] IN ('Australia new south wales', 'Gosford', 'New South Wales', 'BSW','MSW', 'N s w', 'N.S.W', 'N.SW', 'New South Walse', 'New South Whales', 'New southwales', 'Newsouthwhales',
+															'NSW Australia', 'NSW New South Wales', 'NSW Sydney', 'NswNsw', 'Nsww', 'Sdney', 'Sydney', 'Syd', 'Sydbey'
+															, 'Sydney n.s.w', 'waNew South Wales', 'N S W', 'NSWSW', 'NSWnsw','NSWW'  )
 														THEN 'NSW'
-										WHEN [state] IN ('.VIC','Geelong', 'melborne', 'Melborune', 'Melbourn', 'Melbourne', 'Melbourne Victoria', 'Thomastown Victoria' , 'Victora'
-														, 'Victoria', 'Victoria Australia', 'Victoria, Australia' , 'victorya'  ) 
+										WHEN [state] IN ('.VIC','Geelong', 'Crown Melbourne','melborne', 'Melborune', 'Melbourn', 'Melbourne', 'Melbourne Victoria', 'Thomastown Victoria' , 'Victora'
+														, 'Victoria', 'Victoria Australia', 'Victoria, Australia' , 'victorya', 'V. I. C.', 'VIC.', 'VIC.', 'Vict', 'Victori'  ) 
 														THEN 'VIC'
 										WHEN [state] IN ('EAST PERTH', 'Australia Wa', 'Perth', 'Preth', 'W A', 'W.A', 'W.A.', 'wa 6053', 'WAa', 'West Australia', 'Western Asutalia', 'Western Australia'
-														, 'wWA', 'Wwst australia'  )
+														, 'wWA', 'Wwst australia', 'WA.', 'Western  Australia'  )
 														THEN 'WA'
 										WHEN [state] IN ('AustralianState_QLD', 'Brisbane', 'BRS', 'Camira QLD', 'FAR NORTH  QUEENSLAND', 'Gold Coast', 'Gold coast Queensland'
-															, 'Gold oast', 'goldcoast', 'Mudgeeraba', 'Qeensland', 'QDL', 'Qland', 'QldQLD', 'qlds', 'Que'
+															, 'Gold oast', 'goldcoast', 'Mudgeeraba', 'Qeensland', 'QDL', 'Qland', 'QldQLD', 'qlds', 'Que', 'Toowoomba'
+															, 'Gympie', 'Gym', 'Ipswich', 'Moreton Bay', 'Q.L', 'Qd', 'Qee', 'QID', 'Qld.', 'QLDD', 'Queesnsland'
 															, 'Queen land', 'queenland', 'Queensland', 'Queensland, Australia', 'Queensland, helensvale', 'Queensland4', 'quensland'  )
 														THEN 'QLD'
 										WHEN [state] IN ('STAVERTON TAS', 'Tasmaina', 'Tasmania', 'Tasmanian' , 'Wynyard Tasmainia' )
 														THEN 'TAS'
 										ELSE [state]
 										END AS [state]
-								, [dbo].[fn_remove_non_numeric] ( postcode ) AS postcode
-								, [dbo].[fn_remove_non_numeric] ( phone ) as mobile
-								, dob
-								, CASE WHEN sex = 'Male' or sex = 'Mr' THEN 'M' ELSE sex END as sex
-								, DATEDIFF(YY, PARSE(dob AS DATE USING 'en-au'), GETDATE() ) 
-									- CASE WHEN  DATEDIFF(YY, PARSE(dob AS DATE USING 'en-au'), GETDATE() )
+								, CAST( ( [dbo].[fn_remove_non_numeric] ( postcode ) ) AS INT) AS postcode
+								,  ( [dbo].[fn_remove_non_numeric] ( phone )  )  as mobile
+								, TRY_PARSE(dob AS DATE USING 'en-au') as dob
+								, CASE WHEN sex = 'Male' or sex = 'M' THEN 'M' 
+									   WHEN sex = 'female' or sex = 'F' THEN 'F'
+									   ELSE NULL END as sex
+								, DATEDIFF(YY, TRY_PARSE(dob AS DATE USING 'en-au'), GETDATE() ) 
+									- CASE WHEN  DATEDIFF(YY, TRY_PARSE(dob AS DATE USING 'en-au'), GETDATE() )
 									&gt; GETDATE() THEN 1
 									ELSE 0
 									END AS age
@@ -1324,8 +1739,9 @@
 								, TRY_CAST(ts AS datetime) as SubmissionDate
 								, [status]
 								, [data_source]
+								,REPLACE( [source], '`', '' ) as [source]
 						FROM staging.staging.leads_old l
-WHERE l.lead_id =7686</property>
+--WHERE l.lead_id =7686</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1432,12 +1848,10 @@ WHERE l.lead_id =7686</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[postcode]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
-                      length="1000"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[postcode]"
                       name="postcode"
                       truncationRowDisposition="FailComponent" />
@@ -1448,7 +1862,7 @@ WHERE l.lead_id =7686</property>
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
-                      length="1000"
+                      length="100"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[mobile]"
                       name="mobile"
                       truncationRowDisposition="FailComponent" />
@@ -1464,11 +1878,12 @@ WHERE l.lead_id =7686</property>
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[sex]"
-                      dataType="wstr"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[sex]"
-                      length="300"
+                      length="1"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[sex]"
                       name="sex"
                       truncationRowDisposition="FailComponent" />
@@ -1521,6 +1936,16 @@ WHERE l.lead_id =7686</property>
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[data_source]"
                       name="data_source"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[source]"
+                      length="300"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[source]"
+                      name="source"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1560,9 +1985,7 @@ WHERE l.lead_id =7686</property>
                       name="state" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1000"
+                      dataType="i4"
                       name="postcode" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
@@ -1572,13 +1995,13 @@ WHERE l.lead_id =7686</property>
                       name="mobile" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
-                      dataType="wstr"
-                      length="300"
+                      dataType="dbDate"
                       name="dob" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[sex]"
-                      dataType="wstr"
-                      length="300"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
                       name="sex" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
@@ -1604,6 +2027,11 @@ WHERE l.lead_id =7686</property>
                       dataType="str"
                       length="255"
                       name="data_source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[source]"
+                      dataType="wstr"
+                      length="4000"
+                      name="source" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1654,9 +2082,7 @@ WHERE l.lead_id =7686</property>
                       name="state" />
                     <outputColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[postcode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="1000"
+                      dataType="i4"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[postcode]"
                       name="postcode" />
                     <outputColumn
@@ -1668,14 +2094,14 @@ WHERE l.lead_id =7686</property>
                       name="mobile" />
                     <outputColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[dob]"
-                      dataType="wstr"
-                      length="300"
+                      dataType="dbDate"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[dob]"
                       name="dob" />
                     <outputColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[sex]"
-                      dataType="wstr"
-                      length="300"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[sex]"
                       name="sex" />
                     <outputColumn
@@ -1708,6 +2134,12 @@ WHERE l.lead_id =7686</property>
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
                       name="data_source" />
                     <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[source]"
+                      dataType="wstr"
+                      length="4000"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[source]"
+                      name="source" />
+                    <outputColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -1727,8 +2159,13 @@ WHERE l.lead_id =7686</property>
           </components>
           <paths>
             <path
-              refId="Package\DFT - load old customer data.Paths[OLE DB Source Output]"
+              refId="Package\DFT - load old customer data.Paths[Derived Column Output]"
               endId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT - load old customer data.Paths[OLE DB Source Output]"
+              endId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1820,7 +2257,7 @@ WHERE l.lead_id =7686</property>
         <NodeLayout
           Size="221,42"
           Id="Package\DFT - load old customer data"
-          TopLeft="485,218" />
+          TopLeft="474,216" />
         <NodeLayout
           Size="231,42"
           Id="Package\SQL - check if old leads loaded"
@@ -1865,30 +2302,30 @@ WHERE l.lead_id =7686</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="595.5,260">
+          TopLeft="584.5,258">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-145.166666666667,100"
+              EndConnector="-134.166666666667,102"
               Start="0,0"
-              End="-145.166666666667,92.5">
+              End="-134.166666666667,94.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.6042868920033" />
+                    End="0,56.7963726298434" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,55.6042868920033"
-                    Point2="0,59.6042868920033"
-                    Point3="-4,59.6042868920033" />
+                    Point1="0,56.7963726298434"
+                    Point2="0,60.7963726298434"
+                    Point3="-4,60.7963726298434" />
                   <mssgle:LineSegment
-                    End="-141.166666666667,59.6042868920033" />
+                    End="-130.166666666667,60.7963726298434" />
                   <mssgle:CubicBezierSegment
-                    Point1="-141.166666666667,59.6042868920033"
-                    Point2="-145.166666666667,59.6042868920033"
-                    Point3="-145.166666666667,63.6042868920033" />
+                    Point1="-130.166666666667,60.7963726298434"
+                    Point2="-134.166666666667,60.7963726298434"
+                    Point3="-134.166666666667,64.7963726298433" />
                   <mssgle:LineSegment
-                    End="-145.166666666667,92.5" />
+                    End="-134.166666666667,94.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1899,25 +2336,25 @@ WHERE l.lead_id =7686</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="593.5,142">
+          TopLeft="588,142">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,76"
+              EndConnector="0,74"
               Start="0,0"
-              End="0,68.5">
+              End="0,66.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,68.5" />
+                    End="0,66.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,26.25,16,16"
+              BoundingBox="-8,25.25,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1999,62 +2436,90 @@ WHERE l.lead_id =7686</property>
     design-time-name="Package\DFT - load old customer data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="214,42"
           Id="Package\DFT - load old customer data\OLE_SRC - load_old_leads"
-          TopLeft="198,88" />
+          TopLeft="100,60" />
         <NodeLayout
           Size="200,42"
           Id="Package\DFT - load old customer data\OLE_DST - dbo_customer"
-          TopLeft="320,228" />
+          TopLeft="371,313" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\DFT - load old customer data\DRC - nvarchar to varchar"
+          TopLeft="185,180" />
         <EdgeLayout
           Id="Package\DFT - load old customer data.Paths[OLE DB Source Output]"
-          TopLeft="305,130">
+          TopLeft="207,102">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="115,98"
+              EndConnector="81.5,78"
               Start="0,0"
-              End="115,90.5">
+              End="81.5,70.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45" />
+                    End="0,35" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,45"
-                    Point2="0,49"
-                    Point3="4,49" />
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="4,39" />
                   <mssgle:LineSegment
-                    End="111,49" />
+                    End="77.5,39" />
                   <mssgle:CubicBezierSegment
-                    Point1="111,49"
-                    Point2="115,49"
-                    Point3="115,53" />
+                    Point1="77.5,39"
+                    Point2="81.5,39"
+                    Point3="81.5,43" />
                   <mssgle:LineSegment
-                    End="115,90.5" />
+                    End="81.5,70.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="49.5,54,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load old customer data.Paths[Derived Column Output]"
+          TopLeft="288.5,222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="182.5,91"
+              Start="0,0"
+              End="182.5,83.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.5"
+                    Point2="0,45.5"
+                    Point3="4,45.5" />
+                  <mssgle:LineSegment
+                    End="178.5,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="178.5,45.5"
+                    Point2="182.5,45.5"
+                    Point3="182.5,49.5" />
+                  <mssgle:LineSegment
+                    End="182.5,83.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - load old customer data\OLE_SRC - load_old_leads">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT - load old customer data\OLE_DST - dbo_customer">
     <Properties>
@@ -2065,6 +2530,14 @@ WHERE l.lead_id =7686</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load old customer data\OLE_SRC - load_old_leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

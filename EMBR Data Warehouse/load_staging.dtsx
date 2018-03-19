@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{1AB8523C-95F4-4A1A-AD4E-4C759F5B1A1C}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{ADD68D1C-5AD5-4758-89D1-2086AB6417DF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -65,7 +65,7 @@
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="email"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[email]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -93,7 +93,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">(DT_STR,250,1252)#{Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[email]}</property>
+                          name="Expression">(DT_STR,250,1252)#{Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -190,20 +190,20 @@
                       cachedDataType="i4"
                       cachedName="ErrorCode"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorCode]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].Columns[ErrorColumn]"
                       cachedDataType="i4"
                       cachedName="ErrorColumn"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorColumn]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].Columns[Flat File Source Error Output Column]"
                       cachedCodepage="1252"
                       cachedDataType="text"
                       cachedName="Flat File Source Error Output Column"
                       externalMetadataColumnId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input].ExternalColumns[Flat File Source Error Output Column]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -303,7 +303,7 @@
                       cachedLength="250"
                       cachedName="email"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[email]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[email]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[title]"
                       cachedCodepage="1252"
@@ -311,7 +311,7 @@
                       cachedLength="4000"
                       cachedName="title"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[title]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[title]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[title]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[firstname]"
                       cachedCodepage="1252"
@@ -319,7 +319,7 @@
                       cachedLength="4000"
                       cachedName="firstname"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[firstname]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[firstname]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[firstname]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[lastname]"
                       cachedCodepage="1252"
@@ -327,7 +327,7 @@
                       cachedLength="4000"
                       cachedName="lastname"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lastname]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lastname]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lastname]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[address1]"
                       cachedCodepage="1252"
@@ -335,7 +335,7 @@
                       cachedLength="4000"
                       cachedName="address1"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[address1]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[address1]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[address1]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[city]"
                       cachedCodepage="1252"
@@ -343,7 +343,7 @@
                       cachedLength="4000"
                       cachedName="city"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[city]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[city]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[city]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[state]"
                       cachedCodepage="1252"
@@ -351,7 +351,7 @@
                       cachedLength="4000"
                       cachedName="state"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[state]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[state]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[state]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[postcode]"
                       cachedCodepage="1252"
@@ -359,7 +359,7 @@
                       cachedLength="4000"
                       cachedName="postcode"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[postcode]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[postcode]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[mobile]"
                       cachedCodepage="1252"
@@ -367,7 +367,7 @@
                       cachedLength="4000"
                       cachedName="mobile"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[mobile]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[mobile]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[dob]"
                       cachedCodepage="1252"
@@ -375,7 +375,7 @@
                       cachedLength="4000"
                       cachedName="dob"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[dob]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[dob]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[Gender]"
                       cachedCodepage="1252"
@@ -383,7 +383,7 @@
                       cachedLength="4000"
                       cachedName="Gender"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Gender]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Gender]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[Age]"
                       cachedCodepage="1252"
@@ -391,7 +391,7 @@
                       cachedLength="4000"
                       cachedName="Age"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Age]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Age]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[Source]"
                       cachedCodepage="1252"
@@ -399,7 +399,7 @@
                       cachedLength="4000"
                       cachedName="Source"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Source]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Source]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[Prize]"
                       cachedCodepage="1252"
@@ -407,7 +407,7 @@
                       cachedLength="4000"
                       cachedName="Prize"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Prize]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Prize]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[ipaddress]"
                       cachedCodepage="1252"
@@ -415,7 +415,7 @@
                       cachedLength="4000"
                       cachedName="ipaddress"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[ipaddress]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[ipaddress]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
                       cachedCodepage="1252"
@@ -423,7 +423,7 @@
                       cachedLength="4000"
                       cachedName="SubmissionDate"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[SubmissionDate]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[affiliateid]"
                       cachedCodepage="1252"
@@ -431,7 +431,7 @@
                       cachedLength="4000"
                       cachedName="affiliateid"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[affiliateid]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[affiliateid]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[affiliateid]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[clickid]"
                       cachedCodepage="1252"
@@ -439,7 +439,7 @@
                       cachedLength="4000"
                       cachedName="clickid"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[clickid]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[clickid]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[clickid]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[device_brand]"
                       cachedCodepage="1252"
@@ -447,7 +447,7 @@
                       cachedLength="4000"
                       cachedName="device_brand"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[device_brand]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_brand]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[device_brand]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[user_agent]"
                       cachedCodepage="1252"
@@ -455,7 +455,7 @@
                       cachedLength="4000"
                       cachedName="user_agent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[user_agent]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[user_agent]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[user_agent]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[device_type]"
                       cachedCodepage="1252"
@@ -463,7 +463,7 @@
                       cachedLength="4000"
                       cachedName="device_type"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[device_type]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_type]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[device_type]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[lead_id]"
                       cachedCodepage="1252"
@@ -471,7 +471,7 @@
                       cachedLength="100"
                       cachedName="lead_id"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_id]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[lead_status]"
                       cachedCodepage="1252"
@@ -479,7 +479,7 @@
                       cachedLength="100"
                       cachedName="lead_status"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_status]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_status]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[lead_message]"
                       cachedCodepage="1252"
@@ -487,7 +487,7 @@
                       cachedLength="4000"
                       cachedName="lead_message"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_message]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_message]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_message]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].Columns[email_cleansed]"
                       cachedCodepage="1252"
@@ -777,7 +777,7 @@
                       cachedLength="250"
                       cachedName="email"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[email]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[email]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[title]"
                       cachedCodepage="1252"
@@ -785,7 +785,7 @@
                       cachedLength="4000"
                       cachedName="title"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[title]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[title]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[title]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[firstname]"
                       cachedCodepage="1252"
@@ -793,7 +793,7 @@
                       cachedLength="4000"
                       cachedName="firstname"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[firstname]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[firstname]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[firstname]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[lastname]"
                       cachedCodepage="1252"
@@ -801,7 +801,7 @@
                       cachedLength="4000"
                       cachedName="lastname"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lastname]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lastname]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lastname]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[address1]"
                       cachedCodepage="1252"
@@ -809,7 +809,7 @@
                       cachedLength="4000"
                       cachedName="address1"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[address1]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[address1]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[address1]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[city]"
                       cachedCodepage="1252"
@@ -817,7 +817,7 @@
                       cachedLength="4000"
                       cachedName="city"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[city]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[city]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[city]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[state]"
                       cachedCodepage="1252"
@@ -825,7 +825,7 @@
                       cachedLength="4000"
                       cachedName="state"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[state]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[state]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[state]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[postcode]"
                       cachedCodepage="1252"
@@ -833,7 +833,7 @@
                       cachedLength="4000"
                       cachedName="postcode"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[postcode]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[postcode]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[postcode]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[mobile]"
                       cachedCodepage="1252"
@@ -841,7 +841,7 @@
                       cachedLength="4000"
                       cachedName="mobile"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[mobile]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[mobile]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[mobile]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[dob]"
                       cachedCodepage="1252"
@@ -849,7 +849,7 @@
                       cachedLength="4000"
                       cachedName="dob"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[dob]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[dob]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[dob]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[Gender]"
                       cachedCodepage="1252"
@@ -857,7 +857,7 @@
                       cachedLength="4000"
                       cachedName="Gender"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Gender]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Gender]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Gender]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[Age]"
                       cachedCodepage="1252"
@@ -865,7 +865,7 @@
                       cachedLength="4000"
                       cachedName="Age"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Age]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Age]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Age]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[Source]"
                       cachedCodepage="1252"
@@ -873,7 +873,7 @@
                       cachedLength="4000"
                       cachedName="Source"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Source]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Source]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Source]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[Prize]"
                       cachedCodepage="1252"
@@ -881,7 +881,7 @@
                       cachedLength="4000"
                       cachedName="Prize"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Prize]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Prize]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Prize]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[ipaddress]"
                       cachedCodepage="1252"
@@ -889,7 +889,7 @@
                       cachedLength="4000"
                       cachedName="ipaddress"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[ipaddress]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[ipaddress]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[ipaddress]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[SubmissionDate]"
                       cachedCodepage="1252"
@@ -897,7 +897,7 @@
                       cachedLength="4000"
                       cachedName="SubmissionDate"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[SubmissionDate]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[affiliateid]"
                       cachedCodepage="1252"
@@ -905,7 +905,7 @@
                       cachedLength="4000"
                       cachedName="affiliateid"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[affiliateid]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[affiliateid]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[affiliateid]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[clickid]"
                       cachedCodepage="1252"
@@ -913,7 +913,7 @@
                       cachedLength="4000"
                       cachedName="clickid"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[clickid]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[clickid]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[clickid]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[device_brand]"
                       cachedCodepage="1252"
@@ -921,7 +921,7 @@
                       cachedLength="4000"
                       cachedName="device_brand"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[device_brand]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_brand]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[device_brand]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[user_agent]"
                       cachedCodepage="1252"
@@ -929,7 +929,7 @@
                       cachedLength="4000"
                       cachedName="user_agent"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[user_agent]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[user_agent]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[user_agent]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[device_type]"
                       cachedCodepage="1252"
@@ -937,7 +937,7 @@
                       cachedLength="4000"
                       cachedName="device_type"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[device_type]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_type]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[device_type]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[lead_id]"
                       cachedCodepage="1252"
@@ -945,7 +945,7 @@
                       cachedLength="100"
                       cachedName="lead_id"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_id]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_id]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[lead_status]"
                       cachedCodepage="1252"
@@ -953,7 +953,7 @@
                       cachedLength="100"
                       cachedName="lead_status"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_status]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_status]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_status]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[lead_message]"
                       cachedCodepage="1252"
@@ -961,7 +961,7 @@
                       cachedLength="4000"
                       cachedName="lead_message"
                       externalMetadataColumnId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_message]"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_message]" />
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_message]" />
                     <inputColumn
                       refId="Package\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[data_source]"
                       cachedCodepage="1252"
@@ -1152,12 +1152,12 @@
               </outputs>
             </component>
             <component
-              refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv"
+              refId="Package\DFT - load staging_leads\Source - lead-exports"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
               localeId="1033"
-              name="Source - lead-exports-20404_csv"
+              name="Source - lead-exports"
               usesDispositions="true"
               validateExternalMetadata="False"
               version="1">
@@ -1173,27 +1173,27 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Connections[FlatFileConnection]"
+                  refId="Package\DFT - load staging_leads\Source - lead-exports.Connections[FlatFileConnection]"
                   connectionManagerID="{73685A1E-4410-4126-B4AE-509677BDE5C0}:external"
                   connectionManagerRefId="Project.ConnectionManagers[Historical Files]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output]"
+                  refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[email]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[email]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[email]"
                       length="250"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[email]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]"
                       name="email"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1206,16 +1206,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[title]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[title]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[title]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[title]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[title]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[title]"
                       name="title"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1228,16 +1228,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[firstname]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[firstname]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[firstname]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[firstname]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[firstname]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[firstname]"
                       name="firstname"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1250,16 +1250,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lastname]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lastname]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lastname]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lastname]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lastname]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lastname]"
                       name="lastname"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1272,16 +1272,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[address1]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[address1]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[address1]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[address1]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[address1]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[address1]"
                       name="address1"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1294,16 +1294,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[city]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[city]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[city]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[city]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[city]"
                       name="city"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1316,16 +1316,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[state]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[state]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[state]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[state]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[state]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[state]"
                       name="state"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1338,16 +1338,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[postcode]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[postcode]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[postcode]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[postcode]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[postcode]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[postcode]"
                       name="postcode"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1360,16 +1360,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[mobile]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[mobile]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[mobile]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[mobile]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[mobile]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[mobile]"
                       name="mobile"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1382,16 +1382,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[dob]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[dob]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[dob]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[dob]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[dob]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[dob]"
                       name="dob"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1404,16 +1404,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Gender]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Gender]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Gender]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Gender]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Gender]"
                       name="Gender"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1426,16 +1426,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Age]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Age]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Age]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Age]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Age]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Age]"
                       name="Age"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1448,16 +1448,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Source]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Source]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Source]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Source]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Source]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Source]"
                       name="Source"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1470,16 +1470,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Prize]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Prize]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Prize]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Prize]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[Prize]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Prize]"
                       name="Prize"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1492,16 +1492,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[ipaddress]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[ipaddress]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[ipaddress]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[ipaddress]"
                       name="ipaddress"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1514,16 +1514,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[SubmissionDate]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[SubmissionDate]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]"
                       name="SubmissionDate"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1536,16 +1536,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[affiliateid]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[affiliateid]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[affiliateid]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[affiliateid]"
                       name="affiliateid"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1558,16 +1558,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[clickid]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[clickid]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[clickid]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[clickid]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[clickid]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[clickid]"
                       name="clickid"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1580,16 +1580,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_brand]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[device_brand]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[device_brand]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[device_brand]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_brand]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[device_brand]"
                       name="device_brand"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1602,16 +1602,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[user_agent]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[user_agent]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[user_agent]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[user_agent]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[user_agent]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[user_agent]"
                       name="user_agent"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1624,16 +1624,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_type]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[device_type]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[device_type]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[device_type]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[device_type]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[device_type]"
                       name="device_type"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1646,16 +1646,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_id]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
                       length="100"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_id]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]"
                       name="lead_id"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1668,16 +1668,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_status]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_status]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
                       length="100"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_status]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_status]"
                       name="lead_status"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1690,16 +1690,16 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_message]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_message]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
+                      errorRowDisposition="RedirectRow"
+                      externalMetadataColumnId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
                       length="4000"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].Columns[lead_message]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_message]"
                       name="lead_message"
-                      truncationRowDisposition="FailComponent">
+                      truncationRowDisposition="RedirectRow">
                       <properties>
                         <property
                           dataType="System.Boolean"
@@ -1715,145 +1715,145 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[email]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[email]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="email" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[title]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[title]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="title" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[firstname]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[firstname]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="firstname" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lastname]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lastname]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="lastname" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[address1]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[address1]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="address1" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[city]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[city]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="city" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[state]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[state]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="state" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[postcode]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[postcode]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="postcode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[mobile]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[mobile]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="mobile" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[dob]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[dob]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="dob" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Gender]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="Gender" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Age]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Age]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="Age" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Source]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Source]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="Source" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[Prize]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Prize]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="Prize" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="ipaddress" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="SubmissionDate" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="affiliateid" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[clickid]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[clickid]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="clickid" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[device_brand]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[device_brand]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="device_brand" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[user_agent]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[user_agent]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="user_agent" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[device_type]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[device_type]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="device_type" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="lead_id" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="lead_status" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
@@ -1861,27 +1861,27 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output]"
+                  refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="1252"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1900,12 +1900,12 @@
               refId="Package\DFT - load staging_leads.Paths[Flat File Source Error Output]"
               endId="Package\DFT - load staging_leads\Error file.Inputs[Flat File Destination Input]"
               name="Flat File Source Error Output"
-              startId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Error Output]" />
+              startId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output]" />
             <path
               refId="Package\DFT - load staging_leads.Paths[Flat File Source Output]"
               endId="Package\DFT - load staging_leads\DC - cleanse columns.Inputs[Derived Column Input]"
               name="Flat File Source Output"
-              startId="Package\DFT - load staging_leads\Source - lead-exports-20404_csv.Outputs[Flat File Source Output]" />
+              startId="Package\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output]" />
             <path
               refId="Package\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
               endId="Package\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input]"
@@ -2014,8 +2014,8 @@
           Id="Package\DFT - load staging_leads\OLE_DST - staging_leads"
           TopLeft="144.5,212.5" />
         <NodeLayout
-          Size="234,42"
-          Id="Package\DFT - load staging_leads\Source - lead-exports-20404_csv"
+          Size="184,42"
+          Id="Package\DFT - load staging_leads\Source - lead-exports"
           TopLeft="19.5,55.5" />
         <NodeLayout
           Size="196,42"
@@ -2063,13 +2063,13 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load staging_leads.Paths[Flat File Source Output]"
-          TopLeft="136.5,97.5">
+          TopLeft="111.5,97.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.5,42.5"
+              EndConnector="16.5,42.5"
               Start="0,0"
-              End="-8.5,35">
+              End="16.5,35">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -2078,15 +2078,15 @@
                   <mssgle:CubicBezierSegment
                     Point1="0,17.25"
                     Point2="0,21.25"
-                    Point3="-4,21.25" />
+                    Point3="4,21.25" />
                   <mssgle:LineSegment
-                    End="-4.5,21.25" />
+                    End="12.5,21.25" />
                   <mssgle:CubicBezierSegment
-                    Point1="-4.5,21.25"
-                    Point2="-8.5,21.25"
-                    Point3="-8.5,25.25" />
+                    Point1="12.5,21.25"
+                    Point2="16.5,21.25"
+                    Point3="16.5,25.25" />
                   <mssgle:LineSegment
-                    End="-8.5,35" />
+                    End="16.5,35" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2097,37 +2097,37 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load staging_leads.Paths[Flat File Source Error Output]"
-          TopLeft="253.5,76.5">
+          TopLeft="203.5,76.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="121.5,19.5"
+              EndConnector="171.5,19.5"
               Start="0,0"
-              End="114,19.5">
+              End="164,19.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="56.75,0" />
+                    End="81.75,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="56.75,0"
-                    Point2="60.75,0"
-                    Point3="60.75,4" />
+                    Point1="81.75,0"
+                    Point2="85.75,0"
+                    Point3="85.75,4" />
                   <mssgle:LineSegment
-                    End="60.75,15.5" />
+                    End="85.75,15.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="60.75,15.5"
-                    Point2="60.75,19.5"
-                    Point3="64.75,19.5" />
+                    Point1="85.75,15.5"
+                    Point2="85.75,19.5"
+                    Point3="89.75,19.5" />
                   <mssgle:LineSegment
-                    End="114,19.5" />
+                    End="164,19.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-2.87638671874999,-17.609375,127.2527734375,11.609375"
+              BoundingBox="22.12361328125,-17.609375,127.2527734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
