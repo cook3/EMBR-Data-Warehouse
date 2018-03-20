@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="32"
-  DTS:VersionGUID="{CC5684D7-6809-46FD-BAD0-0E33EC87F017}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{011CB630-944A-4EF8-8FED-774C886A1B7B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -23,7 +23,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="int_is_empty">
       <DTS:VariableValue
-        DTS:DataType="11">0</DTS:VariableValue>
+        DTS:DataType="3">0</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -41,6 +41,151 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\DFT - load customer table\LKP - dbo_customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="LKP - dbo_customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT customer_id
+FROM dbo.customer
+WHERE [data_source] = 'databowl'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT customer_id
+FROM dbo.customer
+WHERE [data_source] = 'databowl') [refTable]
+where [refTable].[customer_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[customer_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - load customer table\LKP - dbo_customer.Connections[OleDbConnection]"
+                  connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[warehouse]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - load customer table\LKP - dbo_customer.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - load customer table\LKP - dbo_customer.Inputs[Lookup Input].Columns[customer_id]"
+                      cachedDataType="i4"
+                      cachedName="customer_id"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">customer_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - load customer table\LKP - dbo_customer.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT - load customer table\LKP - dbo_customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - load customer table\LKP - dbo_customer.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT - load customer table\LKP - dbo_customer.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT - load customer table\LKP - dbo_customer.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT - load customer table\LKP - dbo_customer.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - load customer table\LKP - dbo_customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load customer table\LKP - dbo_customer.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - load customer table\LKP - dbo_customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load customer table\LKP - dbo_customer.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\DFT - load customer table\OLE_DST - dbo_customer"
               componentClassID="Microsoft.OLEDBDestination"
@@ -115,9 +260,7 @@
                   <inputColumns>
                     <inputColumn
                       refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[customer_id]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="4000"
+                      cachedDataType="i4"
                       cachedName="customer_id"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[customer_id]" />
@@ -155,7 +298,7 @@
                       refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[mobile]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="100"
+                      cachedLength="1000"
                       cachedName="mobile"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[mobile]" />
@@ -393,7 +536,7 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  lead_id AS customer_id
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT CAST( lead_id AS INT) AS customer_id
 								, CASE WHEN title = 'F' THEN 'Ms'
 										WHEN title = 'M' THEN 'Mr'
 										WHEN title = 'Miss' THEN 'Ms'
@@ -432,8 +575,6 @@
 										END AS [state]
 								, CAST( ( [dbo].[fn_remove_non_numeric] ( postcode ) ) AS INT) AS postcode
 								, [dbo].[fn_remove_non_numeric] (  mobile ) AS mobile
-								--, CAST( ( CASE WHEN mobile LIKE '61%' THEN  [dbo].[fn_remove_non_numeric] ( SUBSTRING( mobile, 3, 1000  )  ) 
-								--			ELSE [dbo].[fn_remove_non_numeric] (  mobile )  END ) AS BIGINT ) as mobile
 								, TRY_PARSE(dob AS DATE USING 'en-au') as dob
 								, CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END as gender
 								, age
@@ -480,12 +621,10 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[customer_id]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
-                      length="4000"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[customer_id]"
                       name="customer_id"
                       truncationRowDisposition="FailComponent" />
@@ -571,7 +710,7 @@
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
-                      length="100"
+                      length="1000"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[mobile]"
                       name="mobile"
                       truncationRowDisposition="FailComponent" />
@@ -638,17 +777,6 @@
                       name="lead_status"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[data_source]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
-                      length="255"
-                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[data_source]"
-                      name="data_source"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[source]"
                       codePage="1252"
                       dataType="str"
@@ -659,14 +787,23 @@
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[source]"
                       name="source"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
+                      length="255"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[data_source]"
+                      name="data_source"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
+                      dataType="i4"
                       name="customer_id" />
                     <externalMetadataColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[title]"
@@ -747,17 +884,17 @@
                       length="4000"
                       name="lead_status" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
-                      codePage="1252"
-                      dataType="str"
-                      length="255"
-                      name="data_source" />
-                    <externalMetadataColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[source]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       name="source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="data_source" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -767,9 +904,7 @@
                   <outputColumns>
                     <outputColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[customer_id]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
+                      dataType="i4"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[customer_id]"
                       name="customer_id" />
                     <outputColumn
@@ -898,8 +1033,13 @@
           </components>
           <paths>
             <path
-              refId="Package\DFT - load customer table.Paths[OLE DB Source Output]"
+              refId="Package\DFT - load customer table.Paths[Lookup No Match Output]"
               endId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input]"
+              name="Lookup No Match Output"
+              startId="Package\DFT - load customer table\LKP - dbo_customer.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\DFT - load customer table.Paths[OLE DB Source Output]"
+              endId="Package\DFT - load customer table\LKP - dbo_customer.Inputs[Lookup Input]"
               name="OLE DB Source Output"
               startId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1585,7 +1725,9 @@
                       name="postcode" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
-                      dataType="i4"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
                       name="mobile" />
                     <externalMetadataColumn
                       refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[email]"
@@ -2232,7 +2374,7 @@
       DTS:CreationName=""
       DTS:DTSID="{C5BEC00A-C64E-4DC9-992C-5CC113EB6704}"
       DTS:EvalOp="1"
-      DTS:Expression="@[User::int_is_empty]"
+      DTS:Expression="@[User::int_is_empty] == 1"
       DTS:From="Package\SQL - check if old leads loaded"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
@@ -2257,41 +2399,41 @@
         <NodeLayout
           Size="221,42"
           Id="Package\DFT - load old customer data"
-          TopLeft="474,216" />
+          TopLeft="467,220" />
         <NodeLayout
           Size="231,42"
           Id="Package\SQL - check if old leads loaded"
-          TopLeft="476,100" />
+          TopLeft="468,120" />
         <NodeLayout
           Size="241,42"
           Id="Package\SQL - update 3 digit NT postcodes"
-          TopLeft="291,360" />
+          TopLeft="291,363" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="233.5,256">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="139.166666666667,104"
+              EndConnector="139.166666666667,107"
               Start="0,0"
-              End="139.166666666667,96.5">
+              End="139.166666666667,99.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,57.9884583676834" />
+                    End="0,59.7765869744435" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,57.9884583676834"
-                    Point2="0,61.9884583676834"
-                    Point3="4,61.9884583676834" />
+                    Point1="0,59.7765869744435"
+                    Point2="0,63.7765869744435"
+                    Point3="4,63.7765869744435" />
                   <mssgle:LineSegment
-                    End="135.166666666667,61.9884583676834" />
+                    End="135.166666666667,63.7765869744435" />
                   <mssgle:CubicBezierSegment
-                    Point1="135.166666666667,61.9884583676834"
-                    Point2="139.166666666667,61.9884583676834"
-                    Point3="139.166666666667,65.9884583676834" />
+                    Point1="135.166666666667,63.7765869744435"
+                    Point2="139.166666666667,63.7765869744435"
+                    Point3="139.166666666667,67.7765869744435" />
                   <mssgle:LineSegment
-                    End="139.166666666667,96.5" />
+                    End="139.166666666667,99.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2302,30 +2444,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="584.5,258">
+          TopLeft="577.5,262">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-134.166666666667,102"
+              EndConnector="-127.166666666667,101"
               Start="0,0"
-              End="-134.166666666667,94.5">
+              End="-127.166666666667,93.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,56.7963726298434" />
+                    End="0,56.2003297609233" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,56.7963726298434"
-                    Point2="0,60.7963726298434"
-                    Point3="-4,60.7963726298434" />
+                    Point1="0,56.2003297609233"
+                    Point2="0,60.2003297609233"
+                    Point3="-4,60.2003297609233" />
                   <mssgle:LineSegment
-                    End="-130.166666666667,60.7963726298434" />
+                    End="-123.166666666667,60.2003297609233" />
                   <mssgle:CubicBezierSegment
-                    Point1="-130.166666666667,60.7963726298434"
-                    Point2="-134.166666666667,60.7963726298434"
-                    Point3="-134.166666666667,64.7963726298433" />
+                    Point1="-123.166666666667,60.2003297609233"
+                    Point2="-127.166666666667,60.2003297609233"
+                    Point3="-127.166666666667,64.2003297609233" />
                   <mssgle:LineSegment
-                    End="-134.166666666667,94.5" />
+                    End="-127.166666666667,93.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2336,25 +2478,25 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="588,142">
+          TopLeft="580.5,162">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,74"
+              EndConnector="0,58"
               Start="0,0"
-              End="0,66.5">
+              End="0,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,66.5" />
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,25.25,16,16"
+              BoundingBox="-8,17.25,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -2365,41 +2507,81 @@
     design-time-name="Package\DFT - load customer table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="181,42"
-          Id="Package\DFT - load customer table\OLE_SRC - customers"
-          TopLeft="103,98" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="200,42"
           Id="Package\DFT - load customer table\OLE_DST - dbo_customer"
-          TopLeft="323,213" />
+          TopLeft="465,265" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\DFT - load customer table\LKP - dbo_customer"
+          TopLeft="311,159" />
         <EdgeLayout
-          Id="Package\DFT - load customer table.Paths[OLE DB Source Output]"
-          TopLeft="193.5,140">
+          Id="Package\DFT - load customer table.Paths[Lookup No Match Output]"
+          TopLeft="400.5,201">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="229.5,73"
+              EndConnector="164.5,64"
               Start="0,0"
-              End="229.5,65.5">
+              End="164.5,56.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5" />
+                    End="0,28" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,32.5"
-                    Point2="0,36.5"
-                    Point3="4,36.5" />
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="4,32" />
                   <mssgle:LineSegment
-                    End="225.5,36.5" />
+                    End="160.5,32" />
                   <mssgle:CubicBezierSegment
-                    Point1="225.5,36.5"
-                    Point2="229.5,36.5"
-                    Point3="229.5,40.5" />
+                    Point1="160.5,32"
+                    Point2="164.5,32"
+                    Point3="164.5,36" />
                   <mssgle:LineSegment
-                    End="229.5,65.5" />
+                    End="164.5,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="26.44361328125,37,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="191,42"
+          Id="Package\DFT - load customer table\OLE_SRC - customers"
+          TopLeft="101,65" />
+        <EdgeLayout
+          Id="Package\DFT - load customer table.Paths[OLE DB Source Output]"
+          TopLeft="196.5,107">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="204,52"
+              Start="0,0"
+              End="204,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="200,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="200,26"
+                    Point2="204,26"
+                    Point3="204,30" />
+                  <mssgle:LineSegment
+                    End="204,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2424,14 +2606,6 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - load customer table\OLE_SRC - customers">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DFT - load old customer data">
     <LayoutInfo>
@@ -2442,13 +2616,13 @@
           Id="Package\DFT - load old customer data\OLE_SRC - load_old_leads"
           TopLeft="100,60" />
         <NodeLayout
-          Size="200,42"
-          Id="Package\DFT - load old customer data\OLE_DST - dbo_customer"
-          TopLeft="371,313" />
-        <NodeLayout
           Size="207,42"
           Id="Package\DFT - load old customer data\DRC - nvarchar to varchar"
           TopLeft="185,180" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\DFT - load old customer data\OLE_DST - dbo_customer"
+          TopLeft="371,313" />
         <EdgeLayout
           Id="Package\DFT - load old customer data.Paths[OLE DB Source Output]"
           TopLeft="207,102">
@@ -2521,6 +2695,14 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT - load old customer data\OLE_SRC - load_old_leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT - load old customer data\OLE_DST - dbo_customer">
     <Properties>
       <Property>
@@ -2534,7 +2716,30 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load old customer data\OLE_SRC - load_old_leads">
+    design-time-name="Package\DFT - load customer table\LKP - dbo_customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load customer table\OLE_SRC - customers">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
