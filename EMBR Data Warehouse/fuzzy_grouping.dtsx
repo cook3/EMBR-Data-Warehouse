@@ -7,12 +7,12 @@
   DTS:CreatorName="Cooke-PC\Cooke"
   DTS:DTSID="{424643FD-EBA3-4965-9731-3BD1FA1B06EC}"
   DTS:ExecutableType=""
-  DTS:LastModifiedProductVersion="14.0.3002.68"
+  DTS:LastModifiedProductVersion="14.0.3002.92"
   DTS:LocaleID="1033"
   DTS:ObjectName="fuzzy_grouping"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{054DD797-AEE9-49F7-8D27-361D96BE1D52}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{3F9C31FE-75A0-4EA2-ACD3-04FD8454B23B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -874,7 +874,7 @@ WHERE mobile like '04000%' --42784</property>
         <NodeLayout
           Size="151,42"
           Id="Package\Data Flow Task"
-          TopLeft="102,132" />
+          TopLeft="152,130" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -883,6 +883,10 @@ WHERE mobile like '04000%' --42784</property>
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="249,230" />
         <NodeLayout
           Size="152,42"
           Id="Package\Data Flow Task\Fuzzy Grouping"
@@ -925,10 +929,6 @@ WHERE mobile like '04000%' --42784</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="249,230" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Fuzzy Grouping Output]"
           TopLeft="198,189">
@@ -967,7 +967,7 @@ WHERE mobile like '04000%' --42784</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Source">
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -980,7 +980,7 @@ WHERE mobile like '04000%' --42784</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    design-time-name="Package\Data Flow Task\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
