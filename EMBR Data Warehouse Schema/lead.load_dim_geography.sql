@@ -25,8 +25,8 @@ IF @incremental_flag = 1 --handle incremental loads
 
 						SELECT -1 AS [geography_key]
 								, '0' AS postcode
-								, 'unk' AS [local_government_area]
-								, 'unknown' AS [state_code]
+								, 'unknown' AS [local_government_area]
+								, 'unk' AS [state_code]
 								, 'unknown' AS [state]
 								, NULL AS [latitude]
 								, NULL AS [longitude]
@@ -109,8 +109,8 @@ IF @incremental_flag = 1 --handle incremental loads
 
 		 				SELECT -1 AS [geography_key]
 								, '0' AS postcode
-								, 'unk' AS [local_government_area]
-								, 'unknown' AS [state_code]
+								, 'unknown' AS [local_government_area]
+								, 'unk' AS [state_code]
 								, 'unknown' AS [state]
 								, NULL AS [latitude]
 								, NULL AS [longitude]

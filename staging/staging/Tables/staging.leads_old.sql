@@ -24,12 +24,14 @@
     [dob]         NVARCHAR (300) NULL,
     [source]      NVARCHAR (300) NULL,
     [prize]       NVARCHAR (300) NULL,
-    [affliateid]  NVARCHAR (300) NULL,
+    [affiliateid] NVARCHAR (300) NULL,
     [title]       NVARCHAR (300) NULL,
     [id]          NVARCHAR (300) NULL,
     [status]      NVARCHAR (1)   NULL,
     [data_source] VARCHAR (255)  NULL
 );
+
+
 
 
 

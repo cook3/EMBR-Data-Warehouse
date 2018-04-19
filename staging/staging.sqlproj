@@ -67,12 +67,12 @@
     <Build Include="staging.sql" />
     <Build Include="dbo.fn_remove_non_numeric.sql" />
     <Build Include="staging\Tables\staging.old_lead.sql" />
-    <Build Include="staging\Tables\staging.error.sql" />
     <Build Include="staging\Tables\staging.leads.sql" />
     <Build Include="staging\Tables\staging.leads_old.sql" />
     <Build Include="staging\Tables\staging.custom_fields.sql" />
     <Build Include="staging\Tables\staging.category.sql" />
     <Build Include="staging\Tables\staging.values_custom_fields.sql" />
     <Build Include="staging\Tables\staging.join_leads.sql" />
+    <Build Include="staging\Tables\staging.errors.sql" />
   </ItemGroup>
 </Project>

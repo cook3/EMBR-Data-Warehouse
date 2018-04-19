@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="master"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{3D0916EF-353D-4A81-8368-69EBFEE10059}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{A48FC13E-3DE7-4681-91B2-4A88A8A19D42}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -56,7 +56,6 @@
       DTS:refId="Package\EPT - load facts"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{1730D571-FA14-4A11-92EC-BA7753A8694E}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
@@ -143,24 +142,24 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
-      DTS:DTSID="{83AEDD59-53D8-42CB-B77C-4BE386BC4998}"
+      DTS:DTSID="{8DC946A3-34F4-4C8C-A123-C046D80065FE}"
       DTS:From="Package\EPT - load dimensions"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\EPT -  fuzzy grouping" />
+      DTS:To="Package\EPT - load facts" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
       DTS:CreationName=""
-      DTS:DTSID="{C895F9B0-BE7C-442A-AB34-771E01672999}"
-      DTS:From="Package\EPT -  fuzzy grouping"
+      DTS:DTSID="{AE3E7892-2733-4666-88C2-E5636D697B4A}"
+      DTS:From="Package\EPT - load facts"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
-      DTS:To="Package\EPT - load facts" />
+      DTS:To="Package\EPT -  fuzzy grouping" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
       DTS:CreationName=""
-      DTS:DTSID="{2B5E1440-7773-469D-875A-E439D8152546}"
-      DTS:From="Package\EPT - load facts"
+      DTS:DTSID="{96C1E504-BA18-4DAF-A39D-BA68B5D0E64D}"
+      DTS:From="Package\EPT -  fuzzy grouping"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\EPT - load mdm" />
@@ -178,13 +177,29 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="172,42"
-          Id="Package\EPT - load_staging"
-          TopLeft="155,102" />
+          Size="184,42"
+          Id="Package\EPT -  fuzzy grouping"
+          TopLeft="529,346" />
+        <NodeLayout
+          Size="189,42"
+          Id="Package\EPT - load dimensions"
+          TopLeft="205,293" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\EPT - load facts"
+          TopLeft="262,386" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\EPT - load mdm"
+          TopLeft="803,371" />
         <NodeLayout
           Size="182,42"
           Id="Package\EPT - load_customer"
           TopLeft="196,196" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\EPT - load_staging"
+          TopLeft="155,102" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="241,144">
@@ -219,10 +234,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="189,42"
-          Id="Package\EPT - load dimensions"
-          TopLeft="205,293" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="287,238">
@@ -257,36 +268,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="184,42"
-          Id="Package\EPT -  fuzzy grouping"
-          TopLeft="259,385" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="299.5,335">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="51.5,50"
+              EndConnector="41,51"
               Start="0,0"
-              End="51.5,42.5">
+              End="41,43.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21" />
+                    End="0,21.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21"
-                    Point2="0,25"
-                    Point3="4,25" />
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
                   <mssgle:LineSegment
-                    End="47.5,25" />
+                    End="37,25.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="47.5,25"
-                    Point2="51.5,25"
-                    Point3="51.5,29" />
+                    Point1="37,25.5"
+                    Point2="41,25.5"
+                    Point3="41,29.5" />
                   <mssgle:LineSegment
-                    End="51.5,42.5" />
+                    End="41,43.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -295,36 +302,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="157,42"
-          Id="Package\EPT - load facts"
-          TopLeft="562,375" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="443,406">
+          TopLeft="419,407">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="119,-10"
+              EndConnector="110,-40"
               Start="0,0"
-              End="111.5,-10">
+              End="102.5,-40">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="55.5,0" />
+                    End="51,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="55.5,0"
-                    Point2="59.5,0"
-                    Point3="59.5,-4" />
+                    Point1="51,0"
+                    Point2="55,0"
+                    Point3="55,-4" />
                   <mssgle:LineSegment
-                    End="59.5,-6" />
+                    End="55,-36" />
                   <mssgle:CubicBezierSegment
-                    Point1="59.5,-6"
-                    Point2="59.5,-10"
-                    Point3="63.5,-10" />
+                    Point1="55,-36"
+                    Point2="55,-40"
+                    Point3="59,-40" />
                   <mssgle:LineSegment
-                    End="111.5,-10" />
+                    End="102.5,-40" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -333,24 +336,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="158,42"
-          Id="Package\EPT - load mdm"
-          TopLeft="788,376" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="719,396.5">
+          TopLeft="713,367">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="69,0"
+              EndConnector="90,25"
               Start="0,0"
-              End="61.5,0">
+              End="82.5,25">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="61.5,0" />
+                    End="41,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41,0"
+                    Point2="45,0"
+                    Point3="45,4" />
+                  <mssgle:LineSegment
+                    End="45,21" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45,21"
+                    Point2="45,25"
+                    Point3="49,25" />
+                  <mssgle:LineSegment
+                    End="82.5,25" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
