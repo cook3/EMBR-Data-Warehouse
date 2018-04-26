@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_dimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{D670CD56-1A70-4F71-B0D6-B552C3457F81}">
+  DTS:VersionBuild="28"
+  DTS:VersionGUID="{44611CB0-794C-472E-A7CF-5F327B163979}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -46,7 +46,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_affiliate"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -63,12 +63,29 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_device"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
               SQLTask:SqlStatementSource="EXEC lead.load_dim_device" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Smaller tables\SQL - load dim_homeowner"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{56a69256-a3d8-4e60-8eac-ce94a7742542}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="SQL - load dim_homeowner"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+              SQLTask:SqlStatementSource="EXEC lead.load_dim_homeowner" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
@@ -80,7 +97,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_source"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -97,7 +114,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_status"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -106,6 +123,16 @@
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Smaller tables.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{7681B7CF-B4D3-42D6-A6EB-BA96EB25A6D2}"
+          DTS:From="Package\Smaller tables\SQL - load dim_affiliate"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Smaller tables\SQL - load dim_homeowner" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Smaller tables 1"
@@ -241,13 +268,51 @@
           Size="183,42"
           Id="Package\Smaller tables\SQL - load dim_status"
           TopLeft="14,21" />
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Smaller tables\SQL - load dim_homeowner"
+          TopLeft="37,152" />
+        <EdgeLayout
+          Id="Package\Smaller tables.PrecedenceConstraints[Constraint]"
+          TopLeft="106.5,125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="38.5,27"
+              Start="0,0"
+              End="38.5,19.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.5"
+                    Point2="0,13.5"
+                    Point3="4,13.5" />
+                  <mssgle:LineSegment
+                    End="34.5,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.5,13.5"
+                    Point2="38.5,13.5"
+                    Point3="38.5,17.5" />
+                  <mssgle:LineSegment
+                    End="38.5,19.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="428,181"
-          Size="428,224"
+          PanelSize="432,249"
+          Size="432,292"
           Id="Package\Smaller tables"
-          TopLeft="424,308.428571428571" />
+          TopLeft="317,307.428571428571" />
         <NodeLayout
           Size="194,47"
           Id="Package\Smaller tables 1\SQL - load dim_affiliate from old leads"
@@ -270,7 +335,41 @@
         <NodeLayout
           Size="230,42"
           Id="Package\SQL - load lead_dim_geography"
-          TopLeft="86.5714285714286,215.714285714286" />
+          TopLeft="55.5714285714286,216.714285714286" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="170.571428571429,258.714285714286">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="362.428571428571,48.714285714285"
+              Start="0,0"
+              End="362.428571428571,41.214285714285">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.3571428571425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.3571428571425"
+                    Point2="0,24.3571428571425"
+                    Point3="4,24.3571428571425" />
+                  <mssgle:LineSegment
+                    End="358.428571428571,24.3571428571425" />
+                  <mssgle:CubicBezierSegment
+                    Point1="358.428571428571,24.3571428571425"
+                    Point2="362.428571428571,24.3571428571425"
+                    Point3="362.428571428571,28.3571428571425" />
+                  <mssgle:LineSegment
+                    End="362.428571428571,41.214285714285" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="522,124">
@@ -305,40 +404,6 @@
             <mssgm:EdgeLabel
               BoundingBox="27,-22,16,16"
               RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="201.571428571429,257.714285714286">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="436.428571428571,50.714285714285"
-              Start="0,0"
-              End="436.428571428571,43.214285714285">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.3571428571425" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.3571428571425"
-                    Point2="0,25.3571428571425"
-                    Point3="4,25.3571428571425" />
-                  <mssgle:LineSegment
-                    End="432.428571428571,25.3571428571425" />
-                  <mssgle:CubicBezierSegment
-                    Point1="432.428571428571,25.3571428571425"
-                    Point2="436.428571428571,25.3571428571425"
-                    Point3="436.428571428571,29.3571428571425" />
-                  <mssgle:LineSegment
-                    End="436.428571428571,43.214285714285" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

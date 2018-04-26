@@ -23,8 +23,13 @@ IF @incremental_flag = 1 --handle incremental loads
 				MERGE [lead].[dim_affiliate] AS target
 				USING (
 
+						SELECT 'Unknown' AS affiliateid
+
+
+						UNION 
+
 						SELECT DISTINCT affiliateid
-						FROM [$(staging)].[staging].[leads] 
+						FROM [staging].[staging].[leads] 
 
 						  
 						) AS source 
@@ -61,8 +66,12 @@ IF @incremental_flag = 1 --handle incremental loads
 								)
 
 
-				SELECT DISTINCT affiliateid
-				FROM [$(staging)].[staging].[leads] 
+						SELECT 'Unknown' AS affiliateid
+
+						UNION 
+
+						SELECT DISTINCT affiliateid
+						FROM [staging].[staging].[leads] 
 
 	END
 

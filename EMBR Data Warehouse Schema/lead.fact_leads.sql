@@ -7,9 +7,12 @@
     [date_key]        INT        NULL,
     [time_key]        INT        NULL,
     [geography_key]   INT        NULL,
+    [homeowner_key]   INT        NULL,
     [data_source_key] INT        NULL,
     [prize]           CHAR (255) NULL
 );
+
+
 
 
 

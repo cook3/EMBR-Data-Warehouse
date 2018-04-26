@@ -25,8 +25,12 @@ IF @incremental_flag = 1 --handle incremental loads
 				MERGE [lead].[dim_status] AS target
 				USING (
 
-						SELECT DISTINCT [lead_status], [lead_message]
-						FROM [$(staging)].staging.leads
+						SELECT  'Rejected' AS [lead_status], 'Unknown' AS [lead_message]
+
+						UNION
+
+						SELECT DISTINCT [lead_status], ISNULL([lead_message], 'Unknown' ) AS [lead_message]
+						FROM [staging].staging.leads
 
 						  
 						) AS source 
@@ -65,9 +69,12 @@ IF @incremental_flag = 1 --handle incremental loads
 
 								)
 
+						SELECT  'Rejected' AS [lead_status], 'Unknown' AS [lead_message]
 
-						SELECT DISTINCT [lead_status], [lead_message]
-						FROM [$(staging)].staging.leads
+						UNION
+
+						SELECT DISTINCT [lead_status], ISNULL([lead_message], 'Unknown' ) AS [lead_message]
+						FROM [staging].staging.leads
 
 	END
 

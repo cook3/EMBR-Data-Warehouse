@@ -12,10 +12,13 @@
     [dob]             DATE          NULL,
     [gender]          VARCHAR (1)   NULL,
     [age]             VARCHAR (5)   NULL,
+    [is_homeowner]    INT           NULL,
     [submission_date] DATETIME      NULL,
     [lead_status]     VARCHAR (10)  NULL,
     [lead_source]     VARCHAR (250) NULL,
     [data_source]     VARCHAR (255) NULL
 );
+
+
 
 

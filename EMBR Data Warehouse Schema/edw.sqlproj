@@ -91,6 +91,8 @@
     <Build Include="lead\Tables\lead.dim_data_source.sql" />
     <Build Include="lead\Stored Procedures\lead.load_dim_source_old.sql" />
     <Build Include="lead\Stored Procedures\lead.load_dim_affiliate_old_leads.sql" />
+    <Build Include="lead\Tables\lead.dim_homeowner.sql" />
+    <Build Include="lead\Stored Procedures\lead.load_dim_homeowner.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EMBR Data Warehouse Schema.refactorlog" />

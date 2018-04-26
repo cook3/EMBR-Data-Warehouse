@@ -38,6 +38,7 @@ IF @incremental_flag = 1 --handle incremental loads
 								, email
 								, submission_date
 								, lead_status
+								, is_homeowner
 								, [data_source]
 								, [lead_source]
 								, ROW_NUMBER() OVER (PARTITION BY first_name, mobile, email  ORDER BY submission_date asc ) AS duplicate_number
@@ -67,6 +68,7 @@ IF @incremental_flag = 1 --handle incremental loads
 								, c.submission_date
 								, ISNULL( d.geography_key, -1) AS geography_key
 								, s.source_key
+								, c.is_homeowner
 								, ds.data_source_key
 							FROM base_cte c 
 								LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
@@ -96,6 +98,7 @@ IF @incremental_flag = 1 --handle incremental loads
 							  ,[gender]
 							  ,[age]
 							  ,[email]
+							  ,[is_homeowner]
 							  ,[valid_from]
 							  ,[valid_to]
 							  ,[active]
@@ -117,6 +120,7 @@ IF @incremental_flag = 1 --handle incremental loads
 							, source.[gender]
 							, source.[age]
 							, source.[email]
+							, source.[is_homeowner]
 							, source.[submission_date]
 							, NULL
 							, 1
@@ -155,6 +159,7 @@ IF @incremental_flag = 1 --handle incremental loads
 								, gender
 								, age
 								, email
+								, is_homeowner
 								, submission_date
 								, lead_status
 								, [data_source]
@@ -182,6 +187,7 @@ IF @incremental_flag = 1 --handle incremental loads
 							  ,[gender]
 							  ,[age]
 							  ,[email]
+							  ,[is_homeowner]
 							  ,[valid_from]
 							  ,[valid_to]
 							  ,[active]
@@ -202,6 +208,7 @@ IF @incremental_flag = 1 --handle incremental loads
 					, c.gender
 					, c.age
 					, c.email
+					, c.is_homeowner
 					, c.submission_date
 					, NULL
 					, 1

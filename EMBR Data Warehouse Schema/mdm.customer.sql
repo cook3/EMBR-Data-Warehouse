@@ -14,11 +14,14 @@
     [gender]          VARCHAR (1)   NULL,
     [age]             VARCHAR (5)   NULL,
     [email]           VARCHAR (255) NULL,
+    [is_homeowner]    INT           NULL,
     [valid_from]      DATETIME      NULL,
     [valid_to]        DATETIME      DEFAULT (NULL) NULL,
     [active]          BIT           NULL,
     CONSTRAINT [PK_dim_customer] PRIMARY KEY CLUSTERED ([customer_key] ASC)
 );
+
+
 
 
 GO

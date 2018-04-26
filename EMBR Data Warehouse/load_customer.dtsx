@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="51"
-  DTS:VersionGUID="{7E057860-E795-4F13-AB21-ADDCCD813F0B}">
+  DTS:VersionBuild="55"
+  DTS:VersionGUID="{FA25E3AC-9ABD-4FA6-8C4E-017909BD57D8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -802,6 +802,12 @@ where [refTable].[customer_id] = ?</property>
                       cachedName="source"
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[source]" />
+                    <inputColumn
+                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[is_homeowner]"
+                      cachedDataType="i4"
+                      cachedName="is_homeowner"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[is_homeowner]"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[is_homeowner]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -899,6 +905,10 @@ where [refTable].[customer_id] = ?</property>
                       dataType="str"
                       length="250"
                       name="lead_source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[is_homeowner]"
+                      dataType="i4"
+                      name="is_homeowner" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1300,6 +1310,7 @@ where [refTable].[customer_id] = ?</property>
 								, email 
 								, TRY_CAST(SubmissionDate AS datetime) as SubmissionDate
 								, lead_status
+								, CASE WHEN homeowner_answer IS NULL THEN 0 ELSE 1 END is_homeowner
 								, [source]
 								, [data_source]
 						FROM staging.staging.leads l</property>
@@ -1519,6 +1530,15 @@ where [refTable].[customer_id] = ?</property>
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[data_source]"
                       name="data_source"
                       truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[is_homeowner]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[is_homeowner]"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[is_homeowner]"
+                      name="is_homeowner"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1618,6 +1638,10 @@ where [refTable].[customer_id] = ?</property>
                       dataType="str"
                       length="255"
                       name="data_source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[is_homeowner]"
+                      dataType="i4"
+                      name="is_homeowner" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1724,6 +1748,11 @@ where [refTable].[customer_id] = ?</property>
                       length="4000"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[lead_status]"
                       name="lead_status" />
+                    <outputColumn
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[is_homeowner]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[is_homeowner]"
+                      name="is_homeowner" />
                     <outputColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[source]"
                       codePage="1252"
@@ -4411,6 +4440,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       cachedName="lead_source_conv"
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
                       lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lead_source_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[is_homeowner]"
+                      cachedDataType="i4"
+                      cachedName="is_homeowner"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[is_homeowner]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[is_homeowner]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4508,6 +4543,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       dataType="str"
                       length="250"
                       name="lead_source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[is_homeowner]"
+                      dataType="i4"
+                      name="is_homeowner" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4616,6 +4655,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
 								, TRY_CAST(ts AS datetime) as SubmissionDate
 								, [status]
 								, [data_source]
+, 0 AS is_homeowner
 								,REPLACE( [source], '`', '' ) as [source]
 						FROM staging.staging.leads_old l
 --WHERE l.lead_id =7686</property>
@@ -4823,6 +4863,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[source]"
                       name="source"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[is_homeowner]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[is_homeowner]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[is_homeowner]"
+                      name="is_homeowner"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4909,6 +4958,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       dataType="wstr"
                       length="4000"
                       name="source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[is_homeowner]"
+                      dataType="i4"
+                      name="is_homeowner" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5010,6 +5063,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       length="255"
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
                       name="data_source" />
+                    <outputColumn
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[is_homeowner]"
+                      dataType="i4"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[is_homeowner]"
+                      name="is_homeowner" />
                     <outputColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[source]"
                       dataType="wstr"
@@ -5130,7 +5188,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <NodeLayout
           Size="201,42"
           Id="Package\DFT - load customer table"
-          TopLeft="133,214" />
+          TopLeft="137,224" />
         <NodeLayout
           Size="221,42"
           Id="Package\DFT - load old customer data"
@@ -5145,30 +5203,30 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           TopLeft="291,363" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="233.5,256">
+          TopLeft="237.5,266">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="139.166666666667,107"
+              EndConnector="135.166666666667,97"
               Start="0,0"
-              End="139.166666666667,99.5">
+              End="135.166666666667,89.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,59.7765869744435" />
+                    End="0,53.8161582852432" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,59.7765869744435"
-                    Point2="0,63.7765869744435"
-                    Point3="4,63.7765869744435" />
+                    Point1="0,53.8161582852432"
+                    Point2="0,57.8161582852432"
+                    Point3="4,57.8161582852432" />
                   <mssgle:LineSegment
-                    End="135.166666666667,63.7765869744435" />
+                    End="131.166666666667,57.8161582852432" />
                   <mssgle:CubicBezierSegment
-                    Point1="135.166666666667,63.7765869744435"
-                    Point2="139.166666666667,63.7765869744435"
-                    Point3="139.166666666667,67.7765869744435" />
+                    Point1="131.166666666667,57.8161582852432"
+                    Point2="135.166666666667,57.8161582852432"
+                    Point3="135.166666666667,61.8161582852432" />
                   <mssgle:LineSegment
-                    End="139.166666666667,99.5" />
+                    End="135.166666666667,89.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5244,22 +5302,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="179,42"
-          Id="Package\DFT - load customer table\LKP - dbo_customer"
-          TopLeft="145,264" />
-        <NodeLayout
-          Size="158,42"
-          Id="Package\DFT - load customer table\Derived Column"
-          TopLeft="68,173" />
-        <NodeLayout
-          Size="191,42"
-          Id="Package\DFT - load customer table\OLE_SRC - customers"
-          TopLeft="25,50" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\DFT - load customer table\Script Component"
-          TopLeft="260,56" />
-        <NodeLayout
           Size="162,42"
           Id="Package\DFT - load customer table\OLE_DST - error"
           TopLeft="967,67" />
@@ -5268,13 +5310,67 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\DFT - load customer table\Derived Column  - clean error column name"
           TopLeft="450,58" />
         <NodeLayout
-          Size="200,42"
-          Id="Package\DFT - load customer table\OLE_DST - dbo_customer"
-          TopLeft="292,372" />
+          Size="191,42"
+          Id="Package\DFT - load customer table\OLE_SRC - customers"
+          TopLeft="25,50" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DFT - load customer table\Derived Column"
+          TopLeft="68,173" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\DFT - load customer table\Script Component"
+          TopLeft="260,56" />
+        <NodeLayout
+          Size="179,42"
+          Id="Package\DFT - load customer table\LKP - dbo_customer"
+          TopLeft="127,278" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\DFT - load customer table\DC - cleanse again 1"
+          TopLeft="762.888888888889,182.555555555556" />
+        <NodeLayout
+          Size="292,42"
+          Id="Package\DFT - load customer table\Derived Column  - clean error column name 1"
+          TopLeft="438.888888888889,177.555555555556" />
+        <NodeLayout
+          Size="162,42"
+          Id="Package\DFT - load customer table\OLE_DST - error 1"
+          TopLeft="955.888888888889,186.555555555556" />
         <NodeLayout
           Size="172,42"
           Id="Package\DFT - load customer table\DC - cleanse again"
           TopLeft="774,63" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\DFT - load customer table\OLE_DST - dbo_customer"
+          TopLeft="292,372" />
+        <NodeLayout
+          Size="167,42"
+          Id="Package\DFT - load customer table\Script Component 1"
+          TopLeft="248.888888888889,175.555555555556" />
+        <EdgeLayout
+          Id="Package\DFT - load customer table.Paths[Output 01]"
+          TopLeft="415.888888888889,197.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,0"
+              Start="0,0"
+              End="15.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="15.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load customer table.Paths[Output 0]"
           TopLeft="427,78">
@@ -5320,39 +5416,119 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT - load customer table.Paths[Lookup No Match Output]"
-          TopLeft="234.5,306">
+          Id="Package\DFT - load customer table.Paths[OLE DB Source Error Output]"
+          TopLeft="216,74">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="157.5,66"
+              EndConnector="44,0"
               Start="0,0"
-              End="157.5,58.5">
+              End="36.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29"
-                    Point2="0,33"
-                    Point3="4,33" />
-                  <mssgle:LineSegment
-                    End="153.5,33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="153.5,33"
-                    Point2="157.5,33"
-                    Point3="157.5,37" />
-                  <mssgle:LineSegment
-                    End="157.5,58.5" />
+                    End="36.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="22.94361328125,38,111.6127734375,11.609375"
+              BoundingBox="-45.18390625,5,126.8678125,11.43359375"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load customer table.Paths[Lookup No Match Output]"
+          TopLeft="216.5,320">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="175.5,52"
+              Start="0,0"
+              End="175.5,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="171.5,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="171.5,26"
+                    Point2="175.5,26"
+                    Point3="175.5,30" />
+                  <mssgle:LineSegment
+                    End="175.5,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="31.94361328125,31,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load customer table.Paths[Derived Column Output4]"
+          TopLeft="730.888888888889,201.055555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,0"
+              Start="0,0"
+              End="24.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load customer table.Paths[Derived Column Output3]"
+          TopLeft="848.888888888889,182.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="188,4"
+              Start="0,0"
+              End="188,-3.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
+                  <mssgle:LineSegment
+                    End="184,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="184,-22.5"
+                    Point2="188,-22.5"
+                    Point3="188,-18.5" />
+                  <mssgle:LineSegment
+                    End="188,-3.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5417,144 +5593,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="87.5,49"
+              EndConnector="69.5,63"
               Start="0,0"
-              End="87.5,41.5">
+              End="69.5,55.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.5" />
+                    End="0,27.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.5"
-                    Point2="0,24.5"
-                    Point3="4,24.5" />
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="4,31.5" />
                   <mssgle:LineSegment
-                    End="83.5,24.5" />
+                    End="65.5,31.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="83.5,24.5"
-                    Point2="87.5,24.5"
-                    Point3="87.5,28.5" />
+                    Point1="65.5,31.5"
+                    Point2="69.5,31.5"
+                    Point3="69.5,35.5" />
                   <mssgle:LineSegment
-                    End="87.5,41.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load customer table.Paths[OLE DB Source Error Output]"
-          TopLeft="216,74">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="44,0"
-              Start="0,0"
-              End="36.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="36.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-45.18390625,5,126.8678125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\DFT - load customer table\Script Component 1"
-          TopLeft="248.888888888889,175.555555555556" />
-        <NodeLayout
-          Size="162,42"
-          Id="Package\DFT - load customer table\OLE_DST - error 1"
-          TopLeft="955.888888888889,186.555555555556" />
-        <NodeLayout
-          Size="292,42"
-          Id="Package\DFT - load customer table\Derived Column  - clean error column name 1"
-          TopLeft="438.888888888889,177.555555555556" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\DFT - load customer table\DC - cleanse again 1"
-          TopLeft="762.888888888889,182.555555555556" />
-        <EdgeLayout
-          Id="Package\DFT - load customer table.Paths[Output 01]"
-          TopLeft="415.888888888889,197.555555555556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="23,0"
-              Start="0,0"
-              End="15.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="15.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load customer table.Paths[Derived Column Output3]"
-          TopLeft="848.888888888889,182.555555555556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="188,4"
-              Start="0,0"
-              End="188,-3.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-18.5"
-                    Point2="0,-22.5"
-                    Point3="4,-22.5" />
-                  <mssgle:LineSegment
-                    End="184,-22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="184,-22.5"
-                    Point2="188,-22.5"
-                    Point3="188,-18.5" />
-                  <mssgle:LineSegment
-                    End="188,-3.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load customer table.Paths[Derived Column Output4]"
-          TopLeft="730.888888888889,201.055555555556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="32,0"
-              Start="0,0"
-              End="24.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="24.5,0" />
+                    End="69.5,55.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -5591,37 +5649,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load customer table\LKP - dbo_customer">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - load customer table\OLE_SRC - customers">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT - load customer table\OLE_DST - error">
     <Properties>
       <Property>
@@ -5631,6 +5658,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load customer table\OLE_SRC - customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -5647,11 +5682,47 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load customer table\OLE_DST - error 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load customer table\LKP - dbo_customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DFT - load old customer data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="214,42"
           Id="Package\DFT - load old customer data\OLE_SRC - load_old_leads"
@@ -5695,9 +5766,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5731,9 +5800,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -5749,19 +5816,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\DFT - load old customer data\OLE_DST - dbo_customer">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - load customer table\OLE_DST - error 1">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
