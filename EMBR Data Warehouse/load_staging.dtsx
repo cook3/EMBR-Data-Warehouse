@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="53"
-  DTS:VersionGUID="{F89A02CA-7F29-4987-B3B3-5CDDA51F4C71}">
+  DTS:VersionBuild="57"
+  DTS:VersionGUID="{E0A48748-CE02-41D6-844A-D1678FC06B33}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -43,7 +43,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="email"
-              DTS:DTSID="{74940EA0-4B15-47BC-9474-D6D61F2561A1}"
+              DTS:DTSID="{34256BAA-AFA6-4EA3-B772-9890E708F33F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -52,7 +52,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="title"
-              DTS:DTSID="{A2BD90D0-83ED-48EC-AA14-806047DC0062}"
+              DTS:DTSID="{D3C30AE6-6FC5-4041-9354-63F25220797F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -61,7 +61,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="firstname"
-              DTS:DTSID="{690CDC5C-FA85-40E2-85A5-BBB211BE4640}"
+              DTS:DTSID="{563746B6-7B37-4471-A331-9C961997AB74}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -70,7 +70,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lastname"
-              DTS:DTSID="{4FB4A8B3-E4DB-401F-BA3C-881FB980002C}"
+              DTS:DTSID="{3C171112-3754-48F2-8649-6FDE13A61C7C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -79,7 +79,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="address1"
-              DTS:DTSID="{C1D9A890-11C8-478C-B215-D297C75E1486}"
+              DTS:DTSID="{99F28FC8-012D-4D6D-872A-30CF856CF5E0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -88,7 +88,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{E9D85D08-76DC-431E-A469-C61E35274B57}"
+              DTS:DTSID="{ED85F39C-CB7C-431A-86CD-B759BF97FBDF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -97,7 +97,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{9ECD04CD-D08E-46BA-AE13-56A97155956D}"
+              DTS:DTSID="{21ABB086-9329-46DC-8F5A-AD6DFE1444F3}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -106,7 +106,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="postcode"
-              DTS:DTSID="{CF51593E-E34E-4B1E-9A90-42C225B8433E}"
+              DTS:DTSID="{8064537B-E74B-484E-9BD4-37938E9FDD26}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -115,7 +115,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="mobile"
-              DTS:DTSID="{88EE91E5-DBAC-4DD8-9758-4FDDB8D26F6E}"
+              DTS:DTSID="{227A228B-FC8E-4377-8F83-4ECFAFEDE5CC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -124,7 +124,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="dob"
-              DTS:DTSID="{51CB1B78-9C00-4508-8D49-BFED968800B2}"
+              DTS:DTSID="{E4A5B9FD-8F84-4E20-ADF2-9AB0272D0239}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -133,7 +133,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Gender"
-              DTS:DTSID="{D2FC339C-ED3D-4628-9C1C-3D6E49B5E49B}"
+              DTS:DTSID="{C4BBEA63-5BE4-4E4D-A028-AB7CC3CCD58F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -142,7 +142,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Age"
-              DTS:DTSID="{49473302-7CEE-450C-A2A0-D520C9145B1F}"
+              DTS:DTSID="{40882755-C95C-4FDF-A7C0-26B9422D402A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -151,7 +151,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Source"
-              DTS:DTSID="{AFD1D992-FC57-4CA0-884E-85167080CFAE}"
+              DTS:DTSID="{686D0355-1CDE-409A-88D6-0D72B89740C0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -160,7 +160,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Prize"
-              DTS:DTSID="{B87687E7-81FE-46BA-9288-5D2F16D741EC}"
+              DTS:DTSID="{8B4BBF94-2C98-46A2-9541-940D8D55E737}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -169,7 +169,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ipaddress"
-              DTS:DTSID="{062376D4-2CEC-45C0-8321-F1FE109EFE27}"
+              DTS:DTSID="{A8C61BA5-59F1-40EB-980C-16FAC1590F7C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -178,7 +178,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="SubmissionDate"
-              DTS:DTSID="{98108F0F-686C-4BF2-8E03-2132DF7B53F1}"
+              DTS:DTSID="{CD82059D-D47D-49E0-8348-BC13F20B28CB}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -187,7 +187,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="affiliateid"
-              DTS:DTSID="{27306944-B782-4167-9E00-4CAE8C5E5752}"
+              DTS:DTSID="{FFC05930-2874-4D1C-8BE0-556341D7E515}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -196,7 +196,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="clickid"
-              DTS:DTSID="{CBD6950E-ABAB-49E9-93F7-7EF730BE55FB}"
+              DTS:DTSID="{8ACD9459-6C6C-49FA-956D-72A38325F3D5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -205,7 +205,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="device_brand"
-              DTS:DTSID="{E24578D8-9442-4821-8807-57EC262959BB}"
+              DTS:DTSID="{D2A5E4D3-762C-42CF-9578-18A6D921EEEE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -214,7 +214,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="user_agent"
-              DTS:DTSID="{59CF3C00-EBB5-4F4F-8240-61EAE1C20EDB}"
+              DTS:DTSID="{9ECA58A3-977E-464C-8B90-5E739EB1C955}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -223,7 +223,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="device_type"
-              DTS:DTSID="{92E5B702-3913-4806-9D42-82AAA7C96A6E}"
+              DTS:DTSID="{852AD7AA-5903-4002-BACF-0D66557000A6}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -232,7 +232,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lead_id"
-              DTS:DTSID="{969BE5F9-F3E3-47FE-85AF-D41070B69F4C}"
+              DTS:DTSID="{C020B6DE-7024-4AF1-82B1-05743D965E76}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -241,7 +241,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lead_status"
-              DTS:DTSID="{ED55C5C4-86EE-4320-BC4D-531A8E3D4624}"
+              DTS:DTSID="{F593A73F-CDA4-4158-99C5-2679E913065A}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -250,7 +250,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lead_message"
-              DTS:DTSID="{0421A4AF-1998-4589-959D-C99D0E1FF91D}"
+              DTS:DTSID="{91AA84C7-7610-48A5-9CDE-F921A8A91AF3}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -6468,14 +6468,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           cachedDataType="str"
                           cachedLength="250"
                           cachedName="email"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[email]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse columns.Inputs[Derived Column Input].Columns[postcode]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="4000"
                           cachedName="postcode"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[postcode]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[postcode]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -6503,7 +6503,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_STR,255,1252)#{Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]}</property>
+                              name="Expression">(DT_STR,255,1252)#{Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[email]}</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -6551,7 +6551,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                               containsID="true"
                               dataType="System.String"
                               description="Derived Column Expression"
-                              name="Expression">(DT_STR,5,1252)[REPLACE](#{Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[postcode]}," ","")</property>
+                              name="Expression">(DT_STR,5,1252)[REPLACE](#{Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[postcode]}," ","")</property>
                             <property
                               containsID="true"
                               dataType="System.String"
@@ -6822,7 +6822,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           cachedLength="50"
                           cachedName="lead_id"
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 1.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_id]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 1.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
                           cachedCodepage="1252"
@@ -6830,7 +6830,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           cachedLength="4000"
                           cachedName="SubmissionDate"
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 1.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -6977,7 +6977,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           cachedLength="50"
                           cachedName="lead_id"
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_id]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
                           cachedCodepage="1252"
@@ -6985,7 +6985,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           cachedLength="4000"
                           cachedName="SubmissionDate"
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -7054,7 +7054,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                     <property
                       dataType="System.String"
                       description="Specifies the name of the database object used to open a rowset."
-                      name="OpenRowset">[staging].[leads]</property>
+                      name="OpenRowset">[staging].[lead_homeowners]</property>
                     <property
                       dataType="System.String"
                       description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -7111,125 +7111,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       name="Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[title]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="title"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[title]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[title]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[firstname]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="firstname"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[firstname]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[firstname]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[lastname]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="lastname"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lastname]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lastname]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[address1]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="address1"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[address1]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[address1]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[city]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="city"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[city]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[city]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[state]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="state"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[state]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[state]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[mobile]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="mobile"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[mobile]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[mobile]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[dob]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="dob"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[dob]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[dob]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[Gender]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="Gender"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Gender]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Gender]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[Age]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="Age"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Age]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Age]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[Source]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="Source"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Source]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Source]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[Prize]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="Prize"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Prize]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Prize]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[ipaddress]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="ipaddress"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[ipaddress]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[ipaddress]" />
-                        <inputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[SubmissionDate]"
                           cachedCodepage="1252"
                           cachedDataType="str"
                           cachedLength="4000"
                           cachedName="SubmissionDate"
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[SubmissionDate]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[affiliateid]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="4000"
-                          cachedName="affiliateid"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[affiliateid]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[affiliateid]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[lead_id]"
                           cachedCodepage="1252"
@@ -7237,47 +7125,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           cachedLength="50"
                           cachedName="lead_id"
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_id]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[lead_status]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="lead_status"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_status]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_status]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[lead_message]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="lead_message"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_message]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_message]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[data_source]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="255"
-                          cachedName="data_source"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[data_source]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse columns.Outputs[Derived Column Output].Columns[data_source]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[email_cleansed]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="255"
-                          cachedName="email_cleansed"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[email]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse columns.Outputs[Derived Column Output].Columns[email_cleansed]" />
-                        <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[postcode_cleansed]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="5"
-                          cachedName="postcode_cleansed"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[postcode]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse columns.Outputs[Derived Column Output].Columns[postcode_cleansed]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_id]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].Columns[homeowner_answer]"
                           cachedCodepage="1252"
@@ -7285,100 +7133,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           cachedLength="50"
                           cachedName="homeowner_answer"
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[homeowner_answer]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[homeowner_answer]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[homeowner_answer]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[email]"
-                          codePage="1252"
-                          dataType="str"
-                          length="250"
-                          name="email" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[title]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="title" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[firstname]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="firstname" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lastname]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="lastname" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[address1]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="address1" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[city]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="city" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[state]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="state" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[postcode]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="postcode" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[mobile]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="mobile" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[dob]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="dob" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Gender]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="Gender" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Age]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="Age" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Source]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="Source" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[Prize]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="Prize" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[ipaddress]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="ipaddress" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[SubmissionDate]"
                           codePage="1252"
@@ -7386,59 +7144,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           length="4000"
                           name="SubmissionDate" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[affiliateid]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="affiliateid" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[clickid]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="clickid" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[device_brand]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="device_brand" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[user_agent]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="user_agent" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[device_type]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="device_type" />
-                        <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_id]"
                           codePage="1252"
                           dataType="str"
                           length="4000"
                           name="lead_id" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_status]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="lead_status" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[lead_message]"
-                          codePage="1252"
-                          dataType="str"
-                          length="4000"
-                          name="lead_message" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[data_source]"
-                          codePage="1252"
-                          dataType="str"
-                          length="255"
-                          name="data_source" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_leads.Inputs[Destination Input].ExternalColumns[homeowner_answer]"
                           codePage="1252"
@@ -8420,13 +8130,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name.Inputs[Input 0].Columns[ErrorCode]"
                           cachedDataType="i4"
                           cachedName="ErrorCode"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode" />
                         <inputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name.Inputs[Input 0].Columns[ErrorColumn]"
                           cachedDataType="i4"
                           cachedName="ErrorColumn"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorColumn]" />
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output].Columns[ErrorColumn]" />
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -10423,12 +10133,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   </outputs>
                 </component>
                 <component
-                  refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports"
+                  refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners"
                   componentClassID="Microsoft.FlatFileSource"
                   contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
                   description="Flat File Source"
                   localeId="1033"
-                  name="Source - lead-exports"
+                  name="Source - lead-homeowners"
                   usesDispositions="true"
                   validateExternalMetadata="False"
                   version="1">
@@ -10444,25 +10154,25 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   </properties>
                   <connections>
                     <connection
-                      refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Connections[FlatFileConnection]"
+                      refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Connections[FlatFileConnection]"
                       connectionManagerID="Package.ConnectionManagers[Homeowners CSV Exports]"
                       connectionManagerRefId="Package.ConnectionManagers[Homeowners CSV Exports]"
                       name="FlatFileConnection" />
                   </connections>
                   <outputs>
                     <output
-                      refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output]"
+                      refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output]"
                       name="Flat File Source Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[email]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[email]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[email]"
                           length="250"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[email]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[email]"
                           name="email"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10477,14 +10187,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[title]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[title]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[title]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[title]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[title]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[title]"
                           name="title"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10499,14 +10209,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[firstname]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[firstname]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[firstname]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[firstname]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[firstname]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[firstname]"
                           name="firstname"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10521,14 +10231,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lastname]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lastname]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lastname]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lastname]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lastname]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lastname]"
                           name="lastname"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10543,14 +10253,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[address1]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[address1]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[address1]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[address1]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[address1]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[address1]"
                           name="address1"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10565,14 +10275,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[city]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[city]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[city]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[city]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[city]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[city]"
                           name="city"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10587,14 +10297,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[state]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[state]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[state]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[state]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[state]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[state]"
                           name="state"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10609,14 +10319,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[postcode]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[postcode]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[postcode]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[postcode]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[postcode]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[postcode]"
                           name="postcode"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10631,14 +10341,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[mobile]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[mobile]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[mobile]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[mobile]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[mobile]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[mobile]"
                           name="mobile"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10653,14 +10363,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[dob]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[dob]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[dob]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[dob]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[dob]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[dob]"
                           name="dob"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10675,14 +10385,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Gender]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[Gender]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[Gender]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Gender]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[Gender]"
                           name="Gender"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10697,14 +10407,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Age]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[Age]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Age]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[Age]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Age]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[Age]"
                           name="Age"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10719,14 +10429,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Source]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[Source]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Source]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[Source]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Source]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[Source]"
                           name="Source"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10741,14 +10451,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Prize]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[Prize]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Prize]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[Prize]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[Prize]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[Prize]"
                           name="Prize"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10763,14 +10473,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[ipaddress]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[ipaddress]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[ipaddress]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[ipaddress]"
                           name="ipaddress"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10785,14 +10495,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[SubmissionDate]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[SubmissionDate]"
                           name="SubmissionDate"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10807,14 +10517,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[affiliateid]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[affiliateid]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
                           length="4000"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[affiliateid]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[affiliateid]"
                           name="affiliateid"
                           truncationRowDisposition="RedirectRow">
                           <properties>
@@ -10829,14 +10539,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[homeowner_answer]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[homeowner_answer]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[homeowner_answer]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[homeowner_answer]"
                           length="50"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[homeowner_answer]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[homeowner_answer]"
                           name="homeowner_answer"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -10851,14 +10561,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_id]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
                           length="50"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_id]"
                           name="lead_id"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -10873,14 +10583,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_status]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_status]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
                           length="50"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_status]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_status]"
                           name="lead_status"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -10895,14 +10605,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_message]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_message]"
                           codePage="1252"
                           dataType="str"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
                           length="50"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_message]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_message]"
                           name="lead_message"
                           truncationRowDisposition="FailComponent">
                           <properties>
@@ -10920,127 +10630,127 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       <externalMetadataColumns
                         isUsed="True">
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[email]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[email]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="email" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[title]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[title]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="title" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[firstname]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[firstname]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="firstname" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lastname]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lastname]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="lastname" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[address1]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[address1]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="address1" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[city]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[city]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="city" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[state]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[state]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="state" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[postcode]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[postcode]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="postcode" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[mobile]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[mobile]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="mobile" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[dob]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[dob]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="dob" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Gender]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[Gender]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="Gender" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Age]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[Age]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="Age" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Source]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[Source]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="Source" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[Prize]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[Prize]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="Prize" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[ipaddress]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="ipaddress" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[SubmissionDate]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="SubmissionDate" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[affiliateid]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="affiliateid" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[homeowner_answer]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[homeowner_answer]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="homeowner_answer" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="lead_id" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lead_status]"
                           codePage="1252"
                           dataType="str"
                           length="50"
                           name="lead_status" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lead_message]"
                           codePage="1252"
                           dataType="str"
                           length="50"
@@ -11048,27 +10758,27 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       </externalMetadataColumns>
                     </output>
                     <output
-                      refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output]"
+                      refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output]"
                       isErrorOut="true"
                       name="Flat File Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                           codePage="1252"
                           dataType="text"
                           description="Flat File Source Error Output Column"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                           name="Flat File Source Error Output Column" />
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                           name="ErrorCode"
                           specialFlags="1" />
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           dataType="i4"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                           name="ErrorColumn"
                           specialFlags="2" />
                       </outputColumns>
@@ -11122,12 +10832,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Error Output]"
                   endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name.Inputs[Input 0]"
                   name="Flat File Source Error Output"
-                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Error Output]" />
+                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Error Output]" />
                 <path
                   refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Output]"
                   endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse columns.Inputs[Derived Column Input]"
                   name="Flat File Source Output"
-                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output]" />
+                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output]" />
                 <path
                   refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
                   endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name 2.Inputs[Input 0]"
@@ -11274,45 +10984,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           PanelSize="382,229"
           Size="382,272"
           Id="Package\Foreach Loop Container - Generic"
-          TopLeft="89,178" />
-        <NodeLayout
-          Size="198,42"
-          Id="Package\SQL - clear staging_leads"
-          TopLeft="264.5,52.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="331.833333333333,94.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-51.8333333333333,83.5"
-              Start="0,0"
-              End="-51.8333333333333,76">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.8016032064128" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.8016032064128"
-                    Point2="0,33.8016032064128"
-                    Point3="-4,33.8016032064128" />
-                  <mssgle:LineSegment
-                    End="-47.8333333333333,33.8016032064128" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-47.8333333333333,33.8016032064128"
-                    Point2="-51.8333333333333,33.8016032064128"
-                    Point3="-51.8333333333333,37.8016032064128" />
-                  <mssgle:LineSegment
-                    End="-51.8333333333333,76" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="97,161" />
         <NodeLayout
           Size="196,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads"
@@ -11349,33 +11021,71 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           PanelSize="382,229"
           Size="382,272"
           Id="Package\Foreach Loop Container - Homeowner"
-          TopLeft="521,178" />
+          TopLeft="521,158" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\SQL - clear staging_leads"
+          TopLeft="307.5,45.5" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="395.166666666667,94.5">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="374.833333333333,87.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="316.833333333333,83.5"
+              EndConnector="-86.8333333333333,73.5"
               Start="0,0"
-              End="316.833333333333,76">
+              End="-86.8333333333333,66">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.8016032064128" />
+                    End="0,25.7535070140281" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,29.8016032064128"
-                    Point2="0,33.8016032064128"
-                    Point3="4,33.8016032064128" />
+                    Point1="0,25.7535070140281"
+                    Point2="0,29.7535070140281"
+                    Point3="-4,29.7535070140281" />
                   <mssgle:LineSegment
-                    End="312.833333333333,33.8016032064128" />
+                    End="-82.8333333333333,29.7535070140281" />
                   <mssgle:CubicBezierSegment
-                    Point1="312.833333333333,33.8016032064128"
-                    Point2="316.833333333333,33.8016032064128"
-                    Point3="316.833333333333,37.8016032064128" />
+                    Point1="-82.8333333333333,29.7535070140281"
+                    Point2="-86.8333333333333,29.7535070140281"
+                    Point3="-86.8333333333333,33.7535070140281" />
                   <mssgle:LineSegment
-                    End="316.833333333333,76" />
+                    End="-86.8333333333333,66" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="438.166666666667,87.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="273.833333333333,70.5"
+              Start="0,0"
+              End="273.833333333333,63">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5390781563126" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5390781563126"
+                    Point2="0,28.5390781563126"
+                    Point3="4,28.5390781563126" />
+                  <mssgle:LineSegment
+                    End="269.833333333333,28.5390781563126" />
+                  <mssgle:CubicBezierSegment
+                    Point1="269.833333333333,28.5390781563126"
+                    Point2="273.833333333333,28.5390781563126"
+                    Point3="273.833333333333,32.5390781563126" />
+                  <mssgle:LineSegment
+                    End="273.833333333333,63" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11859,9 +11569,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name"
           TopLeft="253,58" />
         <NodeLayout
-          Size="172,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again"
-          TopLeft="764,63" />
+          Size="222,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name 1"
+          TopLeft="278.5,144.5" />
         <NodeLayout
           Size="222,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name 2"
@@ -11875,6 +11585,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse columns"
           TopLeft="35,140" />
         <NodeLayout
+          Size="172,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again"
+          TopLeft="764,63" />
+        <NodeLayout
           Size="226,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name 2"
           TopLeft="525.25,252" />
@@ -11887,16 +11601,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again 2"
           TopLeft="782.25,255" />
         <NodeLayout
-          Size="222,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name 1"
-          TopLeft="278.5,144.5" />
-        <NodeLayout
           Size="226,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name 1"
           TopLeft="528.75,146.5" />
         <NodeLayout
-          Size="184,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-exports"
+          Size="211,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners"
           TopLeft="19.5,55.5" />
         <NodeLayout
           Size="196,42"
@@ -11911,116 +11621,38 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name"
           TopLeft="507,60" />
         <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 02]"
-          TopLeft="493.25,272">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="32,0"
-              Start="0,0"
-              End="24.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="24.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 01]"
-          TopLeft="500.5,166.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="28.2500000000001,0"
-              Start="0,0"
-              End="20.7500000000001,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="20.7500000000001,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 0]"
-          TopLeft="475,80">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="32,0"
-              Start="0,0"
-              End="24.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="24.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
-          TopLeft="236.5,268.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="34.75,0"
-              Start="0,0"
-              End="27.25,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="27.25,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-59.58390625,5,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Error Output]"
-          TopLeft="203.5,77.75">
+          TopLeft="125,55.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="49.5,0"
+              EndConnector="239,2.5"
               Start="0,0"
-              End="42,0">
+              End="239,-5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="42,0" />
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
+                  <mssgle:LineSegment
+                    End="235,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="235,-22.5"
+                    Point2="239,-22.5"
+                    Point3="239,-18.5" />
+                  <mssgle:LineSegment
+                    End="239,-5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-42.62638671875,5,127.2527734375,11.609375"
+              BoundingBox="55.87361328125,-17.5,127.2527734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -12215,31 +11847,109 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Output]"
-          TopLeft="111.5,97.5">
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 02]"
+          TopLeft="493.25,272">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="16.5,42.5"
+              EndConnector="32,0"
               Start="0,0"
-              End="16.5,35">
+              End="24.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,17.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.25"
-                    Point2="0,21.25"
-                    Point3="4,21.25" />
+                    End="24.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 01]"
+          TopLeft="500.5,166.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="28.2500000000001,0"
+              Start="0,0"
+              End="20.7500000000001,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="12.5,21.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12.5,21.25"
-                    Point2="16.5,21.25"
-                    Point3="16.5,25.25" />
+                    End="20.7500000000001,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 0]"
+          TopLeft="475,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,0"
+              Start="0,0"
+              End="24.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="16.5,35" />
+                    End="24.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
+          TopLeft="236.5,268.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.75,0"
+              Start="0,0"
+              End="27.25,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="27.25,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-59.58390625,5,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Output]"
+          TopLeft="126.5,97.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.5"
+              Start="0,0"
+              End="0,35">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

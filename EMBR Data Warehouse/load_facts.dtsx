@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_facts"
   DTS:PackageType="5"
-  DTS:VersionBuild="30"
-  DTS:VersionGUID="{CA625258-5CFB-43E5-92C1-E2F0789A2FD5}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{FA0FED10-5563-46C2-827F-2E7FC9A873A1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1682,14 +1682,14 @@ where [refTable].[status] = ? and [refTable].[message] = ?</property>
       ,ISNULL([Source], 'Unknown') AS Source
       ,[Prize]
       ,[ipaddress]
-      ,YEAR(TRY_CAST([SubmissionDate] AS DATETIME)) * 10000 + MONTH(TRY_CAST([SubmissionDate] AS DATETIME)) * 100 + DAY(TRY_CAST([SubmissionDate] AS DATETIME) ) AS date_key
-      ,DATEPART(SECOND, TRY_CAST([SubmissionDate] AS DATETIME)) + 60 * DATEPART( MINUTE ,TRY_CAST([SubmissionDate] AS DATETIME)) + 3600 * DATEPART(HOUR, TRY_CAST([SubmissionDate] AS DATETIME) ) AS time_key
+      ,YEAR(TRY_CAST(l.[SubmissionDate] AS DATETIME)) * 10000 + MONTH(TRY_CAST(l.[SubmissionDate] AS DATETIME)) * 100 + DAY(TRY_CAST(l.[SubmissionDate] AS DATETIME) ) AS date_key
+      ,DATEPART(SECOND, TRY_CAST(l.[SubmissionDate] AS DATETIME)) + 60 * DATEPART( MINUTE ,TRY_CAST(l.[SubmissionDate] AS DATETIME)) + 3600 * DATEPART(HOUR, TRY_CAST(l.[SubmissionDate] AS DATETIME) ) AS time_key
       ,ISNULL([affiliateid], 'Unknown') AS [affiliateid]
       ,[clickid]
       ,ISNULL( device_type ,'Unknown') AS device_type
       ,[user_agent]
       ,ISNULL( device_brand, 'Unknown' ) as device_brand
-      ,[lead_id]
+      ,l.[lead_id]
       ,[lead_status]
       ,ISNULL([lead_message], 'Unknown') AS [lead_message]
 		, CASE WHEN [state] IN ('Ade', 'ADELAIDE', 'adelide', 'AD', 's a', 'S.A', 'SA - SOUTH AUSTRALIA', 'South Australia', 'South Austrila', 'South of Australia' ) 
@@ -1716,9 +1716,10 @@ where [refTable].[status] = ? and [refTable].[message] = ?</property>
 				ELSE [state]
 				END AS [state]
 		, [dbo].[fn_remove_non_numeric] ( postcode ) AS postcode
-, ISNULL(homeowner_answer, 'Unknown' ) AS homeowner_answer
-, 'databowl' AS [data_source]
-FROM staging.leads</property>
+		, ISNULL(h.homeowner_answer, 'Unknown' ) AS homeowner_answer
+		, 'databowl' AS [data_source]
+FROM staging.leads l	
+	LEFT JOIN staging.lead_homeowners h on l.lead_id = h.lead_id</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -4654,21 +4655,13 @@ FROM staging.leads_old</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="131,42"
-          Id="Package\DFT - load fact_leads\LKP - leads"
-          TopLeft="407.777777777778,497.777777777778" />
+          Size="167,42"
+          Id="Package\DFT - load fact_leads\LKP - homeowner"
+          TopLeft="277,319" />
         <NodeLayout
-          Size="135,42"
-          Id="Package\DFT - load fact_leads\LKP - status"
-          TopLeft="514.666666666667,253.111111111111" />
-        <NodeLayout
-          Size="139,42"
-          Id="Package\DFT - load fact_leads\LKP - affliate"
-          TopLeft="218,166" />
-        <NodeLayout
-          Size="137,42"
-          Id="Package\DFT - load fact_leads\LKP - device"
-          TopLeft="229,236" />
+          Size="183,42"
+          Id="Package\DFT - load fact_leads\OLE_DST - fact_lead"
+          TopLeft="98.888888888889,457.888888888889" />
         <NodeLayout
           Size="157,42"
           Id="Package\DFT - load fact_leads\OLE_SRC - leads"
@@ -4678,9 +4671,25 @@ FROM staging.leads_old</property>
           Id="Package\DFT - load fact_leads\LKP - source"
           TopLeft="109,103" />
         <NodeLayout
+          Size="139,42"
+          Id="Package\DFT - load fact_leads\LKP - affliate"
+          TopLeft="218,166" />
+        <NodeLayout
+          Size="137,42"
+          Id="Package\DFT - load fact_leads\LKP - device"
+          TopLeft="229,236" />
+        <NodeLayout
+          Size="131,42"
+          Id="Package\DFT - load fact_leads\LKP - leads"
+          TopLeft="407.777777777778,497.777777777778" />
+        <NodeLayout
           Size="157,42"
           Id="Package\DFT - load fact_leads\LKP - geography"
           TopLeft="577.777777777778,366.666666666667" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\DFT - load fact_leads\LKP - status"
+          TopLeft="514.666666666667,253.111111111111" />
         <NodeLayout
           Size="167,42"
           Id="Package\DFT - load fact_leads\LKP - data source"
@@ -4689,10 +4698,6 @@ FROM staging.leads_old</property>
           Size="154,42"
           Id="Package\DFT - load fact_leads\Derived Column"
           TopLeft="577.777777777778,452.222222222222" />
-        <NodeLayout
-          Size="183,42"
-          Id="Package\DFT - load fact_leads\OLE_DST - fact_lead"
-          TopLeft="93.888888888889,478.888888888889" />
         <EdgeLayout
           Id="Package\DFT - load fact_leads.Paths[OLE DB Source Output]"
           TopLeft="105.5,64">
@@ -4733,33 +4738,105 @@ FROM staging.leads_old</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-130.888888888889,-18.888888888889"
+              EndConnector="-125.888888888889,-39.888888888889"
               Start="0,0"
-              End="-123.388888888889,-18.888888888889">
+              End="-118.388888888889,-39.888888888889">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-61.4444444444445,0" />
+                    End="-58.9444444444445,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-61.4444444444445,0"
-                    Point2="-65.4444444444445,0"
-                    Point3="-65.4444444444445,-4" />
+                    Point1="-58.9444444444445,0"
+                    Point2="-62.9444444444445,0"
+                    Point3="-62.9444444444445,-4" />
                   <mssgle:LineSegment
-                    End="-65.4444444444445,-14.888888888889" />
+                    End="-62.9444444444445,-35.888888888889" />
                   <mssgle:CubicBezierSegment
-                    Point1="-65.4444444444445,-14.888888888889"
-                    Point2="-65.4444444444445,-18.888888888889"
-                    Point3="-69.4444444444445,-18.888888888889" />
+                    Point1="-62.9444444444445,-35.888888888889"
+                    Point2="-62.9444444444445,-39.888888888889"
+                    Point3="-66.9444444444445,-39.888888888889" />
                   <mssgle:LineSegment
-                    End="-123.388888888889,-18.888888888889" />
+                    End="-118.388888888889,-39.888888888889" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-121.250831163195,1,111.6127734375,11.609375"
+              BoundingBox="-118.750831163194,1,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output6]"
+          TopLeft="387,319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="195.166666666667,-23.888888888889"
+              Start="0,0"
+              End="195.166666666667,-16.388888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-5.69157769869519" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-5.69157769869519"
+                    Point2="0,-9.69157769869519"
+                    Point3="4,-9.69157769869519" />
+                  <mssgle:LineSegment
+                    End="191.166666666667,-9.69157769869519" />
+                  <mssgle:CubicBezierSegment
+                    Point1="191.166666666667,-9.69157769869519"
+                    Point2="195.166666666667,-9.69157769869519"
+                    Point3="195.166666666667,-13.6915776986952" />
+                  <mssgle:LineSegment
+                    End="195.166666666667,-16.388888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="49.3919466145835,-4.69157769869519,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output5]"
+          TopLeft="297.5,278">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63,41"
+              Start="0,0"
+              End="63,33.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
+                  <mssgle:LineSegment
+                    End="59,20.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59,20.5"
+                    Point2="63,20.5"
+                    Point3="63,24.5" />
+                  <mssgle:LineSegment
+                    End="63,33.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-16.69138671875,25.5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -4959,87 +5036,11 @@ FROM staging.leads_old</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\DFT - load fact_leads\LKP - homeowner"
-          TopLeft="277,319" />
-        <EdgeLayout
-          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output5]"
-          TopLeft="297.5,278">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="63,41"
-              Start="0,0"
-              End="63,33.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="4,20.5" />
-                  <mssgle:LineSegment
-                    End="59,20.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="59,20.5"
-                    Point2="63,20.5"
-                    Point3="63,24.5" />
-                  <mssgle:LineSegment
-                    End="63,33.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-16.69138671875,25.5,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output6]"
-          TopLeft="387,319">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="195.166666666667,-23.888888888889"
-              Start="0,0"
-              End="195.166666666667,-16.388888888889">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-5.69157769869519" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-5.69157769869519"
-                    Point2="0,-9.69157769869519"
-                    Point3="4,-9.69157769869519" />
-                  <mssgle:LineSegment
-                    End="191.166666666667,-9.69157769869519" />
-                  <mssgle:CubicBezierSegment
-                    Point1="191.166666666667,-9.69157769869519"
-                    Point2="195.166666666667,-9.69157769869519"
-                    Point3="195.166666666667,-13.6915776986952" />
-                  <mssgle:LineSegment
-                    End="195.166666666667,-16.388888888889" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="49.3919466145835,-4.69157769869519,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load fact_leads\LKP - leads">
+    design-time-name="Package\DFT - load fact_leads\LKP - homeowner">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -5049,7 +5050,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[lead].[fact_leads]</Value>
+          type="q3:string">[lead].[dim_homeowner]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -5062,7 +5063,28 @@ FROM staging.leads_old</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load fact_leads\LKP - status">
+    design-time-name="Package\DFT - load fact_leads\OLE_DST - fact_lead">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load fact_leads\OLE_SRC - leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load fact_leads\LKP - source">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -5072,7 +5094,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[lead].[dim_status]</Value>
+          type="q3:string">[lead].[dim_source]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -5131,15 +5153,7 @@ FROM staging.leads_old</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load fact_leads\OLE_SRC - leads">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - load fact_leads\LKP - source">
+    design-time-name="Package\DFT - load fact_leads\LKP - leads">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -5149,7 +5163,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[lead].[dim_source]</Value>
+          type="q3:string">[lead].[fact_leads]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -5185,6 +5199,29 @@ FROM staging.leads_old</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
+    design-time-name="Package\DFT - load fact_leads\LKP - status">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[lead].[dim_status]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\DFT - load fact_leads\LKP - data source">
     <Properties>
       <Property>
@@ -5204,19 +5241,6 @@ FROM staging.leads_old</property>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - load fact_leads\OLE_DST - fact_lead">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -5626,15 +5650,33 @@ FROM staging.leads_old</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load old  fact_leads\OLE_DST - fact_lead">
+    design-time-name="Package\DFT - load old  fact_leads\LKP - status">
     <Properties>
       <Property>
-        <Name>DataSourceViewID</Name>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[lead].[dim_status]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q2:string">Table</Value>
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load old  fact_leads\OLE_SRC - old leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -5685,15 +5727,20 @@ FROM staging.leads_old</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load old  fact_leads\OLE_SRC - old leads">
+    design-time-name="Package\DFT - load old  fact_leads\OLE_DST - fact_lead">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load old  fact_leads\LKP - status">
+    design-time-name="Package\DFT - load old  fact_leads\LKP - source">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -5703,7 +5750,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[lead].[dim_status]</Value>
+          type="q3:string">[lead].[dim_source]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
@@ -5739,7 +5786,7 @@ FROM staging.leads_old</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load old  fact_leads\LKP - source">
+    design-time-name="Package\DFT - load old  fact_leads\LKP - homeowner">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
@@ -5749,58 +5796,12 @@ FROM staging.leads_old</property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[lead].[dim_source]</Value>
+          type="q3:string">[lead].[dim_homeowner]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - load old  fact_leads\LKP - homeowner">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[lead].[dim_homeowner]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - load fact_leads\LKP - homeowner">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[lead].[dim_homeowner]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

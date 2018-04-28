@@ -74,5 +74,6 @@
     <Build Include="staging\Tables\staging.values_custom_fields.sql" />
     <Build Include="staging\Tables\staging.join_leads.sql" />
     <Build Include="staging\Tables\staging.errors.sql" />
+    <Build Include="staging\Tables\staging.lead_homeowners.sql" />
   </ItemGroup>
 </Project>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_dimensions"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{44611CB0-794C-472E-A7CF-5F327B163979}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{3BACB2C3-FE19-4C01-A0D2-EB9B40C6789A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -46,7 +46,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_affiliate"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -63,7 +63,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_device"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -80,7 +80,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_homeowner"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -97,7 +97,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_source"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -114,7 +114,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_status"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -135,17 +135,17 @@
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Smaller tables 1"
+      DTS:refId="Package\Smaller tables - old leads"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
       DTS:DTSID="{6960f418-ee2a-4399-9b84-19a5718cabc6}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Smaller tables 1">
+      DTS:ObjectName="Smaller tables - old leads">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Smaller tables 1\SQL - load dim_affiliate from old leads"
+          DTS:refId="Package\Smaller tables - old leads\SQL - load dim_affiliate from old leads"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{9900d645-ee37-4ab7-a846-9be2f20c99cb}"
@@ -153,16 +153,16 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_affiliate from old leads"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
-              SQLTask:SqlStatementSource="EXEC lead.load_dim_affiliate_old" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="EXEC [lead].[load_dim_affiliate_old_leads]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
-          DTS:refId="Package\Smaller tables 1\SQL - load dim_source from old leads"
+          DTS:refId="Package\Smaller tables - old leads\SQL - load dim_source from old leads"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{ec9c6352-e7fc-41c8-8d3d-9458b3502a88}"
@@ -170,7 +170,7 @@
           DTS:LocaleID="-1"
           DTS:ObjectName="SQL - load dim_source from old leads"
           DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -189,7 +189,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - check if old leads loaded"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="4">
+      DTS:ThreadHint="0">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -211,7 +211,7 @@
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - load lead_dim_geography"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -238,7 +238,7 @@
       DTS:From="Package\SQL - check if old leads loaded"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
-      DTS:To="Package\Smaller tables 1" />
+      DTS:To="Package\Smaller tables - old leads" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -261,6 +261,10 @@
           Id="Package\Smaller tables\SQL - load dim_device"
           TopLeft="238,84" />
         <NodeLayout
+          Size="216,42"
+          Id="Package\Smaller tables\SQL - load dim_homeowner"
+          TopLeft="37,152" />
+        <NodeLayout
           Size="185,42"
           Id="Package\Smaller tables\SQL - load dim_source"
           TopLeft="224,18" />
@@ -268,10 +272,6 @@
           Size="183,42"
           Id="Package\Smaller tables\SQL - load dim_status"
           TopLeft="14,21" />
-        <NodeLayout
-          Size="216,42"
-          Id="Package\Smaller tables\SQL - load dim_homeowner"
-          TopLeft="37,152" />
         <EdgeLayout
           Id="Package\Smaller tables.PrecedenceConstraints[Constraint]"
           TopLeft="106.5,125">
@@ -315,18 +315,18 @@
           TopLeft="317,307.428571428571" />
         <NodeLayout
           Size="194,47"
-          Id="Package\Smaller tables 1\SQL - load dim_affiliate from old leads"
+          Id="Package\Smaller tables - old leads\SQL - load dim_affiliate from old leads"
           TopLeft="12,83" />
         <NodeLayout
           Size="263,42"
-          Id="Package\Smaller tables 1\SQL - load dim_source from old leads"
+          Id="Package\Smaller tables - old leads\SQL - load dim_source from old leads"
           TopLeft="224,74" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="492,181"
           Size="492,224"
-          Id="Package\Smaller tables 1"
+          Id="Package\Smaller tables - old leads"
           TopLeft="592,43" />
         <NodeLayout
           Size="231,42"

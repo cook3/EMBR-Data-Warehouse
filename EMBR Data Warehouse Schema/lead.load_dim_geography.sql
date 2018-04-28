@@ -79,6 +79,7 @@ IF @incremental_flag = 1 --handle incremental loads
 							,[state_code]
 							,[state]
 							,[latitude]
+							,[longitude]
 							,[time_zone]
 
 								)
@@ -90,6 +91,7 @@ IF @incremental_flag = 1 --handle incremental loads
 							, source.[state_code]
 							, source.[state]
 							, source.[latitude]
+							, source.[longitude]
 							, source.[time_zone]
 
 
@@ -142,6 +144,7 @@ IF @incremental_flag = 1 --handle incremental loads
 							,[state_code]
 							,[state]
 							,[latitude]
+							,[longitude]
 							,[time_zone]
 								)
 
@@ -154,6 +157,7 @@ IF @incremental_flag = 1 --handle incremental loads
 							,[state]
 							,[latitude]
 							,[longitude]
+							,[time_zone]
 						FROM lead_geo
 						WHERE duplicate_number = 1
 
