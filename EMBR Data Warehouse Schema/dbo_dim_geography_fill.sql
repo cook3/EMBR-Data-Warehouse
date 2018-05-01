@@ -999,7 +999,7 @@
 (998,'Benbournie',NULL,'SA','South Australia','5453','Rural locality',-33.79285,138.55583,401,6,12.24100,'Clare and Gilbert Valleys (District Council)','Australia/Adelaide'),
 (999,'Ben Bullen',NULL,'NSW','New South Wales','2790','Rural locality',-33.21959,150.02173,883,100,85.13800,'Lithgow (City)','Australia/Sydney'),
 (1000,'Bencubbin',NULL,'WA','Western Australia','6477','Rural locality',-30.81170,117.86168,359,242,688.48900,'Mount Marshall (Shire)','Australia/Perth');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (1001,'Bendalong',NULL,'NSW','New South Wales','2539','Rural locality',-35.24678,150.52989,34,95,14.26200,'Shoalhaven (City)','Australia/Sydney'),
 (1002,'Bendemeer',NULL,'NSW','New South Wales','2355','Rural locality',-30.87840,151.15991,822,492,541.44600,'Tamworth Regional (Area)','Australia/Sydney'),
 (1003,'Bendick Murrell',NULL,'NSW','New South Wales','2803','Rural locality',-34.16282,148.44985,372,155,101.87400,'Hilltops (Area)','Australia/Sydney'),
@@ -2000,7 +2000,7 @@ INSERT INTO au_towns VALUES
 (1998,'Bulong',NULL,'WA','Western Australia','6431','Rural locality',-30.74763,121.79242,383,0,1987.63300,'Kalgoorlie/Boulder (City)','Australia/Perth'),
 (1999,'Bulwer',NULL,'QLD','Queensland','4025','Rural locality',-27.07685,153.36784,9,49,0.40400,'Brisbane (City)','Australia/Brisbane'),
 (2000,'Bulyee',NULL,'WA','Western Australia','6306','Rural locality',-32.36927,117.53823,286,46,414.04000,'Corrigin (Shire)','Australia/Perth');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (2001,'Bulyeroi',NULL,'NSW','New South Wales','2387','Rural locality',-29.78030,149.09056,162,15,157.01600,'Narrabri (Area)','Australia/Sydney'),
 (2002,'Bumbaldry',NULL,'NSW','New South Wales','2794','Rural locality',-33.90634,148.45639,462,100,244.65700,'Weddin (Area)','Australia/Sydney'),
 (2003,'Bumbalong',NULL,'NSW','New South Wales','2626','Rural locality',-35.86127,149.13088,683,24,50.23300,'Snowy Monaro Regional (Area)','Australia/Sydney'),
@@ -3001,7 +3001,7 @@ INSERT INTO au_towns VALUES
 (2998,'Colebatch',NULL,'SA','South Australia','5266','Rural locality',-35.97093,139.84875,13,71,373.76500,'The Coorong (District Council)','Australia/Adelaide'),
 (2999,'Colebee',NULL,'NSW','New South Wales','2761','Rural locality',-33.73065,150.86605,27,1931,3.47600,'Blacktown (City)','Australia/Sydney'),
 (3000,'Colebrook',NULL,'TAS','Tasmania','7027','Rural locality',-42.53435,147.36410,204,294,152.11700,'Southern Midlands (Municipality)','Australia/Hobart');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (3001,'Coledale','Wollongong','NSW','New South Wales','2515','Suburb',-34.28828,150.94740,11,1260,2.09900,'Wollongong (City)','Australia/Sydney'),
 (3002,'Coleraine',NULL,'VIC','Victoria','3315','Urban locality',-37.59827,141.69113,89,1029,174.36100,'Southern Grampians (Shire)','Australia/Melbourne'),
 (3003,'Coles',NULL,'SA','South Australia','5272','Rural locality',-37.25625,140.61185,51,39,262.49400,'Naracoorte and Lucindale (District Council)','Australia/Adelaide'),
@@ -4002,7 +4002,7 @@ INSERT INTO au_towns VALUES
 (3998,'Downsfield',NULL,'QLD','Queensland','4570','Rural locality',-26.03800,152.73259,135,94,25.39400,'Gympie (Regional Council)','Australia/Brisbane'),
 (3999,'Downside',NULL,'NSW','New South Wales','2650','Rural locality',-34.97663,147.34431,214,124,79.36600,'Wagga Wagga (City)','Australia/Sydney'),
 (4000,'Dows Creek',NULL,'QLD','Queensland','4754','Rural locality',-21.10021,148.75849,78,136,30.82300,'Mackay (Regional Council)','Australia/Brisbane');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (4001,'Dowsing Point','Hobart','TAS','Tasmania','7010','Suburb',-42.82299,147.30290,25,85,0.57300,'Glenorchy (City)','Australia/Hobart'),
 (4002,'Doyalson','Central Coast','NSW','New South Wales','2262','Suburb',-33.19717,151.52112,38,313,8.28100,'Central Coast (City)','Australia/Sydney'),
 (4003,'Doyalson North','Central Coast','NSW','New South Wales','2262','Suburb',-33.18529,151.54622,30,384,3.46300,'Central Coast (City)','Australia/Sydney'),
@@ -5003,7 +5003,7 @@ INSERT INTO au_towns VALUES
 (4998,'Gangat',NULL,'NSW','New South Wales','2422','Rural locality',-32.01903,152.07414,193,25,9.67300,'Mid-Coast (Area)','Australia/Sydney'),
 (4999,'Ganmain',NULL,'NSW','New South Wales','2702','Urban locality',-34.79989,147.03376,193,779,439.86900,'Coolamon (Area)','Australia/Sydney'),
 (5000,'Gannawarra',NULL,'VIC','Victoria','3568','Rural locality',-35.71144,144.14635,83,94,56.88800,'Gannawarra (Shire)','Australia/Melbourne');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (5001,'Gap Ridge','Karratha','WA','Western Australia','6714','Suburb',-20.74612,116.78562,13,81,55.77500,'Karratha (City)','Australia/Perth'),
 (5002,'Gapsted',NULL,'VIC','Victoria','3737','Rural locality',-36.52137,146.68046,236,173,53.83200,'Alpine (Shire)','Australia/Melbourne'),
 (5003,'Gapuwiyak',NULL,'NT','Northern Territory','0880','Urban locality',-12.50377,135.81184,82,923,11.92700,'East Arnhem (Regional Council)','Australia/Darwin'),
@@ -6004,7 +6004,7 @@ INSERT INTO au_towns VALUES
 (5998,'Hedley',NULL,'VIC','Victoria','3967','Rural locality',-38.64493,146.50675,17,125,87.95900,'South Gippsland (Shire)','Australia/Melbourne'),
 (5999,'Heidelberg','Melbourne','VIC','Victoria','3084','Suburb',-37.75634,145.06715,35,6225,2.93400,'Banyule (City)','Australia/Melbourne'),
 (6000,'Heidelberg Heights','Melbourne','VIC','Victoria','3081','Suburb',-37.74227,145.04887,71,6087,2.08700,'Banyule (City)','Australia/Melbourne');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (6001,'Heidelberg West','Melbourne','VIC','Victoria','3081','Suburb',-37.74944,145.04140,66,5545,3.21300,'Banyule (City)','Australia/Melbourne'),
 (6002,'Heifer Station',NULL,'NSW','New South Wales','2460','Rural locality',-29.48815,152.64190,118,8,152.52800,'Clarence Valley (Area)','Australia/Sydney'),
 (6003,'Helena Valley','Perth','WA','Western Australia','6056','Suburb',-31.91692,116.04162,30,3683,7.09200,'Mundaring (Shire)','Australia/Perth'),
@@ -7005,7 +7005,7 @@ INSERT INTO au_towns VALUES
 (6998,'Kingfisher Shores','Central Coast','NSW','New South Wales','2259','Suburb',-33.16774,151.55632,8,163,0.42100,'Central Coast (City)','Australia/Sydney'),
 (6999,'Kinghorne',NULL,'NSW','New South Wales','2540','Rural locality',-34.96551,150.77817,8,0,10.42400,'Shoalhaven (City)','Australia/Sydney'),
 (7000,'Kinglake',NULL,'VIC','Victoria','3757','Rural locality',-37.47097,145.32053,582,345,35.97700,'Murrindindi (Shire)','Australia/Melbourne');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (7001,'Kinglake',NULL,'VIC','Victoria','3763','Urban locality',-37.52990,145.34057,546,1536,115.14500,'Murrindindi (Shire)','Australia/Melbourne'),
 (7002,'Kinglake West',NULL,'VIC','Victoria','3757','Urban locality',-37.47872,145.25013,529,1166,65.30100,'Murrindindi (Shire)','Australia/Melbourne'),
 (7003,'King Leopold Ranges',NULL,'WA','Western Australia','6728','Rural locality',-17.15231,125.48475,361,240,39588.53300,'Derby-West Kimberley (Shire)','Australia/Perth'),
@@ -8006,7 +8006,7 @@ INSERT INTO au_towns VALUES
 (7998,'Macorna North',NULL,'VIC','Victoria','3568','Rural locality',-35.85139,144.09125,80,20,47.35900,'Gannawarra (Shire)','Australia/Melbourne'),
 (7999,'Macquarie','Canberra','ACT','Australian Capital Territory','2614','Suburb',-35.25126,149.06363,618,2700,1.70000,'Unincorporated','Australia/Sydney'),
 (8000,'Macquarie Fields','Sydney','NSW','New South Wales','2564','Suburb',-33.98947,150.88263,37,13714,7.01300,'Campbelltown (City)','Australia/Sydney');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (8001,'Macquarie Hills','Newcastle','NSW','New South Wales','2285','Suburb',-32.95315,151.64712,87,3304,2.34400,'Lake Macquarie (City)','Australia/Sydney'),
 (8002,'Macquarie Links','Sydney','NSW','New South Wales','2565','Suburb',-33.98219,150.86756,65,1360,1.77200,'Campbelltown (City)','Australia/Sydney'),
 (8003,'Macquarie Marshes',NULL,'NSW','New South Wales','2831','Rural locality',-30.59675,147.69351,139,3,389.73800,'Coonamble (Area)','Australia/Sydney'),
@@ -9007,7 +9007,7 @@ INSERT INTO au_towns VALUES
 (8998,'Moriarty',NULL,'TAS','Tasmania','7307','Rural locality',-41.21653,146.48111,64,223,21.82200,'Latrobe (Municipality)','Australia/Hobart'),
 (8999,'Morinish',NULL,'QLD','Queensland','4702','Rural locality',-23.16132,150.04315,72,89,757.06500,'Rockhampton (Regional Council)','Australia/Brisbane'),
 (9000,'Morinish South',NULL,'QLD','Queensland','4702','Rural locality',-23.36342,150.02356,86,5,366.90300,'Rockhampton (Regional Council)','Australia/Brisbane');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (9001,'Morisset',NULL,'NSW','New South Wales','2264','Urban locality',-33.10834,151.48776,36,3213,27.06100,'Lake Macquarie (City)','Australia/Sydney'),
 (9002,'Morisset Park','Morisset - Cooranbong','NSW','New South Wales','2264','Suburb',-33.12141,151.53077,22,743,1.03700,'Lake Macquarie (City)','Australia/Sydney'),
 (9003,'Morley','Perth','WA','Western Australia','6062','Suburb',-31.89573,115.90460,25,21530,10.49900,'Bayswater (City)','Australia/Perth'),
@@ -10008,7 +10008,7 @@ INSERT INTO au_towns VALUES
 (9998,'Norseman',NULL,'WA','Western Australia','6443','Urban locality',-32.19784,121.77896,284,581,14290.16400,'Dundas (Shire)','Australia/Perth'),
 (9999,'North Adelaide','Adelaide','SA','South Australia','5006','Suburb',-34.90964,138.59241,55,6950,5.09100,'Adelaide (City)','Australia/Adelaide'),
 (10000,'North Albury','Albury','NSW','New South Wales','2640','Suburb',-36.06295,146.93155,172,6058,5.87200,'Albury (City)','Australia/Sydney');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (10001,'Northam',NULL,'WA','Western Australia','6401','Urban locality',-31.65477,116.67025,156,6548,26.78400,'Northam (Shire)','Australia/Perth'),
 (10002,'Northampton',NULL,'WA','Western Australia','6535','Urban locality',-28.35223,114.63009,159,813,11.82400,'Northampton (Shire)','Australia/Perth'),
 (10003,'Northangera',NULL,'NSW','New South Wales','2622','Rural locality',-35.48057,149.92294,653,43,24.52200,'Queanbeyan-Palerang Regional (Area)','Australia/Sydney'),
@@ -11009,7 +11009,7 @@ INSERT INTO au_towns VALUES
 (10998,'Port Pirie West',NULL,'SA','South Australia','5540','Rural locality',-33.17470,137.99122,8,2618,25.53500,'Port Pirie City and Dists (Municipality)','Australia/Adelaide'),
 (10999,'Port Rickaby',NULL,'SA','South Australia','5575','Rural locality',-34.67429,137.49588,9,55,21.74100,'Yorke Peninsula (District Council)','Australia/Adelaide'),
 (11000,'Portsea','Melbourne','VIC','Victoria','3944','Suburb',-38.32477,144.70552,15,510,11.32800,'Mornington Peninsula (Shire)','Australia/Melbourne');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (11001,'Portsmith','Cairns','QLD','Queensland','4870','Suburb',-16.93897,145.76486,7,260,15.17500,'Cairns (Regional Council)','Australia/Brisbane'),
 (11002,'Port Sorell',NULL,'TAS','Tasmania','7307','Urban locality',-41.16640,146.55016,7,2022,9.84500,'Latrobe (Municipality)','Australia/Hobart'),
 (11003,'Port Stephens','Nelson Bay - Corlette','NSW','New South Wales','2315','Suburb',-32.71853,152.10484,2,0,4.04000,'Port Stephens (Area)','Australia/Sydney'),
@@ -12010,7 +12010,7 @@ INSERT INTO au_towns VALUES
 (11998,'Silky Oak',NULL,'QLD','Queensland','4854','Rural locality',-17.96928,145.95812,21,139,21.14800,'Cassowary Coast (Regional Council)','Australia/Brisbane'),
 (11999,'Silvan',NULL,'VIC','Victoria','3795','Rural locality',-37.82409,145.41989,296,1246,30.17400,'Yarra Ranges (Shire)','Australia/Melbourne'),
 (12000,'Silver Creek',NULL,'QLD','Queensland','4800','Rural locality',-20.47707,148.46771,47,8,24.38500,'Whitsunday (Regional Council)','Australia/Brisbane');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (12001,'Silverdale',NULL,'NSW','New South Wales','2752','Rural locality',-33.92200,150.59948,208,3682,48.42200,'Wollondilly (Area)','Australia/Sydney'),
 (12002,'Silverdale',NULL,'QLD','Queensland','4307','Rural locality',-27.89273,152.60909,73,120,38.82700,'Scenic Rim (Regional Council)','Australia/Brisbane'),
 (12003,'Silverleaf',NULL,'QLD','Queensland','4605','Rural locality',-26.17364,151.82199,269,57,33.53800,'South Burnett (Regional Council)','Australia/Brisbane'),
@@ -13011,7 +13011,7 @@ INSERT INTO au_towns VALUES
 (12998,'The Gap',NULL,'NSW','New South Wales','2472','Rural locality',-29.14639,153.37844,36,0,47.51600,'Richmond Valley (Area)','Australia/Sydney'),
 (12999,'The Gap',NULL,'NSW','New South Wales','2650','Rural locality',-34.99442,147.25423,193,62,145.97200,'Wagga Wagga (City)','Australia/Sydney'),
 (13000,'The Gap','Alice Springs','NT','Northern Territory','0870','Suburb',-23.71408,133.87424,575,1709,1.52000,'Alice Springs (Town)','Australia/Darwin');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (13001,'The Gap','Brisbane','QLD','Queensland','4061','Suburb',-27.44499,152.95277,46,16692,12.43400,'Brisbane (City)','Australia/Brisbane'),
 (13002,'The Gap','Mount Isa','QLD','Queensland','4825','Suburb',-20.72624,139.49996,359,818,0.70600,'Mount Isa (City)','Australia/Brisbane'),
 (13003,'The Gap',NULL,'SA','South Australia','5271','Rural locality',-36.68894,140.65897,76,21,112.39100,'Naracoorte and Lucindale (District Council)','Australia/Adelaide'),
@@ -14012,7 +14012,7 @@ INSERT INTO au_towns VALUES
 (13998,'Warooka',NULL,'SA','South Australia','5577','Urban locality',-34.99006,137.39882,56,348,512.26500,'Yorke Peninsula (District Council)','Australia/Adelaide'),
 (13999,'Waroona',NULL,'WA','Western Australia','6215','Urban locality',-32.84506,115.92243,45,2934,240.91900,'Waroona (Shire)','Australia/Perth'),
 (14000,'Warra',NULL,'QLD','Queensland','4411','Rural locality',-26.92933,150.91918,319,205,196.89600,'Western Downs (Regional Council)','Australia/Brisbane');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (14001,'Warrabah',NULL,'NSW','New South Wales','2346','Rural locality',-30.48318,150.97860,926,0,203.39400,'Tamworth Regional (Area)','Australia/Sydney'),
 (14002,'Warraber Islet',NULL,'QLD','Queensland','4875','Urban locality',-10.20745,142.82405,6,245,0.79200,'Torres Strait Island (Regional Council)','Australia/Brisbane'),
 (14003,'Warrabkook',NULL,'VIC','Victoria','3286','Rural locality',-37.97919,142.04428,162,34,64.94200,'Moyne (Shire)','Australia/Melbourne'),
@@ -15013,7 +15013,7 @@ INSERT INTO au_towns VALUES
 (14998,'Wyuna East',NULL,'VIC','Victoria','3620','Rural locality',-36.22535,145.10362,104,103,24.13800,'Campaspe (Shire)','Australia/Melbourne'),
 (14999,'Wy Yung',NULL,'VIC','Victoria','3875','Rural locality',-37.79124,147.60654,74,1657,36.68500,'East Gippsland (Shire)','Australia/Melbourne'),
 (15000,'Xantippe',NULL,'WA','Western Australia','6609','Rural locality',-30.28564,117.00145,311,20,247.28500,'Dalwallinu (Shire)','Australia/Perth');
-INSERT INTO au_towns VALUES
+INSERT INTO dbo.dim_geography VALUES
 (15001,'Yaamba',NULL,'QLD','Queensland','4704','Rural locality',-23.13477,150.36788,24,62,66.72300,'Livingstone (Shire)','Australia/Brisbane'),
 (15002,'Yaapeet',NULL,'VIC','Victoria','3424','Rural locality',-35.76607,142.06025,92,84,399.38200,'Yarriambiack (Shire)','Australia/Melbourne'),
 (15003,'Yabba North',NULL,'VIC','Victoria','3646','Rural locality',-36.20822,145.70966,123,101,63.78600,'Moira (Shire)','Australia/Melbourne'),
