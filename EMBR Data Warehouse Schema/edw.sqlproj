@@ -119,5 +119,6 @@
     <None Include="dbo_dim_geography_fill.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="dbo_data_source_load.sql" />
   </ItemGroup>
 </Project>

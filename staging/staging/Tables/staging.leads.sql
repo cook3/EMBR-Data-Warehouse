@@ -31,7 +31,14 @@
 
 
 
+
+
 GO
 CREATE NONCLUSTERED INDEX [idx_lead_id]
+    ON [staging].[leads]([lead_id] ASC);
+
+
+GO
+CREATE CLUSTERED INDEX [pk_lead_id]
     ON [staging].[leads]([lead_id] ASC);
 

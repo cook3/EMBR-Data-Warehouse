@@ -29,7 +29,10 @@ IF @incremental_flag = 1 --handle incremental loads
 
 						UNION
 
-						SELECT DISTINCT [lead_status], ISNULL([lead_message], 'Unknown' ) AS [lead_message]
+						SELECT DISTINCT [lead_status]
+							, CASE WHEN LEN(lead_message) = 0
+									THEN 'Unknown'
+									ELSE ISNULL([lead_message], 'Unknown' ) END AS [lead_message]
 						FROM [staging].staging.leads
 
 						  
@@ -73,7 +76,10 @@ IF @incremental_flag = 1 --handle incremental loads
 
 						UNION
 
-						SELECT DISTINCT [lead_status], ISNULL([lead_message], 'Unknown' ) AS [lead_message]
+						SELECT DISTINCT [lead_status]
+							, CASE WHEN LEN(lead_message) = 0
+									THEN 'Unknown'
+									ELSE ISNULL([lead_message], 'Unknown' ) END AS [lead_message]
 						FROM [staging].staging.leads
 
 	END

@@ -1,18 +1,20 @@
-﻿CREATE TABLE [dbo].[dim_geography]
-(
-	[geography_key] [int]  NOT NULL,
-	name varchar(37),
-	urban_area varchar(28),
-	state_code varchar(3),
-	state varchar(28),
-	postcode varchar(4),
-	type varchar(20),
-	latitude numeric(8,5),
-	longitude numeric(8,5),
-	elevation int,
-	population int,
-	area_sq_km numeric(9,3),
-	local_government_area varchar(44),
-	time_zone varchar(21)
-) ON [PRIMARY]
+﻿CREATE TABLE [dbo].[dim_geography] (
+    [geography_key]         INT            NOT NULL,
+    [name]                  VARCHAR (37)   NULL,
+    [urban_area]            VARCHAR (28)   NULL,
+    [state_code]            VARCHAR (3)    NULL,
+    [state]                 VARCHAR (28)   NULL,
+    [postcode]              VARCHAR (4)    NULL,
+    [type]                  VARCHAR (20)   NULL,
+    [latitude]              NUMERIC (8, 5) NULL,
+    [longitude]             NUMERIC (8, 5) NULL,
+    [elevation]             INT            NULL,
+    [population]            INT            NULL,
+    [area_sq_km]            NUMERIC (9, 3) NULL,
+    [local_government_area] VARCHAR (44)   NULL,
+    [time_zone]             VARCHAR (21)   NULL,
+    PRIMARY KEY CLUSTERED ([geography_key] ASC)
+);
+
+
 GO
