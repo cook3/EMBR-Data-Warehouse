@@ -14,3 +14,5 @@ Post-Deployment Script Template
 :r .\dbo_data_source_load.sql
 
 EXECUTE dbo.load_dim_date '2010-01-01', '2050-12-31'
+
+EXECUTE dbo.load_dim_date '1900-01-01', '1900-01-01'

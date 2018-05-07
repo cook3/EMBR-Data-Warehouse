@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_facts"
   DTS:PackageType="5"
-  DTS:VersionBuild="37"
-  DTS:VersionGUID="{60B3CF85-41FF-43EE-ADF2-8602E44D8EAA}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{29CAD105-A593-4683-B237-90737C7F5FA4}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1694,8 +1694,8 @@ where [refTable].[status] = ? and [refTable].[message] = ?</property>
       ,ISNULL([Source], 'Unknown') AS Source
       ,[Prize]
       ,[ipaddress]
-      ,YEAR(TRY_CAST(l.[SubmissionDate] AS DATETIME)) * 10000 + MONTH(TRY_CAST(l.[SubmissionDate] AS DATETIME)) * 100 + DAY(TRY_CAST(l.[SubmissionDate] AS DATETIME) ) AS date_key
-      ,DATEPART(SECOND, TRY_CAST(l.[SubmissionDate] AS DATETIME)) + 60 * DATEPART( MINUTE ,TRY_CAST(l.[SubmissionDate] AS DATETIME)) + 3600 * DATEPART(HOUR, TRY_CAST(l.[SubmissionDate] AS DATETIME) ) AS time_key
+      ,ISNULL(( YEAR(TRY_CAST(l.[SubmissionDate] AS DATETIME)) * 10000 + MONTH(TRY_CAST(l.[SubmissionDate] AS DATETIME)) * 100 + DAY(TRY_CAST(l.[SubmissionDate] AS DATETIME) ) ), 19000101)  AS date_key
+      ,ISNULL((DATEPART(SECOND, TRY_CAST(l.[SubmissionDate] AS DATETIME)) + 60 * DATEPART( MINUTE ,TRY_CAST(l.[SubmissionDate] AS DATETIME)) + 3600 * DATEPART(HOUR, TRY_CAST(l.[SubmissionDate] AS DATETIME) ) ) , -1) AS time_key
       ,ISNULL([affiliateid], 'Unknown') AS [affiliateid]
       ,[clickid]
       ,ISNULL( device_type ,'Unknown') AS device_type
@@ -3953,7 +3953,7 @@ where [refTable].[status] = ? and [refTable].[message] = ?</property>
       ,ISNULL(REPLACE( [Source], '`', '' ), 'Unknown') AS Source
       ,[Prize]
       ,[ipaddress]
-      ,YEAR(TRY_CAST([created] AS DATETIME)) * 10000 + MONTH(TRY_CAST([created] AS DATETIME)) * 100 + DAY(TRY_CAST([created] AS DATETIME) ) AS date_key
+      ,ISNULL( (YEAR(TRY_CAST([created] AS DATETIME)) * 10000 + MONTH(TRY_CAST([created] AS DATETIME)) * 100 + DAY(TRY_CAST([created] AS DATETIME) ) ), 19000101 ) AS date_key
       ,ISNULL(( DATEPART(SECOND, TRY_CAST([created] AS DATETIME)) + 60 * DATEPART( MINUTE ,TRY_CAST([created] AS DATETIME)) + 3600 * DATEPART(HOUR, TRY_CAST([created] AS DATETIME) )), -1) AS time_key
       ,ISNULL([affiliateid], 'Unknown') AS [affiliateid]
       ,NULL AS [clickid]
@@ -4700,6 +4700,130 @@ FROM staging.leads_old</property>
           Id="Package\DFT - load fact_leads\Derived Column"
           TopLeft="577.777777777778,452.222222222222" />
         <EdgeLayout
+          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output2]"
+          TopLeft="655.527777777778,408.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.5555555555556"
+              Start="0,0"
+              End="0,36.0555555555556">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.0555555555556" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,12.2230902777778,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output1]"
+          TopLeft="287.5,208">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10,28"
+              Start="0,0"
+              End="10,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="4,14" />
+                  <mssgle:LineSegment
+                    End="6,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6,14"
+                    Point2="10,14"
+                    Point3="10,18" />
+                  <mssgle:LineSegment
+                    End="10,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-43.19138671875,19,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output]"
+          TopLeft="247,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="40.5,42"
+              Start="0,0"
+              End="40.5,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="36.5,0"
+                    Point2="40.5,0"
+                    Point3="40.5,4" />
+                  <mssgle:LineSegment
+                    End="40.5,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7.69138671875,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load fact_leads.Paths[Derived Column Output]"
+          TopLeft="577.777777777778,473.222222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-39,45.5555555555555"
+              Start="0,0"
+              End="-31.5,45.5555555555555">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-15.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.5,0"
+                    Point2="-19.5,0"
+                    Point3="-19.5,4" />
+                  <mssgle:LineSegment
+                    End="-19.5,41.5555555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19.5,41.5555555555555"
+                    Point2="-19.5,45.5555555555555"
+                    Point3="-23.5,45.5555555555555" />
+                  <mssgle:LineSegment
+                    End="-31.5,45.5555555555555" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\DFT - load fact_leads.Paths[OLE DB Source Output]"
           TopLeft="105.5,64">
           <EdgeLayout.Curve>
@@ -4913,130 +5037,6 @@ FROM staging.leads_old</property>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output2]"
-          TopLeft="655.527777777778,408.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.5555555555556"
-              Start="0,0"
-              End="0,36.0555555555556">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.0555555555556" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,12.2230902777778,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output1]"
-          TopLeft="287.5,208">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="10,28"
-              Start="0,0"
-              End="10,20.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,10" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,10"
-                    Point2="0,14"
-                    Point3="4,14" />
-                  <mssgle:LineSegment
-                    End="6,14" />
-                  <mssgle:CubicBezierSegment
-                    Point1="6,14"
-                    Point2="10,14"
-                    Point3="10,18" />
-                  <mssgle:LineSegment
-                    End="10,20.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-43.19138671875,19,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load fact_leads.Paths[Lookup Match Output]"
-          TopLeft="247,124">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="40.5,42"
-              Start="0,0"
-              End="40.5,34.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="36.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="36.5,0"
-                    Point2="40.5,0"
-                    Point3="40.5,4" />
-                  <mssgle:LineSegment
-                    End="40.5,34.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-7.69138671875,-17.609375,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load fact_leads.Paths[Derived Column Output]"
-          TopLeft="577.777777777778,473.222222222222">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-39,45.5555555555555"
-              Start="0,0"
-              End="-31.5,45.5555555555555">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-15.5,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-15.5,0"
-                    Point2="-19.5,0"
-                    Point3="-19.5,4" />
-                  <mssgle:LineSegment
-                    End="-19.5,41.5555555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-19.5,41.5555555555555"
-                    Point2="-19.5,45.5555555555555"
-                    Point3="-23.5,45.5555555555555" />
-                  <mssgle:LineSegment
-                    End="-31.5,45.5555555555555" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5046,7 +5046,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5056,7 +5056,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5159,7 +5159,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5169,7 +5169,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5182,7 +5182,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5192,7 +5192,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5445,9 +5445,7 @@ FROM staging.leads_old</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5481,9 +5479,7 @@ FROM staging.leads_old</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5517,9 +5513,7 @@ FROM staging.leads_old</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
