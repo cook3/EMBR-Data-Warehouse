@@ -29,7 +29,7 @@ IF @incremental_flag = 1 --handle incremental loads
 						UNION 
 
 						SELECT DISTINCT [homeowner_answer]
-						FROM [staging].[staging].[leads] 
+						FROM [staging].[staging].[lead_homeowners] 
 
 						  
 						) AS source 
@@ -72,7 +72,7 @@ IF @incremental_flag = 1 --handle incremental loads
 						UNION 
 
 						SELECT DISTINCT [homeowner_answer]
-						FROM [staging].[staging].[leads] 
+						FROM [staging].[staging].[lead_homeowners] 
 
 	END
 

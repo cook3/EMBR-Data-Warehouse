@@ -7,12 +7,12 @@
   DTS:CreatorName="Cooke-PC\Cooke"
   DTS:DTSID="{3D37E718-B8FA-400E-9AFC-1D30532CDE13}"
   DTS:ExecutableType=""
-  DTS:LastModifiedProductVersion="14.0.3002.92"
+  DTS:LastModifiedProductVersion="14.0.3002.101"
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="59"
-  DTS:VersionGUID="{A22CDE47-B7A0-452B-8304-1C51245BF750}">
+  DTS:VersionBuild="60"
+  DTS:VersionGUID="{E7538561-B7E4-4ABC-9EFC-A0F067E43FEB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -987,7 +987,7 @@ where [refTable].[customer_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK</property>
+                  name="FastLoadOptions"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -1060,6 +1060,10 @@ where [refTable].[customer_id] = ?</property>
                       refId="Package\DFT - load customer table\OLE_DST - error.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                       dataType="dbTimeStamp"
                       name="submission_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_DST - error.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
+                      dataType="dbTimeStamp"
+                      name="load_date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1138,7 +1142,7 @@ where [refTable].[customer_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK</property>
+                  name="FastLoadOptions"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -1211,6 +1215,10 @@ where [refTable].[customer_id] = ?</property>
                       refId="Package\DFT - load customer table\OLE_DST - error 1.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                       dataType="dbTimeStamp"
                       name="submission_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load customer table\OLE_DST - error 1.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
+                      dataType="dbTimeStamp"
+                      name="load_date" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -5723,7 +5731,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     design-time-name="Package\DFT - load old customer data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="214,42"
           Id="Package\DFT - load old customer data\OLE_SRC - load_old_leads"
@@ -5767,9 +5775,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="6.23552734374999,44,69.0289453125,11.228515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5803,9 +5809,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="56.73552734375,50.5,69.0289453125,11.228515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

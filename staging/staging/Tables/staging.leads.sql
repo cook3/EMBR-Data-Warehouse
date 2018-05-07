@@ -1,4 +1,5 @@
 ﻿CREATE TABLE [staging].[leads] (
+    [lead_id]          INT            NOT NULL,
     [email]            VARCHAR (250)  NULL,
     [title]            VARCHAR (4000) NULL,
     [firstname]        VARCHAR (4000) NULL,
@@ -20,11 +21,11 @@
     [device_brand]     VARCHAR (4000) NULL,
     [user_agent]       VARCHAR (4000) NULL,
     [device_type]      VARCHAR (4000) NULL,
-    [lead_id]          VARCHAR (4000) NULL,
     [lead_status]      VARCHAR (4000) NULL,
     [lead_message]     VARCHAR (4000) NULL,
     [homeowner_answer] VARCHAR (4000) NULL,
-    [data_source]      VARCHAR (255)  NULL
+    [data_source]      VARCHAR (255)  NULL,
+    CONSTRAINT [pk_lead_id] PRIMARY KEY CLUSTERED ([lead_id] ASC)
 );
 
 
@@ -33,12 +34,12 @@
 
 
 
-GO
-CREATE NONCLUSTERED INDEX [idx_lead_id]
-    ON [staging].[leads]([lead_id] ASC);
 
 
 GO
-CREATE CLUSTERED INDEX [pk_lead_id]
-    ON [staging].[leads]([lead_id] ASC);
+
+
+
+GO
+
 

@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{D1187CA7-E845-418B-BF7F-307C11458435}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{57E8974A-3413-48E0-A206-C37C2F315A9A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -7621,7 +7621,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
-          SQLTask:SqlStatementSource="DROP INDEX IF EXISTS staging.leads.[pk_lead_id];&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'pk_lead_id') AND type in (N'U'))&#xA;ALTER TABLE staging.leads DROP CONSTRAINT pk_lead_id&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -7638,7 +7638,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
-          SQLTask:SqlStatementSource="CREATE CLUSTERED INDEX [pk_lead_id] ON [staging].[leads]&#xA;(&#xA;&#x9;[lead_id] ASC&#xA;)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'pk_lead_id') AND type in (N'U'))&#xA;ALTER TABLE staging.leads&#xA;   ADD CONSTRAINT pk_lead_id &#xA;         PRIMARY KEY CLUSTERED ([lead_id])&#xA;WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON)&#xA;ON [PRIMARY]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -7792,9 +7792,51 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\SQL - clear staging_leads"
           TopLeft="351.5,15.5" />
         <NodeLayout
+          Size="201,42"
+          Id="Package\SQL - drop index if exists"
+          TopLeft="152,81" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\SQL - recreate index"
+          TopLeft="195,538" />
+        <NodeLayout
           Size="295,42"
           Id="Package\SQL - set data source and cleanse postcode"
           TopLeft="136,468" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="418.833333333333,57.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-166.333333333333,23.5"
+              Start="0,0"
+              End="-166.333333333333,16">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,5.51302605210421" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,5.51302605210421"
+                    Point2="0,9.51302605210421"
+                    Point3="-4,9.51302605210421" />
+                  <mssgle:LineSegment
+                    End="-162.333333333333,9.51302605210421" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-162.333333333333,9.51302605210421"
+                    Point2="-166.333333333333,9.51302605210421"
+                    Point3="-166.333333333333,13.5130260521042" />
+                  <mssgle:LineSegment
+                    End="-166.333333333333,16" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="482.166666666667,57.5">
@@ -7851,44 +7893,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="201,42"
-          Id="Package\SQL - drop index if exists"
-          TopLeft="152,81" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="418.833333333333,57.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-166.333333333333,23.5"
-              Start="0,0"
-              End="-166.333333333333,16">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,5.51302605210421" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,5.51302605210421"
-                    Point2="0,9.51302605210421"
-                    Point3="-4,9.51302605210421" />
-                  <mssgle:LineSegment
-                    End="-162.333333333333,9.51302605210421" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-162.333333333333,9.51302605210421"
-                    Point2="-166.333333333333,9.51302605210421"
-                    Point3="-166.333333333333,13.5130260521042" />
-                  <mssgle:LineSegment
-                    End="-166.333333333333,16" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="252.5,123">
@@ -7923,36 +7927,20 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="180,42"
-          Id="Package\SQL - recreate index"
-          TopLeft="240,546" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="283.5,510">
+          TopLeft="284.25,510">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="46.5,36"
+              EndConnector="0,28"
               Start="0,0"
-              End="46.5,28.5">
+              End="0,20.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,14" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,14"
-                    Point2="0,18"
-                    Point3="4,18" />
-                  <mssgle:LineSegment
-                    End="42.5,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="42.5,18"
-                    Point2="46.5,18"
-                    Point3="46.5,22" />
-                  <mssgle:LineSegment
-                    End="46.5,28.5" />
+                    End="0,20.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

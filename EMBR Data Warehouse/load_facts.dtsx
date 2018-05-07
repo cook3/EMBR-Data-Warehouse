@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_facts"
   DTS:PackageType="5"
-  DTS:VersionBuild="34"
-  DTS:VersionGUID="{2DAF9547-6335-474F-8514-CD81ED232A3B}">
+  DTS:VersionBuild="37"
+  DTS:VersionGUID="{60B3CF85-41FF-43EE-ADF2-8602E44D8EAA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -633,13 +633,19 @@ where [refTable].[device_brand] = ? and [refTable].[device_type] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [lead].[dim_geography]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [geography_key]
+      ,[postcode]
+      ,[state_code]
+FROM [edw].[lead].[dim_geography]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [lead].[dim_geography]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  [geography_key]
+      ,[postcode]
+      ,[state_code]
+FROM [edw].[lead].[dim_geography]) [refTable]
 where [refTable].[state_code] = ? and [refTable].[postcode] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -671,7 +677,7 @@ where [refTable].[state_code] = ? and [refTable].[postcode] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="geography_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="postcode" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="latitude" dataType="DT_NUMERIC" length="0" precision="8" scale="5" codePage="0"/&gt;&lt;referenceColumn name="longitude" dataType="DT_NUMERIC" length="0" precision="8" scale="5" codePage="0"/&gt;&lt;referenceColumn name="state_code" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state" dataType="DT_STR" length="28" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="local_government_area" dataType="DT_STR" length="44" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="time_zone" dataType="DT_STR" length="21" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="geography_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="postcode" dataType="DT_STR" length="4" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="state_code" dataType="DT_STR" length="3" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -971,13 +977,19 @@ where [refTable].[answer] = ?</property>
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [lead].[fact_leads]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  lead_id
+FROM [lead].[fact_leads] l
+	INNER JOIN lead.dim_data_source ds ON l.data_source_key = ds.data_source_key
+WHERE  [source] = 'databowl'</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [lead].[fact_leads]) [refTable]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (SELECT  lead_id
+FROM [lead].[fact_leads] l
+	INNER JOIN lead.dim_data_source ds ON l.data_source_key = ds.data_source_key
+WHERE  [source] = 'databowl') [refTable]
 where [refTable].[lead_id] = ?</property>
                 <property
                   dataType="System.Int32"
@@ -1009,7 +1021,7 @@ where [refTable].[lead_id] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="lead_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="affiliate_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="device_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="source_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="status_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="date_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="time_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="geography_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="prize" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="lead_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
@@ -1758,17 +1770,6 @@ FROM staging.leads l
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[mobile]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
-                      length="4000"
-                      lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[mobile]"
-                      name="mobile"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[lead_status]"
                       codePage="1252"
                       dataType="str"
@@ -1835,17 +1836,6 @@ FROM staging.leads l
                       name="Prize"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
-                      length="4000"
-                      lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
-                      name="ipaddress"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[date_key]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
@@ -1875,17 +1865,6 @@ FROM staging.leads l
                       name="affiliateid"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[clickid]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[clickid]"
-                      length="4000"
-                      lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[clickid]"
-                      name="clickid"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[device_brand]"
                       codePage="1252"
                       dataType="str"
@@ -1895,17 +1874,6 @@ FROM staging.leads l
                       length="4000"
                       lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[device_brand]"
                       name="device_brand"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[user_agent]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[user_agent]"
-                      length="4000"
-                      lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[user_agent]"
-                      name="user_agent"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[device_type]"
@@ -2040,9 +2008,7 @@ FROM staging.leads l
                       name="device_type" />
                     <externalMetadataColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
+                      dataType="i4"
                       name="lead_id" />
                     <externalMetadataColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[lead_message]"
@@ -2063,13 +2029,6 @@ FROM staging.leads l
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
-                      lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
-                      name="mobile" />
                     <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[lead_status]"
                       codePage="1252"
@@ -2125,13 +2084,6 @@ FROM staging.leads l
                       lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[Prize]"
                       name="Prize" />
                     <outputColumn
-                      refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
-                      lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
-                      name="ipaddress" />
-                    <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[date_key]"
                       dataType="i4"
                       lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[date_key]"
@@ -2149,26 +2101,12 @@ FROM staging.leads l
                       lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[affiliateid]"
                       name="affiliateid" />
                     <outputColumn
-                      refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[clickid]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
-                      lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[clickid]"
-                      name="clickid" />
-                    <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[device_brand]"
                       codePage="1252"
                       dataType="str"
                       length="4000"
                       lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[device_brand]"
                       name="device_brand" />
-                    <outputColumn
-                      refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[user_agent]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
-                      lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[user_agent]"
-                      name="user_agent" />
                     <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[device_type]"
                       codePage="1252"
@@ -2178,9 +2116,7 @@ FROM staging.leads l
                       name="device_type" />
                     <outputColumn
                       refId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[lead_id]"
-                      codePage="1252"
-                      dataType="str"
-                      length="4000"
+                      dataType="i4"
                       lineageId="Package\DFT - load fact_leads\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[lead_id]"
                       name="lead_id" />
                     <outputColumn
@@ -4829,7 +4765,7 @@ FROM staging.leads_old</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-118.750831163194,1,111.6127734375,11.609375"
+              BoundingBox="-118.750831163195,1,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5110,7 +5046,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5120,7 +5056,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5223,17 +5159,17 @@ FROM staging.leads_old</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[lead].[fact_leads]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5246,17 +5182,17 @@ FROM staging.leads_old</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[lead].[dim_geography]</Value>
+          type="q3:string"></Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

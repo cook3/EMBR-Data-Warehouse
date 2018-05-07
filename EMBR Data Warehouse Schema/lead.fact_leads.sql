@@ -16,3 +16,11 @@
 
 
 
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [idx_leads_data_source_lead_id]
+    ON [lead].[fact_leads]([data_source_key] ASC)
+    INCLUDE([lead_id]);
+
