@@ -28,7 +28,7 @@ IF @incremental_flag = 1 --handle incremental loads
 
 						UNION 
 
-						SELECT DISTINCT [homeowner_answer]
+						SELECT DISTINCT ISNULL([homeowner_answer], 'Unknown' ) AS [homeowner_answer]
 						FROM [staging].[staging].[lead_homeowners] 
 
 						  
@@ -71,7 +71,7 @@ IF @incremental_flag = 1 --handle incremental loads
 
 						UNION 
 
-						SELECT DISTINCT [homeowner_answer]
+						SELECT DISTINCT ISNULL([homeowner_answer], 'Unknown' ) AS [homeowner_answer]
 						FROM [staging].[staging].[lead_homeowners] 
 
 	END

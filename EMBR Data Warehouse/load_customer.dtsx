@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="60"
-  DTS:VersionGUID="{E7538561-B7E4-4ABC-9EFC-A0F067E43FEB}">
+  DTS:VersionBuild="63"
+  DTS:VersionGUID="{F65B39C3-EEE5-49F9-AF87-B5409A8E78DB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -803,11 +803,13 @@ where [refTable].[customer_id] = ?</property>
                       externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[source]" />
                     <inputColumn
-                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[is_homeowner]"
-                      cachedDataType="i4"
-                      cachedName="is_homeowner"
-                      externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[is_homeowner]"
-                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[is_homeowner]" />
+                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[homeowner_answer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="homeowner_answer"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_answer]"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[homeowner_answer]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -906,9 +908,11 @@ where [refTable].[customer_id] = ?</property>
                       length="250"
                       name="lead_source" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[is_homeowner]"
-                      dataType="i4"
-                      name="is_homeowner" />
+                      refId="Package\DFT - load customer table\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_answer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="homeowner_answer" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1273,56 +1277,55 @@ where [refTable].[customer_id] = ?</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  CAST( l.lead_id AS INT) AS customer_id
-								, CASE WHEN title = 'F' THEN 'Ms'
-										WHEN title = 'M' THEN 'Mr'
-										WHEN title = 'Miss' THEN 'Ms'
-										WHEN title = 'Title' AND ( CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END ) = 'M' THEN 'Mr'
-										WHEN title = 'Title' AND ( CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END ) = 'F' THEN 'Ms'
-										WHEN title = 'Title' AND ( CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END ) NOT IN ('M', 'F')  THEN NULL
-										WHEN title IS NULL AND ( CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END ) = 'M' THEN 'Mr'
-										WHEN title IS NULL AND ( CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END ) = 'F' THEN 'Ms' 
-										ELSE title END AS title
-								, firstname
-								, lastname
-								, address1
-								, city
-								, CASE WHEN [state] IN ('Ade', 'ADELAIDE', 'adelide', 'AD', 's a', 'S.A', 'SA - SOUTH AUSTRALIA', 'South Australia', 'South Austrila', 'South of Australia' ) 
+								, CASE WHEN l.title = 'F' THEN 'Ms'
+										WHEN l.title = 'M' THEN 'Mr'
+										WHEN l.title = 'Miss' THEN 'Ms'
+										WHEN l.title = 'title' AND ( CASE WHEN l.gender = 'Male' or l.gender = 'Mr' THEN 'M' ELSE l.gender END ) = 'M' THEN 'Mr'
+										WHEN l.title = 'title' AND ( CASE WHEN l.gender = 'Male' or l.gender = 'Mr' THEN 'M' ELSE l.gender END ) = 'F' THEN 'Ms'
+										WHEN l.title = 'title' AND ( CASE WHEN l.gender = 'Male' or l.gender = 'Mr' THEN 'M' ELSE l.gender END ) NOT IN ('M', 'F')  THEN NULL
+										WHEN l.title IS NULL AND ( CASE WHEN l.gender = 'Male' or l.gender = 'Mr' THEN 'M' ELSE l.gender END ) = 'M' THEN 'Mr'
+										WHEN l.title IS NULL AND ( CASE WHEN l.gender = 'Male' or l.gender = 'Mr' THEN 'M' ELSE l.gender END ) = 'F' THEN 'Ms' 
+										ELSE l.title END AS title
+								, l.firstname
+								, l.lastname
+								, l.address1
+								, l.city
+								, CASE WHEN l.[state] IN ('Ade', 'ADELAIDE', 'adelide', 'AD', 's a', 'S.A', 'SA - SOUTH AUSTRALIA', 'South Australia', 'South Austrila', 'South of Australia' ) 
 														THEN 'SA'
-										WHEN [state] IN ('Alice Springs','Darwin', 'Darwin NT','N T', 'N.T', 'Northern Territory','NorthernTerritory')  
+										WHEN l.[state] IN ('Alice Springs','Darwin', 'Darwin NT','N T', 'N.T', 'Northern Territory','NorthernTerritory')  
 														THEN 'NT'
-										WHEN [state] IN ('Australia Capital Territory')  
+										WHEN l.[state] IN ('Australia Capital Territory')  
 														THEN 'ACT'
-										WHEN [state] IN ('Australia new south wales', 'Gosford', 'New South Wales', 'MSW', 'N s w', 'N.S.W', 'N.SW', 'New South Walse', 'New South Whales', 'New southwales', 'Newsouthwhales',
+										WHEN l.[state] IN ('Australia new south wales', 'Gosford', 'New South Wales', 'MSW', 'N s w', 'N.S.W', 'N.SW', 'New South Walse', 'New South Whales', 'New southwales', 'Newsouthwhales',
 															'NSW Australia', 'NSW New South Wales', 'NSW Sydney', 'NswNsw', 'Nsww', 'Sdney', 'Sydney', 'Syd', 'Sydbey', 'Sydney n.s.w', 'waNew South Wales' )
 														THEN 'NSW'
-										WHEN [state] IN ('.VIC','Geelong', 'melborne', 'Melborune', 'Melbourn', 'Melbourne', 'Melbourne Victoria', 'Thomastown Victoria' , 'Victora'
+										WHEN l.[state] IN ('.VIC','Geelong', 'melborne', 'Melborune', 'Melbourn', 'Melbourne', 'Melbourne Victoria', 'Thomastown Victoria' , 'Victora'
 														, 'Victoria', 'Victoria Australia', 'Victoria, Australia' , 'victorya'  ) 
 														THEN 'VIC'
-										WHEN [state] IN ('EAST PERTH', 'Australia Wa', 'Perth', 'Preth', 'W A', 'W.A', 'W.A.', 'wa 6053', 'WAa', 'West Australia', 'Western Asutalia', 'Western Australia'
+										WHEN l.[state] IN ('EAST PERTH', 'Australia Wa', 'Perth', 'Preth', 'W A', 'W.A', 'W.A.', 'wa 6053', 'WAa', 'West Australia', 'Western Asutalia', 'Western Australia'
 														, 'wWA', 'Wwst australia'  )
 														THEN 'WA'
-										WHEN [state] IN ('AustralianState_QLD', 'Brisbane', 'BRS', 'Camira QLD', 'FAR NORTH  QUEENSLAND', 'Gold Coast', 'Gold coast Queensland'
+										WHEN l.[state] IN ('AustralianState_QLD', 'Brisbane', 'BRS', 'Camira QLD', 'FAR NORTH  QUEENSLAND', 'Gold Coast', 'Gold coast Queensland'
 															, 'Gold oast', 'goldcoast', 'Mudgeeraba', 'Qeensland', 'QDL', 'Qland', 'QldQLD', 'qlds', 'Que'
 															, 'Queen land', 'queenland', 'Queensland', 'Queensland, Australia', 'Queensland, helensvale', 'Queensland4', 'quensland'  )
 														THEN 'QLD'
-										WHEN [state] IN ('STAVERTON TAS', 'Tasmaina', 'Tasmania', 'Tasmanian' , 'Wynyard Tasmainia' )
+										WHEN l.[state] IN ('STAVERTON TAS', 'Tasmaina', 'Tasmania', 'Tasmanian' , 'Wynyard Tasmainia' )
 														THEN 'TAS'
-										ELSE [state]
+										ELSE l.[state]
 										END AS [state]
 							
-								, SUBSTRING(( [dbo].[fn_remove_non_numeric] ( postcode ) ), 1, 4)  AS postcode
-								, [dbo].[fn_remove_non_numeric] (  mobile ) AS mobile
-								, TRY_PARSE(dob AS DATE USING 'en-au') as dob
-								, CASE WHEN gender = 'Male' or gender = 'Mr' THEN 'M' ELSE gender END as gender
-								, age
-								, email 
+								, SUBSTRING(( [dbo].[fn_remove_non_numeric] ( l.postcode ) ), 1, 4)  AS postcode
+								, [dbo].[fn_remove_non_numeric] (  l.mobile ) AS mobile
+								, TRY_PARSE(l.dob AS DATE USING 'en-au') as dob
+								, CASE WHEN l.gender = 'Male' or l.gender = 'Mr' THEN 'M' ELSE l.gender END as gender
+								, l.age
+								, l.email 
 								, TRY_CAST(l.SubmissionDate AS datetime) as SubmissionDate
-								, lead_status
-								, CASE WHEN h.homeowner_answer IS NULL THEN 0 ELSE 1 END is_homeowner
-								, [source]
-								, [data_source]
-FROM staging.staging.leads l
-	LEFT JOIN staging.lead_homeowners h on l.lead_id = h.lead_id</property>
+								, l.lead_status
+								, l.homeowner_answer
+								, l.[source]
+								, l.[data_source]
+FROM staging.staging.leads l</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1540,13 +1543,15 @@ FROM staging.staging.leads l
                       name="data_source"
                       truncationRowDisposition="RedirectRow" />
                     <outputColumn
-                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[is_homeowner]"
-                      dataType="i4"
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[homeowner_answer]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[is_homeowner]"
-                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[is_homeowner]"
-                      name="is_homeowner"
+                      externalMetadataColumnId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[homeowner_answer]"
+                      length="4000"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].Columns[homeowner_answer]"
+                      name="homeowner_answer"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1648,9 +1653,11 @@ FROM staging.staging.leads l
                       length="255"
                       name="data_source" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[is_homeowner]"
-                      dataType="i4"
-                      name="is_homeowner" />
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Output].ExternalColumns[homeowner_answer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="homeowner_answer" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1758,10 +1765,12 @@ FROM staging.staging.leads l
                       lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[lead_status]"
                       name="lead_status" />
                     <outputColumn
-                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[is_homeowner]"
-                      dataType="i4"
-                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[is_homeowner]"
-                      name="is_homeowner" />
+                      refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[homeowner_answer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[homeowner_answer]"
+                      name="homeowner_answer" />
                     <outputColumn
                       refId="Package\DFT - load customer table\OLE_SRC - customers.Outputs[OLE DB Source Error Output].Columns[source]"
                       codePage="1252"
@@ -4450,11 +4459,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
                       lineageId="Package\DFT - load old customer data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[lead_source_conv]" />
                     <inputColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[is_homeowner]"
-                      cachedDataType="i4"
-                      cachedName="is_homeowner"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[is_homeowner]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[is_homeowner]" />
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].Columns[homeowner_answer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="7"
+                      cachedName="homeowner_answer"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_answer]"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4553,9 +4564,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       length="250"
                       name="lead_source" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[is_homeowner]"
-                      dataType="i4"
-                      name="is_homeowner" />
+                      refId="Package\DFT - load old customer data\OLE_DST - dbo_customer.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_answer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="homeowner_answer" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4664,7 +4677,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
 								, TRY_CAST(ts AS datetime) as SubmissionDate
 								, [status]
 								, [data_source]
-, 0 AS is_homeowner
+								, 'Unknown' AS homeowner_answer
 								,REPLACE( [source], '`', '' ) as [source]
 						FROM staging.staging.leads_old l
 --WHERE l.lead_id =7686</property>
@@ -4873,13 +4886,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       name="source"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[is_homeowner]"
-                      dataType="i4"
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[is_homeowner]"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[is_homeowner]"
-                      name="is_homeowner"
+                      externalMetadataColumnId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[homeowner_answer]"
+                      length="7"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]"
+                      name="homeowner_answer"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -4968,9 +4983,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       length="4000"
                       name="source" />
                     <externalMetadataColumn
-                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[is_homeowner]"
-                      dataType="i4"
-                      name="is_homeowner" />
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[homeowner_answer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      name="homeowner_answer" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5073,10 +5090,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
                       name="data_source" />
                     <outputColumn
-                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[is_homeowner]"
-                      dataType="i4"
-                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[is_homeowner]"
-                      name="is_homeowner" />
+                      refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[homeowner_answer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="7"
+                      lineageId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[homeowner_answer]"
+                      name="homeowner_answer" />
                     <outputColumn
                       refId="Package\DFT - load old customer data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[source]"
                       dataType="wstr"
@@ -5311,21 +5330,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="292,42"
-          Id="Package\DFT - load customer table\Derived Column  - clean error column name 1"
-          TopLeft="438.888888888889,177.555555555556" />
-        <NodeLayout
-          Size="292,42"
-          Id="Package\DFT - load customer table\Derived Column  - clean error column name"
-          TopLeft="450,58" />
-        <NodeLayout
-          Size="167,42"
-          Id="Package\DFT - load customer table\Script Component 1"
-          TopLeft="248.888888888889,175.555555555556" />
+          Size="191,42"
+          Id="Package\DFT - load customer table\OLE_SRC - customers"
+          TopLeft="25,50" />
         <NodeLayout
           Size="167,42"
           Id="Package\DFT - load customer table\Script Component"
           TopLeft="260,56" />
+        <NodeLayout
+          Size="292,42"
+          Id="Package\DFT - load customer table\Derived Column  - clean error column name"
+          TopLeft="450,58" />
         <NodeLayout
           Size="158,42"
           Id="Package\DFT - load customer table\Derived Column"
@@ -5343,13 +5358,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\DFT - load customer table\DC - cleanse again 1"
           TopLeft="762.888888888889,182.555555555556" />
         <NodeLayout
-          Size="191,42"
-          Id="Package\DFT - load customer table\OLE_SRC - customers"
-          TopLeft="25,50" />
+          Size="167,42"
+          Id="Package\DFT - load customer table\Script Component 1"
+          TopLeft="248.888888888889,175.555555555556" />
         <NodeLayout
           Size="162,42"
           Id="Package\DFT - load customer table\OLE_DST - error 1"
           TopLeft="955.888888888889,186.555555555556" />
+        <NodeLayout
+          Size="292,42"
+          Id="Package\DFT - load customer table\Derived Column  - clean error column name 1"
+          TopLeft="438.888888888889,177.555555555556" />
         <NodeLayout
           Size="172,42"
           Id="Package\DFT - load customer table\DC - cleanse again"
@@ -5358,66 +5377,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="200,42"
           Id="Package\DFT - load customer table\OLE_DST - dbo_customer"
           TopLeft="292,372" />
-        <EdgeLayout
-          Id="Package\DFT - load customer table.Paths[OLE DB Source Error Output]"
-          TopLeft="216,74">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="44,0"
-              Start="0,0"
-              End="36.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="36.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-45.18390625,5,126.8678125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load customer table.Paths[Lookup No Match Output]"
-          TopLeft="216.5,320">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="175.5,52"
-              Start="0,0"
-              End="175.5,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="4,26" />
-                  <mssgle:LineSegment
-                    End="171.5,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="171.5,26"
-                    Point2="175.5,26"
-                    Point3="175.5,30" />
-                  <mssgle:LineSegment
-                    End="175.5,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="2.35326171874999,31,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load customer table.Paths[Derived Column Output4]"
           TopLeft="730.888888888889,201.055555555556">
@@ -5654,6 +5613,66 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load customer table.Paths[OLE DB Source Error Output]"
+          TopLeft="216,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44,0"
+              Start="0,0"
+              End="36.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="36.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-45.18390625,5,126.8678125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load customer table.Paths[Lookup No Match Output]"
+          TopLeft="216.5,320">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="175.5,52"
+              Start="0,0"
+              End="175.5,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="171.5,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="171.5,26"
+                    Point2="175.5,26"
+                    Point3="175.5,30" />
+                  <mssgle:LineSegment
+                    End="175.5,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="2.35326171874999,31,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5692,29 +5711,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - load customer table\LKP - dbo_customer">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:string">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string"></Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:string">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\DFT - load customer table\OLE_DST - error 1">
     <Properties>
       <Property>
@@ -5724,6 +5720,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - load customer table\LKP - dbo_customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string"></Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_facts"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{29CAD105-A593-4683-B237-90737C7F5FA4}">
+  DTS:VersionBuild="43"
+  DTS:VersionGUID="{35401B90-E917-4803-A2F7-DE05A6F4B71E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1690,50 +1690,49 @@ where [refTable].[status] = ? and [refTable].[message] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [mobile]
-      ,ISNULL([Source], 'Unknown') AS Source
-      ,[Prize]
-      ,[ipaddress]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT l.[mobile]
+      ,ISNULL(l.[Source], 'Unknown') AS Source
+      ,l.[Prize]
+      ,l.[ipaddress]
       ,ISNULL(( YEAR(TRY_CAST(l.[SubmissionDate] AS DATETIME)) * 10000 + MONTH(TRY_CAST(l.[SubmissionDate] AS DATETIME)) * 100 + DAY(TRY_CAST(l.[SubmissionDate] AS DATETIME) ) ), 19000101)  AS date_key
       ,ISNULL((DATEPART(SECOND, TRY_CAST(l.[SubmissionDate] AS DATETIME)) + 60 * DATEPART( MINUTE ,TRY_CAST(l.[SubmissionDate] AS DATETIME)) + 3600 * DATEPART(HOUR, TRY_CAST(l.[SubmissionDate] AS DATETIME) ) ) , -1) AS time_key
       ,ISNULL([affiliateid], 'Unknown') AS [affiliateid]
-      ,[clickid]
-      ,ISNULL( device_type ,'Unknown') AS device_type
-      ,[user_agent]
+      ,l.[clickid]
+      ,ISNULL( l.device_type ,'Unknown') AS device_type
+      ,l.[user_agent]
       ,ISNULL( device_brand, 'Unknown' ) as device_brand
       ,l.[lead_id]
-      ,[lead_status]
-	, CASE WHEN LEN(lead_message) = 0
+      ,l.[lead_status]
+	, CASE WHEN LEN(l.lead_message) = 0
 		THEN 'Unknown'
-		ELSE ISNULL([lead_message], 'Unknown' ) END AS [lead_message]
-		, CASE WHEN [state] IN ('Ade', 'ADELAIDE', 'adelide', 'AD', 's a', 'S.A', 'SA - SOUTH AUSTRALIA', 'South Australia', 'South Austrila', 'South of Australia' ) 
+		ELSE ISNULL(l.[lead_message], 'Unknown' ) END AS [lead_message]
+		, CASE WHEN l.[state] IN ('Ade', 'ADELAIDE', 'adelide', 'AD', 's a', 'S.A', 'SA - SOUTH AUSTRALIA', 'South Australia', 'South Austrila', 'South of Australia' ) 
 								THEN 'SA'
-				WHEN [state] IN ('Alice Springs','Darwin', 'Darwin NT','N T', 'N.T', 'Northern Territory','NorthernTerritory')  
+				WHEN l.[state] IN ('Alice Springs','Darwin', 'Darwin NT','N T', 'N.T', 'Northern Territory','NorthernTerritory')  
 								THEN 'NT'
-				WHEN [state] IN ('Australia Capital Territory')  
+				WHEN l.[state] IN ('Australia Capital Territory')  
 								THEN 'ACT'
-				WHEN [state] IN ('Australia new south wales', 'Gosford', 'New South Wales', 'MSW', 'N s w', 'N.S.W', 'N.SW', 'New South Walse', 'New South Whales', 'New southwales', 'Newsouthwhales',
+				WHEN l.[state] IN ('Australia new south wales', 'Gosford', 'New South Wales', 'MSW', 'N s w', 'N.S.W', 'N.SW', 'New South Walse', 'New South Whales', 'New southwales', 'Newsouthwhales',
 									'NSW Australia', 'NSW New South Wales', 'NSW Sydney', 'NswNsw', 'Nsww', 'Sdney', 'Sydney', 'Syd', 'Sydbey', 'Sydney n.s.w', 'waNew South Wales' )
 								THEN 'NSW'
-				WHEN [state] IN ('.VIC','Geelong', 'melborne', 'Melborune', 'Melbourn', 'Melbourne', 'Melbourne Victoria', 'Thomastown Victoria' , 'Victora'
+				WHEN l.[state] IN ('.VIC','Geelong', 'melborne', 'Melborune', 'Melbourn', 'Melbourne', 'Melbourne Victoria', 'Thomastown Victoria' , 'Victora'
 								, 'Victoria', 'Victoria Australia', 'Victoria, Australia' , 'victorya'  ) 
 								THEN 'VIC'
-				WHEN [state] IN ('EAST PERTH', 'Australia Wa', 'Perth', 'Preth', 'W A', 'W.A', 'W.A.', 'wa 6053', 'WAa', 'West Australia', 'Western Asutalia', 'Western Australia'
+				WHEN l.[state] IN ('EAST PERTH', 'Australia Wa', 'Perth', 'Preth', 'W A', 'W.A', 'W.A.', 'wa 6053', 'WAa', 'West Australia', 'Western Asutalia', 'Western Australia'
 								, 'wWA', 'Wwst australia'  )
 								THEN 'WA'
-				WHEN [state] IN ('AustralianState_QLD', 'Brisbane', 'BRS', 'Camira QLD', 'FAR NORTH  QUEENSLAND', 'Gold Coast', 'Gold coast Queensland'
+				WHEN l.[state] IN ('AustralianState_QLD', 'Brisbane', 'BRS', 'Camira QLD', 'FAR NORTH  QUEENSLAND', 'Gold Coast', 'Gold coast Queensland'
 									, 'Gold oast', 'goldcoast', 'Mudgeeraba', 'Qeensland', 'QDL', 'Qland', 'QldQLD', 'qlds', 'Que'
 									, 'Queen land', 'queenland', 'Queensland', 'Queensland, Australia', 'Queensland, helensvale', 'Queensland4', 'quensland'  )
 								THEN 'QLD'
-				WHEN [state] IN ('STAVERTON TAS', 'Tasmaina', 'Tasmania', 'Tasmanian' , 'Wynyard Tasmainia' )
+				WHEN l.[state] IN ('STAVERTON TAS', 'Tasmaina', 'Tasmania', 'Tasmanian' , 'Wynyard Tasmainia' )
 								THEN 'TAS'
-				ELSE [state]
+				ELSE l.[state]
 				END AS [state]
 		, [dbo].[fn_remove_non_numeric] ( postcode ) AS postcode
-		, ISNULL(h.homeowner_answer, 'Unknown' ) AS homeowner_answer
+		, ISNULL(l.homeowner_answer, 'Unknown' ) AS homeowner_answer
 		, 'databowl' AS [data_source]
-FROM staging.leads l	
-	LEFT JOIN staging.lead_homeowners h on l.lead_id = h.lead_id</property>
+FROM staging.leads l</property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -5046,7 +5045,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:string">false</Value>
+          type="q2:boolean">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5056,7 +5055,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:string">0</Value>
+          type="q4:int">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -5445,7 +5444,9 @@ FROM staging.leads_old</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5479,7 +5480,9 @@ FROM staging.leads_old</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -5513,7 +5516,9 @@ FROM staging.leads_old</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
