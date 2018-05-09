@@ -7,12 +7,12 @@
   DTS:CreatorName="embrdev\azureadmin"
   DTS:DTSID="{0AC63E30-28B6-4EB4-9296-9F61E2EF6579}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.92"
+  DTS:LastModifiedProductVersion="14.0.3002.101"
   DTS:LocaleID="1033"
   DTS:ObjectName="master"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{A48FC13E-3DE7-4681-91B2-4A88A8A19D42}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{823039B8-76EE-4D88-A5C3-E5C09DA6F6A6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -21,7 +21,6 @@
       DTS:refId="Package\EPT -  fuzzy grouping"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{84908B90-10CF-488B-84E1-0DB09D8DEA2C}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"
