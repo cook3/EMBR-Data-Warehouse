@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="master"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{823039B8-76EE-4D88-A5C3-E5C09DA6F6A6}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{08C530CF-7FC2-44BE-B17F-0AD0674AE602}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -72,7 +72,6 @@
       DTS:refId="Package\EPT - load mdm"
       DTS:CreationName="Microsoft.ExecutePackageTask"
       DTS:Description="Execute Package Task"
-      DTS:Disabled="True"
       DTS:DTSID="{24093909-7E80-42A2-A253-30E036359CEA}"
       DTS:ExecutableType="Microsoft.ExecutePackageTask"
       DTS:LocaleID="-1"

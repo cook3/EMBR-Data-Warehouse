@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_customer"
   DTS:PackageType="5"
-  DTS:VersionBuild="63"
-  DTS:VersionGUID="{F65B39C3-EEE5-49F9-AF87-B5409A8E78DB}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{2DD73BBA-0DBF-4317-87E0-4CBB8F6B568C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -1322,7 +1322,7 @@ where [refTable].[customer_id] = ?</property>
 								, l.email 
 								, TRY_CAST(l.SubmissionDate AS datetime) as SubmissionDate
 								, l.lead_status
-								, l.homeowner_answer
+								, ISNULL(l.homeowner_answer, 'Unknown') AS homeowner_answer
 								, l.[source]
 								, l.[data_source]
 FROM staging.staging.leads l</property>

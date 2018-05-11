@@ -7,12 +7,12 @@
   DTS:CreatorName="embrdev\azureadmin"
   DTS:DTSID="{DD7F5406-4290-45B1-AF81-35893E067DA7}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.92"
+  DTS:LastModifiedProductVersion="14.0.3002.101"
   DTS:LocaleID="1033"
   DTS:ObjectName="load_mdm"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{D8A5CD00-0AB8-45FE-8C75-9FD16510AA29}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{5A320906-D949-4A46-92B7-AAEE57E8C86E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

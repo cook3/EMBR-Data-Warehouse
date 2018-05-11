@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="72"
-  DTS:VersionGUID="{C658165F-73D9-4904-9642-8EBFE2C6EC4B}">
+  DTS:VersionBuild="75"
+  DTS:VersionGUID="{58259622-D354-461A-9943-41A498836232}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -7744,7 +7744,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
-          SQLTask:SqlStatementSource="UPDATE l&#xA;SET l.homeowner_answer = lh.homeowner_answer&#xA;FROM staging.leads l &#xA;&#x9;INNER JOIN staging.lead_homeowners lh ON l.email = lh.email&#xA;&#x9;&#x9;&#x9;AND lh.mobile = l.mobile&#xA;&#x9;&#x9;&#x9;AND CAST(lh.SubmissionDate AS DATE) = CAST(l.SubmissionDate AS DATE);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="UPDATE l&#xA;SET l.homeowner_answer = lh.homeowner_answer&#xA;FROM staging.leads l &#xA;&#x9;INNER JOIN staging.lead_homeowners lh ON l.email = lh.email&#xA;&#x9;&#x9;&#x9;AND lh.mobile = l.mobile&#xA;&#x9;&#x9;&#x9;AND TRY_CAST(lh.SubmissionDate AS DATE) = CAST(l.SubmissionDate AS DATE);" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -7900,6 +7900,44 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="295,42"
           Id="Package\SQL - set data source and cleanse postcode"
           TopLeft="474.75,439.25" />
+        <NodeLayout
+          Size="243,42"
+          Id="Package\SQL - update homeowner answer"
+          TopLeft="862.5,465" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="630.5,144.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57.75,108.5"
+              Start="0,0"
+              End="50.25,108.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.875,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="24.875,0"
+                    Point2="28.875,0"
+                    Point3="28.875,4" />
+                  <mssgle:LineSegment
+                    End="28.875,104.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.875,104.5"
+                    Point2="28.875,108.5"
+                    Point3="32.875,108.5" />
+                  <mssgle:LineSegment
+                    End="50.25,108.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="228.25,87.75">
@@ -7990,44 +8028,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="630.5,144.75">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="57.75,108.5"
-              Start="0,0"
-              End="50.25,108.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="24.875,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="24.875,0"
-                    Point2="28.875,0"
-                    Point3="28.875,4" />
-                  <mssgle:LineSegment
-                    End="28.875,104.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="28.875,104.5"
-                    Point2="28.875,108.5"
-                    Point3="32.875,108.5" />
-                  <mssgle:LineSegment
-                    End="50.25,108.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="243,42"
-          Id="Package\SQL - update homeowner answer"
-          TopLeft="862.5,465" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="769.75,460.25">
@@ -8163,7 +8163,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8221,7 +8223,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8279,7 +8283,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8301,7 +8307,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8323,7 +8331,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8345,7 +8355,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8367,7 +8379,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8422,9 +8436,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again 2"
           TopLeft="782.25,255" />
         <NodeLayout
-          Size="222,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name"
-          TopLeft="253,58" />
+          Size="211,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners"
+          TopLeft="19.5,55.5" />
         <NodeLayout
           Size="226,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name 2"
@@ -8442,10 +8456,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_lead_homeowners"
           TopLeft="35.5,236.5" />
         <NodeLayout
-          Size="211,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners"
-          TopLeft="19.5,55.5" />
-        <NodeLayout
           Size="172,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again"
           TopLeft="764,63" />
@@ -8457,132 +8467,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="222,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name 2"
           TopLeft="293.25,327" />
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 01]"
-          TopLeft="439.916666666667,327">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="186.333333333333,-53"
-              Start="0,0"
-              End="186.333333333333,-45.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-17.4275491949911" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-17.4275491949911"
-                    Point2="0,-21.4275491949911"
-                    Point3="4,-21.4275491949911" />
-                  <mssgle:LineSegment
-                    End="182.333333333333,-21.4275491949911" />
-                  <mssgle:CubicBezierSegment
-                    Point1="182.333333333333,-21.4275491949911"
-                    Point2="186.333333333333,-21.4275491949911"
-                    Point3="186.333333333333,-25.4275491949911" />
-                  <mssgle:LineSegment
-                    End="186.333333333333,-45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 0]"
-          TopLeft="475,80">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="32,0"
-              Start="0,0"
-              End="24.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="24.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
-          TopLeft="170.5,278.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="198.083333333333,48.5"
-              Start="0,0"
-              End="198.083333333333,41">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.891771019678" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.891771019678"
-                    Point2="0,28.891771019678"
-                    Point3="4,28.891771019678" />
-                  <mssgle:LineSegment
-                    End="194.083333333333,28.891771019678" />
-                  <mssgle:CubicBezierSegment
-                    Point1="194.083333333333,28.891771019678"
-                    Point2="198.083333333333,28.891771019678"
-                    Point3="198.083333333333,32.891771019678" />
-                  <mssgle:LineSegment
-                    End="198.083333333333,41" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="25.8327604166667,33.891771019678,146.4178125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Output]"
-          TopLeft="125,97.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="45.5,139"
-              Start="0,0"
-              End="45.5,131.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,65.5"
-                    Point2="0,69.5"
-                    Point3="4,69.5" />
-                  <mssgle:LineSegment
-                    End="41.5,69.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="41.5,69.5"
-                    Point2="45.5,69.5"
-                    Point3="45.5,73.5" />
-                  <mssgle:LineSegment
-                    End="45.5,131.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name"
+          TopLeft="253,58" />
         <EdgeLayout
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Error Output]"
           TopLeft="125,55.5">
@@ -8711,6 +8599,132 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="23.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 01]"
+          TopLeft="439.916666666667,327">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="186.333333333333,-53"
+              Start="0,0"
+              End="186.333333333333,-45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-17.4275491949911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-17.4275491949911"
+                    Point2="0,-21.4275491949911"
+                    Point3="4,-21.4275491949911" />
+                  <mssgle:LineSegment
+                    End="182.333333333333,-21.4275491949911" />
+                  <mssgle:CubicBezierSegment
+                    Point1="182.333333333333,-21.4275491949911"
+                    Point2="186.333333333333,-21.4275491949911"
+                    Point3="186.333333333333,-25.4275491949911" />
+                  <mssgle:LineSegment
+                    End="186.333333333333,-45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 0]"
+          TopLeft="475,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,0"
+              Start="0,0"
+              End="24.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[OLE DB Destination Error Output]"
+          TopLeft="170.5,278.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="198.083333333333,48.5"
+              Start="0,0"
+              End="198.083333333333,41">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.891771019678" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.891771019678"
+                    Point2="0,28.891771019678"
+                    Point3="4,28.891771019678" />
+                  <mssgle:LineSegment
+                    End="194.083333333333,28.891771019678" />
+                  <mssgle:CubicBezierSegment
+                    Point1="194.083333333333,28.891771019678"
+                    Point2="198.083333333333,28.891771019678"
+                    Point3="198.083333333333,32.891771019678" />
+                  <mssgle:LineSegment
+                    End="198.083333333333,41" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="25.8327604166665,33.891771019678,146.4178125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Output]"
+          TopLeft="125,97.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="45.5,139"
+              Start="0,0"
+              End="45.5,131.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,65.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,65.5"
+                    Point2="0,69.5"
+                    Point3="4,69.5" />
+                  <mssgle:LineSegment
+                    End="41.5,69.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.5,69.5"
+                    Point2="45.5,69.5"
+                    Point3="45.5,73.5" />
+                  <mssgle:LineSegment
+                    End="45.5,131.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
