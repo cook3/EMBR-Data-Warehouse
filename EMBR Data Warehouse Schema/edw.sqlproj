@@ -99,6 +99,7 @@
     <Build Include="fuzzy\Tables\fuzzy.de_dup.sql" />
     <Build Include="fuzzy\Tables\fuzzy.mobile_list.sql" />
     <Build Include="Security\fuzzy.sql" />
+    <Build Include="fuzzy\Tables\fuzzy.cleansed_list.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EMBR Data Warehouse Schema.refactorlog" />

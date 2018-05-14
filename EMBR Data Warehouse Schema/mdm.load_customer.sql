@@ -21,61 +21,35 @@ IF @incremental_flag = 1 --handle incremental loads
 
 		BEGIN
 
-				;with base_cte AS 
-					(		
-					SELECT  customer_id
-								, title
-								, first_name
-								, last_name
-								, address
-								, city
-								, [state]
-								, postcode
-								, mobile
-								, dob
-								, gender
-								, age
-								, email
-								, submission_date
-								, lead_status
-								, is_homeowner
-								, [data_source]
-								, [lead_source]
-								, ROW_NUMBER() OVER (PARTITION BY first_name, mobile, email  ORDER BY submission_date asc ) AS duplicate_number
-						FROM [dbo].[customer]
-						WHERE LEN(mobile) > 0
-							AND [data_source] = 'databowl'
-
-									)
-
 				MERGE [mdm].[customer] AS target
 				USING (
 
 
-							SELECT c.customer_id
-								, c.title
-								, c.first_name
-								, c.last_name
-								, c.[address]
-								, c.city
-								, c.[state]
-								, c.postcode
-								, c.mobile
-								, c.dob
-								, c.gender
-								, c.age
-								, c.email
-								, c.submission_date
-								, ISNULL( d.geography_key, -1) AS geography_key
-								, s.source_key
-								, c.is_homeowner
-								, ds.data_source_key
-							FROM base_cte c 
-								LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
-									AND d.[state_code] = c.[state] 
-								INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
-								INNER JOIN lead.dim_source s ON c.lead_source = s.source
-							WHERE duplicate_number = 1						
+							SELECT  c.customer_id
+										, c.title
+										, c.first_name
+										, c.last_name
+										, c.[address]
+										, c.city
+										, c.[state]
+										, c.postcode
+										, c.mobile
+										, c.dob
+										, c.gender
+										, c.age
+										, c.email
+										, c.submission_date
+										, ISNULL( d.geography_key, -1) AS geography_key
+										, s.source_key
+										, h.homeowner_key
+										, ds.data_source_key
+								FROM [dbo].[customer] c
+									INNER JOIN fuzzy.cleansed_list cl ON c.customer_id = cl.customer_id
+									LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
+										AND d.[state_code] = c.[state] 
+									INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
+									INNER JOIN lead.dim_source s ON c.lead_source = s.source
+									INNER JOIN lead.dim_homeowner h ON c.homeowner_answer = h.answer					
 					  
 						) AS source 
 
@@ -98,7 +72,8 @@ IF @incremental_flag = 1 --handle incremental loads
 							  ,[gender]
 							  ,[age]
 							  ,[email]
-							  ,[is_homeowner]
+							  ,[homeowner_key]
+							  ,[submission_date]
 							  ,[valid_from]
 							  ,[valid_to]
 							  ,[active]
@@ -120,8 +95,9 @@ IF @incremental_flag = 1 --handle incremental loads
 							, source.[gender]
 							, source.[age]
 							, source.[email]
-							, source.[is_homeowner]
+							, source.[homeowner_key]
 							, source.[submission_date]
+							, GETDATE()
 							, NULL
 							, 1
 
@@ -143,81 +119,58 @@ IF @incremental_flag = 1 --handle incremental loads
 
 		BEGIN 
 
-				;WITH base_cte AS 
-					(		
-					
-					SELECT  customer_id
-								, title
-								, first_name
-								, last_name
-								, address
-								, city
-								, [state]
-								, postcode
-								, mobile
-								, dob
-								, gender
-								, age
-								, email
-								, is_homeowner
-								, submission_date
-								, lead_status
-								, [data_source]
-								, [lead_source]
-								, ROW_NUMBER() OVER (PARTITION BY first_name, mobile, email  ORDER BY submission_date asc ) AS duplicate_number
-						FROM [dbo].[customer]
-						WHERE LEN(mobile) > 0
-							AND [data_source] = 'databowl'
-									)
 
-				INSERT INTO [mdm].[customer]
+			INSERT INTO [mdm].[customer]
 
-						(
-							  [customer_id]
-							  ,[title]
-							  ,[first_name]
-							  ,[last_name]
-							  ,[address]
-							  ,[city]
-							  ,[geography_key]
-							  ,[data_source_key]
-							  ,[source_key]
-							  ,[mobile]
-							  ,[dob]
-							  ,[gender]
-							  ,[age]
-							  ,[email]
-							  ,[is_homeowner]
-							  ,[valid_from]
-							  ,[valid_to]
-							  ,[active]
+					(
+							[customer_id]
+							,[title]
+							,[first_name]
+							,[last_name]
+							,[address]
+							,[city]
+							,[geography_key]
+							,[data_source_key]
+							,[source_key]
+							,[mobile]
+							,[dob]
+							,[gender]
+							,[age]
+							,[email]
+							,[homeowner_key]
+							,[submission_date]
+							,[valid_from]
+							,[valid_to]
+							,[active]
 
-								)
+							)
 
-				SELECT c.customer_id
-					, c.title
-					, c.first_name
-					, c.last_name
-					, c.[address]
-					, c.[city]
-					, ISNULL( d.geography_key, -1) AS geography_key
-					, ds.data_source_key
-					, s.source_key
-					, c.mobile
-					, c.dob
-					, c.gender
-					, c.age
-					, c.email
-					, c.is_homeowner
-					, c.submission_date
-					, NULL
-					, 1
-				FROM base_cte c 
+			SELECT  c.customer_id
+						, c.title
+						, c.first_name
+						, c.last_name
+						, c.[address]
+						, c.city
+						, ISNULL( d.geography_key, -1) AS geography_key
+						, ds.data_source_key
+						, s.source_key
+						, c.mobile
+						, c.dob
+						, c.gender
+						, c.age
+						, c.email
+						, h.homeowner_key
+						, c.submission_date
+						, GETDATE()
+						, NULL
+						, 1
+				FROM [dbo].[customer] c
+					INNER JOIN fuzzy.cleansed_list cl ON c.customer_id = cl.customer_id
 					LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
 						AND d.[state_code] = c.[state] 
 					INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
 					INNER JOIN lead.dim_source s ON c.lead_source = s.source
-				WHERE duplicate_number = 1	
+					INNER JOIN lead.dim_homeowner h ON c.homeowner_answer = h.answer
 
 
 	END

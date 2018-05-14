@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fuzzy_grouping"
   DTS:PackageType="5"
-  DTS:VersionBuild="23"
-  DTS:VersionGUID="{73CFEEB9-464C-4E0F-8646-2A4179D333C0}">
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{9F627073-426C-4268-A9F8-97F53355C92B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -49,7 +49,7 @@
       DTS:CreationName=""
       DTS:DTSID="{EC594967-7384-4833-B1B8-B3ED9F79A34B}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT  c.customer_id, c.first_name, c.mobile, c.email, c.submission_date&#xA;FROM dbo.customer c&#xA;&#x9;INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile&#xA;WHERE ml.id &gt; &quot; +   (DT_STR, 255 , 1252) @[User::int_row_counter_band] &#xA;+ &quot; AND ml.id &lt;= &quot; +  (DT_STR, 255 , 1252) @[User::int_row_counter]&#xA;+ &quot; AND c.data_source = 'databowl'&quot;"
+      DTS:Expression="&quot;SELECT  c.customer_id, c.first_name, c.mobile, c.email, c.submission_date&#xA;FROM dbo.customer c&#xA;&#x9;INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile&#xA;WHERE ml.id &gt; &quot; +   (DT_STR, 255 , 1252) @[User::int_row_counter_band] &#xA;+ &quot; AND ml.id &lt;= &quot; +  (DT_STR, 255 , 1252) @[User::int_row_counter]&#xA;+ &quot; AND c.data_source = 'databowl' ORDER BY c.submission_date&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="sql_de_dup_query">
@@ -57,7 +57,7 @@
         DTS:DataType="8">SELECT  c.customer_id, c.first_name, c.mobile, c.email, c.submission_date
 FROM dbo.customer c
 	INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile
-WHERE ml.id &gt; -10000 AND ml.id &lt;= 0 AND c.data_source = 'databowl'</DTS:VariableValue>
+WHERE ml.id &gt; -10000 AND ml.id &lt;= 0 AND c.data_source = 'databowl' ORDER BY c.submission_date</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -610,7 +610,7 @@ ORDER BY mobile;</property>
                     <property
                       dataType="System.Single"
                       description="Specifies the minimum similarity threshold, expressed as a value between 0 and 1."
-                      name="MinSimilarity">0.8</property>
+                      name="MinSimilarity">0.66</property>
                     <property
                       dataType="System.String"
                       description="Specifies the white-space and punctuation characters used to separate strings into multiple words."
@@ -659,11 +659,11 @@ ORDER BY mobile;</property>
                               dataType="System.Int32"
                               description="Specifies the hint that causes similar rows that contain differing leading or trailing numeric values be less likely to be considered duplicates."
                               name="LeadingTrailingNumeralsSignificant"
-                              typeConverter="tcNumeralsSignificant">0</property>
+                              typeConverter="tcNumeralsSignificant">3</property>
                             <property
                               dataType="System.Single"
                               description="Specifies the minimum similarity threshold, expressed as a value between 0 and 1."
-                              name="MinSimilarity">0</property>
+                              name="MinSimilarity">0.45</property>
                             <property
                               dataType="System.Int32"
                               description="Specifies how string data in a column is compared."
@@ -720,7 +720,7 @@ ORDER BY mobile;</property>
                               dataType="System.Int32"
                               description="Specifies whether rows must be exact matches or fuzzy matches to be considered duplicates."
                               name="ExactFuzzy"
-                              typeConverter="tcJoinType">1</property>
+                              typeConverter="tcJoinType">2</property>
                             <property
                               dataType="System.Int32"
                               description="Specifies the hint that causes similar rows that contain differing leading or trailing numeric values be less likely to be considered duplicates."
@@ -729,7 +729,7 @@ ORDER BY mobile;</property>
                             <property
                               dataType="System.Single"
                               description="Specifies the minimum similarity threshold, expressed as a value between 0 and 1."
-                              name="MinSimilarity">0</property>
+                              name="MinSimilarity">1</property>
                             <property
                               dataType="System.Int32"
                               description="Specifies how string data in a column is compared."
@@ -809,10 +809,10 @@ ORDER BY mobile;</property>
                       name="Fuzzy Grouping Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_key_in]"
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_in]"
                           dataType="i4"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_key_in]"
-                          name="customer_key_in">
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_in]"
+                          name="_key_in">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -827,10 +827,10 @@ ORDER BY mobile;</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_key_out]"
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_out]"
                           dataType="i4"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_key_out]"
-                          name="customer_key_out">
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_out]"
+                          name="_key_out">
                           <properties>
                             <property
                               dataType="System.Int32"
@@ -941,6 +941,24 @@ ORDER BY mobile;</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_id]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_id]"
+                          name="customer_id">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the column type. The valid values are Canonical, ColumnSimilarity, KeyIn, KeyOut, PassThru, Similarity and Undefined."
+                              name="ColumnType"
+                              typeConverter="tcColumnType">5</property>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the ID of the input column. The value must be a positive integer."
+                              name="InputId">#{Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[customer_id]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
                           refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[mobile_clean]"
                           codePage="1252"
                           dataType="str"
@@ -1020,21 +1038,22 @@ ORDER BY mobile;</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_id]"
-                          dataType="i4"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_id]"
-                          name="customer_id">
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_Similarity_email]"
+                          dataType="r4"
+                          description="Column-level similarity score for fuzzy join on column &quot;email&quot;."
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_Similarity_email]"
+                          name="_Similarity_email">
                           <properties>
                             <property
                               dataType="System.Int32"
                               description="Specifies the column type. The valid values are Canonical, ColumnSimilarity, KeyIn, KeyOut, PassThru, Similarity and Undefined."
                               name="ColumnType"
-                              typeConverter="tcColumnType">5</property>
+                              typeConverter="tcColumnType">4</property>
                             <property
                               containsID="true"
                               dataType="System.Int32"
                               description="Specifies the ID of the input column. The value must be a positive integer."
-                              name="InputId">#{Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[customer_id]}</property>
+                              name="InputId">#{Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[email]}</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -1115,18 +1134,6 @@ ORDER BY mobile;</property>
                       name="OLE DB Destination Input">
                       <inputColumns>
                         <inputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[customer_key_in]"
-                          cachedDataType="i4"
-                          cachedName="customer_key_in"
-                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_key_in]"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_key_in]" />
-                        <inputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[customer_key_out]"
-                          cachedDataType="i4"
-                          cachedName="customer_key_out"
-                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_key_out]"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_key_out]" />
-                        <inputColumn
                           refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_score]"
                           cachedDataType="r4"
                           cachedName="_score"
@@ -1198,6 +1205,24 @@ ORDER BY mobile;</property>
                           cachedName="customer_id"
                           externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
                           lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_id]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_key_in]"
+                          cachedDataType="i4"
+                          cachedName="_key_in"
+                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_key_in]"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_in]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_key_out]"
+                          cachedDataType="i4"
+                          cachedName="_key_out"
+                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_key_out]"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_out]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_Similarity_email]"
+                          cachedDataType="r4"
+                          cachedName="_Similarity_email"
+                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_email]"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_Similarity_email]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1261,6 +1286,10 @@ ORDER BY mobile;</property>
                           refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
                           dataType="i4"
                           name="customer_id" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_email]"
+                          dataType="r4"
+                          name="_Similarity_email" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1541,7 +1570,7 @@ FROM dbo.customer c
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE [fuzzy].[de_dup];&#xA;TRUNCATE TABLE [fuzzy].[mobile_list];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [fuzzy].[de_dup];&#xA;TRUNCATE TABLE [fuzzy].[mobile_list];&#xA;TRUNCATE TABLE [fuzzy].[cleansed_list];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -1591,6 +1620,10 @@ FROM dbo.customer c
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="189,42"
+          Id="Package\DFT - get cleansed ids"
+          TopLeft="659,437" />
         <NodeLayout
           Size="268,42"
           Id="Package\DFT - get distinct databowl mobile no's"
@@ -1716,10 +1749,6 @@ FROM dbo.customer c
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="189,42"
-          Id="Package\DFT - get cleansed ids"
-          TopLeft="659,437" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="546,419.5">
@@ -1757,6 +1786,79 @@ FROM dbo.customer c
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\DFT - get cleansed ids">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="234,42"
+          Id="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list"
+          TopLeft="443,217" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\DFT - get cleansed ids\OLE_SRC - get unique ids"
+          TopLeft="234,111" />
+        <EdgeLayout
+          Id="Package\DFT - get cleansed ids.Paths[OLE DB Source Output]"
+          TopLeft="338,153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="222,64"
+              Start="0,0"
+              End="222,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="4,32" />
+                  <mssgle:LineSegment
+                    End="218,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="218,32"
+                    Point2="222,32"
+                    Point3="222,36" />
+                  <mssgle:LineSegment
+                    End="222,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get cleansed ids\OLE_SRC - get unique ids">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DFT - get distinct databowl mobile no's">
     <LayoutInfo>
@@ -1802,7 +1904,7 @@ FROM dbo.customer c
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="27.4205859375,44.5,69.658828125,11.228515625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1844,78 +1946,78 @@ FROM dbo.customer c
           Id="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values"
           TopLeft="31,48" />
         <NodeLayout
-          Size="152,42"
+          Size="157,42"
           Id="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping"
-          TopLeft="106,147" />
+          TopLeft="88,148" />
         <EdgeLayout
           Id="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches.Paths[OLE DB Source Output]"
           TopLeft="144.5,90">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="37.5,57"
+              EndConnector="22,58"
               Start="0,0"
-              End="37.5,49.5">
+              End="22,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5" />
+                    End="0,25" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.5"
-                    Point2="0,28.5"
-                    Point3="4,28.5" />
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
                   <mssgle:LineSegment
-                    End="33.5,28.5" />
+                    End="18,29" />
                   <mssgle:CubicBezierSegment
-                    Point1="33.5,28.5"
-                    Point2="37.5,28.5"
-                    Point3="37.5,32.5" />
+                    Point1="18,29"
+                    Point2="22,29"
+                    Point3="22,33" />
                   <mssgle:LineSegment
-                    End="37.5,49.5" />
+                    End="22,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="-16.53947265625,34,55.0789453125,11.2431640625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches.Paths[Fuzzy Grouping Output]"
-          TopLeft="182,189">
+          TopLeft="166.5,190">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="170.5,41"
+              EndConnector="186,40"
               Start="0,0"
-              End="170.5,33.5">
+              End="186,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.5" />
+                    End="0,16" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,16.5"
-                    Point2="0,20.5"
-                    Point3="4,20.5" />
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="4,20" />
                   <mssgle:LineSegment
-                    End="166.5,20.5" />
+                    End="182,20" />
                   <mssgle:CubicBezierSegment
-                    Point1="166.5,20.5"
-                    Point2="170.5,20.5"
-                    Point3="170.5,24.5" />
+                    Point1="182,20"
+                    Point2="186,20"
+                    Point3="186,24" />
                   <mssgle:LineSegment
-                    End="170.5,33.5" />
+                    End="186,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="77.54640625,25,30.9071875,9.568359375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -1937,77 +2039,6 @@ FROM dbo.customer c
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DFT - get cleansed ids">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="208,42"
-          Id="Package\DFT - get cleansed ids\OLE_SRC - get unique ids"
-          TopLeft="234,111" />
-        <NodeLayout
-          Size="234,42"
-          Id="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list"
-          TopLeft="443,217" />
-        <EdgeLayout
-          Id="Package\DFT - get cleansed ids.Paths[OLE DB Source Output]"
-          TopLeft="338,153">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="222,64"
-              Start="0,0"
-              End="222,56.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28"
-                    Point2="0,32"
-                    Point3="4,32" />
-                  <mssgle:LineSegment
-                    End="218,32" />
-                  <mssgle:CubicBezierSegment
-                    Point1="218,32"
-                    Point2="222,32"
-                    Point3="222,36" />
-                  <mssgle:LineSegment
-                    End="222,56.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - get cleansed ids\OLE_SRC - get unique ids">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
