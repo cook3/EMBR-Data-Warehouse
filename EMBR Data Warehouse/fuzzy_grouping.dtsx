@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fuzzy_grouping"
   DTS:PackageType="5"
-  DTS:VersionBuild="41"
-  DTS:VersionGUID="{9F627073-426C-4268-A9F8-97F53355C92B}">
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{2F127ADD-9B52-42C9-9FEE-0E95E076A1FE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -49,13 +49,13 @@
       DTS:CreationName=""
       DTS:DTSID="{EC594967-7384-4833-B1B8-B3ED9F79A34B}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT  c.customer_id, c.first_name, c.mobile, c.email, c.submission_date&#xA;FROM dbo.customer c&#xA;&#x9;INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile&#xA;WHERE ml.id &gt; &quot; +   (DT_STR, 255 , 1252) @[User::int_row_counter_band] &#xA;+ &quot; AND ml.id &lt;= &quot; +  (DT_STR, 255 , 1252) @[User::int_row_counter]&#xA;+ &quot; AND c.data_source = 'databowl' ORDER BY c.submission_date&quot;"
+      DTS:Expression="&quot;SELECT  c.lead_id, c.first_name, c.mobile, c.email, c.submission_date&#xA;FROM dbo.lead c&#xA;&#x9;INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile&#xA;WHERE ml.id &gt; &quot; +   (DT_STR, 255 , 1252) @[User::int_row_counter_band] &#xA;+ &quot; AND ml.id &lt;= &quot; +  (DT_STR, 255 , 1252) @[User::int_row_counter]&#xA;+ &quot; AND c.data_source = 'databowl' ORDER BY c.submission_date&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="sql_de_dup_query">
       <DTS:VariableValue
-        DTS:DataType="8">SELECT  c.customer_id, c.first_name, c.mobile, c.email, c.submission_date
-FROM dbo.customer c
+        DTS:DataType="8">SELECT  c.lead_id, c.first_name, c.mobile, c.email, c.submission_date
+FROM dbo.lead c
 	INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile
 WHERE ml.id &gt; -10000 AND ml.id &lt;= 0 AND c.data_source = 'databowl' ORDER BY c.submission_date</DTS:VariableValue>
     </DTS:Variable>
@@ -148,18 +148,18 @@ WHERE ml.id &gt; -10000 AND ml.id &lt;= 0 AND c.data_source = 'databowl' ORDER B
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list.Inputs[OLE DB Destination Input].Columns[customer_id]"
+                      refId="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list.Inputs[OLE DB Destination Input].Columns[lead_id]"
                       cachedDataType="i4"
-                      cachedName="customer_id"
-                      externalMetadataColumnId="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                      lineageId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].Columns[customer_id]" />
+                      cachedName="lead_id"
+                      externalMetadataColumnId="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                      lineageId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].Columns[lead_id]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
+                      refId="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
                       dataType="i4"
-                      name="customer_id" />
+                      name="lead_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -213,10 +213,10 @@ WHERE ml.id &gt; -10000 AND ml.id &lt;= 0 AND c.data_source = 'databowl' ORDER B
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select c.customer_id 
-FROM [dbo].[customer] c
-  INNER JOIN fuzzy.de_dup d ON c.customer_id = d.customer_id
-			AND d.customer_key_in = d.customer_key_out
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select c.lead_id 
+FROM [dbo].[lead] c
+  INNER JOIN fuzzy.de_dup d ON c.lead_id = d.lead_id
+			AND d.lead_key_in = d.lead_key_out
 WHERE c.[data_source] = 'databowl'</property>
                 <property
                   dataType="System.String"
@@ -254,21 +254,21 @@ WHERE c.[data_source] = 'databowl'</property>
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      refId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].Columns[lead_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
-                      lineageId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].Columns[customer_id]"
-                      name="customer_id"
+                      externalMetadataColumnId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
+                      lineageId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].Columns[lead_id]"
+                      name="lead_id"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      refId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
                       dataType="i4"
-                      name="customer_id" />
+                      name="lead_id" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -277,10 +277,10 @@ WHERE c.[data_source] = 'databowl'</property>
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      refId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Error Output].Columns[lead_id]"
                       dataType="i4"
-                      lineageId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Error Output].Columns[customer_id]"
-                      name="customer_id" />
+                      lineageId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Error Output].Columns[lead_id]"
+                      name="lead_id" />
                     <outputColumn
                       refId="Package\DFT - get cleansed ids\OLE_SRC - get unique ids.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -470,7 +470,7 @@ WHERE c.[data_source] = 'databowl'</property>
                   description="The SQL command to be executed."
                   name="SqlCommand"
                   UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT distinct  mobile 
-FROM dbo.customer 
+FROM dbo.lead 
 WHERE data_source = 'databowl'
 	AND LEN(mobile) &gt; 0
 ORDER BY mobile;</property>
@@ -769,10 +769,10 @@ ORDER BY mobile;</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Inputs[Fuzzy Grouping Input].Columns[customer_id]"
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Inputs[Fuzzy Grouping Input].Columns[lead_id]"
                           cachedDataType="i4"
-                          cachedName="customer_id"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[customer_id]">
+                          cachedName="lead_id"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[lead_id]">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -941,24 +941,6 @@ ORDER BY mobile;</property>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_id]"
-                          dataType="i4"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_id]"
-                          name="customer_id">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the column type. The valid values are Canonical, ColumnSimilarity, KeyIn, KeyOut, PassThru, Similarity and Undefined."
-                              name="ColumnType"
-                              typeConverter="tcColumnType">5</property>
-                            <property
-                              containsID="true"
-                              dataType="System.Int32"
-                              description="Specifies the ID of the input column. The value must be a positive integer."
-                              name="InputId">#{Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[customer_id]}</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
                           refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[mobile_clean]"
                           codePage="1252"
                           dataType="str"
@@ -1054,6 +1036,24 @@ ORDER BY mobile;</property>
                               dataType="System.Int32"
                               description="Specifies the ID of the input column. The value must be a positive integer."
                               name="InputId">#{Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[email]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[lead_id]"
+                          dataType="i4"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[lead_id]"
+                          name="lead_id">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the column type. The valid values are Canonical, ColumnSimilarity, KeyIn, KeyOut, PassThru, Similarity and Undefined."
+                              name="ColumnType"
+                              typeConverter="tcColumnType">5</property>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the ID of the input column. The value must be a positive integer."
+                              name="InputId">#{Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[lead_id]}</property>
                           </properties>
                         </outputColumn>
                       </outputColumns>
@@ -1200,40 +1200,32 @@ ORDER BY mobile;</property>
                           externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_first_name]"
                           lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_Similarity_first_name]" />
                         <inputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[customer_id]"
-                          cachedDataType="i4"
-                          cachedName="customer_id"
-                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[customer_id]" />
-                        <inputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_key_in]"
-                          cachedDataType="i4"
-                          cachedName="_key_in"
-                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_key_in]"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_in]" />
-                        <inputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_key_out]"
-                          cachedDataType="i4"
-                          cachedName="_key_out"
-                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_key_out]"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_out]" />
-                        <inputColumn
                           refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_Similarity_email]"
                           cachedDataType="r4"
                           cachedName="_Similarity_email"
                           externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_email]"
                           lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_Similarity_email]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_key_in]"
+                          cachedDataType="i4"
+                          cachedName="_key_in"
+                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[lead_key_in]"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_in]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[_key_out]"
+                          cachedDataType="i4"
+                          cachedName="_key_out"
+                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[lead_key_out]"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[_key_out]" />
+                        <inputColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].Columns[lead_id]"
+                          cachedDataType="i4"
+                          cachedName="lead_id"
+                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping.Outputs[Fuzzy Grouping Output].Columns[lead_id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
-                        <externalMetadataColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_key_in]"
-                          dataType="i4"
-                          name="customer_key_in" />
-                        <externalMetadataColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_key_out]"
-                          dataType="i4"
-                          name="customer_key_out" />
                         <externalMetadataColumn
                           refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[_score]"
                           dataType="r4"
@@ -1283,13 +1275,21 @@ ORDER BY mobile;</property>
                           dataType="r4"
                           name="_Similarity_first_name" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          dataType="i4"
-                          name="customer_id" />
-                        <externalMetadataColumn
                           refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_email]"
                           dataType="r4"
                           name="_Similarity_email" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[lead_key_in]"
+                          dataType="i4"
+                          name="lead_key_in" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[lead_key_out]"
+                          dataType="i4"
+                          name="lead_key_out" />
+                        <externalMetadataColumn
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                          dataType="i4"
+                          name="lead_id" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1424,13 +1424,13 @@ FROM dbo.customer c
                           name="submission_date"
                           truncationRowDisposition="FailComponent" />
                         <outputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[customer_id]"
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[lead_id]"
                           dataType="i4"
                           errorOrTruncationOperation="Conversion"
                           errorRowDisposition="FailComponent"
-                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[customer_id]"
-                          name="customer_id"
+                          externalMetadataColumnId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].Columns[lead_id]"
+                          name="lead_id"
                           truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
@@ -1458,9 +1458,9 @@ FROM dbo.customer c
                           dataType="dbTimeStamp"
                           name="submission_date" />
                         <externalMetadataColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
                           dataType="i4"
-                          name="customer_id" />
+                          name="lead_id" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -1469,10 +1469,10 @@ FROM dbo.customer c
                       name="OLE DB Source Error Output">
                       <outputColumns>
                         <outputColumn
-                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                          refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Error Output].Columns[lead_id]"
                           dataType="i4"
-                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Error Output].Columns[customer_id]"
-                          name="customer_id" />
+                          lineageId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Error Output].Columns[lead_id]"
+                          name="lead_id" />
                         <outputColumn
                           refId="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values.Outputs[OLE DB Source Error Output].Columns[first_name]"
                           codePage="1252"
@@ -1790,7 +1790,7 @@ FROM dbo.customer c
     design-time-name="Package\DFT - get cleansed ids">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="234,42"
           Id="Package\DFT - get cleansed ids\OLE_DST - fuzzy_cleansed_list"
@@ -1830,9 +1830,7 @@ FROM dbo.customer c
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1863,7 +1861,7 @@ FROM dbo.customer c
     design-time-name="Package\DFT - get distinct databowl mobile no's">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="223,42"
           Id="Package\DFT - get distinct databowl mobile no's\OLE_DST - fuzzy_mobile_list"
@@ -1903,9 +1901,7 @@ FROM dbo.customer c
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="27.4205859375,44.5,69.658828125,11.228515625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -1936,15 +1932,15 @@ FROM dbo.customer c
     design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="207,42"
-          Id="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup"
-          TopLeft="249,230" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="227,42"
           Id="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values"
           TopLeft="31,48" />
+        <NodeLayout
+          Size="207,42"
+          Id="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup"
+          TopLeft="249,230" />
         <NodeLayout
           Size="157,42"
           Id="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\Fuzzy Grouping"
@@ -1980,9 +1976,7 @@ FROM dbo.customer c
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-16.53947265625,34,55.0789453125,11.2431640625"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2016,16 +2010,14 @@ FROM dbo.customer c
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="77.54640625,25,30.9071875,9.568359375"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup">
+    design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2038,7 +2030,7 @@ FROM dbo.customer c
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values">
+    design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -1,5 +1,6 @@
 ﻿
-CREATE PROCEDURE  [mdm].[load_customer]
+
+CREATE PROCEDURE  [mdm].[load_lead]
 
 AS 
 
@@ -15,17 +16,17 @@ SET NOCOUNT ON;
 
 DECLARE @incremental_flag INT  
 
-SET @incremental_flag = ( SELECT TOP 1 1 FROM [mdm].[customer] ) --count to check if this is the first full load. if so do straight insert/else merge changes
+SET @incremental_flag = ( SELECT TOP 1 1 FROM [mdm].[lead] ) --count to check if this is the first full load. if so do straight insert/else merge changes
 
 IF @incremental_flag = 1 --handle incremental loads
 
 		BEGIN
 
-				MERGE [mdm].[customer] AS target
+				MERGE [mdm].[lead] AS target
 				USING (
 
 
-							SELECT  c.customer_id
+							SELECT  c.lead_id
 										, c.title
 										, c.first_name
 										, c.last_name
@@ -43,8 +44,8 @@ IF @incremental_flag = 1 --handle incremental loads
 										, s.source_key
 										, h.homeowner_key
 										, ds.data_source_key
-								FROM [dbo].[customer] c
-									INNER JOIN fuzzy.cleansed_list cl ON c.customer_id = cl.customer_id
+								FROM [dbo].[lead] c
+									INNER JOIN fuzzy.cleansed_list cl ON c.lead_id = cl.lead_id
 									LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
 										AND d.[state_code] = c.[state] 
 									INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
@@ -53,12 +54,12 @@ IF @incremental_flag = 1 --handle incremental loads
 					  
 						) AS source 
 
-					ON	target.[customer_id] = source.[customer_id]
+					ON	target.[lead_id] = source.[lead_id]
 
 
 				WHEN NOT MATCHED BY TARGET --insert new rows - a row exists in the source, but not in the target table
 				THEN INSERT (
-							  [customer_id]
+							  [lead_id]
 							  ,[title]
 							  ,[first_name]
 							  ,[last_name]
@@ -81,7 +82,7 @@ IF @incremental_flag = 1 --handle incremental loads
 								)
 
 				VALUES (   
-						    source.[customer_id]
+						    source.[lead_id]
 							, source.[title]
 							, source.[first_name]
 							, source.[last_name]
@@ -120,10 +121,10 @@ IF @incremental_flag = 1 --handle incremental loads
 		BEGIN 
 
 
-			INSERT INTO [mdm].[customer]
+			INSERT INTO [mdm].[lead]
 
 					(
-							[customer_id]
+							[lead_id]
 							,[title]
 							,[first_name]
 							,[last_name]
@@ -145,7 +146,7 @@ IF @incremental_flag = 1 --handle incremental loads
 
 							)
 
-			SELECT  c.customer_id
+			SELECT  c.lead_id
 						, c.title
 						, c.first_name
 						, c.last_name
@@ -164,8 +165,8 @@ IF @incremental_flag = 1 --handle incremental loads
 						, GETDATE()
 						, NULL
 						, 1
-				FROM [dbo].[customer] c
-					INNER JOIN fuzzy.cleansed_list cl ON c.customer_id = cl.customer_id
+				FROM [dbo].[lead] c
+					INNER JOIN fuzzy.cleansed_list cl ON c.lead_id = cl.lead_id
 					LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
 						AND d.[state_code] = c.[state] 
 					INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
@@ -176,4 +177,3 @@ IF @incremental_flag = 1 --handle incremental loads
 	END
 
 END
-

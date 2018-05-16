@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="75"
-  DTS:VersionGUID="{58259622-D354-461A-9943-41A498836232}">
+  DTS:VersionBuild="77"
+  DTS:VersionGUID="{4F7B71F1-1F2A-48F7-9DAA-0BDBA939CB8D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -997,10 +997,6 @@
                           length="1000"
                           name="ErrorColumn" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          dataType="i4"
-                          name="customer_id" />
-                        <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                           dataType="dbTimeStamp"
                           name="submission_date" />
@@ -1014,6 +1010,10 @@
                           refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
                           dataType="dbTimeStamp"
                           name="load_date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                          dataType="i4"
+                          name="lead_id" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -1131,14 +1131,6 @@
                           externalMetadataColumnId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                           lineageId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\DC - cleanse again 2.Outputs[Derived Column Output].Columns[ErrorColumnName]" />
                         <inputColumn
-                          refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].Columns[lead_id]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="100"
-                          cachedName="lead_id"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          lineageId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]" />
-                        <inputColumn
                           refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -1146,6 +1138,14 @@
                           cachedName="SubmissionDate"
                           externalMetadataColumnId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                           lineageId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].Columns[lead_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="100"
+                          cachedName="lead_id"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                          lineageId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\Source - lead-exports.Outputs[Flat File Source Output].Columns[lead_id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -1155,10 +1155,6 @@
                           dataType="str"
                           length="1000"
                           name="ErrorColumn" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          dataType="i4"
-                          name="customer_id" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                           dataType="dbTimeStamp"
@@ -1173,6 +1169,10 @@
                           refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
                           dataType="dbTimeStamp"
                           name="load_date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container - Generic\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                          dataType="i4"
+                          name="lead_id" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -4923,10 +4923,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           length="1000"
                           name="ErrorColumn" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          dataType="i4"
-                          name="customer_id" />
-                        <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                           dataType="dbTimeStamp"
                           name="submission_date" />
@@ -4940,6 +4936,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
                           dataType="dbTimeStamp"
                           name="load_date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                          dataType="i4"
+                          name="lead_id" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -5057,14 +5057,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[ErrorColumn]"
                           lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again 2.Outputs[Derived Column Output].Columns[ErrorColumnName]" />
                         <inputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].Columns[lead_id]"
-                          cachedCodepage="1252"
-                          cachedDataType="str"
-                          cachedLength="50"
-                          cachedName="lead_id"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_id]" />
-                        <inputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].Columns[SubmissionDate]"
                           cachedCodepage="1252"
                           cachedDataType="str"
@@ -5072,6 +5064,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           cachedName="SubmissionDate"
                           externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                           lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[SubmissionDate]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].Columns[lead_id]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="lead_id"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_id]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -5081,10 +5081,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           dataType="str"
                           length="1000"
                           name="ErrorColumn" />
-                        <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[customer_id]"
-                          dataType="i4"
-                          name="customer_id" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                           dataType="dbTimeStamp"
@@ -5099,6 +5095,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[load_date]"
                           dataType="dbTimeStamp"
                           name="load_date" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                          dataType="i4"
+                          name="lead_id" />
                       </externalMetadataColumns>
                     </input>
                   </inputs>
@@ -7414,7 +7414,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[email]"
                           codePage="1252"
                           dataType="str"
-                          length="250"
+                          length="255"
                           name="email" />
                         <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[title]"
@@ -8163,9 +8163,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8223,9 +8221,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8283,9 +8279,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8307,9 +8301,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8331,9 +8323,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8355,9 +8345,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8379,9 +8367,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

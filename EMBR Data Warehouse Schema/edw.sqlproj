@@ -66,6 +66,11 @@
     <Folder Include="fuzzy\" />
     <Folder Include="fuzzy\Tables\" />
     <Folder Include="Security\" />
+    <Folder Include="mdm\" />
+    <Folder Include="mdm\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="mdm\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="lead.dim_device.sql" />
@@ -86,7 +91,6 @@
     <Build Include="lead.load_dim_device.sql" />
     <Build Include="dbo.dim_geography.sql" />
     <Build Include="dbo.customer.sql" />
-    <Build Include="mdm.load_customer.sql" />
     <Build Include="lead.dim_geography.sql" />
     <Build Include="lead.load_dim_geography.sql" />
     <Build Include="lead.fact_leads.sql" />
@@ -100,6 +104,9 @@
     <Build Include="fuzzy\Tables\fuzzy.mobile_list.sql" />
     <Build Include="Security\fuzzy.sql" />
     <Build Include="fuzzy\Tables\fuzzy.cleansed_list.sql" />
+    <Build Include="mdm\Tables\mdm.lead.sql" />
+    <Build Include="dbo\Tables\dbo.lead.sql" />
+    <Build Include="mdm\Stored Procedures\mdm.load_lead.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EMBR Data Warehouse Schema.refactorlog" />
