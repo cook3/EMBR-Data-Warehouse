@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fuzzy_grouping"
   DTS:PackageType="5"
-  DTS:VersionBuild="48"
-  DTS:VersionGUID="{2F127ADD-9B52-42C9-9FEE-0E95E076A1FE}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{EB0E9A8F-590E-46CE-B8AB-B8594756185E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -49,7 +49,7 @@
       DTS:CreationName=""
       DTS:DTSID="{EC594967-7384-4833-B1B8-B3ED9F79A34B}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT  c.lead_id, c.first_name, c.mobile, c.email, c.submission_date&#xA;FROM dbo.lead c&#xA;&#x9;INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile&#xA;WHERE ml.id &gt; &quot; +   (DT_STR, 255 , 1252) @[User::int_row_counter_band] &#xA;+ &quot; AND ml.id &lt;= &quot; +  (DT_STR, 255 , 1252) @[User::int_row_counter]&#xA;+ &quot; AND c.data_source = 'databowl' ORDER BY c.submission_date&quot;"
+      DTS:Expression="&quot;SELECT  c.lead_id, c.first_name, c.mobile, c.email, c.submission_date&#xA;FROM dbo.lead c&#xA;&#x9;INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile&#xA;WHERE ml.id &gt; &quot; +   (DT_STR, 255 , 1252) @[User::int_row_counter_band] &#xA;+ &quot; AND ml.id &lt;= &quot; +  (DT_STR, 255 , 1252) @[User::int_row_counter]&#xA;+ &quot; AND c.data_source = 'databowl' ORDER BY c.mobile, c.email,c.submission_date DESC&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="sql_de_dup_query">
@@ -57,7 +57,7 @@
         DTS:DataType="8">SELECT  c.lead_id, c.first_name, c.mobile, c.email, c.submission_date
 FROM dbo.lead c
 	INNER JOIN [fuzzy].[mobile_list] ml ON c.mobile = ml.mobile
-WHERE ml.id &gt; -10000 AND ml.id &lt;= 0 AND c.data_source = 'databowl' ORDER BY c.submission_date</DTS:VariableValue>
+WHERE ml.id &gt; -10000 AND ml.id &lt;= 0 AND c.data_source = 'databowl' ORDER BY c.mobile, c.email,c.submission_date DESC</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>

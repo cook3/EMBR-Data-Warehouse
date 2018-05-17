@@ -23,12 +23,18 @@ IF @incremental_flag = 1 --handle incremental loads
 				MERGE [lead].[dim_homeowner] AS target
 				USING (
 
-						SELECT 'Unknown' AS [homeowner_answer]
+						SELECT 'Unknown' AS [homeowner_answer], 'Unknown' AS [answer_group]
 
 
 						UNION 
 
 						SELECT DISTINCT ISNULL([homeowner_answer], 'Unknown' ) AS [homeowner_answer]
+								, CASE WHEN ISNULL([homeowner_answer], 'Unknown' ) = 'Unknown' 
+								 THEN 'Unknown' 
+								 WHEN [homeowner_answer] IN ( 'Renting', 'Live at home')
+								 THEN 'Cosponsor'
+								 ELSE 'Home Owner'
+								 END AS [answer_group]
 						FROM [staging].[staging].[lead_homeowners] 
 
 						  
@@ -41,11 +47,13 @@ IF @incremental_flag = 1 --handle incremental loads
 				THEN INSERT (
 
 							  [answer]
+							,  [answer_group]
 
 								)
 
 				VALUES (   
 						    source.[homeowner_answer]
+							,source.[answer_group]
 						  );
 							  
 
@@ -61,17 +69,23 @@ IF @incremental_flag = 1 --handle incremental loads
 
 						(
 							  [answer]
-
+							  , [answer_group]
 
 								)
 
 
-						SELECT 'Unknown' AS [homeowner_answer]
+						SELECT 'Unknown' AS [homeowner_answer], 'Unknown' AS [answer_group]
 
 
 						UNION 
 
 						SELECT DISTINCT ISNULL([homeowner_answer], 'Unknown' ) AS [homeowner_answer]
+								, CASE WHEN ISNULL([homeowner_answer], 'Unknown' ) = 'Unknown' 
+								 THEN 'Unknown' 
+								 WHEN [homeowner_answer] IN ( 'Renting', 'Live at home')
+								 THEN 'Cosponsor'
+								 ELSE 'Home Owner'
+								 END AS [answer_group]
 						FROM [staging].[staging].[lead_homeowners] 
 
 	END
