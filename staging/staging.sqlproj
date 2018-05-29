@@ -62,6 +62,8 @@
     <Folder Include="Properties" />
     <Folder Include="staging\" />
     <Folder Include="staging\Tables\" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="staging.sql" />
@@ -75,5 +77,6 @@
     <Build Include="staging\Tables\staging.join_leads.sql" />
     <Build Include="staging\Tables\staging.errors.sql" />
     <Build Include="staging\Tables\staging.lead_homeowners.sql" />
+    <Build Include="dbo\Stored Procedures\dbo.email_errors.sql" />
   </ItemGroup>
 </Project>
