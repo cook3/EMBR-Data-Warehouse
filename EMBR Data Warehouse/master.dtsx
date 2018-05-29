@@ -11,11 +11,33 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="master"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{D150AED2-0FC3-47FB-93AF-D5C22B9ED6FD}">
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{8A17C054-E60D-434B-8290-6FAD96E18072}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SMTP Connection Manager]"
+      DTS:CreationName="SMTP"
+      DTS:DTSID="{39EE3CD7-1722-4F0A-A96E-FB06FC8F6813}"
+      DTS:ObjectName="SMTP Connection Manager">
+      <DTS:ObjectData>
+        <SmtpConnectionManager
+          ConnectionString="SmtpServer=smtp.gmail.com;UseWindowsAuthentication=False;EnableSsl=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{981935C7-7E69-4F99-9B72-0175F1D76072}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="int_error_count">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
       DTS:refId="Package\EPT -  fuzzy grouping"
@@ -119,6 +141,58 @@
         </ExecutePackageTask>
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - check if errors present"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A86235AB-F718-4202-A74A-48AC980EF7EA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - check if errors present"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
+          SQLTask:SqlStatementSource="SELECT count(*)&#xA;FROM [staging].[errors];"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - clear error table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{15E2BBE5-D886-4C72-8731-8C47384555CA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - clear error table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE staging.errors;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - email lead errors"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{02D522A9-E866-4CF0-87FF-1B9C647C9022}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - email lead errors"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
+          SQLTask:SqlStatementSource="EXEC [dbo].[email_errors];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -161,6 +235,34 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 4"
       DTS:To="Package\EPT - load mdm" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 5]"
+      DTS:CreationName=""
+      DTS:DTSID="{9EB6C254-E382-4BE4-8497-7CA7EB05B495}"
+      DTS:From="Package\EPT - load mdm"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 5"
+      DTS:To="Package\SQL - check if errors present" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{0D0F0D40-E07F-4FA6-B8FC-4CF26A02F273}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::int_error_count] &gt; 0"
+      DTS:From="Package\SQL - check if errors present"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\SQL - email lead errors" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 7]"
+      DTS:CreationName=""
+      DTS:DTSID="{395C9478-D36C-4522-A7E3-64A939B4725E}"
+      DTS:EvalOp="1"
+      DTS:Expression="@[User::int_error_count] &gt; 0"
+      DTS:From="Package\SQL - email lead errors"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 7"
+      DTS:To="Package\SQL - clear error table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -173,57 +275,65 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="184,42"
           Id="Package\EPT -  fuzzy grouping"
-          TopLeft="529,346" />
+          TopLeft="471,343" />
         <NodeLayout
           Size="189,42"
           Id="Package\EPT - load dimensions"
-          TopLeft="205,293" />
+          TopLeft="190,270" />
         <NodeLayout
           Size="157,42"
           Id="Package\EPT - load facts"
-          TopLeft="262,386" />
+          TopLeft="237,353" />
         <NodeLayout
           Size="158,42"
           Id="Package\EPT - load mdm"
-          TopLeft="803,371" />
+          TopLeft="744,327" />
         <NodeLayout
           Size="158,42"
           Id="Package\EPT - load_lead"
-          TopLeft="196,196" />
+          TopLeft="168,184" />
         <NodeLayout
           Size="172,42"
           Id="Package\EPT - load_staging"
-          TopLeft="155,102" />
+          TopLeft="109,88" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\SQL - email lead errors"
+          TopLeft="757,497" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\SQL - check if errors present"
+          TopLeft="764,412" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="241,144">
+          TopLeft="195,130">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="34,52"
+              EndConnector="52,54"
               Start="0,0"
-              End="34,44.5">
+              End="52,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22" />
+                    End="0,23" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="4,26" />
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="4,27" />
                   <mssgle:LineSegment
-                    End="30,26" />
+                    End="48,27" />
                   <mssgle:CubicBezierSegment
-                    Point1="30,26"
-                    Point2="34,26"
-                    Point3="34,30" />
+                    Point1="48,27"
+                    Point2="52,27"
+                    Point3="52,31" />
                   <mssgle:LineSegment
-                    End="34,44.5" />
+                    End="52,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -234,30 +344,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="275,238">
+          TopLeft="247,226">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="24.5,55"
+              EndConnector="37.5,44"
               Start="0,0"
-              End="24.5,47.5">
+              End="37.5,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5" />
+                    End="0,18" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,23.5"
-                    Point2="0,27.5"
-                    Point3="4,27.5" />
+                    Point1="0,18"
+                    Point2="0,22"
+                    Point3="4,22" />
                   <mssgle:LineSegment
-                    End="20.5,27.5" />
+                    End="33.5,22" />
                   <mssgle:CubicBezierSegment
-                    Point1="20.5,27.5"
-                    Point2="24.5,27.5"
-                    Point3="24.5,31.5" />
+                    Point1="33.5,22"
+                    Point2="37.5,22"
+                    Point3="37.5,26" />
                   <mssgle:LineSegment
-                    End="24.5,47.5" />
+                    End="37.5,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -268,30 +378,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="299.5,335">
+          TopLeft="284.5,312">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="41,51"
+              EndConnector="31,41"
               Start="0,0"
-              End="41,43.5">
+              End="31,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,21.5" />
+                    End="0,16.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,21.5"
-                    Point2="0,25.5"
-                    Point3="4,25.5" />
+                    Point1="0,16.5"
+                    Point2="0,20.5"
+                    Point3="4,20.5" />
                   <mssgle:LineSegment
-                    End="37,25.5" />
+                    End="27,20.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="37,25.5"
-                    Point2="41,25.5"
-                    Point3="41,29.5" />
+                    Point1="27,20.5"
+                    Point2="31,20.5"
+                    Point3="31,24.5" />
                   <mssgle:LineSegment
-                    End="41,43.5" />
+                    End="31,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -302,30 +412,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="419,407">
+          TopLeft="394,374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="110,-40"
+              EndConnector="77,-10"
               Start="0,0"
-              End="102.5,-40">
+              End="69.5,-10">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="51,0" />
+                    End="34.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="51,0"
-                    Point2="55,0"
-                    Point3="55,-4" />
+                    Point1="34.5,0"
+                    Point2="38.5,0"
+                    Point3="38.5,-4" />
                   <mssgle:LineSegment
-                    End="55,-36" />
+                    End="38.5,-6" />
                   <mssgle:CubicBezierSegment
-                    Point1="55,-36"
-                    Point2="55,-40"
-                    Point3="59,-40" />
+                    Point1="38.5,-6"
+                    Point2="38.5,-10"
+                    Point3="42.5,-10" />
                   <mssgle:LineSegment
-                    End="102.5,-40" />
+                    End="69.5,-10" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -336,36 +446,134 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="713,367">
+          TopLeft="655,364">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="90,25"
+              EndConnector="89,-16"
               Start="0,0"
-              End="82.5,25">
+              End="81.5,-16">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="41,0" />
+                    End="40.5,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="41,0"
-                    Point2="45,0"
-                    Point3="45,4" />
+                    Point1="40.5,0"
+                    Point2="44.5,0"
+                    Point3="44.5,-4" />
                   <mssgle:LineSegment
-                    End="45,21" />
+                    End="44.5,-12" />
                   <mssgle:CubicBezierSegment
-                    Point1="45,21"
-                    Point2="45,25"
-                    Point3="49,25" />
+                    Point1="44.5,-12"
+                    Point2="44.5,-16"
+                    Point3="48.5,-16" />
                   <mssgle:LineSegment
-                    End="82.5,25" />
+                    End="81.5,-16" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 5]"
+          TopLeft="823,369">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,43"
+              Start="0,0"
+              End="26,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5"
+                    Point2="0,21.5"
+                    Point3="4,21.5" />
+                  <mssgle:LineSegment
+                    End="22,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22,21.5"
+                    Point2="26,21.5"
+                    Point3="26,25.5" />
+                  <mssgle:LineSegment
+                    End="26,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="851,454">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,9.75,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SQL - clear error table"
+          TopLeft="650,565" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 7]"
+          TopLeft="853,539">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-109.5,26"
+              Start="0,0"
+              End="-109.5,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="-4,13" />
+                  <mssgle:LineSegment
+                    End="-105.5,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-105.5,13"
+                    Point2="-109.5,13"
+                    Point3="-109.5,17" />
+                  <mssgle:LineSegment
+                    End="-109.5,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-62.75,18,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
