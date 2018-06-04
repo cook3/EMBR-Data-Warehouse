@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="master"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{8A17C054-E60D-434B-8290-6FAD96E18072}">
+  DTS:VersionBuild="21"
+  DTS:VersionGUID="{E67E5D1E-1B8C-4DEB-A100-DDC9D1147B5C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -156,7 +156,11 @@
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
           SQLTask:SqlStatementSource="SELECT count(*)&#xA;FROM [staging].[errors];"
-          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::int_error_count" />
+        </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -301,13 +305,17 @@
           Id="Package\EPT - load_staging"
           TopLeft="109,88" />
         <NodeLayout
-          Size="192,42"
-          Id="Package\SQL - email lead errors"
-          TopLeft="757,497" />
-        <NodeLayout
           Size="170,42"
           Id="Package\SQL - check if errors present"
           TopLeft="764,412" />
+        <NodeLayout
+          Size="187,42"
+          Id="Package\SQL - clear error table"
+          TopLeft="650,565" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\SQL - email lead errors"
+          TopLeft="751,488" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="195,130">
@@ -514,65 +522,61 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
-          TopLeft="851,454">
+          TopLeft="848,454">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,43"
+              EndConnector="0,34"
               Start="0,0"
-              End="0,35.5">
+              End="0,26.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5" />
+                    End="0,26.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-8,9.75,16,16"
+              BoundingBox="-8,5.25,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="187,42"
-          Id="Package\SQL - clear error table"
-          TopLeft="650,565" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
-          TopLeft="853,539">
+          TopLeft="847,530">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-109.5,26"
+              EndConnector="-103.5,35"
               Start="0,0"
-              End="-109.5,18.5">
+              End="-103.5,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,9" />
+                    End="0,13.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,9"
-                    Point2="0,13"
-                    Point3="-4,13" />
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="-4,17.5" />
                   <mssgle:LineSegment
-                    End="-105.5,13" />
+                    End="-99.5,17.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-105.5,13"
-                    Point2="-109.5,13"
-                    Point3="-109.5,17" />
+                    Point1="-99.5,17.5"
+                    Point2="-103.5,17.5"
+                    Point3="-103.5,21.5" />
                   <mssgle:LineSegment
-                    End="-109.5,18.5" />
+                    End="-103.5,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-62.75,18,16,16"
+              BoundingBox="-59.75,22.5,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
