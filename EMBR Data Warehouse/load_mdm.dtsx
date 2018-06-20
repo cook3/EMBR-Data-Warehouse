@@ -11,12 +11,632 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_mdm"
   DTS:PackageType="5"
-  DTS:VersionBuild="4"
-  DTS:VersionGUID="{1A5EDDEC-2AF0-4148-867D-C2F917482B81}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{F3428757-F14A-4A0F-9853-46DA3D5340F1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - get all leads with unknown as homeowner answer"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FD81BA57-53AF-4B85-98B4-9F84781C7F38}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - get all leads with unknown as homeowner answer"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - unknown_list"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[fuzzy].[unknown_list]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Connections[OleDbConnection]"
+                  connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Inputs[OLE DB Destination Input].Columns[mobile]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="mobile"
+                      externalMetadataColumnId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      lineageId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Output].Columns[mobile]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="mobile" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC - get distinct lead list"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT l.mobile --*
+  FROM mdm.lead l
+	INNER JOIN lead.dim_homeowner h ON l.homeowner_key = h.homeowner_key
+  WHERE h.answer_group = 'Unknown';</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Connections[OleDbConnection]"
+                  connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Output].Columns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      length="100"
+                      lineageId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Output].Columns[mobile]"
+                      name="mobile"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="mobile" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      name="mobile" />
+                    <outputColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - get all leads with unknown as homeowner answer.Paths[OLE DB Source Output]"
+              endId="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT - get all old homeowner answers"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{38592D92-825E-4F94-AFB9-74240818B85C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - get all old homeowner answers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - old_homeowner_answers"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[fuzzy].[old_homeowner_answers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Connections[OleDbConnection]"
+                  connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].Columns[mobile]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="mobile"
+                      externalMetadataColumnId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[mobile]" />
+                    <inputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].Columns[homeowner_key]"
+                      cachedDataType="i4"
+                      cachedName="homeowner_key"
+                      externalMetadataColumnId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_key]"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[homeowner_key]" />
+                    <inputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].Columns[submission_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="submission_date"
+                      externalMetadataColumnId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[submission_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="mobile" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_key]"
+                      dataType="i4"
+                      name="homeowner_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
+                      dataType="dbTimeStamp"
+                      name="submission_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC - get old homeowner answers"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT old_answer.mobile, old_answer.homeowner_key, old_answer.submission_date
+				FROM (
+
+					-- get leads with unknown answer that have answered the homeowner answer in the past
+					SELECT distinct l.mobile, h.homeowner_key, l.submission_date ,ROW_NUMBER() OVER (PARTITION BY l.mobile, h.homeowner_key ORDER BY l.submission_date DESC ) AS latest_answer
+					FROM dbo.lead l
+						INNER JOIN lead.dim_homeowner h ON l.homeowner_answer = h.answer
+						INNER JOIN [fuzzy].[unknown_list] u ON l.mobile = u.mobile
+					WHERE h.answer_group =  'Home Owner'
+
+				 ) old_answer
+				 WHERE latest_answer = 1</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Connections[OleDbConnection]"
+                  connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      length="100"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[mobile]"
+                      name="mobile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[homeowner_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].ExternalColumns[homeowner_key]"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[homeowner_key]"
+                      name="homeowner_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[submission_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].ExternalColumns[submission_date]"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].Columns[submission_date]"
+                      name="submission_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="mobile" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].ExternalColumns[homeowner_key]"
+                      dataType="i4"
+                      name="homeowner_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output].ExternalColumns[submission_date]"
+                      dataType="dbTimeStamp"
+                      name="submission_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      name="mobile" />
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[homeowner_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[homeowner_key]"
+                      name="homeowner_key" />
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[submission_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[submission_date]"
+                      name="submission_date" />
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - get all old homeowner answers.Paths[OLE DB Source Output]"
+              endId="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - clean table to contain latest homeowner asnwer only"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{28B5467A-6075-4B20-85AC-460AEA12036F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - clean table to contain latest homeowner asnwer only"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+          SQLTask:SqlStatementSource="DELETE ha&#xA;FROM [fuzzy].[old_homeowner_answers] ha&#xA;&#x9;LEFT JOIN &#xA;&#x9;(&#xA;&#x9;&#x9;SELECT mobile, MAX(submission_date) AS submission_date&#xA;&#x9;&#x9;FROM [fuzzy].[old_homeowner_answers]&#xA;&#x9;&#x9;GROUP BY  mobile&#xA;&#xA;&#x9;&#x9;) dd&#xA;&#x9;&#x9;ON ha.mobile = dd.mobile&#xA;&#x9;&#x9;AND ha.submission_date = dd.submission_date&#xA;WHERE dd.mobile IS NULL;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - clear tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{40AD6BF3-7102-47EF-9F3D-60D4D6DEFE87}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - clear tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [fuzzy].[unknown_list];&#xA;TRUNCATE TABLE [fuzzy].[old_homeowner_answers];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\SQL - load mdm_lead"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
@@ -34,7 +654,66 @@
           SQLTask:SqlStatementSource="EXEC [mdm].[load_lead];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - update homeowner answers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2F021484-47FA-4CFC-ABCC-9ED090E52F06}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - update homeowner answers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}"
+          SQLTask:SqlStatementSource=" --update mdm.lead with homeowner answer&#xA; UPDATE l&#xA; SET l.homeowner_key = ha.homeowner_key&#xA; FROM mdm.lead l &#xA;&#x9;INNER JOIN lead.dim_homeowner h ON l.homeowner_key = h.homeowner_key&#xA;&#x9;INNER JOIN [fuzzy].[old_homeowner_answers] ha ON l.mobile = ha.mobile&#xA;WHERE h.answer_group = 'Unknown'&#xA;&#x9;AND l.active = 1&#xA;&#x9;AND l.submission_date &gt;  ha.submission_date;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{877BEA7F-08CE-4CA6-94F0-C020DCEEDD11}"
+      DTS:From="Package\SQL - load mdm_lead"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL - clear tables" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D040A664-D5F6-4DB9-9C5A-790C166C11E6}"
+      DTS:From="Package\SQL - clear tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT - get all leads with unknown as homeowner answer" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{5DFA372D-D5AA-4817-A918-C2E56B2AC230}"
+      DTS:From="Package\DFT - get all leads with unknown as homeowner answer"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT - get all old homeowner answers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{5A6B505B-6679-4873-88FD-551F0F492279}"
+      DTS:From="Package\SQL - clean table to contain latest homeowner asnwer only"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SQL - update homeowner answers" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{247B7A0D-1DC7-4B31-A0BF-A3919854DFB7}"
+      DTS:From="Package\DFT - get all old homeowner answers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\SQL - clean table to contain latest homeowner asnwer only" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -46,13 +725,345 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="186,42"
           Id="Package\SQL - load mdm_lead"
-          TopLeft="195,192" />
+          TopLeft="145,174" />
+        <NodeLayout
+          Size="351,42"
+          Id="Package\DFT - get all leads with unknown as homeowner answer"
+          TopLeft="225,366" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\SQL - clear tables"
+          TopLeft="229,267" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="238,216">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91.5,51"
+              Start="0,0"
+              End="91.5,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
+                  <mssgle:LineSegment
+                    End="87.5,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="87.5,25.5"
+                    Point2="91.5,25.5"
+                    Point3="91.5,29.5" />
+                  <mssgle:LineSegment
+                    End="91.5,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="329.5,309">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71,57"
+              Start="0,0"
+              End="71,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
+                  <mssgle:LineSegment
+                    End="67,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="67,28.5"
+                    Point2="71,28.5"
+                    Point3="71,32.5" />
+                  <mssgle:LineSegment
+                    End="71,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="248,42"
+          Id="Package\SQL - update homeowner answers"
+          TopLeft="860,404" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\DFT - get all old homeowner answers"
+          TopLeft="324,460" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="400.5,408">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54,52"
+              Start="0,0"
+              End="54,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="50,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50,26"
+                    Point2="54,26"
+                    Point3="54,30" />
+                  <mssgle:LineSegment
+                    End="54,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="365,42"
+          Id="Package\SQL - clean table to contain latest homeowner asnwer only"
+          TopLeft="513,541" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="454.5,502">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="241,39"
+              Start="0,0"
+              End="241,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.5"
+                    Point2="0,19.5"
+                    Point3="4,19.5" />
+                  <mssgle:LineSegment
+                    End="237,19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="237,19.5"
+                    Point2="241,19.5"
+                    Point3="241,23.5" />
+                  <mssgle:LineSegment
+                    End="241,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="755,541">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="229,-95"
+              Start="0,0"
+              End="229,-87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-34.2487725040916" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-34.2487725040916"
+                    Point2="0,-38.2487725040916"
+                    Point3="4,-38.2487725040916" />
+                  <mssgle:LineSegment
+                    End="225,-38.2487725040916" />
+                  <mssgle:CubicBezierSegment
+                    Point1="225,-38.2487725040916"
+                    Point2="229,-38.2487725040916"
+                    Point3="229,-42.2487725040916" />
+                  <mssgle:LineSegment
+                    End="229,-87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
+  <TaskHost
+    design-time-name="Package\DFT - get all leads with unknown as homeowner answer">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="233,42"
+          Id="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list"
+          TopLeft="160,76" />
+        <NodeLayout
+          Size="202,42"
+          Id="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list"
+          TopLeft="392,210" />
+        <EdgeLayout
+          Id="Package\DFT - get all leads with unknown as homeowner answer.Paths[OLE DB Source Output]"
+          TopLeft="276.5,118">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="216.5,92"
+              Start="0,0"
+              End="216.5,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="4,46" />
+                  <mssgle:LineSegment
+                    End="212.5,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="212.5,46"
+                    Point2="216.5,46"
+                    Point3="216.5,50" />
+                  <mssgle:LineSegment
+                    End="216.5,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get all leads with unknown as homeowner answer\OLE_SRC - get distinct lead list">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get all leads with unknown as homeowner answer\OLE_DST - unknown_list">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - get all old homeowner answers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="277,42"
+          Id="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers"
+          TopLeft="198,115" />
+        <NodeLayout
+          Size="264,42"
+          Id="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers"
+          TopLeft="448,251" />
+        <EdgeLayout
+          Id="Package\DFT - get all old homeowner answers.Paths[OLE DB Source Output]"
+          TopLeft="336.5,157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="243.5,94"
+              Start="0,0"
+              End="243.5,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43"
+                    Point2="0,47"
+                    Point3="4,47" />
+                  <mssgle:LineSegment
+                    End="239.5,47" />
+                  <mssgle:CubicBezierSegment
+                    Point1="239.5,47"
+                    Point2="243.5,47"
+                    Point3="243.5,51" />
+                  <mssgle:LineSegment
+                    End="243.5,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get all old homeowner answers\OLE_SRC - get old homeowner answers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get all old homeowner answers\OLE_DST - old_homeowner_answers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
