@@ -20,6 +20,8 @@
 );
 
 
+
+
 GO
 CREATE NONCLUSTERED INDEX [idx_lead_id_source]
     ON [dbo].[lead]([lead_id] ASC, [data_source] ASC);
@@ -41,4 +43,10 @@ GO
 CREATE NONCLUSTERED INDEX [idx_lead_mobile_include]
     ON [dbo].[lead]([mobile] ASC)
     INCLUDE([lead_id], [first_name], [email], [submission_date]);
+
+
+GO
+CREATE NONCLUSTERED INDEX [idx_first_last_name_mobile]
+    ON [dbo].[lead]([first_name] ASC, [last_name] ASC)
+    INCLUDE([mobile]);
 

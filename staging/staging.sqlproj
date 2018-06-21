@@ -64,6 +64,9 @@
     <Folder Include="staging\Tables\" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="buyer\" />
+    <Folder Include="buyer\Tables\" />
+    <Folder Include="Security\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="staging.sql" />
@@ -78,5 +81,9 @@
     <Build Include="staging\Tables\staging.errors.sql" />
     <Build Include="staging\Tables\staging.lead_homeowners.sql" />
     <Build Include="dbo\Stored Procedures\dbo.email_errors.sql" />
+    <Build Include="buyer\Tables\buyer.mobile_email_list.sql" />
+    <Build Include="buyer\Tables\buyer.email_list.sql" />
+    <Build Include="buyer\Tables\buyer.mobile_list.sql" />
+    <Build Include="Security\buyer.sql" />
   </ItemGroup>
 </Project>

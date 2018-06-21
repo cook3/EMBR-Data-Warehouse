@@ -8,6 +8,7 @@ AS
 -- Author:		Scott Cooke
 -- Create date: 05/02/2018
 -- Description:	perform load of all unique customer info
+-- Update: updated to merge on lead_id and submission date as merging on all leads now which contain dup lead id's
 -- =============================================
 
 BEGIN
@@ -35,17 +36,18 @@ IF @incremental_flag = 1 --handle incremental loads
 										, c.[state]
 										, c.postcode
 										, c.mobile
-										, c.dob
+										, CASE WHEN c.dob < '1900-01-01' THEN NULL ELSE c.dob END AS dob
 										, c.gender
 										, c.age
 										, c.email
-										, c.submission_date
+										, ISNULL(c.submission_date, GETDATE()) AS submission_date
 										, ISNULL( d.geography_key, -1) AS geography_key
 										, s.source_key
 										, h.homeowner_key
 										, ds.data_source_key
 								FROM [dbo].[lead] c
 									INNER JOIN fuzzy.cleansed_list cl ON c.lead_id = cl.lead_id
+										AND c.submission_date = cl.submission_date
 									LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
 										AND d.[state_code] = c.[state] 
 									INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
@@ -55,6 +57,7 @@ IF @incremental_flag = 1 --handle incremental loads
 						) AS source 
 
 					ON	target.[lead_id] = source.[lead_id]
+						AND target.[submission_date] = source.[submission_date]
 
 
 				WHEN NOT MATCHED BY TARGET --insert new rows - a row exists in the source, but not in the target table
@@ -107,11 +110,11 @@ IF @incremental_flag = 1 --handle incremental loads
 				WHEN NOT MATCHED BY SOURCE 
 					THEN UPDATE
 						SET valid_to = GETDATE()
-						, active = 0 ;
+						, active = 0;
+						
+							--		OUTPUT $action, inserted.*, deleted.*  ;
 						  
-				;
-							  
-
+							 
 
 
 		END
@@ -156,17 +159,18 @@ IF @incremental_flag = 1 --handle incremental loads
 						, ds.data_source_key
 						, s.source_key
 						, c.mobile
-						, c.dob
+						, CASE WHEN c.dob < '1900-01-01' THEN NULL ELSE c.dob END AS dob
 						, c.gender
 						, c.age
 						, c.email
 						, h.homeowner_key
-						, c.submission_date
+                        , ISNULL(c.submission_date, GETDATE()) AS submission_date
 						, GETDATE()
 						, NULL
 						, 1
 				FROM [dbo].[lead] c
 					INNER JOIN fuzzy.cleansed_list cl ON c.lead_id = cl.lead_id
+						AND c.submission_date = cl.submission_date
 					LEFT JOIN lead.dim_geography d on c.postcode = d.postcode
 						AND d.[state_code] = c.[state] 
 					INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source

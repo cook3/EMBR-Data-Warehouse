@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="fuzzy_grouping"
   DTS:PackageType="5"
-  DTS:VersionBuild="66"
-  DTS:VersionGUID="{E504A444-109C-4F11-89C5-8A8DD23DAF7C}">
+  DTS:VersionBuild="68"
+  DTS:VersionGUID="{F39DA11E-7CD7-4601-8ADB-60E226F5BCC2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -506,11 +506,11 @@ WHERE cl.active_lead = 1;</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT distinct  mobile 
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT DISTINCT  mobile 
 FROM dbo.lead 
-WHERE --data_source = 'databowl'
-	--AND 
-	LEN(mobile) &gt; 1
+WHERE LEN(mobile) &gt; 1
+		AND LEN(first_name) &gt; 0 
+		AND LEN(last_name) &gt; 1 
 ORDER BY mobile;</property>
                 <property
                   dataType="System.String"
@@ -2041,6 +2041,14 @@ ORDER BY mobile;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
+    design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
     design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_DST - fuzzy_de_dup">
     <Properties>
       <Property>
@@ -2050,14 +2058,6 @@ ORDER BY mobile;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\FEL - loop through de-dup values by 10000\DFT - loop through batches\OLE_SRC - get de-dup values">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
