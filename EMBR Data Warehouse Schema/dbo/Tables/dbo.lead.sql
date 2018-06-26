@@ -12,12 +12,16 @@
     [dob]              DATE          NULL,
     [gender]           VARCHAR (1)   NULL,
     [age]              VARCHAR (5)   NULL,
+    [ipaddress]        VARCHAR (100) NULL,
+    [prize]            VARCHAR (250) NULL,
     [homeowner_answer] VARCHAR (255) NULL,
     [submission_date]  DATETIME      NULL,
     [lead_status]      VARCHAR (10)  NULL,
     [lead_source]      VARCHAR (250) NULL,
     [data_source]      VARCHAR (255) NULL
 );
+
+
 
 
 

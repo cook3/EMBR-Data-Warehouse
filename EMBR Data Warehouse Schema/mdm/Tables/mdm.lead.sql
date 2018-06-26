@@ -14,6 +14,8 @@
     [gender]          VARCHAR (1)   NULL,
     [age]             VARCHAR (5)   NULL,
     [email]           VARCHAR (255) NULL,
+    [prize]           VARCHAR (250) NULL,
+    [ipaddress]       VARCHAR (100) NULL,
     [homeowner_key]   INT           NULL,
     [submission_date] DATETIME      NULL,
     [valid_from]      DATETIME      NULL,
@@ -21,4 +23,6 @@
     [active]          BIT           NULL,
     CONSTRAINT [PK_dim_lead] PRIMARY KEY CLUSTERED ([lead_key] ASC)
 );
+
+
 

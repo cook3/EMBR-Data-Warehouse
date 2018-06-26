@@ -44,6 +44,8 @@ IF @incremental_flag = 1 --handle incremental loads
 										, ISNULL( d.geography_key, -1) AS geography_key
 										, s.source_key
 										, h.homeowner_key
+										, c.prize
+										, c.ipaddress
 										, ds.data_source_key
 								FROM [dbo].[lead] c
 									INNER JOIN fuzzy.cleansed_list cl ON c.lead_id = cl.lead_id
@@ -52,7 +54,9 @@ IF @incremental_flag = 1 --handle incremental loads
 										AND d.[state_code] = c.[state] 
 									INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
 									INNER JOIN lead.dim_source s ON c.lead_source = s.source
-									INNER JOIN lead.dim_homeowner h ON c.homeowner_answer = h.answer					
+									INNER JOIN lead.dim_homeowner h ON c.homeowner_answer = h.answer
+								WHERE LEN(c.first_name) > 0
+									AND LEN(c.last_name) > 0					
 					  
 						) AS source 
 
@@ -77,6 +81,8 @@ IF @incremental_flag = 1 --handle incremental loads
 							  ,[age]
 							  ,[email]
 							  ,[homeowner_key]
+							  ,[prize]
+							  ,[ipaddress]
 							  ,[submission_date]
 							  ,[valid_from]
 							  ,[valid_to]
@@ -100,6 +106,8 @@ IF @incremental_flag = 1 --handle incremental loads
 							, source.[age]
 							, source.[email]
 							, source.[homeowner_key]
+							, source.[prize]
+							, source.[ipaddress]
 							, source.[submission_date]
 							, GETDATE()
 							, NULL
@@ -141,6 +149,8 @@ IF @incremental_flag = 1 --handle incremental loads
 							,[gender]
 							,[age]
 							,[email]
+							,[prize]
+							,[ipaddress]
 							,[homeowner_key]
 							,[submission_date]
 							,[valid_from]
@@ -163,6 +173,8 @@ IF @incremental_flag = 1 --handle incremental loads
 						, c.gender
 						, c.age
 						, c.email
+						, c.prize
+						, c.ipaddress
 						, h.homeowner_key
                         , ISNULL(c.submission_date, GETDATE()) AS submission_date
 						, GETDATE()
@@ -176,7 +188,9 @@ IF @incremental_flag = 1 --handle incremental loads
 					INNER JOIN lead.dim_data_source ds ON c.[data_source] = ds.source
 					INNER JOIN lead.dim_source s ON c.lead_source = s.source
 					INNER JOIN lead.dim_homeowner h ON c.homeowner_answer = h.answer
-
+				WHERE LEN(c.first_name) > 0
+					AND LEN(c.last_name) > 0
+					
 
 	END
 

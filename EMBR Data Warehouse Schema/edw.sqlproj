@@ -108,7 +108,6 @@
     <Build Include="mdm\Tables\mdm.lead.sql" />
     <Build Include="dbo\Tables\dbo.lead.sql" />
     <Build Include="mdm\Stored Procedures\mdm.load_lead.sql" />
-    <Build Include="mdm\Tables\mdm.empty.sql" />
     <Build Include="fuzzy\Tables\fuzzy.unknown_list.sql" />
     <Build Include="fuzzy\Tables\fuzzy.old_homeowner_answers.sql" />
     <Build Include="lead\Views\lead.vw_buyer_lead_list.sql" />
