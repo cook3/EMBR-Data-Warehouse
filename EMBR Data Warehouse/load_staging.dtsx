@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:MaxErrorCount="0"
   DTS:ObjectName="load_staging"
-  DTS:VersionBuild="79"
-  DTS:VersionGUID="{9A74D678-3D92-4406-B9D0-D453BDF20F59}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{4E5BD474-44AA-496F-89F7-09C7C7A90D5A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -281,7 +281,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="email"
-              DTS:DTSID="{B2540D53-8F50-4EE7-8E4F-B00538EB5C87}"
+              DTS:DTSID="{43CE7DAB-8FA1-4CB3-A56A-3B988C53B70C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -290,7 +290,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="title"
-              DTS:DTSID="{1BBA91B1-09F6-4CD7-B176-6A2AD2ED3144}"
+              DTS:DTSID="{B8FC20AA-458A-407E-A9FC-6D38C9A1B953}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -299,7 +299,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="firstname"
-              DTS:DTSID="{CFC8EB62-0AC4-44EF-99D6-185220F72977}"
+              DTS:DTSID="{C7277223-6A06-49E7-A080-E1BDA8BA224D}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -308,7 +308,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lastname"
-              DTS:DTSID="{11FF3F4C-893C-448D-8248-DDEE4E7FFE2F}"
+              DTS:DTSID="{02CB28CD-0609-4B6B-A827-85F9B658877B}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -317,7 +317,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="address1"
-              DTS:DTSID="{151CB3A2-BDBB-403D-A9C3-9B0E673ACF3F}"
+              DTS:DTSID="{E515DDDF-140E-48B7-BD79-2797024D31C8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -326,7 +326,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="city"
-              DTS:DTSID="{14F530C0-7B75-4959-97C4-343F53A7C28F}"
+              DTS:DTSID="{398265DC-D874-4CAC-853B-4660534F8741}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -335,7 +335,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="state"
-              DTS:DTSID="{C00909E8-9163-4B81-BC6A-690FE0BE27D1}"
+              DTS:DTSID="{2D25C469-630C-4F07-9A52-A9CE67D8DC27}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -344,7 +344,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="postcode"
-              DTS:DTSID="{53F5F5CC-372C-4D5D-B4E0-46EDE0E18911}"
+              DTS:DTSID="{0E70DEC7-099A-45FF-9F8D-84333864641F}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -353,7 +353,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="mobile"
-              DTS:DTSID="{D0A4841B-711E-4605-B2D1-34463B609696}"
+              DTS:DTSID="{520E9CC4-6A79-409A-BF00-3EF7A9738D74}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -362,7 +362,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="dob"
-              DTS:DTSID="{47654AF3-21D9-4A63-AFCA-172D3F4C3B29}"
+              DTS:DTSID="{B1A40DA3-D70E-472E-9200-AB7D212F133C}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -371,7 +371,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Gender"
-              DTS:DTSID="{D087F313-FFB1-44D0-930F-54EFC174C053}"
+              DTS:DTSID="{749EE8BA-6292-4ED2-96F0-52F3768EFF67}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -380,7 +380,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Age"
-              DTS:DTSID="{008BF3DB-3DA9-47C1-9101-F76DB9462474}"
+              DTS:DTSID="{71900BE7-0F13-43A1-9EE7-DD30D61F9EA7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -389,7 +389,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Source"
-              DTS:DTSID="{3743C73A-93D8-46CC-A8FF-367046F5324D}"
+              DTS:DTSID="{4710B3C8-0A82-4DC6-9587-B03986A226AE}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -398,7 +398,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Prize"
-              DTS:DTSID="{D97D3BF9-1D80-44CE-B257-B93F844FEEB0}"
+              DTS:DTSID="{30DDC250-B4F1-4F71-BEF5-665B2F0528B1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -407,7 +407,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="ipaddress"
-              DTS:DTSID="{FAB4BA48-E260-42FD-B9A9-4D1D6122D600}"
+              DTS:DTSID="{3519D76C-E22D-40EC-B0D9-6525EAD665D8}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -416,7 +416,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="SubmissionDate"
-              DTS:DTSID="{9504E5C4-8DE5-42E1-AB48-D3EA1BB4828D}"
+              DTS:DTSID="{C36CCF9B-D51B-4B11-BDD3-0EE2EF08D425}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -425,7 +425,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="affiliateid"
-              DTS:DTSID="{A8DD1074-FDEF-42BE-B603-A0C9B95B1E15}"
+              DTS:DTSID="{1A575C46-F5FE-442D-B9ED-F0F179766EE9}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -434,7 +434,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="clickid"
-              DTS:DTSID="{C12946E2-6D85-4252-8F1A-9E6337F9A672}"
+              DTS:DTSID="{834D0FD7-A0CA-43E9-9DFB-79936D8BBBF1}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -443,7 +443,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="homeowner_answer"
-              DTS:DTSID="{8FE35057-B5D2-48EF-B48E-3115766C1C5B}"
+              DTS:DTSID="{74C3A039-906C-425B-A5B6-9F2E4472A7CA}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -452,7 +452,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lead_id"
-              DTS:DTSID="{AAD5DD8E-9443-4293-A545-D2397B2D921A}"
+              DTS:DTSID="{92C126E0-1D8E-4110-B549-29D29E93F7B0}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -461,7 +461,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lead_status"
-              DTS:DTSID="{75E64756-407B-4DA9-B1FA-EC6962146F65}"
+              DTS:DTSID="{D2B22468-F7D3-416E-AFF6-523C33ABEADD}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -470,7 +470,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="lead_message"
-              DTS:DTSID="{D40CA66D-B8B6-42DC-B7F6-E3B1B326FCE6}"
+              DTS:DTSID="{AF63237C-94BC-4ACF-AC48-271EA4F1F231}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -5036,7 +5036,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                     <input
                       refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input]"
                       errorOrTruncationOperation="Insert"
-                      errorRowDisposition="FailComponent"
+                      errorRowDisposition="IgnoreFailure"
                       hasSideEffects="true"
                       name="OLE DB Destination Input">
                       <inputColumns>
@@ -7320,28 +7320,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           </properties>
                         </outputColumn>
                         <outputColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[homeowner_answer]"
-                          codePage="1252"
-                          dataType="str"
-                          errorOrTruncationOperation="Conversion"
-                          errorRowDisposition="RedirectRow"
-                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[homeowner_answer]"
-                          length="50"
-                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[homeowner_answer]"
-                          name="homeowner_answer"
-                          truncationRowDisposition="RedirectRow">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                              name="FastParse">false</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Indicates whether the data is in binary format."
-                              name="UseBinaryFormat">false</property>
-                          </properties>
-                        </outputColumn>
-                        <outputColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[lead_id]"
                           codePage="1252"
                           dataType="str"
@@ -7396,6 +7374,28 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[mobile]"
                           name="mobile"
                           truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[homeowner_answer]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="RedirectRow"
+                          externalMetadataColumnId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[homeowner_answer]"
+                          length="50"
+                          lineageId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].Columns[homeowner_answer]"
+                          name="homeowner_answer"
+                          truncationRowDisposition="RedirectRow">
                           <properties>
                             <property
                               dataType="System.Boolean"
@@ -7513,12 +7513,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           length="255"
                           name="affiliateid" />
                         <externalMetadataColumn
-                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[homeowner_answer]"
-                          codePage="1252"
-                          dataType="str"
-                          length="255"
-                          name="homeowner_answer" />
-                        <externalMetadataColumn
                           refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[lead_id]"
                           codePage="1252"
                           dataType="str"
@@ -7542,6 +7536,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           dataType="str"
                           length="255"
                           name="clickid" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners.Outputs[Flat File Source Output].ExternalColumns[homeowner_answer]"
+                          codePage="1252"
+                          dataType="str"
+                          length="255"
+                          name="homeowner_answer" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -7577,24 +7577,24 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               <paths>
                 <path
                   refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output]"
-                  endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again.Inputs[Derived Column Input]"
+                  endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again 2.Inputs[Derived Column Input]"
                   name="Derived Column Output"
-                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name.Outputs[Derived Column Output]" />
+                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name 2.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output1]"
-                  endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input]"
-                  name="Derived Column Output"
-                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again.Outputs[Derived Column Output]" />
-                <path
-                  refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output2]"
                   endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2.Inputs[OLE DB Destination Input]"
                   name="Derived Column Output"
                   startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again 2.Outputs[Derived Column Output]" />
                 <path
-                  refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output3]"
-                  endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again 2.Inputs[Derived Column Input]"
+                  refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output2]"
+                  endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error.Inputs[OLE DB Destination Input]"
                   name="Derived Column Output"
-                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name 2.Outputs[Derived Column Output]" />
+                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output3]"
+                  endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again.Inputs[Derived Column Input]"
+                  name="Derived Column Output"
+                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name.Outputs[Derived Column Output]" />
                 <path
                   refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Error Output]"
                   endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name.Inputs[Input 0]"
@@ -7612,14 +7612,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                   startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_lead_homeowners.Outputs[OLE DB Destination Error Output]" />
                 <path
                   refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 0]"
-                  endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name.Inputs[Derived Column Input]"
-                  name="Output 0"
-                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name.Outputs[Output 0]" />
-                <path
-                  refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 01]"
                   endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name 2.Inputs[Derived Column Input]"
                   name="Output 0"
                   startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name 2.Outputs[Output 0]" />
+                <path
+                  refId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 01]"
+                  endId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name.Inputs[Derived Column Input]"
+                  name="Output 0"
+                  startId="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name.Outputs[Output 0]" />
               </paths>
             </pipeline>
           </DTS:ObjectData>
@@ -8163,7 +8163,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8221,7 +8223,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8279,7 +8283,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8301,7 +8307,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8323,7 +8331,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8345,7 +8355,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8367,7 +8379,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8418,83 +8432,31 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="172,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again 2"
-          TopLeft="782.25,255" />
-        <NodeLayout
           Size="211,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\Source - lead-homeowners"
           TopLeft="19.5,55.5" />
-        <NodeLayout
-          Size="226,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name 2"
-          TopLeft="513.25,232" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2"
-          TopLeft="980.25,260" />
-        <NodeLayout
-          Size="196,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error"
-          TopLeft="962,68" />
-        <NodeLayout
-          Size="270,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_lead_homeowners"
-          TopLeft="35.5,236.5" />
-        <NodeLayout
-          Size="172,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again"
-          TopLeft="764,63" />
-        <NodeLayout
-          Size="226,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name"
-          TopLeft="507,60" />
         <NodeLayout
           Size="222,42"
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name 2"
           TopLeft="293.25,327" />
         <NodeLayout
-          Size="222,42"
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name"
-          TopLeft="253,58" />
+          Size="270,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_lead_homeowners"
+          TopLeft="35.5,236.5" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2"
+          TopLeft="980.25,260" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name 2"
+          TopLeft="513.25,232" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again 2"
+          TopLeft="782.25,255" />
         <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Error Output]"
-          TopLeft="125,55.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="239,2.5"
-              Start="0,0"
-              End="239,-5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-18.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-18.5"
-                    Point2="0,-22.5"
-                    Point3="4,-22.5" />
-                  <mssgle:LineSegment
-                    End="235,-22.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="235,-22.5"
-                    Point2="239,-22.5"
-                    Point3="239,-18.5" />
-                  <mssgle:LineSegment
-                    End="239,-5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="55.87361328125,-17.5,127.2527734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output3]"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output]"
           TopLeft="739.25,253">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -8528,7 +8490,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output2]"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output1]"
           TopLeft="954.25,278.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -8550,51 +8512,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output1]"
-          TopLeft="936,86.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="26,0"
-              Start="0,0"
-              End="18.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="18.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output]"
-          TopLeft="733,82.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="31,0"
-              Start="0,0"
-              End="23.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="23.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 01]"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 0]"
           TopLeft="439.916666666667,327">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -8619,28 +8537,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                     Point3="186.333333333333,-25.4275491949911" />
                   <mssgle:LineSegment
                     End="186.333333333333,-45.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 0]"
-          TopLeft="475,80">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="32,0"
-              Start="0,0"
-              End="24.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="24.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8685,6 +8581,124 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\SCR - get error column name"
+          TopLeft="253,58" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - clean error column name"
+          TopLeft="507,60" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\DC - cleanse again"
+          TopLeft="764,63" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error"
+          TopLeft="962,68" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output2]"
+          TopLeft="936,86.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="26,0"
+              Start="0,0"
+              End="18.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="18.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Derived Column Output3]"
+          TopLeft="733,82.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31,0"
+              Start="0,0"
+              End="23.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Output 01]"
+          TopLeft="475,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,0"
+              Start="0,0"
+              End="24.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="24.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Error Output]"
+          TopLeft="125,55.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="239,2.5"
+              Start="0,0"
+              End="239,-5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
+                  <mssgle:LineSegment
+                    End="235,-22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="235,-22.5"
+                    Point2="239,-22.5"
+                    Point3="239,-18.5" />
+                  <mssgle:LineSegment
+                    End="239,-5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="55.87361328125,-17.5,127.2527734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads.Paths[Flat File Source Output]"
           TopLeft="125,97.5">
@@ -8722,44 +8736,5 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error 2">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_error">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Foreach Loop Container - Homeowner\DFT - load staging_leads\OLE_DST - staging_lead_homeowners">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_lead"
   DTS:PackageType="5"
-  DTS:VersionBuild="68"
-  DTS:VersionGUID="{4E626942-A702-49AC-B23F-E56AC0A993A5}">
+  DTS:VersionBuild="72"
+  DTS:VersionGUID="{C9E2050A-C319-4359-9BC0-1FD58ACF4474}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -808,6 +808,22 @@ where [refTable].[lead_id] = ?</property>
                       cachedName="postcode"
                       externalMetadataColumnId="Package\DFT - load lead table\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
                       lineageId="Package\DFT - load lead table\Derived Column.Outputs[Derived Column Output].Columns[postcode]" />
+                    <inputColumn
+                      refId="Package\DFT - load lead table\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[ipaddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="ipaddress"
+                      externalMetadataColumnId="Package\DFT - load lead table\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      lineageId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[ipaddress]" />
+                    <inputColumn
+                      refId="Package\DFT - load lead table\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[prize]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="4000"
+                      cachedName="prize"
+                      externalMetadataColumnId="Package\DFT - load lead table\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
+                      lineageId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[prize]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -911,6 +927,18 @@ where [refTable].[lead_id] = ?</property>
                       refId="Package\DFT - load lead table\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
                       dataType="i4"
                       name="lead_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load lead table\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ipaddress" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load lead table\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="prize" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -1322,6 +1350,8 @@ where [refTable].[lead_id] = ?</property>
 								, l.lead_status
 								, ISNULL(l.homeowner_answer, 'Unknown') AS homeowner_answer
 								, l.[source]
+								, l.Prize AS prize
+								, l.ipaddress
 								, l.[data_source]
 FROM staging.staging.leads l</property>
                 <property
@@ -1551,6 +1581,28 @@ FROM staging.staging.leads l</property>
                       lineageId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[lead_id]"
                       name="lead_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
+                      length="4000"
+                      lineageId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[prize]"
+                      name="prize"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
+                      length="4000"
+                      lineageId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
+                      name="ipaddress"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1656,6 +1708,18 @@ FROM staging.staging.leads l</property>
                       refId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
                       dataType="i4"
                       name="lead_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      name="ipaddress" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1776,6 +1840,20 @@ FROM staging.staging.leads l</property>
                       length="4000"
                       lineageId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[source]"
                       name="source" />
+                    <outputColumn
+                      refId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[prize]"
+                      name="prize" />
+                    <outputColumn
+                      refId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="4000"
+                      lineageId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
+                      name="ipaddress" />
                     <outputColumn
                       refId="Package\DFT - load lead table\OLE_SRC - leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
                       codePage="1252"
@@ -3927,6 +4005,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       cachedLength="300"
                       cachedName="source"
                       lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[source]" />
+                    <inputColumn
+                      refId="Package\DFT - load old lead data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[prize]"
+                      cachedDataType="wstr"
+                      cachedLength="300"
+                      cachedName="prize"
+                      lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[prize]" />
+                    <inputColumn
+                      refId="Package\DFT - load old lead data\DRC - nvarchar to varchar.Inputs[Derived Column Input].Columns[ipaddress]"
+                      cachedDataType="wstr"
+                      cachedLength="300"
+                      cachedName="ipaddress"
+                      lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[ipaddress]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -4227,6 +4317,54 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                           name="FriendlyExpression">(DT_STR,255,1252)source</property>
                       </properties>
                     </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old lead data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[ipaddress_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\DFT - load old lead data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[ipaddress_conv]"
+                      name="ipaddress_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,100,1252)#{Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[ipaddress]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,100,1252)ipaddress</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT - load old lead data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[prize_conv]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="250"
+                      lineageId="Package\DFT - load old lead data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[prize_conv]"
+                      name="prize_conv"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_STR,250,1252)#{Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[prize]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_STR,250,1252)prize</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4464,6 +4602,22 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       cachedName="lead_id"
                       externalMetadataColumnId="Package\DFT - load old lead data\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
                       lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[lead_id]" />
+                    <inputColumn
+                      refId="Package\DFT - load old lead data\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[ipaddress_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="ipaddress_conv"
+                      externalMetadataColumnId="Package\DFT - load old lead data\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      lineageId="Package\DFT - load old lead data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[ipaddress_conv]" />
+                    <inputColumn
+                      refId="Package\DFT - load old lead data\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[prize_conv]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="prize_conv"
+                      externalMetadataColumnId="Package\DFT - load old lead data\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
+                      lineageId="Package\DFT - load old lead data\DRC - nvarchar to varchar.Outputs[Derived Column Output].Columns[prize_conv]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4567,6 +4721,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       refId="Package\DFT - load old lead data\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
                       dataType="i4"
                       name="lead_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old lead data\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ipaddress" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old lead data\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="prize" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -4672,6 +4838,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
 									ELSE 0
 									END AS age
 								, email 
+								, l.Prize AS prize
+								, l.ipaddress
 								, TRY_CAST(ts AS datetime) as SubmissionDate
 								, [status]
 								, [data_source]
@@ -4894,6 +5062,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[lead_id]"
                       name="lead_id"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[prize]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
+                      length="300"
+                      lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[prize]"
+                      name="prize"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
+                      length="300"
+                      lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
+                      name="ipaddress"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -4986,6 +5174,16 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       refId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
                       dataType="i8"
                       name="lead_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
+                      dataType="wstr"
+                      length="300"
+                      name="prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
+                      dataType="wstr"
+                      length="300"
+                      name="ipaddress" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -5069,6 +5267,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
                       length="85"
                       lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[email]"
                       name="email" />
+                    <outputColumn
+                      refId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[prize]"
+                      dataType="wstr"
+                      length="300"
+                      lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[prize]"
+                      name="prize" />
+                    <outputColumn
+                      refId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
+                      dataType="wstr"
+                      length="300"
+                      lineageId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
+                      name="ipaddress" />
                     <outputColumn
                       refId="Package\DFT - load old lead data\OLE_SRC - load_old_leads.Outputs[OLE DB Source Error Output].Columns[SubmissionDate]"
                       dataType="dbTimeStamp"
@@ -5340,13 +5550,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="166,42"
-          Id="Package\DFT - load lead table\OLE_SRC - leads"
-          TopLeft="25,50" />
-        <NodeLayout
           Size="167,42"
           Id="Package\DFT - load lead table\Script Component"
           TopLeft="260,56" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\DFT - load lead table\OLE_SRC - leads"
+          TopLeft="25,50" />
         <NodeLayout
           Size="292,42"
           Id="Package\DFT - load lead table\Derived Column  - clean error column name"
@@ -5364,13 +5574,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Id="Package\DFT - load lead table\LKP - dbo_lead"
           TopLeft="127,278" />
         <NodeLayout
-          Size="172,42"
-          Id="Package\DFT - load lead table\DC - cleanse again 1"
-          TopLeft="762.888888888889,182.555555555556" />
-        <NodeLayout
           Size="167,42"
           Id="Package\DFT - load lead table\Script Component 1"
           TopLeft="248.888888888889,175.555555555556" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\DFT - load lead table\DC - cleanse again 1"
+          TopLeft="762.888888888889,182.555555555556" />
         <NodeLayout
           Size="171,42"
           Id="Package\DFT - load lead table\OLE_DST - error 1"
@@ -5387,6 +5597,144 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
           Size="184,42"
           Id="Package\DFT - load lead table\OLE_DST - dbo_lead"
           TopLeft="292,372" />
+        <EdgeLayout
+          Id="Package\DFT - load lead table.Paths[Output 01]"
+          TopLeft="415.888888888889,197.555555555556">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,0"
+              Start="0,0"
+              End="15.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="15.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load lead table.Paths[Output 0]"
+          TopLeft="427,78">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,0"
+              Start="0,0"
+              End="15.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="15.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load lead table.Paths[OLE DB Source Output]"
+          TopLeft="108,92">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39,81"
+              Start="0,0"
+              End="39,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.5"
+                    Point2="0,40.5"
+                    Point3="4,40.5" />
+                  <mssgle:LineSegment
+                    End="35,40.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35,40.5"
+                    Point2="39,40.5"
+                    Point3="39,44.5" />
+                  <mssgle:LineSegment
+                    End="39,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load lead table.Paths[OLE DB Source Error Output]"
+          TopLeft="191,74">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69,0"
+              Start="0,0"
+              End="61.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="61.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-32.68390625,5,126.8678125,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT - load lead table.Paths[Lookup No Match Output]"
+          TopLeft="204.5,320">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="179.5,52"
+              Start="0,0"
+              End="179.5,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22"
+                    Point2="0,26"
+                    Point3="4,26" />
+                  <mssgle:LineSegment
+                    End="175.5,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="175.5,26"
+                    Point2="179.5,26"
+                    Point3="179.5,30" />
+                  <mssgle:LineSegment
+                    End="179.5,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.94361328125,31,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load lead table.Paths[Derived Column Output4]"
           TopLeft="730.888888888889,201.055555555556">
@@ -5557,144 +5905,6 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load lead table.Paths[Output 01]"
-          TopLeft="415.888888888889,197.555555555556">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="23,0"
-              Start="0,0"
-              End="15.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="15.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load lead table.Paths[Output 0]"
-          TopLeft="427,78">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="23,0"
-              Start="0,0"
-              End="15.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="15.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load lead table.Paths[OLE DB Source Output]"
-          TopLeft="108,92">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="39,81"
-              Start="0,0"
-              End="39,73.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,36.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.5"
-                    Point2="0,40.5"
-                    Point3="4,40.5" />
-                  <mssgle:LineSegment
-                    End="35,40.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="35,40.5"
-                    Point2="39,40.5"
-                    Point3="39,44.5" />
-                  <mssgle:LineSegment
-                    End="39,73.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load lead table.Paths[OLE DB Source Error Output]"
-          TopLeft="191,74">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="69,0"
-              Start="0,0"
-              End="61.5,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="61.5,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-32.68390625,5,126.8678125,11.43359375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT - load lead table.Paths[Lookup No Match Output]"
-          TopLeft="204.5,320">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="179.5,52"
-              Start="0,0"
-              End="179.5,44.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,22"
-                    Point2="0,26"
-                    Point3="4,26" />
-                  <mssgle:LineSegment
-                    End="175.5,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="175.5,26"
-                    Point2="179.5,26"
-                    Point3="179.5,30" />
-                  <mssgle:LineSegment
-                    End="179.5,44.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="33.94361328125,31,111.6127734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
@@ -5751,7 +5961,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5761,7 +5971,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=]]></arrayElement>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="load_facts"
   DTS:PackageType="5"
-  DTS:VersionBuild="43"
-  DTS:VersionGUID="{35401B90-E917-4803-A2F7-DE05A6F4B71E}">
+  DTS:VersionBuild="44"
+  DTS:VersionGUID="{76F09D80-6F9F-4015-BEB0-C762C07C1371}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -4661,7 +4661,7 @@ FROM staging.leads_old</property>
         <NodeLayout
           Size="183,42"
           Id="Package\DFT - load fact_leads\OLE_DST - fact_lead"
-          TopLeft="98.888888888889,457.888888888889" />
+          TopLeft="108.888888888889,456.888888888889" />
         <NodeLayout
           Size="157,42"
           Id="Package\DFT - load fact_leads\OLE_SRC - leads"
@@ -4681,7 +4681,7 @@ FROM staging.leads_old</property>
         <NodeLayout
           Size="131,42"
           Id="Package\DFT - load fact_leads\LKP - leads"
-          TopLeft="407.777777777778,497.777777777778" />
+          TopLeft="380.777777777778,466.777777777778" />
         <NodeLayout
           Size="157,42"
           Id="Package\DFT - load fact_leads\LKP - geography"
@@ -4794,26 +4794,26 @@ FROM staging.leads_old</property>
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-39,45.5555555555555"
+              EndConnector="-66.0000000000001,14.555555555556"
               Start="0,0"
-              End="-31.5,45.5555555555555">
+              End="-58.5000000000001,14.555555555556">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-15.5,0" />
+                    End="-29,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-15.5,0"
-                    Point2="-19.5,0"
-                    Point3="-19.5,4" />
+                    Point1="-29,0"
+                    Point2="-33,0"
+                    Point3="-33,4" />
                   <mssgle:LineSegment
-                    End="-19.5,41.5555555555555" />
+                    End="-33,10.555555555556" />
                   <mssgle:CubicBezierSegment
-                    Point1="-19.5,41.5555555555555"
-                    Point2="-19.5,45.5555555555555"
-                    Point3="-23.5,45.5555555555555" />
+                    Point1="-33,10.555555555556"
+                    Point2="-33,14.555555555556"
+                    Point3="-37,14.555555555556" />
                   <mssgle:LineSegment
-                    End="-31.5,45.5555555555555" />
+                    End="-58.5000000000001,14.555555555556" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4858,37 +4858,37 @@ FROM staging.leads_old</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT - load fact_leads.Paths[Lookup No Match Output]"
-          TopLeft="407.777777777778,518.777777777778">
+          TopLeft="380.777777777778,487.777777777778">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-125.888888888889,-39.888888888889"
+              EndConnector="-88.888888888889,-9.88888888888897"
               Start="0,0"
-              End="-118.388888888889,-39.888888888889">
+              End="-81.388888888889,-9.88888888888897">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-58.9444444444445,0" />
+                    End="-40.4444444444445,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-58.9444444444445,0"
-                    Point2="-62.9444444444445,0"
-                    Point3="-62.9444444444445,-4" />
+                    Point1="-40.4444444444445,0"
+                    Point2="-44.4444444444445,0"
+                    Point3="-44.4444444444445,-4" />
                   <mssgle:LineSegment
-                    End="-62.9444444444445,-35.888888888889" />
+                    End="-44.4444444444445,-5.88888888888897" />
                   <mssgle:CubicBezierSegment
-                    Point1="-62.9444444444445,-35.888888888889"
-                    Point2="-62.9444444444445,-39.888888888889"
-                    Point3="-66.9444444444445,-39.888888888889" />
+                    Point1="-44.4444444444445,-5.88888888888897"
+                    Point2="-44.4444444444445,-9.88888888888897"
+                    Point3="-48.4444444444445,-9.88888888888897" />
                   <mssgle:LineSegment
-                    End="-118.388888888889,-39.888888888889" />
+                    End="-81.388888888889,-9.88888888888897" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-118.750831163195,1,111.6127734375,11.609375"
+              BoundingBox="-100.250831163194,1,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -5045,7 +5045,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -5055,7 +5055,7 @@ FROM staging.leads_old</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>

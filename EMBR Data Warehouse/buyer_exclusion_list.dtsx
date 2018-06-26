@@ -11,8 +11,8 @@
   DTS:LocaleID="3081"
   DTS:ObjectName="buyer_exclusion_list"
   DTS:PackageType="5"
-  DTS:VersionBuild="18"
-  DTS:VersionGUID="{21004EFF-D258-4720-ACF4-0C507F3FE204}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{80361582-8EA2-495B-A2A4-FF3A783504B8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -67,7 +67,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Title"
-              DTS:DTSID="{773AEC09-2596-4B71-86C1-6282D81ABB78}"
+              DTS:DTSID="{7C41F0C5-7CAB-4A7F-8AA8-34B8028DF3AF}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -76,7 +76,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="First Name"
-              DTS:DTSID="{81161259-A4CB-492B-A18C-85B9F729F701}"
+              DTS:DTSID="{FA1364DD-DA75-437E-A7E4-C614259E729E}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -85,7 +85,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Last Name"
-              DTS:DTSID="{70EE9153-8457-4368-B5FB-4B0730611DBF}"
+              DTS:DTSID="{D41AD4D3-D570-46DF-BED9-4CA890300237}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -94,7 +94,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Address"
-              DTS:DTSID="{8AA283C1-A2EB-4666-A3C7-2452536D7644}"
+              DTS:DTSID="{C84F37BD-634E-4969-9E80-F5484C73F3F2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -103,7 +103,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="City"
-              DTS:DTSID="{DFD94570-9C8F-4136-964F-EB599734F02B}"
+              DTS:DTSID="{9D84FB25-BFD8-442E-8F6C-11D0A0FDEEA5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -112,7 +112,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Postcode"
-              DTS:DTSID="{6D29902E-1123-4D1E-973A-F20E6BE486DB}"
+              DTS:DTSID="{394D6575-BD65-4168-91D2-FDAA16CC11E5}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -121,7 +121,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="State"
-              DTS:DTSID="{400B49C8-FCB2-4DEF-8420-6688DE936FA0}"
+              DTS:DTSID="{4D2DC37B-3829-4015-B19F-5C222AA396D7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -130,7 +130,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Mobile"
-              DTS:DTSID="{E4721C59-167C-4ABB-B445-321BAE8DB070}"
+              DTS:DTSID="{A8DD0B2D-8F7C-431E-B95C-4593D8CAF7B7}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -138,7 +138,7 @@
               DTS:DataType="133"
               DTS:TextQualified="True"
               DTS:ObjectName="Date of Birth"
-              DTS:DTSID="{08637D2B-428E-4984-AAE3-826F891BB8C0}"
+              DTS:DTSID="{3C12F41B-100B-48B3-9D4B-8EDFF6B90580}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -146,7 +146,7 @@
               DTS:DataType="3"
               DTS:TextQualified="True"
               DTS:ObjectName="Age"
-              DTS:DTSID="{0CDA8C57-A063-429D-8A59-8BDF2D533D88}"
+              DTS:DTSID="{F5B8EB01-6318-4AD9-874F-AC0ECDAF7617}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -155,7 +155,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Gender"
-              DTS:DTSID="{A04C02DC-B3DB-4023-B4C0-CC0213EC8ADE}"
+              DTS:DTSID="{7A955069-AC3D-4B6F-845B-5AD76BB9A7DC}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -164,7 +164,34 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Email"
-              DTS:DTSID="{6733BA0B-AC2F-4A86-B6D9-AFA483BCB51F}"
+              DTS:DTSID="{25853566-64F1-4DAC-B0C4-0AF6002562E7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Homeowner Answer"
+              DTS:DTSID="{B92BA967-12A5-409F-9F66-4FB82129424B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="250"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Prize"
+              DTS:DTSID="{FF2FB9B5-1DE5-491A-B13E-7FA6C365D4DC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IP Address"
+              DTS:DTSID="{0AEEF788-2211-4CF2-B810-91056D3348A2}"
               DTS:CreationName="" />
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -172,8 +199,8 @@
               DTS:MaximumWidth="250"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="Homeowner Answer"
-              DTS:DTSID="{20C8213E-BDDD-4B15-942B-8D91B2C664B3}"
+              DTS:ObjectName="Source"
+              DTS:DTSID="{D7AFC109-2561-4FAA-A203-C85012E2DFFC}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -238,7 +265,7 @@
               DTS:DataType="129"
               DTS:TextQualified="True"
               DTS:ObjectName="Column 0"
-              DTS:DTSID="{36A269DA-AE69-4871-9200-6BFE702F17B8}"
+              DTS:DTSID="{FD82570B-BE24-4D6A-BDA6-F1677BDB811E}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -350,217 +377,343 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT - export email buyer list\Flat File Destination - buyer list"
-              componentClassID="Microsoft.FlatFileDestination"
-              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Flat File Destination"
-              localeId="3081"
-              name="Flat File Destination - buyer list"
-              validateExternalMetadata="False">
+              refId="Package\DFT - export email buyer list\OLE_DST - buyer_list"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - buyer_list"
+              usesDispositions="true"
+              version="4">
               <properties>
                 <property
-                  dataType="System.Boolean"
-                  description="Specifies whether the data will overwrite or append to the destination file."
-                  name="Overwrite">true</property>
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
                 <property
-                  dataType="System.Null"
-                  description="Specifies the text to write to the destination file before any data is written."
-                  expressionType="Notify"
-                  name="Header" />
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[buyer].[buyer_list]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Buyer Export List]"
-                  connectionManagerRefId="Package.ConnectionManagers[Buyer Export List]"
-                  name="FlatFileConnection" />
+                  refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Connections[OleDbConnection]"
+                  connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input]"
+                  refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
                   hasSideEffects="true"
-                  name="Flat File Destination Input">
+                  name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Title]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Title]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Title"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Title]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Title]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[First Name]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[First Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="First Name"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[First Name]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[First Name]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[First Name]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Last Name]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Last Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Last Name"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Last Name]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Last Name]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Last Name]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Address]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Address]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="Address"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Address]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Address]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[City]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[City]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="City"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[City]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Postcode]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Postcode]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="4"
                       cachedName="Postcode"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Postcode]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Postcode]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[State]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[State]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="28"
                       cachedName="State"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[State]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[State]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Mobile]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Mobile]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Mobile"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Mobile]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Mobile]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Date of Birth]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Date of Birth]"
                       cachedDataType="dbDate"
                       cachedName="Date of Birth"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Date of Birth]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Date of Birth]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Date of Birth]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Age]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Age]"
                       cachedDataType="i4"
                       cachedName="Age"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Age]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Age]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Gender]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Gender]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="Gender"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Gender]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Gender]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Email]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="255"
                       cachedName="Email"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Email]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Email]" />
                     <inputColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Homeowner Answer]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Homeowner Answer]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="Homeowner Answer"
-                      externalMetadataColumnId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Homeowner Answer]"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Homeowner Answer]"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Homeowner Answer]" />
+                    <inputColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Prize]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Prize"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]" />
+                    <inputColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[IP Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="IP Address"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[IP Address]"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]" />
+                    <inputColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Submission Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Submission Date"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Submission Date]"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]" />
+                    <inputColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Lead ID]"
+                      cachedDataType="i4"
+                      cachedName="Lead ID"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Lead ID]"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Title]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="Title" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[First Name]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[First Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="First Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Last Name]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Last Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Last Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Address]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="Address" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="City" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Postcode]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
                       codePage="1252"
                       dataType="str"
                       length="4"
                       name="Postcode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[State]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
                       length="28"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Mobile]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Mobile" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Date of Birth]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Date of Birth]"
                       dataType="dbDate"
                       name="Date of Birth" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Age]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
                       dataType="i4"
                       name="Age" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Gender]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="Gender" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Email]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="Email" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Homeowner Answer]"
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Homeowner Answer]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="Homeowner Answer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="IP Address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      name="Submission Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Lead ID]"
+                      dataType="i4"
+                      name="Lead ID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
             </component>
             <component
               refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list"
@@ -587,19 +740,25 @@
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [Title]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT  [Title]
       ,[First Name]
       ,[Last Name]
       ,[Address]
       ,[City]
       ,[Postcode]
       ,[State]
-      ,[Mobile]
+      ,l.[Mobile]
       ,[Date of Birth]
       ,[Age]
       ,[Gender]
       ,l.[Email]
       ,[Homeowner Answer]
+      ,[Prize]
+      ,[IP Address]
+      ,[Source]
+,[Submission Date]
+,[Lead ID]
 FROM [lead].[vw_buyer_lead_list] l 
 	LEFT JOIN staging.buyer.email_list ml ON l.email = ml.email
 WHERE ml.email IS NULL</property>
@@ -777,6 +936,57 @@ WHERE ml.email IS NULL</property>
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Homeowner Answer]"
                       name="Homeowner Answer"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Prize]"
+                      length="250"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]"
+                      name="Prize"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[IP Address]"
+                      length="100"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]"
+                      name="IP Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      length="250"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]"
+                      name="Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Submission Date]"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]"
+                      name="Submission Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Lead ID]"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]"
+                      name="Lead ID"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -854,6 +1064,32 @@ WHERE ml.email IS NULL</property>
                       dataType="str"
                       length="250"
                       name="Homeowner Answer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="IP Address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      name="Submission Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Lead ID]"
+                      dataType="i4"
+                      name="Lead ID" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -949,6 +1185,37 @@ WHERE ml.email IS NULL</property>
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Homeowner Answer]"
                       name="Homeowner Answer" />
                     <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Prize]"
+                      name="Prize" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[IP Address]"
+                      name="IP Address" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Submission Date]"
+                      name="Submission Date" />
+                    <outputColumn
+                      refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Lead ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Lead ID]"
+                      name="Lead ID" />
+                    <outputColumn
                       refId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -969,7 +1236,7 @@ WHERE ml.email IS NULL</property>
           <paths>
             <path
               refId="Package\DFT - export email buyer list.Paths[OLE DB Source Output]"
-              endId="Package\DFT - export email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input]"
+              endId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT - export email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output]" />
           </paths>
@@ -991,217 +1258,343 @@ WHERE ml.email IS NULL</property>
           version="1">
           <components>
             <component
-              refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list"
-              componentClassID="Microsoft.FlatFileDestination"
-              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Flat File Destination"
-              localeId="3081"
-              name="Flat File Destination - buyer list"
-              validateExternalMetadata="False">
+              refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - buyer_list"
+              usesDispositions="true"
+              version="4">
               <properties>
                 <property
-                  dataType="System.Boolean"
-                  description="Specifies whether the data will overwrite or append to the destination file."
-                  name="Overwrite">true</property>
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
                 <property
-                  dataType="System.Null"
-                  description="Specifies the text to write to the destination file before any data is written."
-                  expressionType="Notify"
-                  name="Header" />
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[buyer].[buyer_list]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Buyer Export List]"
-                  connectionManagerRefId="Package.ConnectionManagers[Buyer Export List]"
-                  name="FlatFileConnection" />
+                  refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Connections[OleDbConnection]"
+                  connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input]"
+                  refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
                   hasSideEffects="true"
-                  name="Flat File Destination Input">
+                  name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Title]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Title]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Title"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Title]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Title]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[First Name]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[First Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="First Name"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[First Name]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[First Name]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[First Name]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Last Name]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Last Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Last Name"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Last Name]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Last Name]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Last Name]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Address]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Address]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="Address"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Address]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Address]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[City]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[City]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="City"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[City]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Postcode]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Postcode]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="4"
                       cachedName="Postcode"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Postcode]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Postcode]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[State]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[State]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="28"
                       cachedName="State"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[State]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[State]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Mobile]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Mobile]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Mobile"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Mobile]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Mobile]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Date of Birth]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Date of Birth]"
                       cachedDataType="dbDate"
                       cachedName="Date of Birth"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Date of Birth]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Date of Birth]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Date of Birth]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Age]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Age]"
                       cachedDataType="i4"
                       cachedName="Age"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Age]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Age]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Gender]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Gender]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="Gender"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Gender]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Gender]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Email]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="255"
                       cachedName="Email"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Email]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Email]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Homeowner Answer]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Homeowner Answer]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="Homeowner Answer"
-                      externalMetadataColumnId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Homeowner Answer]"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Homeowner Answer]"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Homeowner Answer]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Prize]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Prize"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[IP Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="IP Address"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[IP Address]"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Submission Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Submission Date"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Submission Date]"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Lead ID]"
+                      cachedDataType="i4"
+                      cachedName="Lead ID"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Lead ID]"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Title]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="Title" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[First Name]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[First Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="First Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Last Name]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Last Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Last Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Address]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="Address" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="City" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Postcode]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
                       codePage="1252"
                       dataType="str"
                       length="4"
                       name="Postcode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[State]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
                       length="28"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Mobile]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Mobile" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Date of Birth]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Date of Birth]"
                       dataType="dbDate"
                       name="Date of Birth" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Age]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
                       dataType="i4"
                       name="Age" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Gender]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="Gender" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Email]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="Email" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Homeowner Answer]"
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Homeowner Answer]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="Homeowner Answer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="IP Address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      name="Submission Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Lead ID]"
+                      dataType="i4"
+                      name="Lead ID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
             </component>
             <component
               refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list"
@@ -1242,6 +1635,11 @@ SELECT  [Title]
       ,[Gender]
       ,[Email]
       ,[Homeowner Answer]
+      ,[Prize]
+      ,[IP Address]
+      ,[Source]
+      ,[Submission Date]
+      ,[Lead ID]
 FROM [lead].[vw_buyer_lead_list] l 
 	LEFT JOIN staging.buyer.mobile_list ml ON l.mobile = ml.mobile
 WHERE ml.mobile IS NULL</property>
@@ -1419,6 +1817,57 @@ WHERE ml.mobile IS NULL</property>
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Homeowner Answer]"
                       name="Homeowner Answer"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Prize]"
+                      length="250"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]"
+                      name="Prize"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      length="250"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]"
+                      name="Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[IP Address]"
+                      length="100"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]"
+                      name="IP Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Submission Date]"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]"
+                      name="Submission Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Lead ID]"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]"
+                      name="Lead ID"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1496,6 +1945,32 @@ WHERE ml.mobile IS NULL</property>
                       dataType="str"
                       length="250"
                       name="Homeowner Answer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="IP Address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      name="Submission Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Lead ID]"
+                      dataType="i4"
+                      name="Lead ID" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1591,6 +2066,37 @@ WHERE ml.mobile IS NULL</property>
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Homeowner Answer]"
                       name="Homeowner Answer" />
                     <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Prize]"
+                      name="Prize" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[IP Address]"
+                      name="IP Address" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Submission Date]"
+                      name="Submission Date" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Lead ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Lead ID]"
+                      name="Lead ID" />
+                    <outputColumn
                       refId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -1611,7 +2117,7 @@ WHERE ml.mobile IS NULL</property>
           <paths>
             <path
               refId="Package\DFT - export mobile buyer list.Paths[OLE DB Source Output]"
-              endId="Package\DFT - export mobile buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input]"
+              endId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output]" />
           </paths>
@@ -1633,217 +2139,343 @@ WHERE ml.mobile IS NULL</property>
           version="1">
           <components>
             <component
-              refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list"
-              componentClassID="Microsoft.FlatFileDestination"
-              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Flat File Destination"
-              localeId="3081"
-              name="Flat File Destination - buyer list"
-              validateExternalMetadata="False">
+              refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - buyer_list"
+              usesDispositions="true"
+              version="4">
               <properties>
                 <property
-                  dataType="System.Boolean"
-                  description="Specifies whether the data will overwrite or append to the destination file."
-                  name="Overwrite">true</property>
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
                 <property
-                  dataType="System.Null"
-                  description="Specifies the text to write to the destination file before any data is written."
-                  expressionType="Notify"
-                  name="Header" />
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[buyer].[buyer_list]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Buyer Export List]"
-                  connectionManagerRefId="Package.ConnectionManagers[Buyer Export List]"
-                  name="FlatFileConnection" />
+                  refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Connections[OleDbConnection]"
+                  connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[staging]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input]"
+                  refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
                   hasSideEffects="true"
-                  name="Flat File Destination Input">
+                  name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Title]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Title]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="Title"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Title]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Title]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[First Name]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[First Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="First Name"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[First Name]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[First Name]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[First Name]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Last Name]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Last Name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Last Name"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Last Name]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Last Name]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Last Name]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Address]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Address]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="Address"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Address]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Address]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[City]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[City]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="City"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[City]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Postcode]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Postcode]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="4"
                       cachedName="Postcode"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Postcode]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Postcode]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[State]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[State]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="28"
                       cachedName="State"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[State]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[State]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Mobile]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Mobile]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="Mobile"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Mobile]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Mobile]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Date of Birth]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Date of Birth]"
                       cachedDataType="dbDate"
                       cachedName="Date of Birth"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Date of Birth]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Date of Birth]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Date of Birth]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Age]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Age]"
                       cachedDataType="i4"
                       cachedName="Age"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Age]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Age]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Gender]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Gender]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="Gender"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Gender]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Gender]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Email]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="255"
                       cachedName="Email"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Email]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Email]" />
                     <inputColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].Columns[Homeowner Answer]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Homeowner Answer]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="Homeowner Answer"
-                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Homeowner Answer]"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Homeowner Answer]"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Homeowner Answer]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Prize]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Prize"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[IP Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="IP Address"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[IP Address]"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Submission Date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Submission Date"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Submission Date]"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]" />
+                    <inputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].Columns[Lead ID]"
+                      cachedDataType="i4"
+                      cachedName="Lead ID"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Lead ID]"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Title]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Title]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="Title" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[First Name]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[First Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="First Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Last Name]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Last Name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Last Name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Address]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="Address" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[City]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[City]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="City" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Postcode]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Postcode]"
                       codePage="1252"
                       dataType="str"
                       length="4"
                       name="Postcode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[State]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                       codePage="1252"
                       dataType="str"
                       length="28"
                       name="State" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Mobile]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Mobile]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="Mobile" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Date of Birth]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Date of Birth]"
                       dataType="dbDate"
                       name="Date of Birth" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Age]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Age]"
                       dataType="i4"
                       name="Age" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Gender]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Gender]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="Gender" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Email]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="Email" />
                     <externalMetadataColumn
-                      refId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input].ExternalColumns[Homeowner Answer]"
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Homeowner Answer]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="Homeowner Answer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="IP Address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      name="Submission Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input].ExternalColumns[Lead ID]"
+                      dataType="i4"
+                      name="Lead ID" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
             </component>
             <component
               refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list"
@@ -1870,7 +2502,8 @@ WHERE ml.mobile IS NULL</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT  [Title]
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT  [Title]
       ,[First Name]
       ,[Last Name]
       ,[Address]
@@ -1883,6 +2516,11 @@ WHERE ml.mobile IS NULL</property>
       ,[Gender]
       ,l.[Email]
       ,[Homeowner Answer]
+      ,[Prize]
+      ,[IP Address]
+      ,[Source]
+,[Submission Date]
+,[Lead ID]
 FROM [lead].[vw_buyer_lead_list] l 
 	LEFT JOIN staging.buyer.mobile_email_list ml ON l.email = ml.email
 		AND l.mobile = ml.mobile
@@ -2062,6 +2700,57 @@ WHERE ml.email IS NULL
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Homeowner Answer]"
                       name="Homeowner Answer"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Prize]"
+                      length="250"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Prize]"
+                      name="Prize"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[IP Address]"
+                      length="100"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[IP Address]"
+                      name="IP Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      length="250"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Source]"
+                      name="Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Submission Date]"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Submission Date]"
+                      name="Submission Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Lead ID]"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].Columns[Lead ID]"
+                      name="Lead ID"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2139,6 +2828,32 @@ WHERE ml.email IS NULL
                       dataType="str"
                       length="250"
                       name="Homeowner Answer" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="IP Address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      name="Submission Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output].ExternalColumns[Lead ID]"
+                      dataType="i4"
+                      name="Lead ID" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -2234,6 +2949,37 @@ WHERE ml.email IS NULL
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Homeowner Answer]"
                       name="Homeowner Answer" />
                     <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Prize]"
+                      name="Prize" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[IP Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[IP Address]"
+                      name="IP Address" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Submission Date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Submission Date]"
+                      name="Submission Date" />
+                    <outputColumn
+                      refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Lead ID]"
+                      dataType="i4"
+                      lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[Lead ID]"
+                      name="Lead ID" />
+                    <outputColumn
                       refId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
                       lineageId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
@@ -2254,7 +3000,7 @@ WHERE ml.email IS NULL
           <paths>
             <path
               refId="Package\DFT - export mobile email buyer list.Paths[OLE DB Source Output]"
-              endId="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list.Inputs[Flat File Destination Input]"
+              endId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
               startId="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list.Outputs[OLE DB Source Output]" />
           </paths>
@@ -2877,7 +3623,7 @@ WHERE ml.email IS NULL
           DTS:LocaleID="-1"
           DTS:ObjectName="File System Task - delete file"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -3176,7 +3922,7 @@ WHERE ml.email IS NULL
           DTS:LocaleID="-1"
           DTS:ObjectName="File System Task - delete files"
           DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -3231,7 +3977,7 @@ WHERE ml.email IS NULL
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - check if mobile email table is empty"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
+      DTS:ThreadHint="2">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3253,7 +3999,7 @@ WHERE ml.email IS NULL
       DTS:LocaleID="-1"
       DTS:ObjectName="SQL - check if mobile table is empty"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="2">
+      DTS:ThreadHint="1">
       <DTS:Variables />
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
@@ -3280,7 +4026,7 @@ WHERE ml.email IS NULL
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}"
-          SQLTask:SqlStatementSource="TRUNCATE TABLE [buyer].[mobile_list];&#xA;TRUNCATE TABLE [buyer].[email_list];&#xA;TRUNCATE TABLE [buyer].[mobile_email_list];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="TRUNCATE TABLE [buyer].[mobile_list];&#xA;TRUNCATE TABLE [buyer].[email_list];&#xA;TRUNCATE TABLE [buyer].[mobile_email_list];&#xA;TRUNCATE TABLE [buyer].[buyer_list];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -3377,6 +4123,108 @@ WHERE ml.email IS NULL
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="217,42"
+          Id="Package\DFT - export email buyer list"
+          TopLeft="558.888888888889,541.111111111111" />
+        <NodeLayout
+          Size="223,42"
+          Id="Package\DFT - export mobile buyer list"
+          TopLeft="210,556.666666666667" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\DFT - export mobile email buyer list"
+          TopLeft="977.777777777778,537.777777777778" />
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Foreach Loop Container - email list\DFT - load buyer_email_list"
+          TopLeft="49.7222222222222,26.9444444444445" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Foreach Loop Container - email list\File System Task - delete file"
+          TopLeft="65.8888888888889,125.555555555556" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - email list.PrecedenceConstraints[Constraint]"
+          TopLeft="156.222222222222,68.9444444444445">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.6666666666667,56.6111111111111"
+              Start="0,0"
+              End="19.6666666666667,49.1111111111111">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.3055555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.3055555555555"
+                    Point2="0,28.3055555555555"
+                    Point3="4,28.3055555555555" />
+                  <mssgle:LineSegment
+                    End="15.6666666666667,28.3055555555555" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.6666666666667,28.3055555555555"
+                    Point2="19.6666666666667,28.3055555555555"
+                    Point3="19.6666666666667,32.3055555555555" />
+                  <mssgle:LineSegment
+                    End="19.6666666666667,49.1111111111111" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-24.1322526041667,33.3055555555555,67.931171875,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="336,223"
+          Size="336,266"
+          Id="Package\Foreach Loop Container - email list"
+          TopLeft="498.166666666667,154.611111111111" />
+        <NodeLayout
+          Size="252,42"
+          Id="Package\Foreach Loop Container - mobile and email\DFT - load buyer_mobile_email_list"
+          TopLeft="35.2777777777778,33.6111111111111" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Foreach Loop Container - mobile and email\File System Task - delete file"
+          TopLeft="52.5555555555557,120" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container - mobile and email.PrecedenceConstraints[Constraint]"
+          TopLeft="161.916666666667,75.6111111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.3888888888889"
+              Start="0,0"
+              End="0,36.8888888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.8888888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-33.9655859375,10.4444444444445,67.931171875,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="336,217"
+          Size="336,260"
+          Id="Package\Foreach Loop Container - mobile and email"
+          TopLeft="904,161.75" />
+        <NodeLayout
           Size="219,42"
           Id="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list"
           TopLeft="52.5,42.5" />
@@ -3428,94 +4276,21 @@ WHERE ml.email IS NULL
           Id="Package\Foreach Loop Container - mobile list"
           TopLeft="104.75,157.75" />
         <NodeLayout
+          Size="248,42"
+          Id="Package\SQL - check if email table is empty"
+          TopLeft="560.305555555556,453.111111111111" />
+        <NodeLayout
+          Size="283,42"
+          Id="Package\SQL - check if mobile email table is empty"
+          TopLeft="944.75,452" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\SQL - check if mobile table is empty"
+          TopLeft="182.222222222222,451.111111111111" />
+        <NodeLayout
           Size="281,42"
           Id="Package\SQL - clear staging_buyer_exclusion lists"
           TopLeft="464,28.5" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="536.25,70.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-254.5,87.25"
-              Start="0,0"
-              End="-254.5,79.75">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.6301410105758" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.6301410105758"
-                    Point2="0,29.6301410105758"
-                    Point3="-4,29.6301410105758" />
-                  <mssgle:LineSegment
-                    End="-250.5,29.6301410105758" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-250.5,29.6301410105758"
-                    Point2="-254.5,29.6301410105758"
-                    Point3="-254.5,33.6301410105758" />
-                  <mssgle:LineSegment
-                    End="-254.5,79.75" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="213,42"
-          Id="Package\Foreach Loop Container - email list\DFT - load buyer_email_list"
-          TopLeft="49.7222222222222,26.9444444444445" />
-        <NodeLayout
-          Size="220,42"
-          Id="Package\Foreach Loop Container - email list\File System Task - delete file"
-          TopLeft="65.8888888888889,125.555555555556" />
-        <EdgeLayout
-          Id="Package\Foreach Loop Container - email list.PrecedenceConstraints[Constraint]"
-          TopLeft="156.222222222222,68.9444444444445">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="19.6666666666667,56.6111111111111"
-              Start="0,0"
-              End="19.6666666666667,49.1111111111111">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.3055555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.3055555555555"
-                    Point2="0,28.3055555555555"
-                    Point3="4,28.3055555555555" />
-                  <mssgle:LineSegment
-                    End="15.6666666666667,28.3055555555555" />
-                  <mssgle:CubicBezierSegment
-                    Point1="15.6666666666667,28.3055555555555"
-                    Point2="19.6666666666667,28.3055555555555"
-                    Point3="19.6666666666667,32.3055555555555" />
-                  <mssgle:LineSegment
-                    End="19.6666666666667,49.1111111111111" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-24.1322526041666,33.3055555555555,67.931171875,16"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="336,223"
-          Size="336,266"
-          Id="Package\Foreach Loop Container - email list"
-          TopLeft="498.166666666667,154.611111111111" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="604.5,70.5">
@@ -3550,45 +4325,40 @@ WHERE ml.email IS NULL
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="252,42"
-          Id="Package\Foreach Loop Container - mobile and email\DFT - load buyer_mobile_email_list"
-          TopLeft="35.2777777777778,33.6111111111111" />
-        <NodeLayout
-          Size="220,42"
-          Id="Package\Foreach Loop Container - mobile and email\File System Task - delete file"
-          TopLeft="52.5555555555557,120" />
         <EdgeLayout
-          Id="Package\Foreach Loop Container - mobile and email.PrecedenceConstraints[Constraint]"
-          TopLeft="161.916666666667,75.6111111111111">
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="536.25,70.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,44.3888888888889"
+              EndConnector="-254.5,87.25"
               Start="0,0"
-              End="0,36.8888888888889">
+              End="-254.5,79.75">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.8888888888889" />
+                    End="0,25.6301410105758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.6301410105758"
+                    Point2="0,29.6301410105758"
+                    Point3="-4,29.6301410105758" />
+                  <mssgle:LineSegment
+                    End="-250.5,29.6301410105758" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-250.5,29.6301410105758"
+                    Point2="-254.5,29.6301410105758"
+                    Point3="-254.5,33.6301410105758" />
+                  <mssgle:LineSegment
+                    End="-254.5,79.75" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-33.9655859375,10.4444444444444,67.931171875,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="336,217"
-          Size="336,260"
-          Id="Package\Foreach Loop Container - mobile and email"
-          TopLeft="904,161.75" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="672.75,70.5">
@@ -3623,10 +4393,6 @@ WHERE ml.email IS NULL
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="218,42"
-          Id="Package\SQL - check if mobile table is empty"
-          TopLeft="182.222222222222,451.111111111111" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="281.75,417.75">
@@ -3661,10 +4427,6 @@ WHERE ml.email IS NULL
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="223,42"
-          Id="Package\DFT - export mobile buyer list"
-          TopLeft="210,556.666666666667" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="291.222222222222,493.111111111111">
@@ -3697,14 +4459,10 @@ WHERE ml.email IS NULL
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="7.13888888888883,36.7777777777777,16,16"
+              BoundingBox="7.13888888888885,36.7777777777777,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="248,42"
-          Id="Package\SQL - check if email table is empty"
-          TopLeft="560.305555555556,453.111111111111" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="666.166666666667,420.611111111111">
@@ -3739,10 +4497,6 @@ WHERE ml.email IS NULL
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="217,42"
-          Id="Package\DFT - export email buyer list"
-          TopLeft="558.888888888889,541.111111111111" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="684.305555555556,495.111111111111">
@@ -3779,10 +4533,6 @@ WHERE ml.email IS NULL
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="283,42"
-          Id="Package\SQL - check if mobile email table is empty"
-          TopLeft="944.75,452" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 7]"
           TopLeft="1072,421.75">
@@ -3817,10 +4567,6 @@ WHERE ml.email IS NULL
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="252,42"
-          Id="Package\DFT - export mobile email buyer list"
-          TopLeft="977.777777777778,537.777777777778" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 8]"
           TopLeft="1086.25,494">
@@ -3853,7 +4599,7 @@ WHERE ml.email IS NULL
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0.763888888888914,26.8888888888889,16,16"
+              BoundingBox="0.7638888888889,26.8888888888889,16,16"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3861,44 +4607,44 @@ WHERE ml.email IS NULL
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list">
+    design-time-name="Package\DFT - export email buyer list">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="209,42"
-          Id="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list\Source - buyer_mobile_list"
-          TopLeft="19.5,55.5" />
+          Size="202,42"
+          Id="Package\DFT - export email buyer list\OLE_SRC - get buyer list"
+          TopLeft="390,95" />
         <NodeLayout
-          Size="293,42"
-          Id="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list\OLE_DST - staging_lead_buyer_mobile_list"
-          TopLeft="120.5,187.5" />
+          Size="186,42"
+          Id="Package\DFT - export email buyer list\OLE_DST - buyer_list"
+          TopLeft="569,230" />
         <EdgeLayout
-          Id="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list.Paths[Flat File Source Output]"
-          TopLeft="124,97.5">
+          Id="Package\DFT - export email buyer list.Paths[OLE DB Source Output]"
+          TopLeft="491,137">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="143,90"
+              EndConnector="171,93"
               Start="0,0"
-              End="143,82.5">
+              End="171,85.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41" />
+                    End="0,42.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,41"
-                    Point2="0,45"
-                    Point3="4,45" />
+                    Point1="0,42.5"
+                    Point2="0,46.5"
+                    Point3="4,46.5" />
                   <mssgle:LineSegment
-                    End="139,45" />
+                    End="167,46.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="139,45"
-                    Point2="143,45"
-                    Point3="143,49" />
+                    Point1="167,46.5"
+                    Point2="171,46.5"
+                    Point3="171,50.5" />
                   <mssgle:LineSegment
-                    End="143,82.5" />
+                    End="171,85.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3911,15 +4657,126 @@ WHERE ml.email IS NULL
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list\OLE_DST - staging_lead_buyer_mobile_list">
+    design-time-name="Package\DFT - export email buyer list\OLE_SRC - get buyer list">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - export mobile buyer list">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202,42"
+          Id="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list"
+          TopLeft="230,92" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT - export mobile buyer list\OLE_DST - buyer_list"
+          TopLeft="624,208" />
+        <EdgeLayout
+          Id="Package\DFT - export mobile buyer list.Paths[OLE DB Source Output]"
+          TopLeft="331,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="386,74"
+              Start="0,0"
+              End="386,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="4,37" />
+                  <mssgle:LineSegment
+                    End="382,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="382,37"
+                    Point2="386,37"
+                    Point3="386,41" />
+                  <mssgle:LineSegment
+                    End="386,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list">
+    <Properties>
       <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - export mobile email buyer list">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="202,42"
+          Id="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list"
+          TopLeft="230,92" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list"
+          TopLeft="500,207" />
+        <EdgeLayout
+          Id="Package\DFT - export mobile email buyer list.Paths[OLE DB Source Output]"
+          TopLeft="331,134">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="262,73"
+              Start="0,0"
+              End="262,65.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32.5"
+                    Point2="0,36.5"
+                    Point3="4,36.5" />
+                  <mssgle:LineSegment
+                    End="258,36.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="258,36.5"
+                    Point2="262,36.5"
+                    Point3="262,40.5" />
+                  <mssgle:LineSegment
+                    End="262,65.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -3927,15 +4784,15 @@ WHERE ml.email IS NULL
     design-time-name="Package\Foreach Loop Container - email list\DFT - load buyer_email_list">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="203,42"
-          Id="Package\Foreach Loop Container - email list\DFT - load buyer_email_list\Source - buyer_email_list"
-          TopLeft="31.5,68.5" />
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="218,42"
           Id="Package\Foreach Loop Container - email list\DFT - load buyer_email_list\OLE_DST - buyer_email_list"
           TopLeft="95.5,162.5" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Foreach Loop Container - email list\DFT - load buyer_email_list\Source - buyer_email_list"
+          TopLeft="31.5,68.5" />
         <EdgeLayout
           Id="Package\Foreach Loop Container - email list\DFT - load buyer_email_list.Paths[Flat File Source Output]"
           TopLeft="133,110.5">
@@ -3967,7 +4824,9 @@ WHERE ml.email IS NULL
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3990,7 +4849,7 @@ WHERE ml.email IS NULL
     design-time-name="Package\Foreach Loop Container - mobile and email\DFT - load buyer_mobile_email_list">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="294,42"
           Id="Package\Foreach Loop Container - mobile and email\DFT - load buyer_mobile_email_list\Source - buyer_mobile_email_exclusion_list"
@@ -4030,7 +4889,9 @@ WHERE ml.email IS NULL
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -4050,176 +4911,106 @@ WHERE ml.email IS NULL
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\DFT - export mobile buyer list">
+    design-time-name="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="202,42"
-          Id="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list"
-          TopLeft="230,92" />
+          Size="293,42"
+          Id="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list\OLE_DST - staging_lead_buyer_mobile_list"
+          TopLeft="120.5,187.5" />
         <NodeLayout
-          Size="230,42"
-          Id="Package\DFT - export mobile buyer list\Flat File Destination - buyer list"
-          TopLeft="284,208" />
+          Size="209,42"
+          Id="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list\Source - buyer_mobile_list"
+          TopLeft="19.5,55.5" />
         <EdgeLayout
-          Id="Package\DFT - export mobile buyer list.Paths[OLE DB Source Output]"
-          TopLeft="331,134">
+          Id="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list.Paths[Flat File Source Output]"
+          TopLeft="124,97.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="68,74"
+              EndConnector="143,90"
               Start="0,0"
-              End="68,66.5">
+              End="143,82.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33" />
+                    End="0,41" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,33"
-                    Point2="0,37"
-                    Point3="4,37" />
+                    Point1="0,41"
+                    Point2="0,45"
+                    Point3="4,45" />
                   <mssgle:LineSegment
-                    End="64,37" />
+                    End="139,45" />
                   <mssgle:CubicBezierSegment
-                    Point1="64,37"
-                    Point2="68,37"
-                    Point3="68,41" />
+                    Point1="139,45"
+                    Point2="143,45"
+                    Point3="143,49" />
                   <mssgle:LineSegment
-                    End="68,66.5" />
+                    End="143,82.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - export mobile buyer list\OLE_SRC - get buyer list">
+    design-time-name="Package\Foreach Loop Container - mobile list\DFT - load buyer_mobile_list\OLE_DST - staging_lead_buyer_mobile_list">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DFT - export email buyer list">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="202,42"
-          Id="Package\DFT - export email buyer list\OLE_SRC - get buyer list"
-          TopLeft="230,92" />
-        <NodeLayout
-          Size="230,42"
-          Id="Package\DFT - export email buyer list\Flat File Destination - buyer list"
-          TopLeft="284,208" />
-        <EdgeLayout
-          Id="Package\DFT - export email buyer list.Paths[OLE DB Source Output]"
-          TopLeft="331,134">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="68,74"
-              Start="0,0"
-              End="68,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33"
-                    Point2="0,37"
-                    Point3="4,37" />
-                  <mssgle:LineSegment
-                    End="64,37" />
-                  <mssgle:CubicBezierSegment
-                    Point1="64,37"
-                    Point2="68,37"
-                    Point3="68,41" />
-                  <mssgle:LineSegment
-                    End="68,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - export email buyer list\OLE_SRC - get buyer list">
+    design-time-name="Package\DFT - export mobile buyer list\OLE_DST - buyer_list">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
       </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DFT - export mobile email buyer list">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="202,42"
-          Id="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list"
-          TopLeft="230,92" />
-        <NodeLayout
-          Size="230,42"
-          Id="Package\DFT - export mobile email buyer list\Flat File Destination - buyer list"
-          TopLeft="284,208" />
-        <EdgeLayout
-          Id="Package\DFT - export mobile email buyer list.Paths[OLE DB Source Output]"
-          TopLeft="331,134">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="68,74"
-              Start="0,0"
-              End="68,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33"
-                    Point2="0,37"
-                    Point3="4,37" />
-                  <mssgle:LineSegment
-                    End="64,37" />
-                  <mssgle:CubicBezierSegment
-                    Point1="64,37"
-                    Point2="68,37"
-                    Point3="68,41" />
-                  <mssgle:LineSegment
-                    End="68,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - export mobile email buyer list\OLE_SRC - get buyer list">
+    design-time-name="Package\DFT - export email buyer list\OLE_DST - buyer_list">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
