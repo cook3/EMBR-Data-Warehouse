@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="azure_sql_edw"
+  DTS:DTSID="{E57ED397-33B2-404C-B299-F585CFB7E036}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=embr01.database.windows.net;User ID=sqladmin;Initial Catalog=edw;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAruMcF/JcZU+pGMCcxh14NgAAAAACAAAAAAAQZgAAAAEAACAAAAALluQg1lbJKCH2ATK4wcqwGST3XkmIXG8H0z3jPncbWAAAAAAOgAAAAAIAACAAAABkQfkGK5b7E8COTZNKq/QTbbgyBHEUHuJZJI7TzRKZjYAAAACtHkM1Kp4Y70M1kvTbh4MTLM9boaCMKefi20z9TE3VeTTR9dULNIBMxIat1u2tDtb8wiu++bNe8GKbmiqg4DMuFaNiOM2718el/R7UI3hisQEvtMHUyvCNGqvcMyUylUTRGVHt9+N+hY01RArS26oX5WtiZ9JD1aP8UrU9cu31I0AAAACdMt7k+wFheDu90N+sruKPV3oVL3MKZIXzJoEJY1h4yC1m20AQUHVN91ydSTHfBAe57EyQhp8Zl0XUhlznwThG</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
