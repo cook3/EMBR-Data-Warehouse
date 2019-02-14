@@ -1,0 +1,1727 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="2/13/2019 8:20:45 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="embr"
+  DTS:CreatorName="embr\azureadmin"
+  DTS:DTSID="{CA61F9F6-2AC6-487F-8FE4-11468A5E0667}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.3002.101"
+  DTS:LocaleID="3081"
+  DTS:ObjectName="mdm_lead_replication"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{6F6EE558-0B1C-4009-AB6D-A855C93AC910}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{95E077DA-0422-4855-8656-65138542C6F9}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dt_max_date">
+      <DTS:VariableValue
+        DTS:DataType="7">2/14/2019</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{81897C6C-FE7D-4857-8828-FBCFB62EA1CD}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="int_max_id">
+      <DTS:VariableValue
+        DTS:DataType="20">66699109</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5146B100-FAD8-4DE0-AE26-0917E09B8DFD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT [lead_key]&#xA;      ,[lead_id]&#xA;      ,[title]&#xA;      ,[first_name]&#xA;      ,[last_name]&#xA;      ,[address]&#xA;      ,[city]&#xA;      ,[geography_key]&#xA;      ,[data_source_key]&#xA;      ,[source_key]&#xA;      ,[mobile]&#xA;      ,[dob]&#xA;      ,[gender]&#xA;      ,[age]&#xA;      ,[email]&#xA;      ,[prize]&#xA;      ,[ipaddress]&#xA;      ,[homeowner_key]&#xA;      ,[submission_date]&#xA;      ,[valid_from]&#xA;      ,[valid_to]&#xA;      ,[active]&#xA;  FROM [mdm].[lead]&#xA;&#xA;WHERE [lead_key] &gt; &quot; +  (DT_STR, 2000 ,1252) @[User::int_max_id]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_lead_query">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT [lead_key]
+      ,[lead_id]
+      ,[title]
+      ,[first_name]
+      ,[last_name]
+      ,[address]
+      ,[city]
+      ,[geography_key]
+      ,[data_source_key]
+      ,[source_key]
+      ,[mobile]
+      ,[dob]
+      ,[gender]
+      ,[age]
+      ,[email]
+      ,[prize]
+      ,[ipaddress]
+      ,[homeowner_key]
+      ,[submission_date]
+      ,[valid_from]
+      ,[valid_to]
+      ,[active]
+  FROM [mdm].[lead]
+
+WHERE [lead_key] &gt; 66699109</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A0D78AC8-7814-428D-9C94-3DF3383545D2}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;SELECT [lead_key]&#xA;      ,[valid_to]&#xA;FROM [mdm].[lead]&#xA;WHERE [valid_to] &gt; &quot; +  (DT_STR, 200 ,1252) @[User::dt_max_date]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="str_update_keys_query">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT [lead_key]
+      ,[valid_to]
+FROM [mdm].[lead]
+WHERE [valid_to] &gt; 14/02/2019</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT - get updates"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E4EF67F7-7D54-4C21-B7DF-DADA977F24B5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - get updates"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - get updates\OLE_DST - get updates"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_DST - get updates"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::str_update_keys_query</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - get updates\OLE_DST - get updates.Connections[OleDbConnection]"
+                  connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].Columns[lead_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].ExternalColumns[lead_key]"
+                      lineageId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].Columns[lead_key]"
+                      name="lead_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].Columns[valid_to]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].ExternalColumns[valid_to]"
+                      lineageId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].Columns[valid_to]"
+                      name="valid_to"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].ExternalColumns[lead_key]"
+                      dataType="i4"
+                      name="lead_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].ExternalColumns[valid_to]"
+                      dataType="dbTimeStamp"
+                      name="valid_to" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output].Columns[lead_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output].Columns[lead_key]"
+                      name="lead_key" />
+                    <outputColumn
+                      refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output].Columns[valid_to]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output].Columns[valid_to]"
+                      name="valid_to" />
+                    <outputColumn
+                      refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - get updates\OLE_DST - lead_updates"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - lead_updates"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[updates].[lead_updates]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - get updates\OLE_DST - lead_updates.Connections[OleDbConnection]"
+                  connectionManagerID="{E57ED397-33B2-404C-B299-F585CFB7E036}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[azure_sql_edw]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input].Columns[lead_key]"
+                      cachedDataType="i4"
+                      cachedName="lead_key"
+                      externalMetadataColumnId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input].ExternalColumns[lead_key]"
+                      lineageId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].Columns[lead_key]" />
+                    <inputColumn
+                      refId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input].Columns[valid_to]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="valid_to"
+                      externalMetadataColumnId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input].ExternalColumns[valid_to]"
+                      lineageId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output].Columns[valid_to]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input].ExternalColumns[lead_key]"
+                      dataType="i4"
+                      name="lead_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input].ExternalColumns[valid_to]"
+                      dataType="dbTimeStamp"
+                      name="valid_to" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - get updates\OLE_DST - lead_updates.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - get updates\OLE_DST - lead_updates.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get updates\OLE_DST - lead_updates.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - get updates\OLE_DST - lead_updates.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - get updates\OLE_DST - lead_updates.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - get updates.Paths[OLE DB Source Output]"
+              endId="Package\DFT - get updates\OLE_DST - lead_updates.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - get updates\OLE_DST - get updates.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT - replicate mdm leads"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1BFEF0DD-AC93-486E-BD69-7DA46B4148DB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT - replicate mdm leads"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST - mdm_lead"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[mdm].[lead]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Connections[OleDbConnection]"
+                  connectionManagerID="{E57ED397-33B2-404C-B299-F585CFB7E036}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[azure_sql_edw]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[lead_id]"
+                      cachedDataType="i4"
+                      cachedName="lead_id"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_id]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="first_name"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[first_name]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="last_name"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[last_name]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="address"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[address]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[mobile]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="mobile"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[mobile]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="email"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[email]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[dob]"
+                      cachedDataType="dbDate"
+                      cachedName="dob"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[dob]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="1"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[age]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="age"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[age]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[ipaddress]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="ipaddress"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[ipaddress]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[prize]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="prize"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[prize]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[submission_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="submission_date"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[submission_date]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[lead_key]"
+                      cachedDataType="i4"
+                      cachedName="lead_key"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_key]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[geography_key]"
+                      cachedDataType="i4"
+                      cachedName="geography_key"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[geography_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[geography_key]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[data_source_key]"
+                      cachedDataType="i4"
+                      cachedName="data_source_key"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[data_source_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[data_source_key]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[source_key]"
+                      cachedDataType="i4"
+                      cachedName="source_key"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[source_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[source_key]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[homeowner_key]"
+                      cachedDataType="i4"
+                      cachedName="homeowner_key"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[homeowner_key]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[valid_from]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="valid_from"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[valid_from]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[valid_from]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[valid_to]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="valid_to"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[valid_to]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[valid_to]" />
+                    <inputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].Columns[active]"
+                      cachedDataType="bool"
+                      cachedName="active"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[active]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[active]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                      dataType="i4"
+                      name="lead_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="mobile" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
+                      dataType="dbDate"
+                      name="dob" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="age" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ipaddress" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
+                      dataType="dbTimeStamp"
+                      name="submission_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_key]"
+                      dataType="i4"
+                      name="lead_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[geography_key]"
+                      dataType="i4"
+                      name="geography_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[data_source_key]"
+                      dataType="i4"
+                      name="data_source_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[source_key]"
+                      dataType="i4"
+                      name="source_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_key]"
+                      dataType="i4"
+                      name="homeowner_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[valid_from]"
+                      dataType="dbTimeStamp"
+                      name="valid_from" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[valid_to]"
+                      dataType="dbTimeStamp"
+                      name="valid_to" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input].ExternalColumns[active]"
+                      dataType="bool"
+                      name="active" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC - get leads"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::str_lead_query</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Connections[OleDbConnection]"
+                  connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[warehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_id]"
+                      name="lead_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      length="10"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      length="100"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[first_name]"
+                      name="first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      length="100"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[last_name]"
+                      name="last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      length="250"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[address]"
+                      name="address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="250"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      length="100"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[mobile]"
+                      name="mobile"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      length="255"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[email]"
+                      name="email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[dob]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[dob]"
+                      name="dob"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      length="1"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[age]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
+                      length="5"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[age]"
+                      name="age"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
+                      length="100"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
+                      name="ipaddress"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
+                      length="250"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[prize]"
+                      name="prize"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[submission_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[submission_date]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[submission_date]"
+                      name="submission_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_key]"
+                      name="lead_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[geography_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[geography_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[geography_key]"
+                      name="geography_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[data_source_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[data_source_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[data_source_key]"
+                      name="data_source_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[source_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[source_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[source_key]"
+                      name="source_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[homeowner_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[homeowner_key]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[homeowner_key]"
+                      name="homeowner_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[valid_from]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[valid_from]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[valid_from]"
+                      name="valid_from"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[valid_to]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[valid_to]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[valid_to]"
+                      name="valid_to"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[active]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[active]"
+                      name="active"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
+                      dataType="i4"
+                      name="lead_id" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="mobile" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
+                      dataType="dbDate"
+                      name="dob" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="age" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="ipaddress" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="prize" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[submission_date]"
+                      dataType="dbTimeStamp"
+                      name="submission_date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_key]"
+                      dataType="i4"
+                      name="lead_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[geography_key]"
+                      dataType="i4"
+                      name="geography_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[data_source_key]"
+                      dataType="i4"
+                      name="data_source_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[source_key]"
+                      dataType="i4"
+                      name="source_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[homeowner_key]"
+                      dataType="i4"
+                      name="homeowner_key" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[valid_from]"
+                      dataType="dbTimeStamp"
+                      name="valid_from" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[valid_to]"
+                      dataType="dbTimeStamp"
+                      name="valid_to" />
+                    <externalMetadataColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[active]"
+                      dataType="bool"
+                      name="active" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_key]"
+                      name="lead_key" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_id]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_id]"
+                      name="lead_id" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[title]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      name="first_name" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      name="last_name" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[address]"
+                      name="address" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[city]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[geography_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[geography_key]"
+                      name="geography_key" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[data_source_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[data_source_key]"
+                      name="data_source_key" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[source_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[source_key]"
+                      name="source_key" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      name="mobile" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[email]"
+                      name="email" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[dob]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[dob]"
+                      name="dob" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="1"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[age]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[age]"
+                      name="age" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
+                      name="ipaddress" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[prize]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[prize]"
+                      name="prize" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[homeowner_key]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[homeowner_key]"
+                      name="homeowner_key" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[submission_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[submission_date]"
+                      name="submission_date" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[valid_from]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[valid_from]"
+                      name="valid_from" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[valid_to]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[valid_to]"
+                      name="valid_to" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[active]"
+                      dataType="bool"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[active]"
+                      name="active" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT - replicate mdm leads.Paths[OLE DB Source Output]"
+              endId="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT - replicate mdm leads\OLE_SRC - get leads.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - get max date"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{88DEB136-AFCA-4FED-A05F-119012018420}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - get max date"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E57ED397-33B2-404C-B299-F585CFB7E036}"
+          SQLTask:SqlStatementSource="SELECT MAX(valid_to) FROM [mdm].[lead];"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::dt_max_date" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - get max key value"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DCC70B5D-A57A-4239-A106-FB788793406F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - get max key value"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E57ED397-33B2-404C-B299-F585CFB7E036}"
+          SQLTask:SqlStatementSource="SELECT MAX(lead_key)&#xA; FROM [mdm].[lead]"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::int_max_id" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - update mdm_lead"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{0F45A90D-76A7-44BA-8A04-CEF132CA10ED}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - update mdm_lead"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E57ED397-33B2-404C-B299-F585CFB7E036}"
+          SQLTask:SqlStatementSource="UPDATE l&#xA;SET l.valid_to = lu.valid_to&#xA;&#x9;, l.active = 0&#xA;FROM mdm.lead l&#xA;&#x9;INNER JOIN updates.lead_updates lu ON l.lead_key = lu.lead_key;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D15967D4-A44E-48E5-8BED-D2AEBBCDE254}"
+      DTS:From="Package\SQL - get max key value"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT - replicate mdm leads" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1CDF5268-5C0E-4AC6-B071-F23A926805B0}"
+      DTS:From="Package\DFT - replicate mdm leads"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SQL - get max date" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{6FFDD426-64A8-4E96-B332-A347BB752C2E}"
+      DTS:From="Package\SQL - get max date"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\DFT - get updates" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{177105AE-03DB-49BB-A674-EC97BC94B951}"
+      DTS:From="Package\DFT - get updates"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\SQL - update mdm_lead" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="208,42"
+          Id="Package\DFT - replicate mdm leads"
+          TopLeft="375,159" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\SQL - get max key value"
+          TopLeft="217,82" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="316.5,124">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="162.5,35"
+              Start="0,0"
+              End="162.5,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="158.5,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="158.5,17.5"
+                    Point2="162.5,17.5"
+                    Point3="162.5,21.5" />
+                  <mssgle:LineSegment
+                    End="162.5,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="174,42"
+          Id="Package\SQL - get max date"
+          TopLeft="491,238" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="479,201">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99,37"
+              Start="0,0"
+              End="99,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="4,18.5" />
+                  <mssgle:LineSegment
+                    End="95,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95,18.5"
+                    Point2="99,18.5"
+                    Point3="99,22.5" />
+                  <mssgle:LineSegment
+                    End="99,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="167,42"
+          Id="Package\DFT - get updates"
+          TopLeft="579,311" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="578,280">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="84.5,31"
+              Start="0,0"
+              End="84.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5"
+                    Point2="0,15.5"
+                    Point3="4,15.5" />
+                  <mssgle:LineSegment
+                    End="80.5,15.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="80.5,15.5"
+                    Point2="84.5,15.5"
+                    Point3="84.5,19.5" />
+                  <mssgle:LineSegment
+                    End="84.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="198,42"
+          Id="Package\SQL - update mdm_lead"
+          TopLeft="576,387" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="662.5,353">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,34"
+              Start="0,0"
+              End="12.5,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="8.5,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.5,17"
+                    Point2="12.5,17"
+                    Point3="12.5,21" />
+                  <mssgle:LineSegment
+                    End="12.5,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT - replicate mdm leads">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <NodeLayout
+          Size="184,42"
+          Id="Package\DFT - replicate mdm leads\OLE_SRC - get leads"
+          TopLeft="224,85" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead"
+          TopLeft="389,172" />
+        <EdgeLayout
+          Id="Package\DFT - replicate mdm leads.Paths[OLE DB Source Output]"
+          TopLeft="316,127">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="168,45"
+              Start="0,0"
+              End="168,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="164,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="164,22.5"
+                    Point2="168,22.5"
+                    Point3="168,26.5" />
+                  <mssgle:LineSegment
+                    End="168,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="Azure SQL Database replication"
+          ParentId="Package\DFT - replicate mdm leads"
+          Size="181,37"
+          Id="45cb23a2-0b19-48f2-b21a-8fcf41386677"
+          TopLeft="615,188">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Color="#FFF1F1F1">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - replicate mdm leads\OLE_SRC - get leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT - get updates">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="196,42"
+          Id="Package\DFT - get updates\OLE_DST - get updates"
+          TopLeft="334,114" />
+        <NodeLayout
+          Size="205,42"
+          Id="Package\DFT - get updates\OLE_DST - lead_updates"
+          TopLeft="480,216" />
+        <EdgeLayout
+          Id="Package\DFT - get updates.Paths[OLE DB Source Output]"
+          TopLeft="432,156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="150.5,60"
+              Start="0,0"
+              End="150.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="146.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="146.5,30"
+                    Point2="150.5,30"
+                    Point3="150.5,34" />
+                  <mssgle:LineSegment
+                    End="150.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get updates\OLE_DST - get updates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get updates\OLE_DST - lead_updates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

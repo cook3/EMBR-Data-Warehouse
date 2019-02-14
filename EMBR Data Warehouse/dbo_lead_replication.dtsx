@@ -11,8 +11,8 @@
   DTS:LocaleID="3081"
   DTS:ObjectName="dbo_lead_replication"
   DTS:PackageType="5"
-  DTS:VersionBuild="1"
-  DTS:VersionGUID="{7AD0AF5C-C385-41E2-AED7-077DBC452C8A}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{664A389E-3827-479B-B45E-771C410096CC}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -60,13 +60,13 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT - replicate new leads"
+      DTS:refId="Package\DFT - replicate dbo leads"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{1A6B4436-7DE6-4F0D-AB8D-A8976A204338}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT - replicate new leads"
+      DTS:ObjectName="DFT - replicate dbo leads"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -74,7 +74,7 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
           version="1">
           <components>
             <component
-              refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead"
+              refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -131,7 +131,7 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Connections[OleDbConnection]"
+                  refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Connections[OleDbConnection]"
                   connectionManagerID="{E57ED397-33B2-404C-B299-F585CFB7E036}:external"
                   connectionManagerRefId="Project.ConnectionManagers[azure_sql_edw]"
                   description="The OLE DB runtime connection used to access the database."
@@ -139,275 +139,275 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input]"
+                  refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[lead_id]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[lead_id]"
                       cachedDataType="i4"
                       cachedName="lead_id"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_id]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_id]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[title]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[title]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="title"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[title]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[title]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[title]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[first_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[first_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="first_name"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[first_name]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[first_name]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[last_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[last_name]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="last_name"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[last_name]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[last_name]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[address]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[address]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="address"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[address]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[address]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[address]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[city]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[city]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="city"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[city]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[city]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[city]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[state]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[state]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="state"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[state]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[state]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[state]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[postcode]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[postcode]"
                       cachedDataType="i4"
                       cachedName="postcode"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[postcode]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[postcode]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[mobile]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[mobile]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="mobile"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[mobile]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[mobile]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[email]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="email"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[email]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[email]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[email]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[dob]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[dob]"
                       cachedDataType="dbDate"
                       cachedName="dob"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[dob]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[dob]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[gender]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[gender]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="1"
                       cachedName="gender"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[gender]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[gender]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[age]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[age]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="5"
                       cachedName="age"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[age]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[age]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[age]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[ipaddress]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[ipaddress]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="100"
                       cachedName="ipaddress"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[ipaddress]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[ipaddress]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[prize]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[prize]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="prize"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[prize]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[prize]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[homeowner_answer]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[homeowner_answer]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="255"
                       cachedName="homeowner_answer"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_answer]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_answer]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[submission_date]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[submission_date]"
                       cachedDataType="dbTimeStamp"
                       cachedName="submission_date"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[submission_date]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[submission_date]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[lead_status]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[lead_status]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="10"
                       cachedName="lead_status"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_status]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_status]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[lead_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[lead_source]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
                       cachedName="lead_source"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_source]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_source]" />
                     <inputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[data_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].Columns[data_source]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="255"
                       cachedName="data_source"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[data_source]" />
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[data_source]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_id]"
                       dataType="i4"
                       name="lead_id" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[title]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="title" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="first_name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="last_name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[address]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[address]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="address" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[city]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="city" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[state]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[state]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="state" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[postcode]"
                       dataType="i4"
                       name="postcode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[mobile]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="mobile" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[email]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="email" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[dob]"
                       dataType="dbDate"
                       name="dob" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[gender]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="gender" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[age]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[age]"
                       codePage="1252"
                       dataType="str"
                       length="5"
                       name="age" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[ipaddress]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="ipaddress" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[prize]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="prize" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_answer]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[homeowner_answer]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="homeowner_answer" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[submission_date]"
                       dataType="dbTimeStamp"
                       name="submission_date" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_status]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="lead_status" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[lead_source]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="lead_source" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input].ExternalColumns[data_source]"
                       codePage="1252"
                       dataType="str"
                       length="255"
@@ -417,22 +417,22 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -441,11 +441,11 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - replicate new leads\OLE_SRC - get leads"
+              refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="OLE_SRC - get leads"
+              name="OLE_SRC - get dbo leads"
               usesDispositions="true"
               version="7">
               <properties>
@@ -490,7 +490,7 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Connections[OleDbConnection]"
+                  refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Connections[OleDbConnection]"
                   connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
                   connectionManagerRefId="Project.ConnectionManagers[warehouse]"
                   description="The OLE DB runtime connection used to access the database."
@@ -498,332 +498,332 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output]"
+                  refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_id]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_id]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_id]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_id]"
                       name="lead_id"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[title]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[title]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[title]"
                       length="10"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[title]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[title]"
                       name="title"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[first_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[first_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[first_name]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[first_name]"
                       name="first_name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[last_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[last_name]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[last_name]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[last_name]"
                       name="last_name"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[address]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[address]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[address]"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[address]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[address]"
                       name="address"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[city]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[city]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[city]"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[city]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[city]"
                       name="city"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[state]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[state]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[state]"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[state]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[state]"
                       name="state"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[postcode]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[postcode]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[postcode]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[postcode]"
                       name="postcode"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[mobile]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[mobile]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[mobile]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[mobile]"
                       name="mobile"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[email]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[email]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[email]"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[email]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[email]"
                       name="email"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[dob]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[dob]"
                       dataType="dbDate"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[dob]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[dob]"
                       name="dob"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[gender]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[gender]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[gender]"
                       length="1"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[gender]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[gender]"
                       name="gender"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[age]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[age]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
                       length="5"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[age]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[age]"
                       name="age"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[ipaddress]"
                       name="ipaddress"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[prize]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[prize]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[prize]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[prize]"
                       name="prize"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[homeowner_answer]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[homeowner_answer]"
                       length="255"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[homeowner_answer]"
                       name="homeowner_answer"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[submission_date]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[submission_date]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[submission_date]"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[submission_date]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[submission_date]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[submission_date]"
                       name="submission_date"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_status]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_status]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_status]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[lead_status]"
                       length="10"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_status]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_status]"
                       name="lead_status"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_source]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_source]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[lead_source]"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[lead_source]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[lead_source]"
                       name="lead_source"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[data_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[data_source]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
+                      externalMetadataColumnId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
                       length="255"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].Columns[data_source]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].Columns[data_source]"
                       name="data_source"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[lead_id]"
                       dataType="i4"
                       name="lead_id" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[title]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="title" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="first_name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="last_name" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[address]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="address" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[city]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="city" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[state]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[state]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="state" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[postcode]"
                       dataType="i4"
                       name="postcode" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[mobile]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="mobile" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[email]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[email]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="email" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[dob]"
                       dataType="dbDate"
                       name="dob" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[gender]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[gender]"
                       codePage="1252"
                       dataType="str"
                       length="1"
                       name="gender" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[age]"
                       codePage="1252"
                       dataType="str"
                       length="5"
                       name="age" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[ipaddress]"
                       codePage="1252"
                       dataType="str"
                       length="100"
                       name="ipaddress" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[prize]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="prize" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[homeowner_answer]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[homeowner_answer]"
                       codePage="1252"
                       dataType="str"
                       length="255"
                       name="homeowner_answer" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[submission_date]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[submission_date]"
                       dataType="dbTimeStamp"
                       name="submission_date" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_status]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[lead_status]"
                       codePage="1252"
                       dataType="str"
                       length="10"
                       name="lead_status" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[lead_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[lead_source]"
                       codePage="1252"
                       dataType="str"
                       length="250"
                       name="lead_source" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output].ExternalColumns[data_source]"
                       codePage="1252"
                       dataType="str"
                       length="255"
@@ -831,152 +831,152 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output]"
+                  refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_id]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[lead_id]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_id]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[lead_id]"
                       name="lead_id" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[title]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[title]"
                       codePage="1252"
                       dataType="str"
                       length="10"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[title]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[title]"
                       name="title" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[first_name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[first_name]"
                       name="first_name" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[last_name]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[last_name]"
                       name="last_name" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[address]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[address]"
                       codePage="1252"
                       dataType="str"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[address]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[address]"
                       name="address" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[city]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[city]"
                       codePage="1252"
                       dataType="str"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[city]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[city]"
                       name="city" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[state]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[state]"
                       codePage="1252"
                       dataType="str"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[state]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[state]"
                       name="state" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[postcode]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[postcode]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[postcode]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[postcode]"
                       name="postcode" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[mobile]"
                       name="mobile" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[email]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[email]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[email]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[email]"
                       name="email" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[dob]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[dob]"
                       dataType="dbDate"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[dob]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[dob]"
                       name="dob" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[gender]"
                       codePage="1252"
                       dataType="str"
                       length="1"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[gender]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[gender]"
                       name="gender" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[age]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[age]"
                       codePage="1252"
                       dataType="str"
                       length="5"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[age]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[age]"
                       name="age" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
                       codePage="1252"
                       dataType="str"
                       length="100"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[ipaddress]"
                       name="ipaddress" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[prize]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[prize]"
                       codePage="1252"
                       dataType="str"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[prize]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[prize]"
                       name="prize" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[homeowner_answer]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[homeowner_answer]"
                       codePage="1252"
                       dataType="str"
                       length="255"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[homeowner_answer]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[homeowner_answer]"
                       name="homeowner_answer" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[submission_date]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[submission_date]"
                       dataType="dbTimeStamp"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[submission_date]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[submission_date]"
                       name="submission_date" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_status]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[lead_status]"
                       codePage="1252"
                       dataType="str"
                       length="10"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_status]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[lead_status]"
                       name="lead_status" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[lead_source]"
                       codePage="1252"
                       dataType="str"
                       length="250"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[lead_source]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[lead_source]"
                       name="lead_source" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
                       codePage="1252"
                       dataType="str"
                       length="255"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[data_source]"
                       name="data_source" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -987,10 +987,10 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
           </components>
           <paths>
             <path
-              refId="Package\DFT - replicate new leads.Paths[OLE DB Source Output]"
-              endId="Package\DFT - replicate new leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input]"
+              refId="Package\DFT - replicate dbo leads.Paths[OLE DB Source Output]"
+              endId="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead.Inputs[OLE DB Destination Input]"
               name="OLE DB Source Output"
-              startId="Package\DFT - replicate new leads\OLE_SRC - get leads.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1026,7 +1026,7 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
       DTS:From="Package\SQL - get max key value"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\DFT - replicate new leads" />
+      DTS:To="Package\DFT - replicate dbo leads" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1041,22 +1041,22 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="202,42"
+          Id="Package\DFT - replicate dbo leads"
+          TopLeft="375,159" />
+        <NodeLayout
           Size="199,42"
           Id="Package\SQL - get max key value"
           TopLeft="217,82" />
-        <NodeLayout
-          Size="204,42"
-          Id="Package\DFT - replicate new leads"
-          TopLeft="375,159" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="316.5,124">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="160.5,35"
+              EndConnector="159.5,35"
               Start="0,0"
-              End="160.5,27.5">
+              End="159.5,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1067,13 +1067,13 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
                     Point2="0,17.5"
                     Point3="4,17.5" />
                   <mssgle:LineSegment
-                    End="156.5,17.5" />
+                    End="155.5,17.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="156.5,17.5"
-                    Point2="160.5,17.5"
-                    Point3="160.5,21.5" />
+                    Point1="155.5,17.5"
+                    Point2="159.5,17.5"
+                    Point3="159.5,21.5" />
                   <mssgle:LineSegment
-                    End="160.5,27.5" />
+                    End="159.5,27.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1086,27 +1086,27 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT - replicate new leads">
+    design-time-name="Package\DFT - replicate dbo leads">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
-          Size="184,42"
-          Id="Package\DFT - replicate new leads\OLE_SRC - get leads"
+          Size="206,42"
+          Id="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads"
           TopLeft="224,85" />
         <NodeLayout
           Size="184,42"
-          Id="Package\DFT - replicate new leads\OLE_DST - dbo_lead"
+          Id="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead"
           TopLeft="389,172" />
         <EdgeLayout
-          Id="Package\DFT - replicate new leads.Paths[OLE DB Source Output]"
-          TopLeft="316,127">
+          Id="Package\DFT - replicate dbo leads.Paths[OLE DB Source Output]"
+          TopLeft="327,127">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="165,45"
+              EndConnector="154,45"
               Start="0,0"
-              End="165,37.5">
+              End="154,37.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -1117,13 +1117,13 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
                     Point2="0,22.5"
                     Point3="4,22.5" />
                   <mssgle:LineSegment
-                    End="161,22.5" />
+                    End="150,22.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="161,22.5"
-                    Point2="165,22.5"
-                    Point3="165,26.5" />
+                    Point1="150,22.5"
+                    Point2="154,22.5"
+                    Point3="154,26.5" />
                   <mssgle:LineSegment
-                    End="165,37.5" />
+                    End="154,37.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1134,8 +1134,8 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
         </EdgeLayout>
         <AnnotationLayout
           Text="Azure SQL Database replication"
-          ParentId="Package\DFT - replicate new leads"
-          Size="181,60"
+          ParentId="Package\DFT - replicate dbo leads"
+          Size="181,37"
           Id="45cb23a2-0b19-48f2-b21a-8fcf41386677"
           TopLeft="615,188">
           <AnnotationLayout.FontInfo>
@@ -1151,15 +1151,7 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - replicate new leads\OLE_SRC - get leads">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - replicate new leads\OLE_DST - dbo_lead">
+    design-time-name="Package\DFT - replicate dbo leads\OLE_DST - dbo_lead">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1168,6 +1160,14 @@ WHERE [lead_id] &gt; 66699109</DTS:VariableValue>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - replicate dbo leads\OLE_SRC - get dbo leads">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

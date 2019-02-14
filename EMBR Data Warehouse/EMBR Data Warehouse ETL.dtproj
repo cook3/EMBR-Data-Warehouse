@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">COOKE-PC</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAruMcF/JcZU+pGMCcxh14NgAAAAACAAAAAAAQZgAAAAEAACAAAAAbX+5Tk5JQcv5/Y6d/FELxx4FziEC3qnisFTqIOHZi4QAAAAAOgAAAAAIAACAAAACeVuoXWPwieGKKd3oU7g9uxmL6u/6Xr4qveJEB7MhSjJAAAABVkv1BnyVuKvkU0uz8Y5CgXKt0CSxIk6o3ZY2jPiwPX0JpBy356l298ODW2szrI1FjNx2UCoQyJuezhNv61huaXiSR27aUg+ab6SC2bG5UR5m8AUZnaBuI2fO96LUZXFMqauQdi0jET7KMwlu6GfbLllH2Rv/oGyzIjjA3PrKzABvAwy/7I46rtkjQuj0tO3JAAAAAlHeKaFSdjQa09gOj/odg2wDnKlOWlqTTBeSSJv25B6cgdBSjSM7caviw/wB0FxN0bTYfcYQgyJKW7BfyVNUTHA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAruMcF/JcZU+pGMCcxh14NgAAAAACAAAAAAAQZgAAAAEAACAAAADyQA4osZesxbcXF5FnxNxF4/xtEj6O5v4fRTA3vQdlJgAAAAAOgAAAAAIAACAAAADOvDGYtvm/yaS+nwV5qG3hAHfr9T4F0M8LazZG+NQTpZAAAAAar9ODte+KKeLfLzvPErmbReQ5mmyAXaGzip/iW4M+VIt9TwKxG1+9slY2SjZyxKDDIC+QpHCwgjkSt0x65fgeOgyeCd/J0bJokzr64RBJGpgrWVhkOq5bq3oEN6BhpNIRfXX2eIQOVgEBhij6+wChoIPplFJKRH8sXrPA4vIN+utZBEFmMhetZiIhPBcnlgRAAAAAWYtZ4c14DctNI7tqI7llu8jhaz5ABEyy2UnQfg3dLyFbrcGPaG1yCYErPhXZxJgOiYJCOZ0II7Q+gnSaevXB3Q==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -46,6 +46,8 @@
           <SSIS:Package SSIS:Name="dim_homeowner_replication.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="dbo_lead_replication.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="buyer_list_replication.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="fact_lead_replication.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="mdm_lead_replication.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="staging.conmgr" />
@@ -1766,10 +1768,10 @@
                 <SSIS:Property SSIS:Name="Name">dbo_lead_replication</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{7AD0AF5C-C385-41E2-AED7-077DBC452C8A}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{664A389E-3827-479B-B45E-771C410096CC}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1787,6 +1789,40 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{ACF3FBBF-11DB-4C86-8800-B9B35F3D15B8}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="fact_lead_replication.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{2628E7AB-6B8B-4382-9D9B-A90B34040A0B}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">fact_lead_replication</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{15416F9F-6F78-48A4-90B5-31CA9CE7449C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="mdm_lead_replication.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{CA61F9F6-2AC6-487F-8FE4-11468A5E0667}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">mdm_lead_replication</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">3</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{6C1AB16C-235B-4869-9C59-0B94376754F1}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
