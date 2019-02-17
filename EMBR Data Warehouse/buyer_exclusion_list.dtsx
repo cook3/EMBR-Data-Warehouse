@@ -11,8 +11,8 @@
   DTS:LocaleID="3081"
   DTS:ObjectName="buyer_exclusion_list"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{6013F96F-B390-440B-A838-C28B1D52528C}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{2CE84D19-A706-4C29-A449-0A84A8F297C2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -435,8 +435,8 @@
               <connections>
                 <connection
                   refId="Package\DFT - export email buyer list\OLE_DST - buyer_list.Connections[OleDbConnection]"
-                  connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[staging]"
+                  connectionManagerID="{E57ED397-33B2-404C-B299-F585CFB7E036}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[azure_sql_edw]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1316,8 +1316,8 @@ WHERE ml.email IS NULL</property>
               <connections>
                 <connection
                   refId="Package\DFT - export mobile buyer list\OLE_DST - buyer_list.Connections[OleDbConnection]"
-                  connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[staging]"
+                  connectionManagerID="{E57ED397-33B2-404C-B299-F585CFB7E036}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[azure_sql_edw]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2197,8 +2197,8 @@ WHERE ml.mobile IS NULL</property>
               <connections>
                 <connection
                   refId="Package\DFT - export mobile email buyer list\OLE_DST - buyer_list.Connections[OleDbConnection]"
-                  connectionManagerID="{1F2E4D0D-E71A-4968-9B44-26FCEB287B76}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[staging]"
+                  connectionManagerID="{E57ED397-33B2-404C-B299-F585CFB7E036}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[azure_sql_edw]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -4029,6 +4029,23 @@ WHERE ml.email IS NULL
           SQLTask:SqlStatementSource="TRUNCATE TABLE [buyer].[mobile_list];&#xA;TRUNCATE TABLE [buyer].[email_list];&#xA;TRUNCATE TABLE [buyer].[mobile_email_list];&#xA;TRUNCATE TABLE [buyer].[buyer_list];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - clear staging_exlusion_list_azure_db"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C7FCF9C3-13AB-4C57-9A0F-2E58624BDA1C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - clear staging_exlusion_list_azure_db"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E57ED397-33B2-404C-B299-F585CFB7E036}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE buyer.buyer_list" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
     <DTS:PrecedenceConstraint
@@ -4109,6 +4126,14 @@ WHERE ml.email IS NULL
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 8"
       DTS:To="Package\DFT - export mobile email buyer list" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 9]"
+      DTS:CreationName=""
+      DTS:DTSID="{D7AC2A5A-D8D5-4BDD-BF63-92EC4D424A7C}"
+      DTS:From="Package\SQL - clear staging_exlusion_list_azure_db"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 9"
+      DTS:To="Package\SQL - clear staging_buyer_exclusion lists" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -4290,33 +4315,33 @@ WHERE ml.email IS NULL
         <NodeLayout
           Size="281,42"
           Id="Package\SQL - clear staging_buyer_exclusion lists"
-          TopLeft="464,28.5" />
+          TopLeft="462.333333333333,63.5" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="604.5,70.5">
+          TopLeft="602.833333333333,105.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="61.6666666666667,84.1111111111111"
+              EndConnector="63.3333333333336,49.111111111111"
               Start="0,0"
-              End="61.6666666666667,76.6111111111111">
+              End="63.3333333333336,41.611111111111">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,38.0555555555555" />
+                    End="0,20.5555555555555" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,38.0555555555555"
-                    Point2="0,42.0555555555555"
-                    Point3="4,42.0555555555555" />
+                    Point1="0,20.5555555555555"
+                    Point2="0,24.5555555555555"
+                    Point3="4,24.5555555555555" />
                   <mssgle:LineSegment
-                    End="57.6666666666667,42.0555555555555" />
+                    End="59.3333333333336,24.5555555555555" />
                   <mssgle:CubicBezierSegment
-                    Point1="57.6666666666667,42.0555555555555"
-                    Point2="61.6666666666667,42.0555555555555"
-                    Point3="61.6666666666667,46.0555555555555" />
+                    Point1="59.3333333333336,24.5555555555555"
+                    Point2="63.3333333333336,24.5555555555555"
+                    Point3="63.3333333333336,28.5555555555555" />
                   <mssgle:LineSegment
-                    End="61.6666666666667,76.6111111111111" />
+                    End="63.3333333333336,41.611111111111" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4327,30 +4352,30 @@ WHERE ml.email IS NULL
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="536.25,70.5">
+          TopLeft="534.583333333333,105.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-254.5,87.25"
+              EndConnector="-252.833333333333,52.25"
               Start="0,0"
-              End="-254.5,79.75">
+              End="-252.833333333333,44.75">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.6301410105758" />
+                    End="0,13.7441245593419" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25.6301410105758"
-                    Point2="0,29.6301410105758"
-                    Point3="-4,29.6301410105758" />
+                    Point1="0,13.7441245593419"
+                    Point2="0,17.7441245593419"
+                    Point3="-4,17.7441245593419" />
                   <mssgle:LineSegment
-                    End="-250.5,29.6301410105758" />
+                    End="-248.833333333333,17.7441245593419" />
                   <mssgle:CubicBezierSegment
-                    Point1="-250.5,29.6301410105758"
-                    Point2="-254.5,29.6301410105758"
-                    Point3="-254.5,33.6301410105758" />
+                    Point1="-248.833333333333,17.7441245593419"
+                    Point2="-252.833333333333,17.7441245593419"
+                    Point3="-252.833333333333,21.7441245593419" />
                   <mssgle:LineSegment
-                    End="-254.5,79.75" />
+                    End="-252.833333333333,44.75" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4361,30 +4386,30 @@ WHERE ml.email IS NULL
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="672.75,70.5">
+          TopLeft="671.083333333333,105.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="399.25,91.25"
+              EndConnector="400.916666666667,56.25"
               Start="0,0"
-              End="399.25,83.75">
+              End="400.916666666667,48.75">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,26.9885428907168" />
+                    End="0,15.102526439483" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,26.9885428907168"
-                    Point2="0,30.9885428907168"
-                    Point3="4,30.9885428907168" />
+                    Point1="0,15.102526439483"
+                    Point2="0,19.102526439483"
+                    Point3="4,19.102526439483" />
                   <mssgle:LineSegment
-                    End="395.25,30.9885428907168" />
+                    End="396.916666666667,19.102526439483" />
                   <mssgle:CubicBezierSegment
-                    Point1="395.25,30.9885428907168"
-                    Point2="399.25,30.9885428907168"
-                    Point3="399.25,34.9885428907168" />
+                    Point1="396.916666666667,19.102526439483"
+                    Point2="400.916666666667,19.102526439483"
+                    Point3="400.916666666667,23.102526439483" />
                   <mssgle:LineSegment
-                    End="399.25,83.75" />
+                    End="400.916666666667,48.75" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4601,6 +4626,44 @@ WHERE ml.email IS NULL
             <mssgm:EdgeLabel
               BoundingBox="0.7638888888889,26.8888888888889,16,16"
               RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="291,42"
+          Id="Package\SQL - clear staging_exlusion_list_azure_db"
+          TopLeft="823.333333333333,25" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 9]"
+          TopLeft="823.333333333333,46">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-80,38.5"
+              Start="0,0"
+              End="-72.5,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-36,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-36,0"
+                    Point2="-40,0"
+                    Point3="-40,4" />
+                  <mssgle:LineSegment
+                    End="-40,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-40,34.5"
+                    Point2="-40,38.5"
+                    Point3="-44,38.5" />
+                  <mssgle:LineSegment
+                    End="-72.5,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

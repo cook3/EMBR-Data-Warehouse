@@ -11,8 +11,8 @@
   DTS:LocaleID="3081"
   DTS:ObjectName="mdm_lead_replication"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{6F6EE558-0B1C-4009-AB6D-A855C93AC910}">
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{9B87166D-D533-41E0-B603-9ECB6FDE8667}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -73,7 +73,7 @@ WHERE [lead_key] &gt; 66699109</DTS:VariableValue>
       DTS:CreationName=""
       DTS:DTSID="{A0D78AC8-7814-428D-9C94-3DF3383545D2}"
       DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;SELECT [lead_key]&#xA;      ,[valid_to]&#xA;FROM [mdm].[lead]&#xA;WHERE [valid_to] &gt; &quot; +  (DT_STR, 200 ,1252) @[User::dt_max_date]"
+      DTS:Expression="&quot;SELECT [lead_key]&#xA;      ,[valid_to]&#xA;FROM [mdm].[lead]&#xA;WHERE [valid_to] &gt;  '&quot; + (DT_STR, 4, 1252) year(@[User::dt_max_date]) + &quot;-&quot; + right(&quot;0&quot; +  (DT_STR, 2, 1252) month(@[User::dt_max_date]), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; +  (DT_STR, 2, 1252) day(@[User::dt_max_date]),2) + &quot;'&quot;"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
       DTS:ObjectName="str_update_keys_query">
@@ -81,7 +81,7 @@ WHERE [lead_key] &gt; 66699109</DTS:VariableValue>
         DTS:DataType="8">SELECT [lead_key]
       ,[valid_to]
 FROM [mdm].[lead]
-WHERE [valid_to] &gt; 14/02/2019</DTS:VariableValue>
+WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -1406,21 +1406,33 @@ WHERE [valid_to] &gt; 14/02/2019</DTS:VariableValue>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="167,42"
+          Id="Package\DFT - get updates"
+          TopLeft="579,311" />
         <NodeLayout
           Size="208,42"
           Id="Package\DFT - replicate mdm leads"
           TopLeft="375,159" />
         <NodeLayout
+          Size="174,42"
+          Id="Package\SQL - get max date"
+          TopLeft="491,238" />
+        <NodeLayout
           Size="199,42"
           Id="Package\SQL - get max key value"
           TopLeft="217,82" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\SQL - update mdm_lead"
+          TopLeft="576,387" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="316.5,124">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="162.5,35"
               Start="0,0"
               End="162.5,27.5">
@@ -1449,16 +1461,12 @@ WHERE [valid_to] &gt; 14/02/2019</DTS:VariableValue>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="174,42"
-          Id="Package\SQL - get max date"
-          TopLeft="491,238" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="479,201">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="99,37"
               Start="0,0"
               End="99,29.5">
@@ -1487,16 +1495,12 @@ WHERE [valid_to] &gt; 14/02/2019</DTS:VariableValue>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="167,42"
-          Id="Package\DFT - get updates"
-          TopLeft="579,311" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="578,280">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="84.5,31"
               Start="0,0"
               End="84.5,23.5">
@@ -1525,16 +1529,12 @@ WHERE [valid_to] &gt; 14/02/2019</DTS:VariableValue>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="198,42"
-          Id="Package\SQL - update mdm_lead"
-          TopLeft="576,387" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="662.5,353">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{assembly:Null}"
+              StartConnector="{x:Null}"
               EndConnector="12.5,34"
               Start="0,0"
               End="12.5,26.5">
@@ -1567,18 +1567,89 @@ WHERE [valid_to] &gt; 14/02/2019</DTS:VariableValue>
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\DFT - get updates">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="205,42"
+          Id="Package\DFT - get updates\OLE_DST - lead_updates"
+          TopLeft="480,216" />
+        <NodeLayout
+          Size="196,42"
+          Id="Package\DFT - get updates\OLE_DST - get updates"
+          TopLeft="334,114" />
+        <EdgeLayout
+          Id="Package\DFT - get updates.Paths[OLE DB Source Output]"
+          TopLeft="432,156">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="150.5,60"
+              Start="0,0"
+              End="150.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="146.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="146.5,30"
+                    Point2="150.5,30"
+                    Point3="150.5,34" />
+                  <mssgle:LineSegment
+                    End="150.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get updates\OLE_DST - get updates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT - get updates\OLE_DST - lead_updates">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\DFT - replicate mdm leads">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
-          Size="184,42"
-          Id="Package\DFT - replicate mdm leads\OLE_SRC - get leads"
-          TopLeft="224,85" />
-        <NodeLayout
           Size="190,42"
           Id="Package\DFT - replicate mdm leads\OLE_DST - mdm_lead"
           TopLeft="389,172" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\DFT - replicate mdm leads\OLE_SRC - get leads"
+          TopLeft="224,85" />
         <EdgeLayout
           Id="Package\DFT - replicate mdm leads.Paths[OLE DB Source Output]"
           TopLeft="316,127">
@@ -1649,77 +1720,6 @@ WHERE [valid_to] &gt; 14/02/2019</DTS:VariableValue>
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\DFT - get updates">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="196,42"
-          Id="Package\DFT - get updates\OLE_DST - get updates"
-          TopLeft="334,114" />
-        <NodeLayout
-          Size="205,42"
-          Id="Package\DFT - get updates\OLE_DST - lead_updates"
-          TopLeft="480,216" />
-        <EdgeLayout
-          Id="Package\DFT - get updates.Paths[OLE DB Source Output]"
-          TopLeft="432,156">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="150.5,60"
-              Start="0,0"
-              End="150.5,52.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26"
-                    Point2="0,30"
-                    Point3="4,30" />
-                  <mssgle:LineSegment
-                    End="146.5,30" />
-                  <mssgle:CubicBezierSegment
-                    Point1="146.5,30"
-                    Point2="150.5,30"
-                    Point3="150.5,34" />
-                  <mssgle:LineSegment
-                    End="150.5,52.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - get updates\OLE_DST - get updates">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\DFT - get updates\OLE_DST - lead_updates">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
