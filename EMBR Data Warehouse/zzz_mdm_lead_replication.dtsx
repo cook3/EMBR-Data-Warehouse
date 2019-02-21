@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="embr"
   DTS:CreatorName="embr\azureadmin"
-  DTS:DTSID="{CA61F9F6-2AC6-487F-8FE4-11468A5E0667}"
+  DTS:DTSID="{058E39DA-D90F-494D-B7B4-C125FC44B980}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.101"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="3081"
-  DTS:ObjectName="mdm_lead_replication"
+  DTS:ObjectName="zzz_mdm_lead_replication"
   DTS:PackageType="5"
-  DTS:VersionBuild="8"
-  DTS:VersionGUID="{9B87166D-D533-41E0-B603-9ECB6FDE8667}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{3BA4D6EE-75AD-46CC-9FC5-383A8249728B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -89,6 +89,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
       DTS:refId="Package\DFT - get updates"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{E4EF67F7-7D54-4C21-B7DF-DADA977F24B5}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -124,7 +125,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -248,7 +249,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -361,6 +362,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
       DTS:refId="Package\DFT - replicate mdm leads"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
+      DTS:Disabled="True"
       DTS:DTSID="{1BFEF0DD-AC93-486E-BD69-7DA46B4148DB}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
@@ -396,7 +398,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -763,7 +765,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -1406,7 +1408,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="167,42"
           Id="Package\DFT - get updates"
@@ -1432,7 +1434,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
           TopLeft="316.5,124">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="162.5,35"
               Start="0,0"
               End="162.5,27.5">
@@ -1466,7 +1468,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
           TopLeft="479,201">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="99,37"
               Start="0,0"
               End="99,29.5">
@@ -1500,7 +1502,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
           TopLeft="578,280">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="84.5,31"
               Start="0,0"
               End="84.5,23.5">
@@ -1534,7 +1536,7 @@ WHERE [valid_to] &gt;  '2019-02-14'</DTS:VariableValue>
           TopLeft="662.5,353">
           <EdgeLayout.Curve>
             <mssgle:Curve
-              StartConnector="{x:Null}"
+              StartConnector="{assembly:Null}"
               EndConnector="12.5,34"
               Start="0,0"
               End="12.5,26.5">

@@ -56,7 +56,8 @@ IF @incremental_flag = 1 --handle incremental loads
 									INNER JOIN lead.dim_source s ON c.lead_source = s.source
 									INNER JOIN lead.dim_homeowner h ON c.homeowner_answer = h.answer
 								WHERE LEN(c.first_name) > 0
-									AND LEN(c.last_name) > 0					
+									AND LEN(c.last_name) > 0	
+											
 					  
 						) AS source 
 
@@ -116,6 +117,7 @@ IF @incremental_flag = 1 --handle incremental loads
 						  )
 
 				WHEN NOT MATCHED BY SOURCE 
+					AND active = 1
 					THEN UPDATE
 						SET valid_to = GETDATE()
 						, active = 0;

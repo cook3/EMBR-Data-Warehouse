@@ -111,6 +111,7 @@
     <Build Include="fuzzy\Tables\fuzzy.unknown_list.sql" />
     <Build Include="fuzzy\Tables\fuzzy.old_homeowner_answers.sql" />
     <Build Include="lead\Views\lead.vw_buyer_lead_list.sql" />
+    <Build Include="lead\Views\lead.vw_acitve_leads.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="EMBR Data Warehouse Schema.refactorlog" />

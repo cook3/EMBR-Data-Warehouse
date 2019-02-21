@@ -5,14 +5,14 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="embr"
   DTS:CreatorName="embr\azureadmin"
-  DTS:DTSID="{7ED43CC0-B4B7-405F-BBDA-FA3B581C448C}"
+  DTS:DTSID="{C2FD188F-BAEB-4058-97C3-F3093B4CED25}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.101"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="3081"
-  DTS:ObjectName="replication_master"
+  DTS:ObjectName="zzz_replication_master"
   DTS:PackageType="5"
-  DTS:VersionBuild="3"
-  DTS:VersionGUID="{AFD005CC-445C-44FA-8D25-C126B17D34CF}">
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{B36971CE-6018-474F-983B-992FF8AFA8DA}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -225,6 +225,10 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="230,42"
+          Id="Package\EPT - run dbo_lead_replication"
+          TopLeft="1075.71428571429,477.142857142857" />
+        <NodeLayout
           Size="244,42"
           Id="Package\EPT - run dim_affiliate_replication"
           TopLeft="203,101" />
@@ -232,6 +236,26 @@
           Size="241,42"
           Id="Package\EPT - run dim_device_replication"
           TopLeft="350,186" />
+        <NodeLayout
+          Size="266,42"
+          Id="Package\EPT - run dim_homeowner_replication"
+          TopLeft="410,262" />
+        <NodeLayout
+          Size="242,42"
+          Id="Package\EPT - run dim_source_replication"
+          TopLeft="544,352" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\EPT - run dim_status_replication"
+          TopLeft="708,423" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\EPT - run fact_lead_replication"
+          TopLeft="1010,384.285714285714" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\EPT - run mdm_lead_replication"
+          TopLeft="1374.28571428571,461.428571428571" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="325,143">
@@ -266,10 +290,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="266,42"
-          Id="Package\EPT - run dim_homeowner_replication"
-          TopLeft="410,262" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="470.5,228">
@@ -304,10 +324,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="242,42"
-          Id="Package\EPT - run dim_source_replication"
-          TopLeft="544,352" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="543,304">
@@ -342,10 +358,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="238,42"
-          Id="Package\EPT - run dim_status_replication"
-          TopLeft="708,423" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="665,394">
@@ -380,10 +392,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="230,42"
-          Id="Package\EPT - run fact_lead_replication"
-          TopLeft="1010,384.285714285714" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
           TopLeft="946,444">
@@ -418,10 +426,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="230,42"
-          Id="Package\EPT - run dbo_lead_replication"
-          TopLeft="1075.71428571429,477.142857142857" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
           TopLeft="1125,426.285714285714">
@@ -456,10 +460,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="230,42"
-          Id="Package\EPT - run mdm_lead_replication"
-          TopLeft="1374.28571428571,461.428571428571" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 6]"
           TopLeft="1305.71428571429,498.142857142857">

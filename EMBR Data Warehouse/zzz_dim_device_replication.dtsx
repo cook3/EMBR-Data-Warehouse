@@ -5,26 +5,27 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="embr"
   DTS:CreatorName="embr\azureadmin"
-  DTS:DTSID="{A8BB361A-FDE3-4D0C-ABCD-CE5299BC45AA}"
+  DTS:DTSID="{4502CE57-F20B-4401-8698-8B0A596A007C}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="14.0.3002.101"
+  DTS:LastModifiedProductVersion="15.0.1100.123"
   DTS:LocaleID="3081"
-  DTS:ObjectName="dim_status_replication"
+  DTS:ObjectName="zzz_dim_device_replication"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{FB7FBF47-481A-4E93-A2EC-1B0DD53FF289}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{DEABFF5A-4DD2-47F0-BA00-8CC0D6D0A136}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
-      DTS:refId="Package\DFT - replicate dim_status"
+      DTS:refId="Package\DFT - replicate dim_device"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{3686647B-A6AF-45CA-A4B5-E779436683CB}"
+      DTS:Disabled="True"
+      DTS:DTSID="{5CBEB9D7-47B7-4028-8EF6-53EB6719C59A}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="DFT - replicate dim_status"
+      DTS:ObjectName="DFT - replicate dim_device"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -32,11 +33,11 @@
           version="1">
           <components>
             <component
-              refId="Package\DFT - replicate dim_status\LKP - dim_status"
+              refId="Package\DFT - replicate dim_device\LKP - dim_device"
               componentClassID="Microsoft.Lookup"
               contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
               description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
-              name="LKP - dim_status"
+              name="LKP - dim_device"
               usesDispositions="true"
               version="6">
               <properties>
@@ -45,14 +46,14 @@
                   description="Specifies the SQL statement that generates the lookup table."
                   expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [lead].[dim_status]</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [lead].[dim_device]</property>
                 <property
                   dataType="System.String"
                   description="Specifies a SQL statement that uses parameters to generate the lookup table."
                   expressionType="Notify"
                   name="SqlCommandParam"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [lead].[dim_status]) [refTable]
-where [refTable].[status_key] = ?</property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [lead].[dim_device]) [refTable]
+where [refTable].[device_key] = ?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the type of connection used to access the reference dataset."
@@ -83,12 +84,12 @@ where [refTable].[status_key] = ?</property>
                 <property
                   dataType="System.String"
                   description="Indicates whether to reference metadata in an XML format."
-                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="status_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="status" dataType="DT_STR" length="250" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="message" dataType="DT_STR" length="500" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="device_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="device_type" dataType="DT_STR" length="250" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="device_brand" dataType="DT_STR" length="250" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
                 <property
                   containsID="true"
                   dataType="System.String"
                   description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                  name="ParameterMap">#{Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[status_key]};</property>
+                  name="ParameterMap">#{Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_key]};</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -100,7 +101,7 @@ where [refTable].[status_key] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - replicate dim_status\LKP - dim_status.Connections[OleDbConnection]"
+                  refId="Package\DFT - replicate dim_device\LKP - dim_device.Connections[OleDbConnection]"
                   connectionManagerID="{E57ED397-33B2-404C-B299-F585CFB7E036}:external"
                   connectionManagerRefId="Project.ConnectionManagers[azure_sql_edw]"
                   description="Connection manager used to access lookup data."
@@ -108,19 +109,19 @@ where [refTable].[status_key] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - replicate dim_status\LKP - dim_status.Inputs[Lookup Input]"
+                  refId="Package\DFT - replicate dim_device\LKP - dim_device.Inputs[Lookup Input]"
                   name="Lookup Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - replicate dim_status\LKP - dim_status.Inputs[Lookup Input].Columns[status_key]"
+                      refId="Package\DFT - replicate dim_device\LKP - dim_device.Inputs[Lookup Input].Columns[device_key]"
                       cachedDataType="i4"
-                      cachedName="status_key"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[status_key]">
+                      cachedName="device_key"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_key]">
                       <properties>
                         <property
                           dataType="System.String"
                           description="Specifies the column in the reference table that a column joins."
-                          name="JoinToReferenceColumn">status_key</property>
+                          name="JoinToReferenceColumn">device_key</property>
                         <property
                           dataType="System.Null"
                           description="Specifies the column in the reference table from which a column is copied."
@@ -133,38 +134,38 @@ where [refTable].[status_key] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - replicate dim_status\LKP - dim_status.Outputs[Lookup Match Output]"
+                  refId="Package\DFT - replicate dim_device\LKP - dim_device.Outputs[Lookup Match Output]"
                   errorOrTruncationOperation="Lookup"
                   exclusionGroup="1"
                   name="Lookup Match Output"
-                  synchronousInputId="Package\DFT - replicate dim_status\LKP - dim_status.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - replicate dim_device\LKP - dim_device.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - replicate dim_status\LKP - dim_status.Outputs[Lookup No Match Output]"
+                  refId="Package\DFT - replicate dim_device\LKP - dim_device.Outputs[Lookup No Match Output]"
                   description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
                   exclusionGroup="1"
                   name="Lookup No Match Output"
-                  synchronousInputId="Package\DFT - replicate dim_status\LKP - dim_status.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - replicate dim_device\LKP - dim_device.Inputs[Lookup Input]">
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\DFT - replicate dim_status\LKP - dim_status.Outputs[Lookup Error Output]"
+                  refId="Package\DFT - replicate dim_device\LKP - dim_device.Outputs[Lookup Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Lookup Error Output"
-                  synchronousInputId="Package\DFT - replicate dim_status\LKP - dim_status.Inputs[Lookup Input]">
+                  synchronousInputId="Package\DFT - replicate dim_device\LKP - dim_device.Inputs[Lookup Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\LKP - dim_status.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - replicate dim_device\LKP - dim_device.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate dim_status\LKP - dim_status.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - replicate dim_device\LKP - dim_device.Outputs[Lookup Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\LKP - dim_status.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - replicate dim_device\LKP - dim_device.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate dim_status\LKP - dim_status.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - replicate dim_device\LKP - dim_device.Outputs[Lookup Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -173,11 +174,11 @@ where [refTable].[status_key] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - replicate dim_status\OLE_DST - dim_status"
+              refId="Package\DFT - replicate dim_device\OLE_DST - dim_device"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE_DST - dim_status"
+              name="OLE_DST - dim_device"
               usesDispositions="true"
               version="4">
               <properties>
@@ -188,7 +189,7 @@ where [refTable].[status_key] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[lead].[dim_status]</property>
+                  name="OpenRowset">[lead].[dim_device]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -197,7 +198,7 @@ where [refTable].[status_key] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -230,7 +231,7 @@ where [refTable].[status_key] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Connections[OleDbConnection]"
+                  refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Connections[OleDbConnection]"
                   connectionManagerID="{E57ED397-33B2-404C-B299-F585CFB7E036}:external"
                   connectionManagerRefId="Project.ConnectionManagers[azure_sql_edw]"
                   description="The OLE DB runtime connection used to access the database."
@@ -238,74 +239,74 @@ where [refTable].[status_key] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input]"
+                  refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].Columns[status_key]"
+                      refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].Columns[device_key]"
                       cachedDataType="i4"
-                      cachedName="status_key"
-                      externalMetadataColumnId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].ExternalColumns[status_key]"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[status_key]" />
+                      cachedName="device_key"
+                      externalMetadataColumnId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].ExternalColumns[device_key]"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_key]" />
                     <inputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].Columns[status]"
+                      refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].Columns[device_type]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="250"
-                      cachedName="status"
-                      externalMetadataColumnId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].ExternalColumns[status]"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[status]" />
+                      cachedName="device_type"
+                      externalMetadataColumnId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].ExternalColumns[device_type]"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_type]" />
                     <inputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].Columns[message]"
+                      refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].Columns[device_brand]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="500"
-                      cachedName="message"
-                      externalMetadataColumnId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].ExternalColumns[message]"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[message]" />
+                      cachedLength="250"
+                      cachedName="device_brand"
+                      externalMetadataColumnId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].ExternalColumns[device_brand]"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_brand]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].ExternalColumns[status_key]"
+                      refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].ExternalColumns[device_key]"
                       dataType="i4"
-                      name="status_key" />
+                      name="device_key" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].ExternalColumns[status]"
+                      refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].ExternalColumns[device_type]"
                       codePage="1252"
                       dataType="str"
                       length="250"
-                      name="status" />
+                      name="device_type" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input].ExternalColumns[message]"
+                      refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input].ExternalColumns[device_brand]"
                       codePage="1252"
                       dataType="str"
-                      length="500"
-                      name="message" />
+                      length="250"
+                      name="device_brand" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -314,11 +315,11 @@ where [refTable].[status_key] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status"
+              refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="OLE_SRC - dim_status"
+              name="OLE_SRC - dim_device"
               usesDispositions="true"
               version="7">
               <properties>
@@ -329,7 +330,7 @@ where [refTable].[status_key] = ?</property>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[lead].[dim_status]</property>
+                  name="OpenRowset">[lead].[dim_device]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -338,7 +339,7 @@ where [refTable].[status_key] = ?</property>
                   dataType="System.String"
                   description="The SQL command to be executed."
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
                 <property
                   dataType="System.String"
                   description="The variable that contains the SQL command to be executed."
@@ -363,7 +364,7 @@ where [refTable].[status_key] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Connections[OleDbConnection]"
+                  refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Connections[OleDbConnection]"
                   connectionManagerID="{4549CB2E-D1A3-4232-B8AF-B96D346D5F14}:external"
                   connectionManagerRefId="Project.ConnectionManagers[warehouse]"
                   description="The OLE DB runtime connection used to access the database."
@@ -371,95 +372,95 @@ where [refTable].[status_key] = ?</property>
               </connections>
               <outputs>
                 <output
-                  refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output]"
+                  refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[status_key]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_key]"
                       dataType="i4"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].ExternalColumns[status_key]"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[status_key]"
-                      name="status_key"
+                      externalMetadataColumnId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].ExternalColumns[device_key]"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_key]"
+                      name="device_key"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[status]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_type]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      externalMetadataColumnId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].ExternalColumns[device_type]"
                       length="250"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[status]"
-                      name="status"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_type]"
+                      name="device_type"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[message]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_brand]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].ExternalColumns[message]"
-                      length="500"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].Columns[message]"
-                      name="message"
+                      externalMetadataColumnId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].ExternalColumns[device_brand]"
+                      length="250"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].Columns[device_brand]"
+                      name="device_brand"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].ExternalColumns[status_key]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].ExternalColumns[device_key]"
                       dataType="i4"
-                      name="status_key" />
+                      name="device_key" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].ExternalColumns[status]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].ExternalColumns[device_type]"
                       codePage="1252"
                       dataType="str"
                       length="250"
-                      name="status" />
+                      name="device_type" />
                     <externalMetadataColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output].ExternalColumns[message]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output].ExternalColumns[device_brand]"
                       codePage="1252"
                       dataType="str"
-                      length="500"
-                      name="message" />
+                      length="250"
+                      name="device_brand" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output]"
+                  refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[status_key]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[device_key]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[status_key]"
-                      name="status_key" />
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[device_key]"
+                      name="device_key" />
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[status]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[device_type]"
                       codePage="1252"
                       dataType="str"
                       length="250"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[status]"
-                      name="status" />
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[device_type]"
+                      name="device_type" />
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[message]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[device_brand]"
                       codePage="1252"
                       dataType="str"
-                      length="500"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[message]"
-                      name="message" />
+                      length="250"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[device_brand]"
+                      name="device_brand" />
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -470,15 +471,15 @@ where [refTable].[status_key] = ?</property>
           </components>
           <paths>
             <path
-              refId="Package\DFT - replicate dim_status.Paths[Lookup No Match Output]"
-              endId="Package\DFT - replicate dim_status\OLE_DST - dim_status.Inputs[OLE DB Destination Input]"
+              refId="Package\DFT - replicate dim_device.Paths[Lookup No Match Output]"
+              endId="Package\DFT - replicate dim_device\OLE_DST - dim_device.Inputs[OLE DB Destination Input]"
               name="Lookup No Match Output"
-              startId="Package\DFT - replicate dim_status\LKP - dim_status.Outputs[Lookup No Match Output]" />
+              startId="Package\DFT - replicate dim_device\LKP - dim_device.Outputs[Lookup No Match Output]" />
             <path
-              refId="Package\DFT - replicate dim_status.Paths[OLE DB Source Output]"
-              endId="Package\DFT - replicate dim_status\LKP - dim_status.Inputs[Lookup Input]"
+              refId="Package\DFT - replicate dim_device.Paths[OLE DB Source Output]"
+              endId="Package\DFT - replicate dim_device\LKP - dim_device.Inputs[Lookup Input]"
               name="OLE DB Source Output"
-              startId="Package\DFT - replicate dim_status\OLE_SRC - dim_status.Outputs[OLE DB Source Output]" />
+              startId="Package\DFT - replicate dim_device\OLE_SRC - dim_device.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -497,38 +498,38 @@ where [refTable].[status_key] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="208,42"
-          Id="Package\DFT - replicate dim_status"
+          Size="210,42"
+          Id="Package\DFT - replicate dim_device"
           TopLeft="238,97" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\DFT - replicate dim_status">
+    design-time-name="Package\DFT - replicate dim_device">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <NodeLayout
-          Size="193,42"
-          Id="Package\DFT - replicate dim_status\OLE_SRC - dim_status"
+          Size="196,42"
+          Id="Package\DFT - replicate dim_device\OLE_SRC - dim_device"
           TopLeft="215,87" />
         <NodeLayout
-          Size="192,42"
-          Id="Package\DFT - replicate dim_status\OLE_DST - dim_status"
+          Size="194,42"
+          Id="Package\DFT - replicate dim_device\OLE_DST - dim_device"
           TopLeft="542,252" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\DFT - replicate dim_status\LKP - dim_status"
+          Size="165,42"
+          Id="Package\DFT - replicate dim_device\LKP - dim_device"
           TopLeft="379,170" />
         <EdgeLayout
-          Id="Package\DFT - replicate dim_status.Paths[OLE DB Source Output]"
-          TopLeft="311.5,129">
+          Id="Package\DFT - replicate dim_device.Paths[OLE DB Source Output]"
+          TopLeft="313,129">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
-              EndConnector="149,41"
+              EndConnector="148.5,41"
               Start="0,0"
-              End="149,33.5">
+              End="148.5,33.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
@@ -539,13 +540,13 @@ where [refTable].[status_key] = ?</property>
                     Point2="0,20.5"
                     Point3="4,20.5" />
                   <mssgle:LineSegment
-                    End="145,20.5" />
+                    End="144.5,20.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="145,20.5"
-                    Point2="149,20.5"
-                    Point3="149,24.5" />
+                    Point1="144.5,20.5"
+                    Point2="148.5,20.5"
+                    Point3="148.5,24.5" />
                   <mssgle:LineSegment
-                    End="149,33.5" />
+                    End="148.5,33.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -555,8 +556,8 @@ where [refTable].[status_key] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\DFT - replicate dim_status.Paths[Lookup No Match Output]"
-          TopLeft="460.5,212">
+          Id="Package\DFT - replicate dim_device.Paths[Lookup No Match Output]"
+          TopLeft="461.5,212">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{x:Null}"
@@ -592,7 +593,7 @@ where [refTable].[status_key] = ?</property>
         </EdgeLayout>
         <AnnotationLayout
           Text="Destination is Azure SQL Database  replica"
-          ParentId="Package\DFT - replicate dim_status"
+          ParentId="Package\DFT - replicate dim_device"
           Size="235,37"
           Id="6d2a3770-8e69-4e2a-8f83-c9d1b3c081f1"
           TopLeft="757,265">
@@ -609,7 +610,7 @@ where [refTable].[status_key] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - replicate dim_status\OLE_SRC - dim_status">
+    design-time-name="Package\DFT - replicate dim_device\OLE_SRC - dim_device">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -622,7 +623,7 @@ where [refTable].[status_key] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - replicate dim_status\OLE_DST - dim_status">
+    design-time-name="Package\DFT - replicate dim_device\OLE_DST - dim_device">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -635,22 +636,22 @@ where [refTable].[status_key] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DFT - replicate dim_status\LKP - dim_status">
+    design-time-name="Package\DFT - replicate dim_device\LKP - dim_device">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[lead].[dim_status]</Value>
+          type="q3:string">[lead].[dim_device]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
