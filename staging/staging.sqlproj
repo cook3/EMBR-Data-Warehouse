@@ -87,4 +87,7 @@
     <Build Include="Security\buyer.sql" />
     <Build Include="buyer\Tables\buyer.buyer_list.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="export_buyer_list_to_csv.sql" />
+  </ItemGroup>
 </Project>
