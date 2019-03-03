@@ -67,6 +67,7 @@
     <Folder Include="buyer\" />
     <Folder Include="buyer\Tables\" />
     <Folder Include="Security\" />
+    <Folder Include="buyer\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="staging.sql" />
@@ -86,6 +87,8 @@
     <Build Include="buyer\Tables\buyer.mobile_list.sql" />
     <Build Include="Security\buyer.sql" />
     <Build Include="buyer\Tables\buyer.buyer_list.sql" />
+    <Build Include="buyer\Views\buyer.vw_buyer_lead_list.sql" />
+    <Build Include="dbo\Stored Procedures\dbo.export_buyer_list.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="export_buyer_list_to_csv.sql" />
